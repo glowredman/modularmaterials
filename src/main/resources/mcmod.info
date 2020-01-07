@@ -1,0 +1,16 @@
+[
+{
+  "modid": "modularmaterials",
+  "name": "Modular Materials",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["glowredman"],
+  "credits": "GregoriousT (textures)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

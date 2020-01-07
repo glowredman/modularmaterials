@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "modularmaterials:items/leaf/ingot",
+        "layer1": "modularmaterials:items/leaf/ingot_overlay"
+    }
+}
