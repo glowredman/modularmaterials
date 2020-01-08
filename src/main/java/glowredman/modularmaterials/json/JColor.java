@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.json;
 
-public class Color {
+public class JColor {
 	
 	public int r;
 	public int g;

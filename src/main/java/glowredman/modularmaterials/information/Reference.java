@@ -1,6 +1,7 @@
 package glowredman.modularmaterials.information;
 
-import glowredman.modularmaterials.json.MaterialList;
+import glowredman.modularmaterials.json.JItemList;
+import glowredman.modularmaterials.json.JMaterialList;
 import glowredman.modularmaterials.tab.CreativeTabItems;
 import glowredman.modularmaterials.tab.CreativeTabOres;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,20 +20,21 @@ public class Reference {
 	
 	//CREATIVE TABS
 	public static final CreativeTabs TAB_ITEMS = new CreativeTabItems();
-	public static final CreativeTabs TAB_BLOCKS = TAB_ITEMS;
+	public static final CreativeTabs TAB_BLOCKS = TAB_ITEMS; //TODO make custom creativeTab
 	public static final CreativeTabs TAB_ORES = new CreativeTabOres();
+	public static final CreativeTabs TAB_VARIOUS = TAB_ITEMS; //TODO make custom creativeTab
 	
-	//MATERIALS
-	public static MaterialList materialList = new MaterialList();
+	//LISTS
+	public static JItemList itemList = new JItemList();
+	public static JMaterialList materialList = new JMaterialList();
 	
 	//CONFIG
 	public static final String GENERALCONFIGNAME = "general.cfg";
+	public static final String ITEMCONFIGNAME = "items.json";
+	public static final String LANGFILENAME = "en_us.lang";
 	public static final String MATERIALCONFIGNAME = "materials.json";
 	
 	public static Configuration generalConfig;
-	
-	//FILES
-	public static final String LANGFILENAME = "en_us.lang";
 	
 	//config values:
 	//general

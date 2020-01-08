@@ -10,7 +10,7 @@ import cofh.core.util.core.IInitializer;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
 import glowredman.modularmaterials.util.TagHandler;
 import net.minecraft.item.ItemStack;
@@ -38,7 +38,7 @@ public class ItemPlate extends ItemMulti implements IInitializer {
 		//register base-item
 		ForgeRegistries.ITEMS.register(this);
 		
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			if (TagHandler.isValidPlate(material)) {
 				//add item with custom formatting
 				try {

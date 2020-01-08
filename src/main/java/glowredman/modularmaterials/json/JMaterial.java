@@ -9,12 +9,12 @@ import glowredman.modularmaterials.information.Properties;
 import glowredman.modularmaterials.information.Reference;
 import net.minecraft.item.EnumRarity;
 
-public class Material {
+public class JMaterial {
 
-	public Text name = new Text();
+	public JText name = new JText();
 	public int meta;
 	public boolean disabled;
-	public Color color = new Color();
+	public JColor color = new JColor();
 	public String[] oreDict = new String[]{};
 	public String textureSet;
 	public int blockTexture;
@@ -33,7 +33,7 @@ public class Material {
 	public String state;
 	public int lightLevel;
 	public String[] tags;
-	public Text[] tooltip = new Text[]{};
+	public JText[] tooltip = new JText[]{};
 	
 	public float getBlockHardness() {
 		return this.blockHardness;
@@ -51,7 +51,7 @@ public class Material {
 		return this.boilingTemperature;
 	}
 	
-	public Color getColor() {
+	public JColor getColor() {
 		return this.color;
 	}
 	
@@ -83,7 +83,7 @@ public class Material {
 		return this.meta;
 	}
 	
-	public Text getName() {
+	public JText getName() {
 		return this.name;
 	}
 	public String[] getOreDict() {
@@ -110,7 +110,7 @@ public class Material {
 		return this.temperature;
 	}
 	
-	public Text[] getTooltip() {
+	public JText[] getTooltip() {
 		return this.tooltip;
 	}
 	

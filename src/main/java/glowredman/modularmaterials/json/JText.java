@@ -5,27 +5,27 @@ import glowredman.modularmaterials.util.RarityHandler;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.text.TextFormatting;
 
-public class Text {
+public class JText {
 	
 	public String text;
 	public String[] format = new String[]{}; //common, uncommon, rare or epic for vanilla rarity; custom:COLOR for a custom colored text; animated:DELAY|STEP|POSSTEP as double|int|int followed by an String[] for the animation
 	
-	public Text(String text, String[] format) {
+	public JText(String text, String[] format) {
 		this.text = text;
 		this.format = format;
 	}
 	
-	public Text(String text, String rarity) {
+	public JText(String text, String rarity) {
 		this.text = text;
 		this.format = new String[]{rarity};
 	}
 	
-	public Text(String text) {
+	public JText(String text) {
 		this.text = text;
 		this.format = new String[]{Properties.R1};
 	}
 	
-	public Text() {
+	public JText() {
 	}
 
 	public String getText() {

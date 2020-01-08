@@ -8,7 +8,7 @@ import java.io.IOException;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class FileHandler {
@@ -74,7 +74,7 @@ public class FileHandler {
 	}
 	
 	static void translation2(BufferedWriter writer, String prefix, String typeName) throws IOException {
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			writer.write(prefix + material.getName().getText().replace(' ', '_').toLowerCase() + ".name=" + typeName + ' ' + material.getName().getText());
 			lineCount++;
 			writer.newLine();
@@ -82,7 +82,7 @@ public class FileHandler {
 	}
 	
 	static void translation2(BufferedWriter writer, String prefix) throws IOException {
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			if (material.getState().contentEquals(Properties.S1)) {
 				writer.write(prefix + material.getName().getText().replace(' ', '_').toLowerCase() + ".name=Molten " + material.getName().getText());
 			} else {
@@ -94,7 +94,7 @@ public class FileHandler {
 	}
 	
 	static void translation(BufferedWriter writer, String prefix, String typeName) throws IOException {
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			writer.write(prefix + material.getName().getText().replace(' ', '_') + ".name=" + material.getName().getText() + ' ' + typeName);
 			lineCount++;
 			writer.newLine();

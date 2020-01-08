@@ -6,7 +6,7 @@ import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
 import net.minecraft.util.text.TextFormatting;
 
-public class TextFormat {
+public class JTextFormat {
 	
 	double delay;
 	int step;
@@ -30,8 +30,8 @@ public class TextFormat {
 	}
 	
 	@SuppressWarnings("null")
-	public TextFormat convertConfigEntryToTextFormat(String[] entry) {
-		TextFormat t = null;
+	public JTextFormat convertConfigEntryToTextFormat(String[] entry) {
+		JTextFormat t = null;
 		TextFormatting[] colors = null;
 		String firstLine = null;
 		String delayString = null;

@@ -2,7 +2,7 @@ package glowredman.modularmaterials.fluid;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
 import glowredman.modularmaterials.util.TagHandler;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -14,7 +14,7 @@ public class ModFluids {
 		long time = System.nanoTime();
 		int fluidCount = 0;
 		
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			
 			//liquids
 			if(TagHandler.isValidLiquid(material)) {

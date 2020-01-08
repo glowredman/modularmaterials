@@ -5,7 +5,7 @@ import java.util.List;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
 import glowredman.modularmaterials.util.TagHandler;
 import net.minecraftforge.oredict.OreDictionary;
@@ -23,7 +23,7 @@ public class BlockStorage extends BlockMeta {
 		
 		List<Integer> blockSets = new ArrayList<Integer>();
 		
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			int blockSet = (int) Math.floor(material.getMeta() / 16);
 			if (TagHandler.isValidBlock(material) && (blockSets.contains(blockSet) == false)) {
 				BlockBase block = new BlockBase("block" + blockSet);

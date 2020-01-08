@@ -5,7 +5,7 @@ import java.util.List;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -17,7 +17,7 @@ public class OreDictHandler {
 		
 		long time = System.nanoTime();
 		
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 
 			registerUnitOreDict(material.getOreDict(), Reference.unitBlock, "block");
 			registerUnitOreDict(material.getOreDict(), Reference.unitIngot, "ingot");

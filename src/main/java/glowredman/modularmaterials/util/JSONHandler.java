@@ -15,10 +15,11 @@ import com.google.gson.JsonSyntaxException;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties.Materials;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Color;
-import glowredman.modularmaterials.json.Material;
-import glowredman.modularmaterials.json.MaterialList;
-import glowredman.modularmaterials.json.Text;
+import glowredman.modularmaterials.json.JColor;
+import glowredman.modularmaterials.json.JItemList;
+import glowredman.modularmaterials.json.JMaterial;
+import glowredman.modularmaterials.json.JMaterialList;
+import glowredman.modularmaterials.json.JText;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class JSONHandler {
@@ -26,14 +27,16 @@ public class JSONHandler {
 	public static void preInit(FMLPreInitializationEvent event) {
 		
 		//variables
-		File file = new File(event.getModConfigurationDirectory().getPath() + "/" + Reference.MODID, Reference.MATERIALCONFIGNAME);
-		MaterialList materials = new MaterialList();
+		File fileItems = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.ITEMCONFIGNAME);
+		File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.MATERIALCONFIGNAME);
+		JItemList items = new JItemList();
+		JMaterialList materials = new JMaterialList();
 		
 		//iterate through "Properties.Materials" and add the data to "materials"
 		for (int i = 0; i < Materials.values().length; i++) {
 			
-			Material material = new Material();
-			Color color = new Color();
+			JMaterial material = new JMaterial();
+			JColor color = new JColor();
 			
 			color.r = Materials.values()[i].getRed();
 			color.g = Materials.values()[i].getGreen();
@@ -67,17 +70,33 @@ public class JSONHandler {
 			
 		}
 		
-		//create the file (if it doesn't already exist)
-		if(file.exists()) {
-			Main.logger.info("'" + file.getPath() + "' exists. Won't create a new one.");
+		//create the files (if they don't already exist)
+		if(fileItems.exists()) {
+			Main.logger.info("The file \"" + fileItems.getPath() + "\" exists. Won't create a new one.");
 		} else {
 			try {
-				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fileItems));
+				
+				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(items));
+				writer.close();
+				
+				Main.logger.info("Succesfully created file \"" + fileItems + "\".");
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		if(fileMaterials.exists()) {
+			Main.logger.info("The file \"" + fileMaterials.getPath() + "\" exists. Won't create a new one.");
+		} else {
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fileMaterials));
 				
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(materials));
 				writer.close();
 				
-				Main.logger.info("Succesfully created file '" + file + "'.");
+				Main.logger.info("Succesfully created file \"" + fileMaterials + "\".");
 			}
 			catch (IOException e) {
 				e.printStackTrace();
@@ -85,9 +104,10 @@ public class JSONHandler {
 			
 		}
 		
-		//update "Reference.materialList""
+		//update "Reference.materialList" and "Reference.itemList"
 		try {
-			Reference.materialList = new Gson().fromJson(readFile(file.getPath(), Charset.defaultCharset()), MaterialList.class);
+			Reference.materialList = new Gson().fromJson(readFile(fileMaterials.getPath(), Charset.defaultCharset()), JMaterialList.class);
+			Reference.itemList = new Gson().fromJson(readFile(fileItems.getPath(), Charset.defaultCharset()), JItemList.class);
 		} catch (JsonSyntaxException | IOException e) {
 			e.printStackTrace();
 		}

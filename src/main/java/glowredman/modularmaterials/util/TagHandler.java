@@ -8,13 +8,13 @@ import org.apache.logging.log4j.Level;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.information.Reference;
 
 public class TagHandler {
 	
 	//liquids
-	public static boolean isValidLiquid(Material material) {
+	public static boolean isValidLiquid(JMaterial material) {
 		if(Reference.enableAll) {
 			return true;
 		} else {
@@ -32,7 +32,7 @@ public class TagHandler {
 	}
 	
 	//gas
-	public static boolean isValidGas(Material material) {
+	public static boolean isValidGas(JMaterial material) {
 		if(Reference.enableAll) {
 			return true;
 		} else {
@@ -50,7 +50,7 @@ public class TagHandler {
 	}
 	
 	//liquids
-	public static int getValidTemperatureForLiquid(Material material) {
+	public static int getValidTemperatureForLiquid(JMaterial material) {
 		switch (material.getState()) {
 		case Properties.S1:
 			return material.getMeltigTemperature();
@@ -65,7 +65,7 @@ public class TagHandler {
 	}
 	
 	//gases
-	public static int getValidTemperatureForGas(Material material) {
+	public static int getValidTemperatureForGas(JMaterial material) {
 		switch (material.getState()) {
 		case Properties.S1:
 			return material.getBoilingTemperature();
@@ -80,7 +80,7 @@ public class TagHandler {
 	}
 
 	//liquids
-	public static int getValidLuminosityForLiquid(Material material) {
+	public static int getValidLuminosityForLiquid(JMaterial material) {
 		if(material.getState() == Properties.S1) {
 			return Reference.defaultMoltenMaterialLightLevel;
 		} else {
@@ -89,7 +89,7 @@ public class TagHandler {
 	}
 	
 	//liquids
-	public static String convertToLiquidName(Material material) {
+	public static String convertToLiquidName(JMaterial material) {
 		String name = material.getName().getText();
 		String nameOld = name;
 		String state = material.getState();
@@ -113,7 +113,7 @@ public class TagHandler {
 	}
 	
 	//gases
-	public static String convertToGasName(Material material) {
+	public static String convertToGasName(JMaterial material) {
 		String name = material.getName().getText();
 		String nameOld = name;
 		String state = material.getState();
@@ -137,7 +137,7 @@ public class TagHandler {
 	}
 
 	//ingots
-	public static boolean isValidIngot(Material material) {
+	public static boolean isValidIngot(JMaterial material) {
 		if(Reference.enableAll) {
 			return true;
 		} else {
@@ -160,7 +160,7 @@ public class TagHandler {
 	}
 	
 	//blocks
-	public static boolean isValidBlock(Material material) {
+	public static boolean isValidBlock(JMaterial material) {
 		if (Reference.enableAll) {
 			return true;
 		} else {
@@ -177,7 +177,7 @@ public class TagHandler {
 		}
 	}
 
-	public static boolean isValidPlate(Material material) {
+	public static boolean isValidPlate(JMaterial material) {
 		if (Reference.enableAll) {
 			return true;
 		} else {
@@ -213,7 +213,7 @@ public class TagHandler {
 		Arrays.fill(takenMetaValues, 0, 32767, false);
 		
 		//iterate through all materials
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			int meta = material.getMeta();
 			
 			//if the meta-value is already taken, add it to the entry
@@ -230,7 +230,7 @@ public class TagHandler {
 	
 	//meta
 	public static String getNameFromMeta(int meta) {
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			if (meta == material.getMeta()) {
 				return material.getName().getText();
 			}

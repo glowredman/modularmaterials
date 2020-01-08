@@ -5,7 +5,7 @@ import net.minecraft.util.text.TextFormatting;
 import static net.minecraft.util.text.TextFormatting.*;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.json.Text;
+import glowredman.modularmaterials.json.JText;
 
 public class TextHandler {
 	

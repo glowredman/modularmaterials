@@ -3,14 +3,14 @@ package glowredman.modularmaterials.fluid;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 public class FluidBase extends Fluid{
 
-	public FluidBase(String name, boolean isGaseous, int temperature, int luminosity, Material material) {
+	public FluidBase(String name, boolean isGaseous, int temperature, int luminosity, JMaterial material) {
 		super(name, new ResourceLocation(Reference.MODID + ":fluids/" + material.getFluidTexture() + "_still"), new ResourceLocation(Reference.MODID + ":fluids/" + material.getFluidTexture() + "_flow"));
 		this.setColor(material.getColor().getColorRGBA()); //0-255 (0x00-0xff) each
 		this.setGaseous(isGaseous);

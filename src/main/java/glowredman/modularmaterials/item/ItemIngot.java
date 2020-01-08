@@ -10,7 +10,7 @@ import cofh.core.util.core.IInitializer;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.information.Properties;
 import glowredman.modularmaterials.information.Reference;
-import glowredman.modularmaterials.json.Material;
+import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
 import glowredman.modularmaterials.util.TagHandler;
 import net.minecraft.client.Minecraft;
@@ -47,7 +47,7 @@ public class ItemIngot extends ItemMulti implements IInitializer{
 		/*ingot = this.addItem(0, "ingotNull");
 		Main.proxy.registerItemRenderer(this, "ingot/metallic");*/
 		
-		for (Material material : Reference.materialList.getMaterials()) {
+		for (JMaterial material : Reference.materialList.getMaterials()) {
 			if (TagHandler.isValidIngot(material)) {
 				//add item with custom formatting
 				try {
