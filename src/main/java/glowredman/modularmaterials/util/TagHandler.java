@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.json.JMaterial;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import glowredman.modularmaterials.information.Reference;
 
 public class TagHandler {
@@ -52,11 +52,11 @@ public class TagHandler {
 	//liquids
 	public static int getValidTemperatureForLiquid(JMaterial material) {
 		switch (material.getState()) {
-		case Properties.S1:
+		case PropertiesMaterials.S1:
 			return material.getMeltigTemperature();
-		case Properties.S2:
+		case PropertiesMaterials.S2:
 			return material.getTemperature();
-		case Properties.S3:
+		case PropertiesMaterials.S3:
 			return material.getMeltigTemperature();
 		default:
 			Main.logger.warn("'" + material.getState() + "' is not a valid state (material: " + material.getName().getText() + ").");
@@ -64,14 +64,27 @@ public class TagHandler {
 		}
 	}
 	
+	//liquids
+	public static void addBucketForFluid(Fluid fluid, JMaterial material) {
+		for (String tag : material.getTags()) {
+			boolean hasBucket = true;
+			if (tag.contains("no_bucket")) {
+				hasBucket = false;
+			}
+			if (hasBucket) {
+				FluidRegistry.addBucketForFluid(fluid);
+			}
+		}
+	}
+	
 	//gases
 	public static int getValidTemperatureForGas(JMaterial material) {
 		switch (material.getState()) {
-		case Properties.S1:
+		case PropertiesMaterials.S1:
 			return material.getBoilingTemperature();
-		case Properties.S2:
+		case PropertiesMaterials.S2:
 			return material.getBoilingTemperature();
-		case Properties.S3:
+		case PropertiesMaterials.S3:
 			return material.getTemperature();
 		default:
 			Main.logger.warn("'" + material.getState() + "' is not a valid state (material: " + material.getName().getText() + ").");
@@ -81,7 +94,7 @@ public class TagHandler {
 
 	//liquids
 	public static int getValidLuminosityForLiquid(JMaterial material) {
-		if(material.getState() == Properties.S1) {
+		if(material.getState() == PropertiesMaterials.S1) {
 			return Reference.defaultMoltenMaterialLightLevel;
 		} else {
 			return material.getLightLevel();
@@ -96,13 +109,13 @@ public class TagHandler {
 		name = name.toLowerCase().replace(' ', '_');
 		
 		switch (state) {
-		case Properties.S1:
+		case PropertiesMaterials.S1:
 			Main.logger.debug("correct liquid-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return name;
-		case Properties.S2:
+		case PropertiesMaterials.S2:
 			Main.logger.debug("correct liquid-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return name;
-		case Properties.S3:
+		case PropertiesMaterials.S3:
 			Main.logger.debug("correct liquid-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return "liquid_" + name;
 
@@ -120,13 +133,13 @@ public class TagHandler {
 		name = name.toLowerCase().replace(' ', '_');
 		
 		switch (state) {
-		case Properties.S1:
+		case PropertiesMaterials.S1:
 			Main.logger.debug("correct gas-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return "gaseous_" + name;
-		case Properties.S2:
+		case PropertiesMaterials.S2:
 			Main.logger.debug("correct gas-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return "gaseous_" + name;
-		case Properties.S3:
+		case PropertiesMaterials.S3:
 			Main.logger.debug("correct gas-name for \"" + nameOld + "\" of state \"" + state + "\" is \"" + name + "\".");
 			return name;
 

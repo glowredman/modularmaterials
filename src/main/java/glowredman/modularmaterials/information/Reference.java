@@ -55,6 +55,7 @@ public class Reference {
 	public static boolean enableBlocks = true;
 	public static boolean enableFluids = true;
 	public static boolean enableIngots = true;
+	public static boolean enableMiscItems = true;
 	public static boolean enablePlates = true;
 
 }

@@ -1,7 +1,7 @@
 package glowredman.modularmaterials.fluid;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.information.Reference;
 import glowredman.modularmaterials.json.JMaterial;
 import net.minecraft.util.ResourceLocation;
@@ -25,7 +25,7 @@ public class FluidBase extends Fluid{
 			this.setDensity(material.getDensity()); //default (water) is 1000, negative means lighter than air
 		}
 		try {
-			if (material.getName().getFormat()[0].contains(Properties.AN)) {
+			if (material.getName().getFormat()[0].contains(PropertiesMaterials.AN)) {
 				//TODO implement custom text
 			} else {
 				this.setRarity(material.getName().getRarity());

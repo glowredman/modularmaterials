@@ -6,7 +6,7 @@ import javax.annotation.Nonnegative;
 
 import glowredman.modularmaterials.json.JText;
 
-public class Properties {
+public class PropertiesMaterials {
 	
 	public static enum Materials {
 		
@@ -55,7 +55,7 @@ public class Properties {
 		ZIRCONIUM	(40,	"Zirconium",					new String[]{"Zirconium"},	0xf0, 0xf0, 0xf0,    0, "metal",				 SY, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5800, 1500, nt, 2128, 4650, 0, "Zr"),
 		NIOBIUM		(41,	"Niobium",						new String[]{"Niobium"},	0xbe, 0xb4, 0xc8,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  8570, 1500, nt, 2750, 5017, 0, "Nb"),
 		MOLYBDENUM	(42,	new JText("Molybdenum", R2),	new String[]{"Molybdenum"}, 0xb4, 0xb4, 0xdc,    0, "metal",				 DL, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9330, 1500, nt, 2896, 4912, 0, "Mo"),
-		TECHNETIUM	(43, 	new JText("Technetium", TXT_GREEN), "Technetium",			0xc8, 0xc8, 0xd2,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 11000, 1500, nt, 2430, 4538, 4, "Tc"),
+		TECHNETIUM	(43, 	new JText("Technetium", GREEN), "Technetium",				0xc8, 0xc8, 0xd2,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 11000, 1500, nt, 2430, 4538, 4, "Tc"),
 		RUTHENIUM	(44,	new JText("Ruthenium", R3),		new String[]{"Ruthenium"}, 	0xc8, 0xc8, 0xd2,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10650, 1500, nt, 2607, 4423, 0, "Ru"),
 		RHODIUM		(45,	new JText("Rhodium", R4),		new String[]{"Rhodium"},	0xb4, 0xbe, 0xb4,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10700, 1500, nt, 2237, 3968, 0, "Rh"),
 		PALLADIUM	(46,	new JText("Palladium", R4),		new String[]{"Palladium"},	 128,  128,  128,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10380, 1500, nt, 1828, 3236, 0, "Pd"),
@@ -74,7 +74,7 @@ public class Properties {
 		CERIUM		(58,	"Cerium",						new String[]{"Cerium"},		0xdc, 0xdc, 0xdc,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  6550, 1500, nt, 1068, 3716, 0, "Ce"),
 		PRASEODYMIUM(59,	"Praseodymium", 				"Praseodymium",				0xe1, 0xe1, 0xe1,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  6500, 1500, nt, 1208, 3403, 0, "Pr"),
 		NEODYMIUM	(60,	"Neodymium",					new String[]{"Neodymium"},	0x64, 0x64, 0x64,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  6890, 1500, nt, 1297, 3347, 0, "Nd"),
-		PROMETHIUM	(61,	new JText("Promethium", TXT_GREEN), "Promethium",			0xc8, 0xc8, 0xc8,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7260, 1500, nt, 1315, 3273, 4, "Pm"),
+		PROMETHIUM	(61,	new JText("Promethium", GREEN), "Promethium",				0xc8, 0xc8, 0xc8,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7260, 1500, nt, 1315, 3273, 4, "Pm"),
 		SAMARIUM	(62,	"Samarium",						new String[]{"Samarium"},	0xff, 0xff, 0xcc,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7160, 1500, nt, 1345, 2173, 0, "Sm"),
 		EUROPIUM	(63,	"Europium",						new String[]{"Europium"},	0xdc, 0xdc, 0x4b,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5130, 1500, nt, 1099, 1802, 0, "Eu"),
 		GADOLINIUM	(64,	"Gadolinium",					new String[]{"Gadolinium"},	0xbe, 0xbe, 0xfa,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7400, 1500, nt, 1585, 3273, 0, "Gd"),
@@ -92,47 +92,47 @@ public class Properties {
 		OSMIUM		(76,	new JText("Osmium", R4),		new String[]{"Osmium"},		0x32, 0x32, 0xff,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 21020, 1500, nt, 3306, 5285, 0, "Os"),
 		IRIDIUM		(77,	new JText("Iridium", R4),		new String[]{"Iridium"},	0xf0, 0xf0, 0xf5,    0, "metal",				 DL, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 19000, 1500, nt, 2719, 4403, 0, "Ir"),
 		PLATINUM	(78,	new JText("Platinum", R3),		new String[]{"Platinum"},	0xff, 0xff, 0xc8,    0, "metal",				 SY, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 19770, 1500, nt, 2041, 4098, 0, "Pt"),
-		GOLD		(79,	new JText("Gold", R3), 			"Gold",  0xff, 0xff, 0x1e, 0, new String[]{"metal", "no_ingot", "no_block"}, SY, 5, WT, 2, 5f, 3f, 6f, 0f, S1, 17310, 1500, nt, 1337, 3243, 0, "Au"),
+		GOLD_		(79,	new JText("Gold", R3), 			"Gold",  0xff, 0xff, 0x1e, 0, new String[]{"metal", "no_ingot", "no_block"}, SY, 5, WT, 2, 5f, 3f, 6f, 0f, S1, 17310, 1500, nt, 1337, 3243, 0, "Au"),
 		MERCURY	    (80,	new JText("Mercury", R3), new String[]{"Mercury", "Quicksilver"}, 0xff, 0xdc, 0xdc, 0, "liquid",			 SY, 3, WT, 1, 5f, 3f, 6f, 0f, S2, 13534, 1000, nt,  234,  630, 0, "Hg"),
 		THALLIUM	(81,	new JText("Thallium", R2),		new String[]{"Thallium"},	0xdc, 0xe1, 0xe6,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 11220, 1500, nt,  577, 1746, 0, "Tl"),
 		LEAD		(82,	"Lead",							new String[]{"Lead"},		0x8c, 0x64, 0x8c,    0, "metal",				 DL, 5, WT, 1, 5f, 2f, 6f, 0f, S1, 10660, 1500, nt,  601, 2022, 0, "Pb"),
 		BISMUTH		(83,	new JText("Bismuth", R3),		new String[]{"Bismuth"},	0x64, 0xa0, 0xa0,    0, "metal",				  M, 5, WT, 1, 5f, 2f, 6f, 0f, S1, 10050, 1500, nt,  545, 1837, 0, "Bi"),
-		POLONIUM	(84,	new JText("Polonium", TXT_GREEN), new String[]{"Polonium"}, 0xd2, 0xe6, 0x0a,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9297, 1500, nt,  527, 1235, 0, "Po"),
-		ASTATINE	(85,	new JText("Astatine", TXT_GREEN), new String[]{"Astatine"}, 0x1e, 0x28, 0x5a,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7000, 1500, nt,  575,  610, 0, "At"),
-		RADON		(86,	new JText("Radon", TXT_GREEN),	new String[]{"Radon"},		 255,    0,  255,  240, "gas",					 NC, 0, GS, 0, 0f, 0f, 0f, 0f, S3,    10,    1, nt,  202,  212, 4, "Rn"),
-		FRANCIUM	(87,	new JText("Francium", TXT_GREEN), new String[]{"Francium"}, 0x5a, 0x3c, 0x1e,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  2480, 1500, nt,  281,  890, 4, "Fr"),
-		RADIUM		(88,	new JText("Radium", TXT_GREEN),	new String[]{"Radium"},		0x0a, 0xbe, 0x32,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5500, 1500, nt,  973, 2010, 4, "Ra"),
-		ACTINIUM	(89,	new JText("Actinium", TXT_GREEN), new String[]{"Actinium"},	0xaa, 0xaa, 0xaa,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10000, 1500, nt, 1500, 3500, 4, "Ac"),
-		THORIUM		(90,	new JText("Thorium", TXT_GREEN), "Thorium",					   0, 0x1e,    0,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 11700, 1500, nt, 2023, 5061, 4, "Th"),
-		PROTACTINIUM(91,	new JText("Protactinium", TXT_GREEN), "Protactinium",		0xe6, 0xd7, 0x14,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 15370, 1500, nt, 1841, 4300, 4, "Pa"),
-		URANIUM238	(92,	new JText("Uranium", TXT_GREEN), new String[]{"Uranium", "Uranium238"}, 0x32, 0xf0, 0x32, 0, "metal",		 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 17300, 1500, nt, 1405, 4404, 4, "U"),
-		NEPTUNIUM	(93,	new JText("Neptunium", TXT_GREEN), "Neptunium",				0xcd, 0xcd, 0xcd,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 19380, 1500, nt,  912, 4447, 4, "Np"),
-		PLUTONIUM244(94,	new JText("Plutonium", TXT_GREEN), new String[]{"Plutonium", "Plutonium244"}, 0xf0, 0x32, 0x32, 0, "alloy",	 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 16630, 1500, nt,  913, 3505, 4, "Pu"),
-		AMERICIUM	(95,	new JText("Americium", TXT_GREEN), "Americium",				0xc8, 0xc8, 0xc8,    0, "alloy",				 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 12000, 1500, nt, 1449, 2880, 4, "Am"),
-		CURIUM		(96,	new JText("Curium", TXT_GREEN),	new String[]{"Curium"},		0x87, 0x0a, 0xa0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13510, 1500, nt, 1613, 3383, 4, "Cm"),
-		BERKELIUM	(97,	new JText("Berkelium", TXT_GREEN), "Berkelium",				0x0a, 0xa0, 0x87,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13250, 1500, nt, 1259, 2900, 4, "Bk"),
-		CALIFORNIUM	(98,	new JText("Californium", TXT_GREEN), "Californium",			0x90, 0xa0, 0xa0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 15100, 1500, nt, 1173, 1743, 4, "Cf"),
-		EINSTEINIUM	(99,	new JText("Einsteinium", TXT_GREEN), "Einsteinium",			0x5a, 0xaf, 0xf0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  8840, 1500, nt, 1133, 1269, 4, "Es"),
-		FERMIUM		(100,	new JText("Fermium", TXT_GREEN), new String[]{"Fermium"},	0xff, 0xff, 0xd2,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9710, 1500, nt, 1800, 3140, 4, "Fm"),
+		POLONIUM	(84,	new JText("Polonium", GREEN),	new String[]{"Polonium"},	0xd2, 0xe6, 0x0a,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9297, 1500, nt,  527, 1235, 0, "Po"),
+		ASTATINE	(85,	new JText("Astatine", GREEN),	new String[]{"Astatine"},	0x1e, 0x28, 0x5a,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7000, 1500, nt,  575,  610, 0, "At"),
+		RADON		(86,	new JText("Radon", GREEN),		new String[]{"Radon"},		 255,    0,  255,  240, "gas",					 NC, 0, GS, 0, 0f, 0f, 0f, 0f, S3,    10,    1, nt,  202,  212, 4, "Rn"),
+		FRANCIUM	(87,	new JText("Francium", GREEN),	new String[]{"Francium"},	0x5a, 0x3c, 0x1e,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  2480, 1500, nt,  281,  890, 4, "Fr"),
+		RADIUM		(88,	new JText("Radium", GREEN),		new String[]{"Radium"},		0x0a, 0xbe, 0x32,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5500, 1500, nt,  973, 2010, 4, "Ra"),
+		ACTINIUM	(89,	new JText("Actinium", GREEN),	"Actinium",					0xaa, 0xaa, 0xaa,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10000, 1500, nt, 1500, 3500, 4, "Ac"),
+		THORIUM		(90,	new JText("Thorium", GREEN),	"Thorium",					   0, 0x1e,    0,    0, "metal",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 11700, 1500, nt, 2023, 5061, 4, "Th"),
+		PROTACTINIUM(91,	new JText("Protactinium", GREEN), "Protactinium",			0xe6, 0xd7, 0x14,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 15370, 1500, nt, 1841, 4300, 4, "Pa"),
+		URANIUM238	(92,	new JText("Uranium", GREEN), new String[]{"Uranium", "Uranium238"}, 0x32, 0xf0, 0x32, 0, "metal",			 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 17300, 1500, nt, 1405, 4404, 4, "U"),
+		NEPTUNIUM	(93,	new JText("Neptunium", GREEN),	"Neptunium",				0xcd, 0xcd, 0xcd,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 19380, 1500, nt,  912, 4447, 4, "Np"),
+		PLUTONIUM244(94,	new JText("Plutonium", GREEN), new String[]{"Plutonium", "Plutonium244"}, 0xf0, 0x32, 0x32, 0, "alloy",		 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 16630, 1500, nt,  913, 3505, 4, "Pu"),
+		AMERICIUM	(95,	new JText("Americium", GREEN),	"Americium",				0xc8, 0xc8, 0xc8,    0, "alloy",				 NC, 5, WT, 2, 5f, 4f, 6f, 0f, S1, 12000, 1500, nt, 1449, 2880, 4, "Am"),
+		CURIUM		(96,	new JText("Curium", GREEN),		"Curium",					0x87, 0x0a, 0xa0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13510, 1500, nt, 1613, 3383, 4, "Cm"),
+		BERKELIUM	(97,	new JText("Berkelium", GREEN),	"Berkelium",				0x0a, 0xa0, 0x87,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13250, 1500, nt, 1259, 2900, 4, "Bk"),
+		CALIFORNIUM	(98,	new JText("Californium", GREEN), "Californium",				0x90, 0xa0, 0xa0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 15100, 1500, nt, 1173, 1743, 4, "Cf"),
+		EINSTEINIUM	(99,	new JText("Einsteinium", GREEN), "Einsteinium",				0x5a, 0xaf, 0xf0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  8840, 1500, nt, 1133, 1269, 4, "Es"),
+		FERMIUM		(100,	new JText("Fermium", GREEN),	"Fermium",					0xff, 0xff, 0xd2,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9710, 1500, nt, 1800, 3140, 4, "Fm"),
 		//			| meta	|	  name						|   oreDict					|red  green blue  alpha |tags					|its|bt|ft |hl|bh |oh |br |or|state|dnsty|vscty| tmp| mtmp|btmp|ll|tooltip
-		MENDELVIUM	(101,	new JText("Mendelvium", TXT_GREEN), "Mendelvium",			0x14, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10370, 1500, nt, 1100, 2000, 4, "Md"),
-		NOBELIUM	(102,	new JText("Nobelium", TXT_GREEN), new String[]{"Nobelium"}, 0x55, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9940, 1500, nt, 1100, 2000, 4, "No"),
-		LAWRENCIUM	(103,	new JText("Lawrencium", TXT_GREEN), "Lawrencium",			0x96, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 16100, 1500, nt, 1900, 3600, 4, "Lr"),
-		RUTHERFORDIUM(104,	new JText("Rutherfordium", TXT_GREEN), "Rutherfordium",		0xd7, 0x82,    0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 23200, 1500, nt, 2400, 5800, 4, "Rf"),
-		DUBNIUM		(105, 	new JText("Dubnium", TXT_GREEN), new String[]{"Dubnium"},	0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 29100, 1500, nt, 3300, 5700, 4, "Db"),
-		SEABORGIUM	(106,	new JText("Seaborgium", TXT_GREEN), "Seaborgium",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 35000, 1500, nt, 4000, 6500, 4, "Sg"),
-		BOHRIUM		(107, 	new JText("Bohrium", TXT_GREEN), new String[]{"Bohrium"},	0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 37100, 1500, nt, 3500, 6000, 4, "Bh"),
-		HASSIUM		(108, 	new JText("Hassium", TXT_GREEN), new String[]{"Hassium"},	0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 41000, 1500, nt, 3300, 5300, 4, "Hs"),
-		MEITNERIUM	(109,	new JText("Meitnerium", TXT_GREEN), "Meitnerium",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 37400, 1500, nt, 2800, 4500, 4, "Mt"),
-		DARMSTADTIUM(110,	new JText("Darmstadtium", TXT_GREEN), "Darmstadtium",		0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 34800, 1500, nt, 2500, 4500, 4, "Ds"),
-		ROENTGENIUM	(111,	new JText("Roentgenium", TXT_GREEN), "Roentgenium",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 28700, 1500, nt, 1500, 3500, 4, "Rg"),
-		COPERNICUM	(112,	new JText("Copernicum", TXT_GREEN), "Copernicum",			0xb7, 0xb7, 0xb7,    0, "gas",					 "", 0, GS, 0, 0f, 0f, 0f, 0f, S3, 23700, 1500, nt,  150,  357, 4, "Cn"),
-		NIHONIUM	(113,	new JText("Nihonium", TXT_GREEN), "Nihonium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 16000, 1500, nt,  700, 1430, 4, "Nh"),
-		FLEROVIUM	(114,	new JText("Flerovium", TXT_GREEN), "Flerovium",				0xb7, 0xb7, 0xb7,    0, "gas",					 "", 0, GS, 0, 0f, 0f, 0f, 0f, S1, 14000, 1500, nt,  100,  210, 4, "Fl"),
-		MOSCOVIUM	(115,	new JText("Moscovium", TXT_GREEN), "Moscovium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13500, 1500, nt,  670, 1400, 4, "Mc"),
-		LIVERMORIUM	(116,	new JText("Livermorium", TXT_GREEN), "Livermorium",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 12900, 1500, nt,  709, 1085, 4, "Lv"),
-		TENNESSINE	(117,	new JText("Tennessine", TXT_GREEN), "Tennesine",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7200, 1500, nt,  723,  883, 4, "Ts"),
-		OGANESSON	(118,	new JText("Oganesson", TXT_GREEN), "Oganesson",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5000, 1500, nt,  320,  350, 4, "Og"),
+		MENDELVIUM	(101,	new JText("Mendelvium", GREEN),	"Mendelvium",				0x14, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 10370, 1500, nt, 1100, 2000, 4, "Md"),
+		NOBELIUM	(102,	new JText("Nobelium", GREEN),	"Nobelium",					0x55, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  9940, 1500, nt, 1100, 2000, 4, "No"),
+		LAWRENCIUM	(103,	new JText("Lawrencium", GREEN),	"Lawrencium",				0x96, 0x00, 0xd7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 16100, 1500, nt, 1900, 3600, 4, "Lr"),
+		RUTHERFORDIUM(104,	new JText("Rutherfordium", GREEN), "Rutherfordium",			0xd7, 0x82,    0,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 23200, 1500, nt, 2400, 5800, 4, "Rf"),
+		DUBNIUM		(105, 	new JText("Dubnium", GREEN),	"Dubnium",					0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 29100, 1500, nt, 3300, 5700, 4, "Db"),
+		SEABORGIUM	(106,	new JText("Seaborgium", GREEN),	"Seaborgium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 35000, 1500, nt, 4000, 6500, 4, "Sg"),
+		BOHRIUM		(107, 	new JText("Bohrium", GREEN),	"Bohrium",					0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 37100, 1500, nt, 3500, 6000, 4, "Bh"),
+		HASSIUM		(108, 	new JText("Hassium", GREEN),	"Hassium",					0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 41000, 1500, nt, 3300, 5300, 4, "Hs"),
+		MEITNERIUM	(109,	new JText("Meitnerium", GREEN),	"Meitnerium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 37400, 1500, nt, 2800, 4500, 4, "Mt"),
+		DARMSTADTIUM(110,	new JText("Darmstadtium", GREEN), "Darmstadtium",			0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 34800, 1500, nt, 2500, 4500, 4, "Ds"),
+		ROENTGENIUM	(111,	new JText("Roentgenium", GREEN), "Roentgenium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 28700, 1500, nt, 1500, 3500, 4, "Rg"),
+		COPERNICUM	(112,	new JText("Copernicum", GREEN),	"Copernicum",				0xb7, 0xb7, 0xb7,    0, "gas",					 "", 0, GS, 0, 0f, 0f, 0f, 0f, S3, 23700, 1500, nt,  150,  357, 4, "Cn"),
+		NIHONIUM	(113,	new JText("Nihonium", GREEN),	"Nihonium",					0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 16000, 1500, nt,  700, 1430, 4, "Nh"),
+		FLEROVIUM	(114,	new JText("Flerovium", GREEN),	"Flerovium",				0xb7, 0xb7, 0xb7,    0, "gas",					 "", 0, GS, 0, 0f, 0f, 0f, 0f, S1, 14000, 1500, nt,  100,  210, 4, "Fl"),
+		MOSCOVIUM	(115,	new JText("Moscovium", GREEN),	"Moscovium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 13500, 1500, nt,  670, 1400, 4, "Mc"),
+		LIVERMORIUM	(116,	new JText("Livermorium", GREEN), "Livermorium",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 12900, 1500, nt,  709, 1085, 4, "Lv"),
+		TENNESSINE	(117,	new JText("Tennessine", GREEN),	"Tennesine",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7200, 1500, nt,  723,  883, 4, "Ts"),
+		OGANESSON	(118,	new JText("Oganesson", GREEN),	"Oganesson",				0xb7, 0xb7, 0xb7,    0, "alloy",				 NC, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  5000, 1500, nt,  320,  350, 4, "Og"),
 		
 		//MINECRAFT
 		ANDESITE	(200, 	"Andesite", 					new String[]{"Andesite", "Stone"}, 0x82, 0x82, 0x82, 0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
@@ -150,13 +150,13 @@ public class Properties {
 		DIORITE		(212,	"Diorite", 						new String[]{"Diorite", "Stone"}, 0xaa, 0xaa, 0xaa, 0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
 		DIRT		(213,	"Dirt",							new String[]{"Dirt"},		 132,   95,   66,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
 		DIRT_COARSE	(214,	"Coarse Dirt",					new String[]{"Dirt"},		 119,   86,   60,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		EMERALD		(215,	"Emerald",	   					new String[]{"Emerald"},	  80,  255,   80,  127, new String[]{"gem", "no_gem", "no_block"}, E, 0, WT, 2, 0f, 3f, 0f, 0f, S1, 2700, 1500, nt, 3000, 4500, 0, "Be3Al2Si6O18"),
+		EMERALD		(215,	"Emerald",						new String[]{"Emerald"},	  80,  255,   80,  127, new String[]{"gem", "no_gem", "no_block"}, E, 0, WT, 2, 0f, 3f, 0f, 0f, S1, 2700, 1500, nt, 3000, 4500, 0, "Be3Al2Si6O18"),
 		END_STONE	(216,	"End Stone",					new String[]{"Endstone"},	 220,  223,  158,    0, new String[]{"stone", "no_block", "no_fluid"}, DL, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		ENDER_EYE	(217,	"Ender Eye", 	   				new String[]{"EnderEye"},	 160,  250,  230,    0, new String[]{"gem", "no_gem", "no_ore"}, RY, 1, WT, 1, 5f, 0f, 6f, 0f, S1,  3500, 2500, nt, 1000, 2500, 0, "BeK4N5Ma6CSMa"),
+		ENDER_EYE	(217,	"Ender Eye", 					new String[]{"EnderEye"},	 160,  250,  230,    0, new String[]{"gem", "no_gem", "no_ore"}, RY, 1, WT, 1, 5f, 0f, 6f, 0f, S1,  3500, 2500, nt, 1000, 2500, 0, "BeK4N5Ma6CSMa"),
 		ENDER_PEARL (218,	"Ender",						new String[]{"EnderPearl", "Ender"}, 108, 220, 200, 0, new String[]{"gem", "no_gem", "no_ore"}, RY, 1, WT, 1, 5f, 0f, 6f, 0f, S1,  4000, 2500, nt, 1000, 2500, 3, "BeK4N5Ma6"),
 		EXPERIENCE	(219,	"Experience", 					new String[]{"Experience"},	 127,  255,    0,    0, new String[]{"liquid"},	 "", 0, XP, 0, 0f, 0f, 0f, 0f, S2, -200, 200, nt, 400, 1000, 15),
-		FLINT		(220,	"Flint",		 				new String[]{"Flint"},		   0,   32,   64,    0, new String[]{"gem", "no_gem", "no_ore", "no_fluid"}, FL, 1, "", 1, 5f, 0f, 6f, 0f, S1, 0, 0, nt, 0, 0, 0, "SiO2"),
-		GLASS		(221,	"Glass",		   				new String[]{"Glass"},		 220,  250,  250,  220, new String[]{"gem", "no_block", "no_ore"}, G, 0, WT, 0, 0f, 0f, 0f, 0f, S1,  2500, 2000, nt, 1000, 2500, 0, "SiO2"),
+		FLINT		(220,	"Flint",						new String[]{"Flint"},		   0,   32,   64,    0, new String[]{"gem", "no_gem", "no_ore", "no_fluid"}, FL, 1, "", 1, 5f, 0f, 6f, 0f, S1, 0, 0, nt, 0, 0, 0, "SiO2"),
+		GLASS		(221,	"Glass",						new String[]{"Glass"},		 220,  250,  250,  220, new String[]{"gem", "no_block", "no_ore"}, G, 0, WT, 0, 0f, 0f, 0f, 0f, S1,  2500, 2000, nt, 1000, 2500, 0, "SiO2"),
 		GLOWSTONE	(222,	"Glowstone",					new String[]{"Glowstone"},	 255,  255,    0,    0, new String[]{"gem", "no_gem", "no_ore", "no_block", "no_dust"}, SY, 0, LV, 0, 0f, 0f, 0f, 0f, S1, -500, 100, nt, 1000, 2500, 15),
 		GRANITE		(223,	"Granite",						new String[]{"Granite", "Stone"}, 180, 155, 145, 0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
 		GUNPOWDER	(224,	"Gunpowder",					new String[]{"Gunpowder"},	 128,  128,  128,    0, new String[]{"dust", "no_dust", "no_fluid"}, S, 1, "", 1, 5f, 0f, 6f, 0f, S1, 0, 0, nt, 0, 0, 0, "C2S(KNO3)"),
@@ -165,76 +165,76 @@ public class Properties {
 		INK			(227,	"Ink",							new String[]{"Ink"}, 		   0,    0,    0,    0, new String[]{"liquid", "no_gas"}, "", 0, WT, 0, 0f, 0f, 0f, 0f, S2,  1000, 1000, nt, 273, 373, 0),
 		LAPIS		(228,	"Lapis Lazuli",					new String[]{"Lapis"},		  70,   70,  220,    0, new String[]{"gem", "no_gem", "no_block"}, L, 1, WT, 1, 0f, 2f, 0f, 0f, S1, 2640, 2000, nt, 1300, 3500, 0, "(Al6Si6Ca8Na8)12(Al3Si3Na4Cl)2FeS2CaCO3"),
 		//			| meta	|	  name						|   oreDict					|red  green blue  alpha |tags					|its|bt|ft |hl|bh |oh |br |or|state|dnsty|vscty| tmp| mtmp|btmp|ll|tooltip
-		NETHER_QUARTZ(229,	"Nether Quartz", 				new String[]{"NetherQuartz", "Quartz"}, 230, 210, 210, 0, new String[]{"gem", "no_gem", "no_block", "no_fluid"}, Q, 0, "", 1, 0f, 2f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		NETHER_STAR	(230,	"Nether Star", 					new String[]{"NetherStar"},	 255,  255,  255,    0, new String[]{"gem", "no_gem", "no_ore"}, N, 1, WT, 3, 5f, 5f, 6f, 0f, S1, 3000, 5000, nt, 5000, 10000, 0),
-		NETHERRACK	(231,	"Netherrack",					new String[]{"Natherrack"},	 200,    0,    0,    0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		OBSIDIAN	(232,	"Obsidian",						new String[]{"Obsidian"},	  80,   50,  100,    0, new String[]{"stone", "no_block"}, DL, 0, LV, 0, 0f, 0f, 0f, 0f, S1, 2450, 10000, nt, 1400, 4000, 0, "MgFeSi2O8"),
-		PAPER		(233,	"Paper", 						new String[]{"Paper"},		 250,  250,  250,    0, new String[]{"alloy", "no_plate", "no_ingot", "no_gas"},  P, 1, "", 1, 5f, 0f, 6f, 0f, S1, 900, 1100, nt, nt, 0, 0),
-		PRISMARINE	(234,	"Prismarine",					new String[]{"Prismarine"},	0x64, 0xa1, 0x8a,    0, new String[]{"gem", "no_gem", "no_block"}, SH, 0, WT, 1, 0f, 3f, 0f, 0f, S1,  1500, 1500, nt, 712, 3712, 0),
-		PRISMARINE_DARK(235, "Dark Prismarine", 			"PrismarineDark",			0x3b, 0x57, 0x4b,    0, new String[]{"gem", "no_gem", "no_block", "no_ore"}, SH, 0, WT, 0, 0f, 0f, 0f, 0f, S1, 1500, 1500, nt, 800, 3800, 0),
-		REDSTONE	(236,   "Redstone", 					new String[]{"Redstone"},	 200,    0,    0,    0, new String[]{"gem", "no_gem", "no_block", "no_dust"}, DL, 0, "", 2, 0f, 3f, 0f, 0f, S1, 1200, 1500, nt, 500, 2000, 6, "Si(FeS2)5CrAl2O3Hg3"),
-		SAND		(237,	"Sand",		   					new String[]{"Sand"},		 218,  206,  161,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		SAND_RED	(238,	"Red Sand",						new String[]{"Sand"},		 190,  102,   33,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		SANDSTONE	(239,	"Sandstone", 					new String[]{"Sandstone"},	 224,  214,  171,    0, new String[]{"stone", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		SANDSTONE_RED(240,	"Red Sandstone", 				new String[]{"Sandstone"},	 182,   98,   32,    0, new String[]{"stone", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		SOUL_SAND	(241,	"Soul Sand",	  				new String[]{"Soulsand"}, 	  82,   62,   51,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		STONE		(242,	"Stone",	  					new String[]{"Stone"}, 		0x7d, 0x7d, 0x7d,    0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
-		SUGAR		(243,	"Sugar",		   				new String[]{"Sugar"}, 		 250,  250,  250,    0, new String[]{"dust", "no_dust", "no_fluid"}, F, 1, "", 1, 5f, 0f, 6f, 0f, S1, 0, 0, nt, 0, 0, 0, "C2(H2O)5O25"),
-		WOOD		(244,	"Wood",							new String[]{"Wood"},		 100,   50,    0,    0, "wood",					  W, 0, "", 0, 0f, 0f, 0f, 0f, S1,   650, 0, nt, 0, 0, 0),
+		MILK		(229,	"Milk",							"Milk",						 254,  254,  254,    0, new String[]{"dust", "no_bucket"}, PW, 0, WT, 0, 0f, 0f, 0f, 0f, S2, 1032, 1050, nt, 250, 420, 0),
+		NETHER_QUARTZ(230,	"Nether Quartz",				new String[]{"NetherQuartz", "Quartz"}, 230, 210, 210, 0, new String[]{"gem", "no_gem", "no_block", "no_fluid"}, Q, 0, "", 1, 0f, 2f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		NETHER_STAR	(231,	"Nether Star",					new String[]{"NetherStar"},	 255,  255,  255,    0, new String[]{"gem", "no_gem", "no_ore"}, N, 1, WT, 3, 5f, 5f, 6f, 0f, S1, 3000, 5000, nt, 5000, 10000, 0),
+		NETHERRACK	(232,	"Netherrack",					new String[]{"Natherrack"},	 200,    0,    0,    0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		OBSIDIAN	(233,	"Obsidian",						new String[]{"Obsidian"},	  80,   50,  100,    0, new String[]{"stone", "no_block"}, DL, 0, LV, 0, 0f, 0f, 0f, 0f, S1, 2450, 10000, nt, 1400, 4000, 0, "MgFeSi2O8"),
+		PAPER		(234,	"Paper", 						new String[]{"Paper"},		 250,  250,  250,    0, new String[]{"alloy", "no_plate", "no_ingot", "no_gas"},  P, 1, "", 1, 5f, 0f, 6f, 0f, S1, 900, 1100, nt, nt, 0, 0),
+		PRISMARINE	(235,	"Prismarine",					new String[]{"Prismarine"},	0x64, 0xa1, 0x8a,    0, new String[]{"gem", "no_gem", "no_block"}, SH, 0, WT, 1, 0f, 3f, 0f, 0f, S1,  1500, 1500, nt, 712, 3712, 0),
+		PRISMARINE_DARK(236, "Dark Prismarine",				"PrismarineDark",			0x3b, 0x57, 0x4b,    0, new String[]{"gem", "no_gem", "no_block", "no_ore"}, SH, 0, WT, 0, 0f, 0f, 0f, 0f, S1, 1500, 1500, nt, 800, 3800, 0),
+		REDSTONE	(237,   "Redstone",						new String[]{"Redstone"},	 200,    0,    0,    0, new String[]{"gem", "no_gem", "no_block", "no_dust"}, DL, 0, "", 2, 0f, 3f, 0f, 0f, S1, 1200, 1500, nt, 500, 2000, 6, "Si(FeS2)5CrAl2O3Hg3"),
+		SAND		(238,	"Sand",							new String[]{"Sand"},		 218,  206,  161,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		SAND_RED	(239,	"Red Sand",						new String[]{"Sand"},		 190,  102,   33,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		SANDSTONE	(240,	"Sandstone",					new String[]{"Sandstone"},	 224,  214,  171,    0, new String[]{"stone", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		SANDSTONE_RED(241,	"Red Sandstone",				new String[]{"Sandstone"},	 182,   98,   32,    0, new String[]{"stone", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		SOUL_SAND	(242,	"Soul Sand",					new String[]{"Soulsand"}, 	  82,   62,   51,    0, new String[]{"dust", "no_block", "no_fluid"}, S, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		STONE		(243,	"Stone",						new String[]{"Stone"}, 		0x7d, 0x7d, 0x7d,    0, new String[]{"stone", "no_block", "no_fluid"}, R, 0, "", 0, 0f, 0f, 0f, 0f, S1, 0, 0, nt, 0, 0, 0),
+		SUGAR		(244,	"Sugar",						new String[]{"Sugar"}, 		 250,  250,  250,    0, new String[]{"dust", "no_dust", "no_fluid"}, F, 1, "", 1, 5f, 0f, 6f, 0f, S1, 0, 0, nt, 0, 0, 0, "C2(H2O)5O25"),
+		WOOD		(245,	"Wood",							new String[]{"Wood"},		 100,   50,    0,    0, "wood",					  W, 0, "", 0, 0f, 0f, 0f, 0f, S1,   650, 0, nt, 0, 0, 0),
 		
 		//FANTASY MATERIALS
 		ADAMANTIUM	(10001,	new JText("Adamantium", R4),	new String[]{"Adamantium", "Adamantite"}, 0xd8, 0xd8, 0xd8, 0, "metal",		  M, 5, WT, 3, 5f, 6f, 6f, 0f, S1, 50000, 1500, nt, 10000, 20000, 0, "Ad"),
 		ARDITE		(10002,	"Ardite",						new String[]{"Ardite"},		0xfa, 0x81, 0x00,    0, "metal",				  M, 5, WT, 3, 10f, 4f, 3f, 0, S1,  5000, 1500, nt, 1600, 3300, 0, "Ai"),
 		BEDROCKIUM	(10003,	"Bedrockium",					new String[]{"Bedrockium"},	0x32, 0x32, 0x32,    0, "metal",				  R, 5, WT, 1, 5f, 3f, 6f, 0f, S1, (int)10E8, (int)10E8, nt, 9900, 25000, 0),
 		BLACK_PLUTONIUM(10004, "Black Plutonium",			"BlackPlutonium",			0x32, 0x32, 0x32,    0, "metal",				 DL, 5, WT, 2, 50f, 3f, 30f, 0f, S1, 40000, 1500, nt, 9000, 15000, 0, "SpPu"),
-		CALLISTO_ICE(10,	"Callisto Ice",					"CallistoIce",				0x1e, 0xb1, 0xff,    0, "metal",				 SY, 5, WT, 2, 25f, 5f, 6f, 0f, S1, 1000, 1000, nt,  300,  500, 0, "SpH2O"),
-		COSMIC_NEUTRONIUM(10005, new JText("Cosmic Neutronium", R3), "CosmicNeutronium", 0x32, 0x32, 0x32,   0, "metal",				 DL, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 100000, 10000, nt, 9900, 25000, 0, "SpNt"),
-		DARK_IRON	(10006,	"Dark Iron",					new String[]{"DarkIron"},	0x37, 0x28, 0x3c,    0, "metal",				 DL, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0),
-		DEEP_IRON	(10007,	"Deep Iron",					new String[]{"DeepIron"},	0x96, 0x8c, 0x8c,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0),
-		DEMONIC		(10008,	new JText("Demonic", TXT_DARK_RED), "Demonic",				0x46, 0x2d, 0x5a,    0, "alloy",				 DL, 5, WT, 0, 5f, 3f, 6f, 0f, S1,  1300,  666, nt, 666, 1300, 13),
-		DESH		(10009,	"Desh",							new String[]{"Desh"},		0x28, 0x28, 0x28,    0, "metal",				  R, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 2500, 4444, 0, "De"),
-		DRACONIUM	(10010,	"Draconium",					new String[]{"draconium"},	0x7a, 0x44, 0xb0,    0, "metal",				 SY, 5, WT, 3, 10f, 8f, 300f, 0f, S1, 20000, 1500, nt, 7200, 12345, 0, "D"),
-		DURALUMIN	(10,	"Duralumin",					new String[]{"Duralumin"},	0xeb, 0xd1, 0xa0,    0, "metal",				 SY, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  5000, 1500, nt, 1600, 2800, 0, "Al6CuMnMg"),
-		DURANIUM	(10011,	"Duranium",						new String[]{"Duranium"},	0xff, 0xff, 0xff,    0, "alloy",				  M, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 30000, 3000, nt, 25000, 40000, 0, "Du"),
-		ELECTROTINE	(10012, "Electrotine", 					new String[]{"Electrotine", "Nikolite", "Teslatite"}, 0x3c, 0xb4, 0xc8, 0, "metal", M, 5, WT, 1, 5f, 2f, 6f, 0f, S1, 2468, 1234, nt, 420, 1337, 0, "Rp"),
-		FROZEN_IRON	(10013,	"Frozen Iron",					new String[]{"FrozenIron"},	0xd7, 0xff, 0xff,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  9000, 2000, nt,  800, 2100, 0),
-		INFINITY	(10014,	new JText("Infinity", TXT_RED),	new String[]{"Infinity"},	0x00, 0x00, 0x00,    0, "metal",				 RP, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 150000, 15000, nt, 10800, 33333, 0, "If*"),
-		INFINITY_CATALYST(10015, new JText("Infinity Catalyst", R4), "InfinityCatalyst",   0,    0,    0,    0, "metal",				 RP, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 50000, 5000, nt, 10800, 33333, 0, "If"),
-		KREKNORITE	(10016,	"Kreknorite",					new String[]{"Kreknorite"},	0x78, 0x00, 0x00,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  3643, 1500, nt, 3333, 5555, 0),
-		MAGIC		(10017,	new JText("Magic", R2),			new String[]{"Magic"},		0x64, 0x00, 0xc8,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  1000, 1000, nt, 1234, 2345, 0, "Ma"),
-		METEORIC_IRON(10018, "Meteoric Iron",			 	"Meteoric Iron",			0x64, 0x32, 0x50,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7500, 1500, nt, 1750, 3100, 0, "SpFe"),
-		METEORITE	(10019,	"Meteorite",					new String[]{"Meteorite"},	0x50, 0x23, 0x3c,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7500, 1500, nt, 1800, 3200, 0),
-		NAQUADAH	(10020,	new JText("Naquadah", R2),		new String[]{"Naquadah"},	0x32, 0x32, 0x32,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 5000, 7500, 0, "Nq"),
-		NAQUADAH_ENRICHED(10021, new JText("Enriched Naquadah", R2), "NaquadahEnriched", 0x32, 0x32, 0x32,   0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 5350, 8000, 0, "Nq+"),
-		NAQUADRIA	(10022,	new JText("Naquadria", R3),		new String[]{"Naquadria"},	0x1e, 0x1e, 0x1e,    0, "metal",				 SY, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 9000, 15000, 0, "Nq*"),
-		NEUTRONIUM	(10023,	new JText("Neutronium", R4),	new String[]{"Neutronium"},	0xfa, 0xfa, 0xfa,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 50000, 1500, nt, 9000, 15000, 0, "Nt"),
-		QUANTIUM	(10024,	"Quantium",						new String[]{"Quantium"},	0x00, 0xd1, 0x0b,    0, "metal",				 SY, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10101, 1010, nt, 1010, 10101, 0, "Qt"),
-		QUANTUM		(10025,	"Quantum",						new String[]{"Quantum"},	0x1e, 0xbe, 0x1e,    0, "metal",				 SY, 5, WT, 1, 5f, 3f, 6f, 0f, S1,   100, 500, nt, 10500, 25000, 0, "(Co7Cr7Mn4Ti2)3(\u2b1f\u2bc2\u2b22\u2b23\u2bc3\u2bc4)(SiC)GaAmPdBiGe"),
-		SHADOWIRON	(10026,	"Shadowiron",					new String[]{"ShadowIron"},	0x78, 0x78, 0x78,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0, "Fe(FeMa)3"),
-		SHADOWMETAL	(10,	"Shadowmetal", 					new String[]{"Shadow"},		0x10, 0x03, 0x42,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 3f, 0f, S1,  5000, 1500, nt, 1800, 2500, 0),
-		SUNNARIUM	(10027,	"Sunnarium",					new String[]{"Sunnarium"},	0xff, 0xff, 0x00,    0, "alloy",				 SY, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 10000, 1500, nt, 5000, 10000, 0, "Su"),
-		TRINIUM		(10028,	new JText("Trinium", R4),		new String[]{"Trinium"},	0xc8, 0xc8, 0xd2,    0, "metal",				  M, 5, WT, 3, 5f, 8f, 6f, 0f, S1, 21000, 1500, nt, 7200, 15000, 0, "Ke"),
-		TRITANIUM	(10029,	new JText("Tritanium", R3),		new String[]{"Tritanium"},	0xff, 0xff, 0xff,    0, "alloy",				  M, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 25000, 1500, nt, 9900, 19876, 0, "Tn"),
-		YELLORIUM	(10030, "Yellorium", 					new String[]{"Yellorium", "Yellorite"},	0xdc, 0xff, 0x00, 0, "metal",		 SY, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 17500, 1500, nt, 1400, 4400, 0),
+		CALLISTO_ICE(10005,	"Callisto Ice",					"CallistoIce",				0x1e, 0xb1, 0xff,    0, "metal",				 SY, 5, WT, 2, 25f, 5f, 6f, 0f, S1, 1000, 1000, nt,  300,  500, 0, "SpH2O"),
+		COSMIC_NEUTRONIUM(10006, new JText("Cosmic Neutronium", R3), "CosmicNeutronium", 0x32, 0x32, 0x32,   0, "metal",				 DL, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 100000, 10000, nt, 9900, 25000, 0, "SpNt"),
+		DARK_IRON	(10007,	"Dark Iron",					new String[]{"DarkIron"},	0x37, 0x28, 0x3c,    0, "metal",				 DL, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0),
+		DEEP_IRON	(10008,	"Deep Iron",					new String[]{"DeepIron"},	0x96, 0x8c, 0x8c,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0),
+		DEMONIC		(10009,	new JText("Demonic", DARK_RED), "Demonic",					0x46, 0x2d, 0x5a,    0, "alloy",				 DL, 5, WT, 0, 5f, 3f, 6f, 0f, S1,  1300,  666, nt, 666, 1300, 13),
+		DESH		(10010,	"Desh",							new String[]{"Desh"},		0x28, 0x28, 0x28,    0, "metal",				  R, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 2500, 4444, 0, "De"),
+		DRACONIUM	(10011,	"Draconium",					new String[]{"draconium"},	0x7a, 0x44, 0xb0,    0, "metal",				 SY, 5, WT, 3, 10f, 8f, 300f, 0f, S1, 20000, 1500, nt, 7200, 12345, 0, "D"),
+		DURALUMIN	(10012,	"Duralumin",					new String[]{"Duralumin"},	0xeb, 0xd1, 0xa0,    0, "metal",				 SY, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  5000, 1500, nt, 1600, 2800, 0, "Al6CuMnMg"),
+		DURANIUM	(10013,	"Duranium",						new String[]{"Duranium"},	0xff, 0xff, 0xff,    0, "alloy",				  M, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 30000, 3000, nt, 25000, 40000, 0, "Du"),
+		ELECTROTINE	(10014, "Electrotine", 					new String[]{"Electrotine", "Nikolite", "Teslatite"}, 0x3c, 0xb4, 0xc8, 0, new String[]{"gem", "no_gem"}, M, 5, WT, 1, 5f, 2f, 6f, 0f, S1, 2468, 1234, nt, 420, 1337, 0, "Rp"),
+		FROZEN_IRON	(10015,	"Frozen Iron",					new String[]{"FrozenIron"},	0xd7, 0xff, 0xff,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  9000, 2000, nt,  800, 2100, 0),
+		INFINITY	(10016,	new JText("Infinity", RED),	new String[]{"Infinity"},		0x00, 0x00, 0x00,    0, "metal",				 RP, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 150000, 15000, nt, 10800, 33333, 0, "If*"),
+		INFINITY_CATALYST(10017, new JText("Infinity Catalyst", R4), "InfinityCatalyst",   0,    0,    0,    0, "metal",				 RP, 5, WT, 3, 50f, 8f, 1200f, 0f, S1, 50000, 5000, nt, 10800, 33333, 0, "If"),
+		KREKNORITE	(10018,	"Kreknorite",					new String[]{"Kreknorite"},	0x78, 0x00, 0x00,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  3643, 1500, nt, 3333, 5555, 0),
+		MAGIC		(10019,	new JText("Magic", R2),			new String[]{"Magic"},		0x64, 0x00, 0xc8,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1,  1000, 1000, nt, 1234, 2345, 0, "Ma"),
+		METEORIC_IRON(10020, "Meteoric Iron",			 	"Meteoric Iron",			0x64, 0x32, 0x50,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7500, 1500, nt, 1750, 3100, 0, "SpFe"),
+		METEORITE	(10021,	"Meteorite",					new String[]{"Meteorite"},	0x50, 0x23, 0x3c,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7500, 1500, nt, 1800, 3200, 0),
+		NAQUADAH	(10022,	new JText("Naquadah", R2),		new String[]{"Naquadah"},	0x32, 0x32, 0x32,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 5000, 7500, 0, "Nq"),
+		NAQUADAH_ENRICHED(10023, new JText("Enriched Naquadah", R2), "NaquadahEnriched", 0x32, 0x32, 0x32,   0, "metal",				  M, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 5350, 8000, 0, "Nq+"),
+		NAQUADRIA	(10024,	new JText("Naquadria", R3),		new String[]{"Naquadria"},	0x1e, 0x1e, 0x1e,    0, "metal",				 SY, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10000, 1500, nt, 9000, 15000, 0, "Nq*"),
+		NEUTRONIUM	(10025,	new JText("Neutronium", R4),	new String[]{"Neutronium"},	0xfa, 0xfa, 0xfa,    0, "metal",				  M, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 50000, 1500, nt, 9000, 15000, 0, "Nt"),
+		QUANTIUM	(10026,	"Quantium",						new String[]{"Quantium"},	0x00, 0xd1, 0x0b,    0, "metal",				 SY, 5, WT, 2, 5f, 5f, 6f, 0f, S1, 10101, 1010, nt, 1010, 10101, 0, "Qt"),
+		QUANTUM		(10027,	"Quantum",						new String[]{"Quantum"},	0x1e, 0xbe, 0x1e,    0, "metal",				 SY, 5, WT, 1, 5f, 3f, 6f, 0f, S1,   100, 500, nt, 10500, 25000, 0, "(Co7Cr7Mn4Ti2)3(\u2b1f\u2bc2\u2b22\u2b23\u2bc3\u2bc4)(SiC)GaAmPdBiGe"),
+		SHADOWIRON	(10028,	"Shadowiron",					new String[]{"ShadowIron"},	0x78, 0x78, 0x78,    0, "metal",				  M, 5, WT, 2, 5f, 4f, 6f, 0f, S1,  7000, 1500, nt, 2000, 3500, 0, "Fe(FeMa)3"),
+		SHADOWMETAL	(10029,	"Shadowmetal", 					new String[]{"Shadow"},		0x10, 0x03, 0x42,    0, "metal",				  M, 5, WT, 2, 5f, 5f, 3f, 0f, S1,  5000, 1500, nt, 1800, 2500, 0),
+		SUNNARIUM	(10030,	"Sunnarium",					new String[]{"Sunnarium"},	0xff, 0xff, 0x00,    0, "alloy",				 SY, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 10000, 1500, nt, 5000, 10000, 0, "Su"),
+		TRINIUM		(10031,	new JText("Trinium", R4),		new String[]{"Trinium"},	0xc8, 0xc8, 0xd2,    0, "metal",				  M, 5, WT, 3, 5f, 8f, 6f, 0f, S1, 21000, 1500, nt, 7200, 15000, 0, "Ke"),
+		TRITANIUM	(10032,	new JText("Tritanium", R3),		new String[]{"Tritanium"},	0xff, 0xff, 0xff,    0, "alloy",				  M, 5, WT, 0, 5f, 0f, 6f, 0f, S1, 25000, 1500, nt, 9900, 19876, 0, "Tn"),
+		YELLORIUM	(10033, "Yellorium", 					new String[]{"Yellorium", "Yellorite"},	0xdc, 0xff, 0x00, 0, "metal",		 SY, 5, WT, 1, 5f, 3f, 6f, 0f, S1, 17500, 1500, nt, 1400, 4400, 0),
 		
 		//CUSTOM
-		//RANDOM	(32751, "Random Material", 				new String[]{"Random"}, 	rnd(), rnd(), rnd(), rnd(), "", 		),
-		CUSTOM1 	(32752,	"Custom 1",  					new String[]{"Custom1"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 1"),
-		CUSTOM2 	(32753,	"Custom 2",		  				new String[]{"Custom2"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 2"),
-		CUSTOM3 	(32754,	"Custom 3",  					new String[]{"Custom3"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 3"),
-		CUSTOM4 	(32755,	"Custom 4",  					new String[]{"Custom4"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 4"),
-		CUSTOM5 	(32756,	"Custom 5",  					new String[]{"Custom5"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 5"),
-		CUSTOM6 	(32757,	"Custom 6",		  				new String[]{"Custom6"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 6"),
-		CUSTOM7 	(32758,	"Custom 7",  					new String[]{"Custom7"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 7"),
-		CUSTOM8 	(32759,	"Custom 8",  					new String[]{"Custom8"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 8"),
-		CUSTOM9 	(32760,	"Custom 9",  					new String[]{"Custom9"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 9"),
-		CUSTOM10	(32761,	"Custom 10", 					new String[]{"Custom10"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 10"),
-		CUSTOM11	(32762,	"Custom 11", 					new String[]{"Custom11"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 11"),
-		CUSTOM12	(32763,	"Custom 12", 					new String[]{"Custom12"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 12"),
-		CUSTOM13	(32764,	"Custom 13", 					new String[]{"Custom13"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 13"),
-		CUSTOM14	(32765,	"Custom 14", 					new String[]{"Custom14"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 14"),
-		CUSTOM15	(32766,	"Custom 15", 					new String[]{"Custom15"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 15"),
-		CUSTOM16	(32767,	"Custom 16",	 				new String[]{"Custom16"}, 	0xff, 0xff, 0xff,    0, true, "",				 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 16")
+		CUSTOM1		(32752,	"Custom 1",						new String[]{"Custom1"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 1"),
+		CUSTOM2		(32753,	"Custom 2",						new String[]{"Custom2"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 2"),
+		CUSTOM3		(32754,	"Custom 3",						new String[]{"Custom3"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 3"),
+		CUSTOM4		(32755,	"Custom 4",						new String[]{"Custom4"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 4"),
+		CUSTOM5		(32756,	"Custom 5",						new String[]{"Custom5"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 5"),
+		CUSTOM6		(32757,	"Custom 6",						new String[]{"Custom6"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 6"),
+		CUSTOM7		(32758,	"Custom 7",						new String[]{"Custom7"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 7"),
+		CUSTOM8		(32759,	"Custom 8",						new String[]{"Custom8"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 8"),
+		CUSTOM9		(32760,	"Custom 9",						new String[]{"Custom9"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 9"),
+		CUSTOM10	(32761,	"Custom 10",					new String[]{"Custom10"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 10"),
+		CUSTOM11	(32762,	"Custom 11",					new String[]{"Custom11"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 11"),
+		CUSTOM12	(32763,	"Custom 12",					new String[]{"Custom12"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 12"),
+		CUSTOM13	(32764,	"Custom 13",					new String[]{"Custom13"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 13"),
+		CUSTOM14	(32765,	"Custom 14",					new String[]{"Custom14"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 14"),
+		CUSTOM15	(32766,	"Custom 15",					new String[]{"Custom15"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 15"),
+		CUSTOM16	(32767,	"Custom 16",					new String[]{"Custom16"},	0xff, 0xff, 0xff,    0, true, new String[]{},	 "", 0, "", 0, 0f, 0f, 0f, 0f, S1, 	   0,    0, nt,    0,    0, 0, "Tooltip of Custom Material 16")
 		;
 		
 		private int meta; //meta-data of the item; block is meta % 16
@@ -257,7 +257,7 @@ public class Properties {
 		private String fluidTexture;
 		private String[] tags; //stuff like metal or no_plate
 		private boolean disabled; //disables complete material
-		private int density; //in kg/m�;g/l (1kg/m�=1000g/cm�), negative means lighter than air
+		private int density; //in kg/m³;g/l (1kg/m³=1000g/cm³), negative means lighter than air
 		private int temperature; //in Kelvin
 		private int meltingTemperature; //in Kelvin
 		private int boilingTemperature; //in Kelvin
@@ -2254,14 +2254,6 @@ public class Properties {
 			return this.oreResistance;
 		}
 		
-		private int rnd() {
-			return (int) (Math.random() * 255);
-		}
-		
-		/*private String rItemSet() {
-			return
-		}*/
-		
 		public int getRed() {
 			return this.red;
 		}
@@ -2296,22 +2288,28 @@ public class Properties {
 	public static int nt = Reference.normalTemp;
 	
 	//colors
-	public static final String TXT_AQUA = "aqua";
-	public static final String TXT_BLACK = "black";
-	public static final String TXT_BLUE = "blue";
-	public static final String TXT_DARK_AQUA = "dark_aqua";
-	public static final String TXT_DARK_BLUE = "dark_blue";
-	public static final String TXT_DARK_GRAY = "dark_gray";
-	public static final String TXT_DARK_GREEN = "dark_green";
-	public static final String TXT_DARK_PURPLE = "dark_purple";
-	public static final String TXT_DARK_RED = "dark_red";
-	public static final String TXT_GOLD = "gold";
-	public static final String TXT_GRAY = "gray";
-	public static final String TXT_GREEN = "green";
-	public static final String TXT_LIGHT_PURPLE = "light_purple";
-	public static final String TXT_RED = "red";
-	public static final String TXT_WHITE = "white";
-	public static final String TXT_YELLOW = "yellow";
+	public static final String AQUA = "aqua";
+	public static final String BLACK = "black";
+	public static final String BLUE = "blue";
+	public static final String BOLD = "bold";
+	public static final String DARK_AQUA = "dark_aqua";
+	public static final String DARK_BLUE = "dark_blue";
+	public static final String DARK_GRAY = "dark_gray";
+	public static final String DARK_GREEN = "dark_green";
+	public static final String DARK_PURPLE = "dark_purple";
+	public static final String DARK_RED = "dark_red";
+	public static final String GOLD = "gold";
+	public static final String GRAY = "gray";
+	public static final String GREEN = "green";
+	public static final String ITALIC = "italic";
+	public static final String LIGHT_PURPLE = "light_purple";
+	public static final String OBFUSCATED = "obfuscated";
+	public static final String RED = "red";
+	public static final String RESET = "reset";
+	public static final String STRIKETHROUGH = "strikethrough";
+	public static final String UNDERLINE = "underline";
+	public static final String WHITE = "white";
+	public static final String YELLOW = "yellow";
 	
 	//states
 	public static final String S1 = "solid";

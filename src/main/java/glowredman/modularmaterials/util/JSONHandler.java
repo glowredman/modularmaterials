@@ -13,9 +13,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties.Materials;
+import glowredman.modularmaterials.information.PropertiesItems.Items;
+import glowredman.modularmaterials.information.PropertiesMaterials.Materials;
 import glowredman.modularmaterials.information.Reference;
 import glowredman.modularmaterials.json.JColor;
+import glowredman.modularmaterials.json.JItem;
 import glowredman.modularmaterials.json.JItemList;
 import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.json.JMaterialList;
@@ -32,7 +34,26 @@ public class JSONHandler {
 		JItemList items = new JItemList();
 		JMaterialList materials = new JMaterialList();
 		
-		//iterate through "Properties.Materials" and add the data to "materials"
+		//iterate through "PropertiesItems.Items" and add the data to "items"
+		for (int i = 0; i < Items.values().length; i++) {
+			
+			JItem item = new JItem();
+			
+			item.color = Items.values()[i].getColor();
+			item.disabled = Items.values()[i].isDisabled();
+			item.iconSet = Items.values()[i].getIconSet();
+			item.meta = Items.values()[i].getMeta();
+			item.name = Items.values()[i].getName();
+			item.oreDict = Items.values()[i].getOreDict();
+			item.texture = Items.values()[i].getTexture();
+			item.tooltip = Items.values()[i].getTooltip();
+			item.useCustomTexture = Items.values()[i].usesCustomTexture();
+			
+			items.items.add(item);
+			
+		}
+		
+		//iterate through "PropertiesMaterials.Materials" and add the data to "materials"
 		for (int i = 0; i < Materials.values().length; i++) {
 			
 			JMaterial material = new JMaterial();

@@ -3,7 +3,7 @@ package glowredman.modularmaterials.json;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import net.minecraft.util.text.TextFormatting;
 
 public class JTextFormat {
@@ -40,7 +40,7 @@ public class JTextFormat {
 		try {
 			//getting first line from array and removing "animated:"
 			firstLine = entry[0];
-			firstLine = firstLine.replace(Properties.AN, "");
+			firstLine = firstLine.replace(PropertiesMaterials.AN, "");
 			//getting the first number
 			delayString = firstLine.substring(0, firstLine.indexOf('|'));
 			//removing the first number and the first '|' off the String
@@ -65,37 +65,37 @@ public class JTextFormat {
 	
 	public static TextFormatting convertStringToTextFormatting(String s) {
 		switch (s) {
-		case Properties.TXT_AQUA:
+		case PropertiesMaterials.AQUA:
 			return TextFormatting.AQUA;
-		case Properties.TXT_BLACK:
+		case PropertiesMaterials.BLACK:
 			return TextFormatting.BLACK;
-		case Properties.TXT_BLUE:
+		case PropertiesMaterials.BLUE:
 			return TextFormatting.BLUE;
-		case Properties.TXT_DARK_AQUA:
+		case PropertiesMaterials.DARK_AQUA:
 			return TextFormatting.DARK_AQUA;
-		case Properties.TXT_DARK_BLUE:
+		case PropertiesMaterials.DARK_BLUE:
 			return TextFormatting.DARK_BLUE;
-		case Properties.TXT_DARK_GRAY:
+		case PropertiesMaterials.DARK_GRAY:
 			return TextFormatting.DARK_GRAY;
-		case Properties.TXT_DARK_GREEN:
+		case PropertiesMaterials.DARK_GREEN:
 			return TextFormatting.DARK_GREEN;
-		case Properties.TXT_DARK_PURPLE:
+		case PropertiesMaterials.DARK_PURPLE:
 			return TextFormatting.DARK_PURPLE;
-		case Properties.TXT_DARK_RED:
+		case PropertiesMaterials.DARK_RED:
 			return TextFormatting.DARK_RED;
-		case Properties.TXT_GOLD:
+		case PropertiesMaterials.GOLD:
 			return TextFormatting.GOLD;
-		case Properties.TXT_GRAY:
+		case PropertiesMaterials.GRAY:
 			return TextFormatting.GRAY;
-		case Properties.TXT_GREEN:
+		case PropertiesMaterials.GREEN:
 			return TextFormatting.GREEN;
-		case Properties.TXT_LIGHT_PURPLE:
+		case PropertiesMaterials.LIGHT_PURPLE:
 			return TextFormatting.LIGHT_PURPLE;
-		case Properties.TXT_RED:
+		case PropertiesMaterials.RED:
 			return TextFormatting.RED;
-		case Properties.TXT_WHITE:
+		case PropertiesMaterials.WHITE:
 			return TextFormatting.WHITE;
-		case Properties.TXT_YELLOW:
+		case PropertiesMaterials.YELLOW:
 			return TextFormatting.YELLOW;
 		default:
 			return TextFormatting.WHITE;

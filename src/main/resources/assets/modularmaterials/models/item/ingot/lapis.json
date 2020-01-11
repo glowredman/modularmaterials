@@ -1,7 +1,7 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "modularmaterials:items/lapis/ingot",
-        "layer1": "modularmaterials:items/lapis/ingot_overlay"
-    }
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "modularmaterials:items/lapis/ingot",
+		"layer1": "modularmaterials:items/lapis/ingot_overlay"
+	}
 }

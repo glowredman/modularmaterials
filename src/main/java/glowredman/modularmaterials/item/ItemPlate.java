@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Level;
 import cofh.core.item.ItemMulti;
 import cofh.core.util.core.IInitializer;
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.information.Reference;
 import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
@@ -42,7 +42,7 @@ public class ItemPlate extends ItemMulti implements IInitializer {
 			if (TagHandler.isValidPlate(material)) {
 				//add item with custom formatting
 				try {
-					if (material.getName().getFormat()[0].contains(Properties.AN)) {
+					if (material.getName().getFormat()[0].contains(PropertiesMaterials.AN)) {
 						//TODO implement custom text
 						plate = this.addItem(material.getMeta(), "plate" + material.getName().getText().replace(' ', '_'), material.getName().getRarity());
 					} //add item with vanilla formatting

@@ -1,0 +1,7 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "modularmaterials:items/nuclear/plate",
+		"layer1": "modularmaterials:items/nuclear/plate_overlay"
+	}
+}

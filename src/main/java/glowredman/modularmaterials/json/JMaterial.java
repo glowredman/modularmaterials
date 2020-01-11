@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Nonnegative;
 
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.information.Reference;
 import net.minecraft.item.EnumRarity;
 

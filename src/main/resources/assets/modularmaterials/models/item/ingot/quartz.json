@@ -1,7 +1,7 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "modularmaterials:items/quartz/ingot",
-        "layer1": "modularmaterials:items/quartz/ingot_overlay"
-    }
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "modularmaterials:items/quartz/ingot",
+		"layer1": "modularmaterials:items/quartz/ingot_overlay"
+	}
 }

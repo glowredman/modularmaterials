@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Level;
 import cofh.core.item.ItemMulti;
 import cofh.core.util.core.IInitializer;
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.information.Reference;
 import glowredman.modularmaterials.json.JMaterial;
 import glowredman.modularmaterials.util.MiscUtils;
@@ -51,7 +51,7 @@ public class ItemIngot extends ItemMulti implements IInitializer{
 			if (TagHandler.isValidIngot(material)) {
 				//add item with custom formatting
 				try {
-					if (material.getName().getFormat()[0].contains(Properties.AN)) {
+					if (material.getName().getFormat()[0].contains(PropertiesMaterials.AN)) {
 						//TODO implement custom text
 						ingot = this.addItem(material.getMeta(), "ingot" + material.getName().getText().replace(' ', '_'), material.getName().getRarity());
 					} // add item with vanilla formatting
@@ -65,7 +65,7 @@ public class ItemIngot extends ItemMulti implements IInitializer{
 				}
 				
 				Main.proxy.registerItemRenderer(this, "ingot/" + material.getTextureSet(), material.getMeta());
-				Main.logger.log(Level.DEBUG, "Registering '" + material.getName() + "' with meta " + material.getMeta() + '.');
+				Main.logger.log(Level.DEBUG, "Registering '" + material.getName().getText() + "' with meta " + material.getMeta() + '.');
 				ingot.getItem().setCreativeTab(Reference.TAB_ITEMS);
 				for (String s : material.getOreDict()) {
 					OreDictionary.registerOre("ingot" + s, ingot);

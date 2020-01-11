@@ -18,8 +18,9 @@ public class ModItems {
 	public static final ModItems INSTANCE = new ModItems();
 	private static ArrayList<IInitializer> initList = new ArrayList<>();
 	
-	// ↓↓↓ all different item-types ↓↓↓
+	//  all different item-types
 	public static ItemIngot ingot;
+	public static ItemMisc itemMisc;
 	public static ItemPlate plate;
 	
 	public static void preInit() {
@@ -32,6 +33,10 @@ public class ModItems {
 		if(Reference.enablePlates || Reference.enableAll) {
 			plate = new ItemPlate();
 			initList.add(plate);
+		}
+		if(Reference.enableMiscItems || Reference.enableAll) {
+			itemMisc = new ItemMisc();
+			initList.add(itemMisc);
 		}
 		
 		Iterator arg = initList.iterator();

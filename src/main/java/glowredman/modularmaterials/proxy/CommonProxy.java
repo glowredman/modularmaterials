@@ -22,6 +22,7 @@ public class CommonProxy {
 		TagHandler.checkMetaValues();
 		BlockStorage.preInit();
 		FileHandler.createLangFile(event);
+		FileHandler.createModelFiles(event);
 	}
 
 	public void init(FMLInitializationEvent event) {

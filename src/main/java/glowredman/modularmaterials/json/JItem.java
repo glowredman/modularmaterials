@@ -1,19 +1,19 @@
 package glowredman.modularmaterials.json;
 
 public class JItem {
-	
-	public JColor color = new JColor();
-	public boolean disabled;
-	public String iconSet;
-	public int meta;
+
 	public JText name = new JText();
+	public int meta;
 	public String[] oreDict = new String[]{};
+	public boolean disabled;
 	public String texture;
-	public JText[] tooltip = new JText[]{};
 	public boolean useCustomTexture;
+	public String iconSet;
+	public JColor color = new JColor();
+	public JText[] tooltip = new JText[]{};
 	
 	public JItem(JText name, int meta, String[] oreDict, boolean disabled, String texture, JText[] tooltip) {
-		this.color = null;
+		this.color = new JColor();
 		this.disabled = disabled;
 		this.iconSet = "";
 		this.meta = meta;
@@ -25,7 +25,7 @@ public class JItem {
 	}
 	
 	public JItem(String name, int meta, String[] oreDict, boolean disabled, String texture, JText[] tooltip) {
-		this.color = null;
+		this.color = new JColor();
 		this.disabled = disabled;
 		this.iconSet = "";
 		this.meta = meta;
@@ -37,7 +37,7 @@ public class JItem {
 	}
 	
 	public JItem(JText name, int meta, String[] oreDict, boolean disabled, String texture) {
-		this.color = null;
+		this.color = new JColor();
 		this.disabled = disabled;
 		this.iconSet = "";
 		this.meta = meta;
@@ -49,7 +49,7 @@ public class JItem {
 	}
 	
 	public JItem(String name, int meta, String[] oreDict, boolean disabled, String texture) {
-		this.color = null;
+		this.color = new JColor();
 		this.disabled = disabled;
 		this.iconSet = "";
 		this.meta = meta;
@@ -108,6 +108,9 @@ public class JItem {
 		this.useCustomTexture = true;
 	}
 	
+	public JItem() {
+	}
+
 	public JColor getColor() {
 		return this.color;
 	}

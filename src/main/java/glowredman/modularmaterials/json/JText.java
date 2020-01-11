@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.json;
 
-import glowredman.modularmaterials.information.Properties;
+import glowredman.modularmaterials.information.PropertiesMaterials;
 import glowredman.modularmaterials.util.RarityHandler;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.text.TextFormatting;
@@ -22,7 +22,7 @@ public class JText {
 	
 	public JText(String text) {
 		this.text = text;
-		this.format = new String[]{Properties.R1};
+		this.format = new String[]{PropertiesMaterials.R1};
 	}
 	
 	public JText() {
@@ -39,46 +39,58 @@ public class JText {
 	public EnumRarity getRarity() {
 		switch (this.format[0]) {
 		//vanilla
-		case Properties.R1:
+		case PropertiesMaterials.R1:
 			return EnumRarity.COMMON;
-		case Properties.R2:
+		case PropertiesMaterials.R2:
 			return EnumRarity.UNCOMMON;
-		case Properties.R3:
+		case PropertiesMaterials.R3:
 			return EnumRarity.RARE;
-		case Properties.R4:
+		case PropertiesMaterials.R4:
 			return EnumRarity.EPIC;
-		//custom
-		case Properties.TXT_AQUA:
+		//custom formatting
+		case PropertiesMaterials.AQUA:
 			return RarityHandler.AQUA;
-		case Properties.TXT_BLACK:
+		case PropertiesMaterials.BLACK:
 			return RarityHandler.BLACK;
-		case Properties.TXT_BLUE:
+		case PropertiesMaterials.BLUE:
 			return RarityHandler.BLUE;
-		case Properties.TXT_DARK_AQUA:
+		case PropertiesMaterials.BOLD:
+			return RarityHandler.BOLD;
+		case PropertiesMaterials.DARK_AQUA:
 			return RarityHandler.DARK_AQUA;
-		case Properties.TXT_DARK_BLUE:
+		case PropertiesMaterials.DARK_BLUE:
 			return RarityHandler.DARK_BLUE;
-		case Properties.TXT_DARK_GRAY:
+		case PropertiesMaterials.DARK_GRAY:
 			return RarityHandler.DARK_GRAY;
-		case Properties.TXT_DARK_GREEN:
+		case PropertiesMaterials.DARK_GREEN:
 			return RarityHandler.DARK_GREEN;
-		case Properties.TXT_DARK_PURPLE:
+		case PropertiesMaterials.DARK_PURPLE:
 			return RarityHandler.DARK_PURPLE;
-		case Properties.TXT_DARK_RED:
+		case PropertiesMaterials.DARK_RED:
 			return RarityHandler.DARK_RED;
-		case Properties.TXT_GOLD:
+		case PropertiesMaterials.GOLD:
 			return RarityHandler.GOLD;
-		case Properties.TXT_GRAY:
+		case PropertiesMaterials.GRAY:
 			return RarityHandler.GRAY;
-		case Properties.TXT_GREEN:
+		case PropertiesMaterials.GREEN:
 			return RarityHandler.GREEN;
-		case Properties.TXT_LIGHT_PURPLE:
+		case PropertiesMaterials.ITALIC:
+			return RarityHandler.ITALIC;
+		case PropertiesMaterials.LIGHT_PURPLE:
 			return RarityHandler.LIGHT_PURPLE;
-		case Properties.TXT_RED:
+		case PropertiesMaterials.OBFUSCATED:
+			return RarityHandler.OBFUSCATED;
+		case PropertiesMaterials.RED:
 			return RarityHandler.RED;
-		case Properties.TXT_WHITE:
+		case PropertiesMaterials.RESET:
+			return RarityHandler.RESET;
+		case PropertiesMaterials.STRIKETHROUGH:
+			return RarityHandler.STRIKETHROUGH;
+		case PropertiesMaterials.UNDERLINE:
+			return RarityHandler.UNDERLINE;
+		case PropertiesMaterials.WHITE:
 			return RarityHandler.WHITE;
-		case Properties.TXT_YELLOW:
+		case PropertiesMaterials.YELLOW:
 			return RarityHandler.YELLOW;
 		default:
 			return EnumRarity.COMMON;

@@ -1,7 +1,7 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "modularmaterials:items/wood/ingot",
-        "layer1": "modularmaterials:items/wood/ingot_overlay"
-    }
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "modularmaterials:items/wood/ingot",
+		"layer1": "modularmaterials:items/wood/ingot_overlay"
+	}
 }

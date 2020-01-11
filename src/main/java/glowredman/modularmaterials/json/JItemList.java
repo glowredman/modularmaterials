@@ -7,7 +7,7 @@ public class JItemList {
 	
 	public List<JItem> items = new ArrayList<JItem>();
 	
-	public List<JItem> getMaterials() {
+	public List<JItem> getItems() {
 		return this.items;
 		
 	}

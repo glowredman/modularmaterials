@@ -20,14 +20,14 @@ public class ModFluids {
 			if(TagHandler.isValidLiquid(material)) {
 				FluidBase fluid = new FluidBase(TagHandler.convertToLiquidName(material), false, TagHandler.getValidTemperatureForLiquid(material), TagHandler.getValidLuminosityForLiquid(material), material);
 				FluidRegistry.registerFluid(fluid);
-				FluidRegistry.addBucketForFluid(fluid);
+				TagHandler.addBucketForFluid(fluid, material);
 				fluidCount++;
 			}
 			//gases
 			if (TagHandler.isValidGas(material)) {
 				FluidBase fluid = new FluidBase(TagHandler.convertToGasName(material), true, TagHandler.getValidTemperatureForGas(material), material.getLightLevel(), material);
 				FluidRegistry.registerFluid(fluid);
-				FluidRegistry.addBucketForFluid(fluid);
+				TagHandler.addBucketForFluid(fluid, material);
 				fluidCount++;
 			}
 		
