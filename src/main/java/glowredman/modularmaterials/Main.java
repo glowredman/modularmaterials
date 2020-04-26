@@ -29,22 +29,25 @@ public class Main {
 	public static void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
 		logger.info("Draw-Phase...");
-		proxy.preInit(event);
+		proxy.drawPhase(event);
 		logger.info("Standby-Phase...");
+		proxy.standbyPhase(event);
 	}
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
 		logger.info("Main-Phase 1...");
-		proxy.init(event);
+		proxy.mainPhase1(event);
 		logger.info("Battle Phase...");
+		proxy.battlePhase(event);
 		logger.info("Main-Phase 2...");
+		proxy.mainPhase2(event);
 	}
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
 		logger.info("End-Phase...");
-		proxy.postInit(event);
+		proxy.endPhase(event);
 		logger.info("Ending the Turn.");
 	}
 	
