@@ -1,7 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "modularmaterials:items/diamond/plate",
-		"layer1": "modularmaterials:items/diamond/plate_overlay"
-	}
-}

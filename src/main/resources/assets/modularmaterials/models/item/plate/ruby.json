@@ -1,7 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "modularmaterials:items/ruby/plate",
-		"layer1": "modularmaterials:items/ruby/plate_overlay"
-	}
-}

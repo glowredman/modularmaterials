@@ -1,7 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "modularmaterials:items/netherstar/plate",
-		"layer1": "modularmaterials:items/netherstar/plate_overlay"
-	}
-}

@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "modularmaterials:items/fiery/ingot",
-        "layer1": "modularmaterials:items/fiery/ingot_overlay"
-    }
-}
