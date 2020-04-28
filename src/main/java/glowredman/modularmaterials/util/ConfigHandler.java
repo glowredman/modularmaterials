@@ -2,7 +2,7 @@ package glowredman.modularmaterials.util;
 
 import java.io.File;
 
-import static glowredman.modularmaterials.Reference.*;
+import static glowredman.modularmaterials.api.Reference.*;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -30,6 +30,9 @@ public class ConfigHandler {
 		
 		//general
 		enableAll = config_core.getBoolean("enableAll", GENERAL, false, "Set to 'true' to ignore ALL other restrictions -> all items/blocks/fluids will be enabled. USE WITH CAUTION!");
+		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", GENERAL, "§s", "String, that has to be put behind '§' to trigger animated formatting (works only for tooltips)"); //TODO document syntax
+		triggerKeyNotPressedFormattingChar = config_core.getString("triggerKeyNotPressedFormattingChar", GENERAL, "§q", "String, that has to be put behind '§' to trigger is-key-not-pressed-sensitive formatting (works only for tooltips)");
+		triggerKeyPressedFormattingChar = config_core.getString("triggerKeyPressedFormattingChar", GENERAL, "§p", "String, that has to be put behined '§' to trigger is-key-pressed-sensitive formatting (works only for tooltips");
 	}
 	
 	// ---READ CONFIGS---

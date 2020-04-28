@@ -1,4 +1,4 @@
-package glowredman.modularmaterials;
+package glowredman.modularmaterials.api;
 
 import net.minecraftforge.common.config.Configuration;
 
@@ -21,5 +21,9 @@ public class Reference {
 	//values:
 	//general
 	public static boolean enableAll = false;
+	
+	public static String triggerKeyPressedFormattingChar = "§p";
+	public static String triggerKeyNotPressedFormattingChar = "§q";
+	public static String triggerAnimatedFormattingChar = "§s";
 
 }
