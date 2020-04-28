@@ -1,6 +1,7 @@
 package glowredman.modularmaterials.proxy;
 
 import static glowredman.modularmaterials.Main.logger;
+
 import glowredman.modularmaterials.api.Reference;
 import glowredman.modularmaterials.material.MaterialHandler;
 import glowredman.modularmaterials.util.ConfigHandler;
@@ -22,7 +23,8 @@ public class CommonProxy {
 	}
 	
 	public void mainPhase1(FMLInitializationEvent event) {
-		
+		MaterialHandler.fillMaterialListIfEmpty();
+		MaterialHandler.createIDMapping();
 	}
 	
 	public void battlePhase(FMLInitializationEvent event) {

@@ -32,7 +32,7 @@ public class Material {
 	public int meltingTemperature;
 	@Nonnegative
 	@Nonnull
-	public short meta;
+	public int meta;
 	public String name;
 	public String[] oreDict;
 	public float oreHardness;
@@ -119,7 +119,7 @@ public class Material {
 		return meltingTemperature;
 	}
 
-	public short getMeta() {
+	public int getMeta() {
 		return meta;
 	}
 
@@ -234,8 +234,12 @@ public class Material {
 	public void setMeltingTemperature(int meltingTemperature) {
 		this.meltingTemperature = meltingTemperature;
 	}
-
-	public void setMeta(short meta) {
+	
+	/**
+	 * 
+	 * @param meta should be a value between 1 and 32767 (inclusive)
+	 */
+	public void setMeta(int meta) {
 		this.meta = meta;
 	}
 
@@ -279,7 +283,7 @@ public class Material {
 		return (boolean) this.enabledTypes.get(type);
 	}
 	
-	public HashMap<String, Object> getAllTypesEqualMashMap(boolean value) {
+	public HashMap<String, Object> getAllTypesEqualHashMap(boolean value) {
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		for(int i = 0; i < MaterialList.types.size(); i++) {
 			hashMap.put((String) MaterialList.types.keySet().toArray()[i], value);

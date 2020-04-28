@@ -13,14 +13,5 @@ public class MaterialList {
 	public static Iterator getIterator(HashMap map) {
 		return map.entrySet().iterator();
 	}
-	
-	public void initMaterialList() {
-		Material material = new Material();
-		material.disabled = false;
-		material.enabledTypes = new Material().getAllTypesEqualMashMap(true);
-		material.meta = 0;
-		material.name = "null";
-		materials.put("null", material);
-	}
 
 }
