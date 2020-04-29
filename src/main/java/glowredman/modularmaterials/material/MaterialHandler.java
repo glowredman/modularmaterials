@@ -1,13 +1,12 @@
-package glowredman.modularmaterials.util;
+package glowredman.modularmaterials.material;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.idMapping;
 import static glowredman.modularmaterials.Reference.types;
-import glowredman.modularmaterials.material.Material;
-import glowredman.modularmaterials.material.MaterialList;
 
 public class MaterialHandler {
 	
@@ -25,7 +24,7 @@ public class MaterialHandler {
 	
 	public static void createIDMapping() {
 		long time = System.currentTimeMillis();
-		Iterator i = MaterialList.getIterator(MaterialList.materials);
+		Iterator i = getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Entry entry = (Entry) i.next();
 			idMapping.put(((Material) entry.getValue()).getMeta(), (String) entry.getKey());
@@ -43,6 +42,10 @@ public class MaterialHandler {
 			MaterialList.materials.put("null", material);
 			Main.logger.warn("The material-list was empty. Check your configuration file or report this to the mod-author!");
 		}
+	}
+	
+	public static Iterator getIterator(HashMap map) {
+		return map.entrySet().iterator();
 	}
 
 }

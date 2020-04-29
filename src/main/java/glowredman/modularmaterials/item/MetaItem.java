@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.material.Material;
+import glowredman.modularmaterials.material.MaterialHandler;
 import glowredman.modularmaterials.material.MaterialList;
 import glowredman.modularmaterials.util.Formatting;
 import net.minecraft.client.util.ITooltipFlag;
@@ -39,7 +40,7 @@ public class MetaItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		//find the right entry
-		Iterator i = MaterialList.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Entry entry = (Entry) i.next();
 			Material material = (Material) entry.getValue();
@@ -59,7 +60,7 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		Iterator i = MaterialList.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Material material = (Material) ((Entry) i.next()).getValue();
 			items.add(new ItemStack(this, 1, material.getMeta()));
