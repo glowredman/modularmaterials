@@ -80,7 +80,7 @@ public class MetaItem extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_')/* + ".name"*/;
+		return "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_');
 	}
 
 }
