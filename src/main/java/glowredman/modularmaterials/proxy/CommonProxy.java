@@ -11,31 +11,22 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy {
 	
-	public void drawPhase(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) {
 		ConfigHandler.initConfigs(event);
 		ConfigHandler.readConfigs();
 		ConfigHandler.saveConfigs();
+		//TODO material config
 		if(Reference.enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
-	}
-	
-	public void standbyPhase(FMLPreInitializationEvent event) {
 		MaterialHandler.initTypes();
-	}
-	
-	public void mainPhase1(FMLInitializationEvent event) {
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
+		//TODO actually registering the items/blocks/fluids
 	}
 	
-	public void battlePhase(FMLInitializationEvent event) {
-		
+	public void init(FMLInitializationEvent event) {
 	}
 	
-	public void mainPhase2(FMLInitializationEvent event) {
-		
-	}
-	
-	public void endPhase(FMLPostInitializationEvent event) {
+	public void postinit(FMLPostInitializationEvent event) {
 		
 	}
 

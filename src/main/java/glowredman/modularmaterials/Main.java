@@ -21,7 +21,7 @@ public class Main {
 	
 	public static Logger logger;
 	
-	@SidedProxy(clientSide = CLIENT, serverSide = SERVER)
+	@SidedProxy(clientSide = CLIENT, serverSide = SERVER, modId = MODID)
 	public static CommonProxy proxy;
 	
 	static {FluidRegistry.enableUniversalBucket();}
@@ -29,27 +29,17 @@ public class Main {
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		logger.info("Draw-Phase...");
-		proxy.drawPhase(event);
-		logger.info("Standby-Phase...");
-		proxy.standbyPhase(event);
+		proxy.preInit(event);
 	}
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
-		logger.info("Main-Phase 1...");
-		proxy.mainPhase1(event);
-		logger.info("Battle Phase...");
-		proxy.battlePhase(event);
-		logger.info("Main-Phase 2...");
-		proxy.mainPhase2(event);
+		proxy.init(event);
 	}
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
-		logger.info("End-Phase...");
-		proxy.endPhase(event);
-		logger.info("Ending the Turn.");
+		proxy.postinit(event);
 	}
 	
 
