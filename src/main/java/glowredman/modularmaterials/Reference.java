@@ -1,4 +1,6 @@
-package glowredman.modularmaterials.api;
+package glowredman.modularmaterials;
+
+import java.util.HashMap;
 
 import net.minecraftforge.common.config.Configuration;
 
@@ -25,5 +27,8 @@ public class Reference {
 	public static String triggerKeyPressedFormattingChar = "§p";
 	public static String triggerKeyNotPressedFormattingChar = "§q";
 	public static String triggerAnimatedFormattingChar = "§s";
-
+	
+	//INTERNAL
+	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
+	public static HashMap<String, String> types = new HashMap<String, String>();
 }

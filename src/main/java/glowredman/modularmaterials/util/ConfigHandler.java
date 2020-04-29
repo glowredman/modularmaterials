@@ -1,8 +1,9 @@
 package glowredman.modularmaterials.util;
 
+import static glowredman.modularmaterials.Reference.*;
+
 import java.io.File;
 
-import static glowredman.modularmaterials.api.Reference.*;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 

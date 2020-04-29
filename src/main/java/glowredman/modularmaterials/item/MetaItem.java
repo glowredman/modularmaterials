@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.api;
+package glowredman.modularmaterials.item;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,9 +6,11 @@ import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
-import static glowredman.modularmaterials.api.MaterialList.*;
-
 import glowredman.modularmaterials.Main;
+import glowredman.modularmaterials.Reference;
+import glowredman.modularmaterials.material.Material;
+import glowredman.modularmaterials.material.MaterialList;
+import glowredman.modularmaterials.util.Formatting;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -37,7 +39,7 @@ public class MetaItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		//find the right entry
-		Iterator i = getIterator(materials);
+		Iterator i = MaterialList.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Entry entry = (Entry) i.next();
 			Material material = (Material) entry.getValue();
@@ -57,7 +59,7 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		Iterator i = getIterator(materials);
+		Iterator i = MaterialList.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Material material = (Material) ((Entry) i.next()).getValue();
 			items.add(new ItemStack(this, 1, material.getMeta()));
@@ -67,7 +69,7 @@ public class MetaItem extends Item {
 	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Reference.MODID + this.getType() + '.' + idMapping.get(stack.getMetadata() + ".name");
+		return "item." + Reference.MODID + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata() + ".name");
 	}
 
 }

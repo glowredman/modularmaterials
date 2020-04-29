@@ -1,8 +1,9 @@
-package glowredman.modularmaterials.api;
+package glowredman.modularmaterials.util;
 
 import com.sun.jna.platform.KeyboardUtils;
 
 import glowredman.modularmaterials.Main;
+import glowredman.modularmaterials.Reference;
 import net.minecraft.client.Minecraft;
 
 public class Formatting {
@@ -16,7 +17,7 @@ public class Formatting {
 			int endOfSequence = line.indexOf(Reference.triggerAnimatedFormattingChar, startOfSequence + Reference.triggerAnimatedFormattingChar.length());
 			//assemble string
 			finishedLine = line.substring(0, startOfSequence);
-			finishedLine = finishedLine + format_animated(line.substring(startOfSequence, endOfSequence));
+			finishedLine = finishedLine + formatAnimated(line.substring(startOfSequence, endOfSequence));
 			line = finishedLine + line.substring(endOfSequence + Reference.triggerAnimatedFormattingChar.length(), line.length());
 		}
 		
@@ -27,7 +28,7 @@ public class Formatting {
 			int endOfSequence = line.indexOf(Reference.triggerKeyNotPressedFormattingChar, startOfSequence + Reference.triggerKeyNotPressedFormattingChar.length());
 			//assemble string
 			finishedLine = line.substring(0, startOfSequence);
-			finishedLine = finishedLine + format_keyIsNotPressed(line.substring(startOfSequence, endOfSequence));
+			finishedLine = finishedLine + formatKeyIsPressed(line.substring(startOfSequence, endOfSequence), true);
 			line = finishedLine + line.substring(endOfSequence + Reference.triggerKeyNotPressedFormattingChar.length(), line.length());
 		}
 		
@@ -38,29 +39,22 @@ public class Formatting {
 			int endOfSequence = line.indexOf(Reference.triggerKeyPressedFormattingChar, startOfSequence + Reference.triggerKeyPressedFormattingChar.length());
 			//assemble string
 			finishedLine = line.substring(0, startOfSequence);
-			finishedLine = finishedLine + format_keyIsPressed(line.substring(startOfSequence, endOfSequence));
+			finishedLine = finishedLine + formatKeyIsPressed(line.substring(startOfSequence, endOfSequence), false);
 			line = finishedLine + line.substring(endOfSequence + Reference.triggerKeyPressedFormattingChar.length(), line.length());
 		}
 		return line;
 	}
 	
-	public static String format_keyIsPressed(String string) throws NumberFormatException { //§pNUM_KEY:STRING§p
-		if(KeyboardUtils.isPressed(Integer.decode(string.substring(0, string.indexOf(':'))))) {
+	public static String formatKeyIsPressed(String string, boolean invert) throws NumberFormatException { //format: §pNUM_KEY:STRING§p
+		//return the given string if the defined key is pressed XOR invert==true, otherwise return an empty string
+		if(KeyboardUtils.isPressed(Integer.decode(string.substring(0, string.indexOf(':')))) ^ invert) {
 			return string.substring(string.indexOf(':') + 1);
 		} else {
 			return "";
 		}
 	}
 	
-	public static String format_keyIsNotPressed(String string) throws NumberFormatException {
-		if(!KeyboardUtils.isPressed(Integer.decode(string.substring(0, string.indexOf(':'))))) { //§qNUM_KEY:STRING§q
-			return string.substring(string.indexOf(':') + 1);
-		} else {
-			return "";
-		}
-	}
-	
-	public static String format_animated(String string) throws NumberFormatException, NullPointerException { //§sSTEP|POSSTEP|DELAY|COLORS:STRING§s
+	public static String formatAnimated(String string) throws NumberFormatException, NullPointerException { //format: §sSTEP|POSSTEP|DELAY|COLORS:STRING§s
 		//extract
 		int step = Integer.parseInt(string.substring(0, string.indexOf('|') - 1));
 		string = string.substring(string.indexOf('|') + 1);

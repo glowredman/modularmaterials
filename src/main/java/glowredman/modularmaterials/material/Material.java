@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.api;
+package glowredman.modularmaterials.material;
 
 import java.awt.Color;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
-import glowredman.modularmaterials.api.Reference;
+import glowredman.modularmaterials.Reference;
 
 public class Material {
 	
@@ -285,8 +285,8 @@ public class Material {
 	
 	public HashMap<String, Object> getAllTypesEqualHashMap(boolean value) {
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		for(int i = 0; i < MaterialList.types.size(); i++) {
-			hashMap.put((String) MaterialList.types.keySet().toArray()[i], value);
+		for(int i = 0; i < Reference.types.size(); i++) {
+			hashMap.put((String) Reference.types.keySet().toArray()[i], value);
 		}
 		return hashMap;
 	}

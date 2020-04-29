@@ -2,7 +2,7 @@ package glowredman.modularmaterials;
 
 import org.apache.logging.log4j.Logger;
 
-import static glowredman.modularmaterials.api.Reference.*;
+import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.proxy.CommonProxy;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;

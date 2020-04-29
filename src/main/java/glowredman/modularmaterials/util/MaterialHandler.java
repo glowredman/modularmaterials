@@ -1,16 +1,17 @@
-package glowredman.modularmaterials.material;
+package glowredman.modularmaterials.util;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.api.Material;
-import glowredman.modularmaterials.api.MaterialList;
+import glowredman.modularmaterials.Reference;
+import glowredman.modularmaterials.material.Material;
+import glowredman.modularmaterials.material.MaterialList;
 
 public class MaterialHandler {
 	
 	public static void initTypes() {
-		MaterialList.types.put("ingot", "item");
+		Reference.types.put("ingot", "item");
 	}
 	
 	public static void createIDMapping() {
@@ -18,9 +19,9 @@ public class MaterialHandler {
 		Iterator i = MaterialList.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Entry entry = (Entry) i.next();
-			MaterialList.idMapping.put(((Material) entry.getValue()).getMeta(), (String) entry.getKey());
+			Reference.idMapping.put(((Material) entry.getValue()).getMeta(), (String) entry.getKey());
 		}
-		Main.logger.info("Finished mapping a total of " + MaterialList.idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
+		Main.logger.info("Finished mapping a total of " + Reference.idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static void fillMaterialListIfEmpty() {
