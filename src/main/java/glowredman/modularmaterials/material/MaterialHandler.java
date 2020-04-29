@@ -5,21 +5,20 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.idMapping;
-import static glowredman.modularmaterials.Reference.types;
+import static glowredman.modularmaterials.Reference.*;
 
 public class MaterialHandler {
 	
 	public static void initTypes() {
 		//items
-		types.put("ingot", "item");
-		types.put("plate", "item");
+		itemTypes.put("ingot", "%s Ingot");
+		itemTypes.put("plate", "%s Plate");
 		//blocks
-		types.put("block", "block");
-		types.put("ore", "block");
+		blockTypes.put("block", "%s Block");
+		blockTypes.put("ore", "%s Ore");
 		//liquids
-		types.put("liquid", "fluid");
-		types.put("gas", "fluid");
+		fluidTypes.put("liquid", "");
+		fluidTypes.put("gas", "");
 	}
 	
 	public static void createIDMapping() {

@@ -27,6 +27,13 @@ public class MetaItem extends Item {
 		this.setType(type);
 		this.setHasSubtypes(true);
 		this.setRegistryName(Reference.MODID, type);
+		this.setCreativeTab(Reference.TAB_ITEMS);
+		
+		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
+		while(i.hasNext()) {
+			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
+			Main.proxy.registerItemRenderer(this, type + '/' + entry.getValue().getItemTexture(), entry.getValue().getMeta());
+		}
 	}
 	
 	public void setType(String type) {
@@ -42,19 +49,22 @@ public class MetaItem extends Item {
 		//find the right entry
 		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
-			Entry entry = (Entry) i.next();
-			Material material = (Material) entry.getValue();
-			if((material.getMeta() == stack.getMetadata())) {
-				//transfer the tooltip-information
-				for(String line : material.getTooltip()) {
-					try {
-						tooltip.add(Formatting.formatTooltipLine(line));
-					} catch (Exception e) {
-						Main.logger.error("Failed formatting \"" + line + "\" of material \"" + entry.getKey() + "\":");
+			Entry<String, Material> entry = (Entry<String, Material>) i.next();
+			Material material = entry.getValue();
+			if (material.getTooltip() != null) {
+				if(material.getMeta() == stack.getMetadata()) {
+					//transfer the tooltip-information
+					for(String line : material.getTooltip()) {
+						try {
+							tooltip.add(Formatting.formatTooltipLine(line));
+						} catch (Exception e) {
+							Main.logger.error("Failed formatting \"" + line + "\" of material \"" + entry.getKey() + "\":");
+						}
 					}
+					break;
 				}
-				break;
 			}
+			
 		}
 	}
 	
@@ -62,15 +72,15 @@ public class MetaItem extends Item {
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
-			Material material = (Material) ((Entry) i.next()).getValue();
+			Entry<String, Material> entry = (Entry<String, Material>) i.next();
+			Material material = entry.getValue();
 			items.add(new ItemStack(this, 1, material.getMeta()));
 		}
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Reference.MODID + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata() + ".name");
+		return "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_')/* + ".name"*/;
 	}
 
 }

@@ -18,7 +18,7 @@ public class Material {
 	public int boilingTemperature;
 	public Color color;
 	public boolean disabled;
-	public HashMap<String, Object> enabledTypes;
+	public HashMap<String, Boolean> enabledTypes;
 	public String fluidTexture;
 	public int gasDensity;
 	public boolean gasHasBucket;
@@ -34,14 +34,14 @@ public class Material {
 	@Nonnull
 	public int meta;
 	public String name;
-	public String[] oreDict;
+	public String[] oreDict = new String[] {};
 	public float oreHardness;
 	public int oreHarvestLevel;
 	public int oreLightLevel;
 	public float oreResistance;	
 	public String state;
 	public int temperature;
-	public String[] tooltip;
+	public String[] tooltip = new String[] {};
 	
 	
 	public Material() {
@@ -79,7 +79,7 @@ public class Material {
 		return disabled;
 	}
 
-	public HashMap<String, Object> getEnabledTypes() {
+	public HashMap<String, Boolean> getEnabledTypes() {
 		return enabledTypes;
 	}
 
@@ -191,7 +191,7 @@ public class Material {
 		this.disabled = disabled;
 	}
 
-	public void setEnabledTypes(HashMap<String, Object> enabledTypes) {
+	public void setEnabledTypes(HashMap<String, Boolean> enabledTypes) {
 		this.enabledTypes = enabledTypes;
 	}
 
@@ -237,7 +237,7 @@ public class Material {
 	
 	/**
 	 * 
-	 * @param meta should be a value between 1 and 32767 (inclusive)
+	 * @param meta should be a value between 0 and 32767 (inclusive)
 	 */
 	public void setMeta(int meta) {
 		this.meta = meta;
@@ -283,10 +283,10 @@ public class Material {
 		return (boolean) this.enabledTypes.get(type);
 	}
 	
-	public HashMap<String, Object> getAllTypesEqualHashMap(boolean value) {
-		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		for(int i = 0; i < Reference.types.size(); i++) {
-			hashMap.put((String) Reference.types.keySet().toArray()[i], value);
+	public HashMap<String, Boolean> getAllTypesEqualHashMap(boolean value) {
+		HashMap<String, Boolean> hashMap = new HashMap<String, Boolean>();
+		for(int i = 0; i < Reference.itemTypes.size(); i++) {
+			hashMap.put((String) Reference.itemTypes.keySet().toArray()[i], value);
 		}
 		return hashMap;
 	}
