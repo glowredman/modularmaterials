@@ -32,7 +32,7 @@ public class MetaItem extends Item {
 		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
 		while(i.hasNext()) {
 			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
-			Main.proxy.registerItemRenderer(this, type + '/' + entry.getValue().getItemTexture(), entry.getValue().getMeta());
+			Main.proxy.registerItemRenderer(this, type + '/' + entry.getValue().getTexture(), entry.getValue().getMeta());
 		}
 	}
 	
@@ -56,9 +56,14 @@ public class MetaItem extends Item {
 					//transfer the tooltip-information
 					for(String line : material.getTooltip()) {
 						try {
-							tooltip.add(Formatting.formatTooltipLine(line));
+							String s = Formatting.formatTooltipLine(line);
+							if(s != null) {
+								tooltip.add(s);
+							}
 						} catch (Exception e) {
-							Main.logger.error("Failed formatting \"" + line + "\" of material \"" + entry.getKey() + "\":");
+							if(Reference.enableFormattingDebugger) {
+								e.printStackTrace();
+							}
 						}
 					}
 					break;
@@ -74,13 +79,21 @@ public class MetaItem extends Item {
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			Material material = entry.getValue();
-			items.add(new ItemStack(this, 1, material.getMeta()));
+			if(!material.isDisabled()) {
+				items.add(new ItemStack(this, 1, material.getMeta()));
+			}
 		}
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_');
+		String s = "";
+		try {
+			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_');
+		} catch (Exception e) {
+			s = "item." + Reference.MODID + ".debug";
+		}
+		return s;
 	}
 
 }

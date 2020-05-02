@@ -11,6 +11,7 @@ public class ConfigHandler {
 	
 	// ---CATEGORIES---
 	public static final String GENERAL = "general";
+	public static final String FORMATTING = "formatting";
 	
 	// ---PHASES---
 	public static void initConfigs(FMLPreInitializationEvent event) {
@@ -34,9 +35,17 @@ public class ConfigHandler {
 		enableAll = config_core.getBoolean("enableAll", GENERAL, false, "Set to 'true' to ignore ALL other restrictions -> all items/blocks/fluids will be enabled. USE WITH CAUTION!");
 		overrideModelFiles = config_core.getBoolean("overrideModelFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/models/-directory. ATTENTION: requires an additional restart to create the model files!");
 		overrideLangFile = config_core.getBoolean("overrideLangFile", GENERAL, false, "Set to true to regenerate the lang-file. ATTENTION: requires an additional restart to create the model files!");
-		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", GENERAL, "§s", "String, that has to be put behind '§' to trigger animated formatting. Formatting is: §sSTEP|POSSTEP|DELAY|COLORS:STRING§s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
-		triggerKeyNotPressedFormattingChar = config_core.getString("triggerKeyNotPressedFormattingChar", GENERAL, "§q", "String, that has to be put behind '§' to trigger is-key-not-pressed-sensitive formatting. Formatting is: §qKEYCODE:STRING§q where KEYCODE is an integer (-> https://minecraft.gamepedia.com/Key_codes#Full_table). (works only for tooltips)");
-		triggerKeyPressedFormattingChar = config_core.getString("triggerKeyPressedFormattingChar", GENERAL, "§p", "String, that has to be put behined '§' to trigger is-key-pressed-sensitive formatting. Formatting is: §pKEYCODE:STRING§p where KEYCODE is an integer (-> https://minecraft.gamepedia.com/Key_codes#Full_table). (works only for tooltips");
+		
+		//formatting
+		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "§s", "String, to trigger animated formatting. Formatting is: §sSTEP|POSSTEP|DELAY|COLORS:STRING§s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
+		triggerCtrlIsNotPressedFormatting = config_core.getString("triggerCtrlIsNotPressedFormatting", FORMATTING, "§Q", "String, to show the line only when 'Ctrl' is not pressed");
+		triggerCtrlIsPressedFormatting = config_core.getString("triggerCtrlIsPressedFormatting", FORMATTING, "§q", "String, to show the line only when 'Ctrl' is pressed");
+		triggerShiftIsNotPressedFormatting = config_core.getString("triggerShiftIsNotPressedFormatting", FORMATTING, "§P", "String, to show the line only when 'Shift' is not pressed");
+		triggerShiftIsPressedFormatting = config_core.getString("triggerShiftIsPressedFormatting", FORMATTING, "§p", "String, to show the line only when 'Shift' is pressed");
+		triggerAltIsNotPressedFormatting = config_core.getString("triggerAltIsNotPressedFormatting", FORMATTING, "§T", "String, to show the line only when 'Alt' is not pressed");
+		triggerAltIsPressedFormatting = config_core.getString("triggerAltIsPressedFormatting", FORMATTING, "§t", "String, to show the line only when 'Alt' is pressed");
+		animatedFormattingDelayFallback = config_core.getFloat("animatedFormattingDelayFallback", FORMATTING, 0.001f, 1E-38f, Float.MAX_VALUE, "If the delay set when using animated formatting is below or equal to 0, it is set to this value.");
+		enableFormattingDebugger = config_core.getBoolean("eanbleFormattingDebugger", FORMATTING, false, "Prints exceptions cuaght while formatting the tooltips to the console. this can be used to ensure that your tooltips are properly formatted. THIS WILL SPAM YOUR CONSOLE!");
 	}
 	
 	// ---READ CONFIGS---
@@ -51,7 +60,7 @@ public class ConfigHandler {
 		}
 	}
 	
-	// ------
+	// ---UPDATE CONFIGS---
 	private static void updateConfig(Configuration cfg) {
 		if (cfg.hasChanged()) {
 			cfg.save();

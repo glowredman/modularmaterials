@@ -14,19 +14,17 @@ public class Material {
 	public int blockHarvestLevel;
 	public int blockLightLevel;
 	public float blockResistance;
-	public String blockTexture;
 	public int boilingTemperature;
 	public Color color;
 	public boolean disabled;
 	public HashMap<String, Boolean> enabledTypes;
-	public String fluidTexture;
 	public int gasDensity;
 	public boolean gasHasBucket;
 	@Nonnegative
 	public int gasViscosity;
 	public boolean isBeaconPayment;
-	public String itemTexture;
 	public int liquidDensity;
+	public boolean liquidHasBucket;
 	@Nonnegative
 	public int liquidViscosity;
 	public int meltingTemperature;
@@ -41,6 +39,7 @@ public class Material {
 	public float oreResistance;	
 	public String state;
 	public int temperature;
+	public String texture;
 	public String[] tooltip = new String[] {};
 	
 	
@@ -63,8 +62,8 @@ public class Material {
 		return blockResistance;
 	}
 
-	public String getBlockTexture() {
-		return blockTexture;
+	public String getTexture() {
+		return texture;
 	}
 
 	public int getBoilingTemperature() {
@@ -83,16 +82,16 @@ public class Material {
 		return enabledTypes;
 	}
 
-	public String getFluidTexture() {
-		return fluidTexture;
-	}
-
 	public int getGasDensity() {
 		return gasDensity;
 	}
 
-	public boolean isGasHasBucket() {
+	public boolean hasGasBucket() {
 		return gasHasBucket;
+	}
+
+	public boolean hasLiquidBucket() {
+		return liquidHasBucket;
 	}
 
 	public int getGasViscosity() {
@@ -101,10 +100,6 @@ public class Material {
 
 	public boolean isBeaconPayment() {
 		return isBeaconPayment;
-	}
-
-	public String getItemTexture() {
-		return itemTexture;
 	}
 
 	public int getLiquidDensity() {
@@ -175,8 +170,8 @@ public class Material {
 		this.blockResistance = blockResistance;
 	}
 
-	public void setBlockTexture(String blockTexture) {
-		this.blockTexture = blockTexture;
+	public void setTexture(String texture) {
+		this.texture = texture;
 	}
 
 	public void setBoilingTemperature(int boilingTemperature) {
@@ -199,10 +194,6 @@ public class Material {
 		this.enabledTypes.put(type, state);
 	}
 
-	public void setFluidTexture(String fluidTexture) {
-		this.fluidTexture = fluidTexture;
-	}
-
 	public void setGasDensity(int gasDensity) {
 		this.gasDensity = gasDensity;
 	}
@@ -219,12 +210,12 @@ public class Material {
 		this.isBeaconPayment = isBeaconPayment;
 	}
 
-	public void setItemTexture(String itemTexture) {
-		this.itemTexture = itemTexture;
-	}
-
 	public void setLiquidDensity(int liquidDensity) {
 		this.liquidDensity = liquidDensity;
+	}
+	
+	public void setLiquidHasBucket(boolean liquidHasBucket) {
+		this.liquidHasBucket = liquidHasBucket;
 	}
 
 	public void setLiquidViscosity(int liquidViscosity) {
@@ -281,6 +272,10 @@ public class Material {
 
 	public boolean isTypeEnabled(String type) {
 		return (boolean) this.enabledTypes.get(type);
+	}
+	
+	public void enableType(String type) {
+		this.enabledTypes.put(type, true);
 	}
 	
 	public HashMap<String, Boolean> getAllTypesEqualHashMap(boolean value) {

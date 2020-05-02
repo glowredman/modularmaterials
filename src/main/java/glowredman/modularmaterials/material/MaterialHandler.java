@@ -13,6 +13,8 @@ public class MaterialHandler {
 		//items
 		itemTypes.put("ingot", "%s Ingot");
 		itemTypes.put("plate", "%s Plate");
+		itemTypes.put("dust", "%s Dust");
+		itemTypes.put("gem", "%s");
 		//blocks
 		blockTypes.put("block", "%s Block");
 		blockTypes.put("ore", "%s Ore");
@@ -25,8 +27,8 @@ public class MaterialHandler {
 		long time = System.currentTimeMillis();
 		Iterator i = getIterator(MaterialList.materials);
 		while(i.hasNext()) {
-			Entry entry = (Entry) i.next();
-			idMapping.put(((Material) entry.getValue()).getMeta(), (String) entry.getKey());
+			Entry<String, Material> entry = (Entry<String, Material>) i.next();
+			idMapping.put(entry.getValue().getMeta(), entry.getKey());
 		}
 		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}

@@ -5,6 +5,7 @@ import static glowredman.modularmaterials.Main.logger;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.item.ItemHandler;
 import glowredman.modularmaterials.material.MaterialHandler;
+import glowredman.modularmaterials.material.MaterialProperties;
 import glowredman.modularmaterials.util.AssetHandler;
 import glowredman.modularmaterials.util.ConfigHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -24,7 +25,10 @@ public class CommonProxy {
 		//TODO material config
 		//ENABLE_ALL-CHECK
 		if(Reference.enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
+		//TYPES
 		MaterialHandler.initTypes();
+		//MATERIALS
+		MaterialProperties.loadMaterials();
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
 		//ASSETS
