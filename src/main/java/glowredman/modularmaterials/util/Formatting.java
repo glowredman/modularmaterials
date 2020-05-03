@@ -19,15 +19,15 @@ public class Formatting {
 		line = formatKey(line, Reference.triggerShiftIsPressedFormatting, Keyboard.KEY_LSHIFT, Keyboard.KEY_RSHIFT, false);
 		
 		//animated formatting
-		/*while(line.contains(Reference.triggerAnimatedFormattingChar)) {
+		while(line.contains(Reference.triggerAnimatedFormattingChar)) {
 			//init vars
 			int startOfSequence = line.indexOf(Reference.triggerAnimatedFormattingChar);
 			int endOfSequence = line.indexOf(Reference.triggerAnimatedFormattingChar, startOfSequence + Reference.triggerAnimatedFormattingChar.length());
 			//assemble string
 			String finishedLine = line.substring(0, startOfSequence);
-			finishedLine = finishedLine + formatAnimated(line.substring(startOfSequence, endOfSequence));
+			finishedLine = finishedLine + formatAnimated(line.substring(startOfSequence + Reference.triggerAnimatedFormattingChar.length(), endOfSequence));
 			line = finishedLine + line.substring(endOfSequence + Reference.triggerAnimatedFormattingChar.length(), line.length());
-		}*/
+		}
 
 		return line;
 	}
@@ -48,16 +48,13 @@ public class Formatting {
 		}
 	}
 	
-	public static String formatAnimated(String string) throws NumberFormatException, NullPointerException { //format: §sSTEP|POSSTEP|DELAY|COLORS:STRING§s
+	public static String formatAnimated(String string) throws NumberFormatException, NullPointerException { //format: §sPOSSTEP:DELAY:COLORS:STRING§s
 		//extract
-		int step = Integer.parseInt(string.substring(0, string.indexOf('|') - 1));
-		string = string.substring(string.indexOf('|') + 1);
-		int posstep = Integer.parseInt(string.substring(0, string.indexOf('|') - 1));
-		string = string.substring(string.indexOf('|') + 1);
-		double delay = Double.parseDouble(string.substring(0, string.indexOf('|') - 1));
-		string = string.substring(string.indexOf('|') + 1);
-		String[] colorArray = string.substring(0, string.indexOf(':') - 1).split(",");
-		string = string.substring(string.indexOf(':') + 1);
+		String[] segments = string.split(":", 4);
+		int posstep = Integer.parseInt(segments[0]);
+		double delay = Double.parseDouble(segments[1]);
+		String[] colorArray = segments[2].split(",");
+		String text = segments[3];
 		
 		StringBuilder sb = new StringBuilder(string.length() * 3);
 		
@@ -68,8 +65,8 @@ public class Formatting {
 		
 		int offset = (int) (Math.floor(Minecraft.getSystemTime() / delay) % colorArray.length);
 		
-		for(int i = 0; i < string.length(); i++) {
-			char c = string.charAt(i);
+		for(int i = 0; i < text.length(); i++) {
+			char c = text.charAt(i);
 			int indexColorArray = ((i * posstep) + colorArray.length - offset) % colorArray.length;
 			
 			//assemble

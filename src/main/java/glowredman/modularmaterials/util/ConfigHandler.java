@@ -37,7 +37,7 @@ public class ConfigHandler {
 		overrideLangFile = config_core.getBoolean("overrideLangFile", GENERAL, false, "Set to true to regenerate the lang-file. ATTENTION: requires an additional restart to create the model files!");
 		
 		//formatting
-		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "§s", "String, to trigger animated formatting. Formatting is: §sSTEP|POSSTEP|DELAY|COLORS:STRING§s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
+		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "§s", "String, to trigger animated formatting. Formatting is: §sPOSSTEP:DELAY:COLORS:STRING§s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
 		triggerCtrlIsNotPressedFormatting = config_core.getString("triggerCtrlIsNotPressedFormatting", FORMATTING, "§Q", "String, to show the line only when 'Ctrl' is not pressed");
 		triggerCtrlIsPressedFormatting = config_core.getString("triggerCtrlIsPressedFormatting", FORMATTING, "§q", "String, to show the line only when 'Ctrl' is pressed");
 		triggerShiftIsNotPressedFormatting = config_core.getString("triggerShiftIsNotPressedFormatting", FORMATTING, "§P", "String, to show the line only when 'Shift' is not pressed");
