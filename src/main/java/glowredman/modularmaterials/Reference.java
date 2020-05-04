@@ -1,7 +1,9 @@
 package glowredman.modularmaterials;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
+import glowredman.modularmaterials.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
 
@@ -16,11 +18,15 @@ public class Reference {
 	public static final String CLIENT = "glowredman.modularmaterials.proxy.ClientProxy";
 	public static final String SERVER = "glowredman.modularmaterials.proxy.CommonProxy";
 	
-	//CONFIG
-	//files:
-	public static Configuration config_core;
-	public static final String CONFIGNAME_CORE = "core.cfg";
+	//CREATIVE TABS
 	public static final CreativeTabs TAB_ITEMS = CreativeTabs.MATERIALS; //TODO
+	
+	//CONFIG
+	public static Configuration config_core;
+	
+	//files:
+	public static final String CONFIGNAME_CORE = "core.cfg";
+	public static final String MATERIALCONFIGNAME = "materials.json";
 	
 	//values:
 	//general
@@ -40,6 +46,7 @@ public class Reference {
 	public static boolean enableFormattingDebugger = false;
 	
 	//INTERNAL
+	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
 	public static HashMap<String, String> itemTypes = new HashMap<String, String>();
 	public static HashMap<String, String> blockTypes = new HashMap<String, String>();

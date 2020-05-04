@@ -6,6 +6,10 @@ import java.util.LinkedHashMap;
 
 public class MaterialList {
 	
-	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
+	public LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
+	
+	public LinkedHashMap<String, Material> getMaterials() {
+		return this.materials;
+	}
 
 }

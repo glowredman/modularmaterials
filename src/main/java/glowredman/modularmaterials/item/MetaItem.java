@@ -10,8 +10,7 @@ import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.material.Material;
 import glowredman.modularmaterials.material.MaterialHandler;
-import glowredman.modularmaterials.material.MaterialList;
-import glowredman.modularmaterials.util.Formatting;
+import glowredman.modularmaterials.util.FormattingHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -29,7 +28,7 @@ public class MetaItem extends Item {
 		this.setRegistryName(Reference.MODID, type);
 		this.setCreativeTab(Reference.TAB_ITEMS);
 		
-		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(Reference.materials);
 		while(i.hasNext()) {
 			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
 			Main.proxy.registerItemRenderer(this, type + '/' + entry.getValue().getTexture(), entry.getValue().getMeta());
@@ -47,7 +46,7 @@ public class MetaItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		//find the right entry
-		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(Reference.materials);
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			Material material = entry.getValue();
@@ -56,7 +55,7 @@ public class MetaItem extends Item {
 					//transfer the tooltip-information
 					for(String line : material.getTooltip()) {
 						try {
-							String s = Formatting.formatTooltipLine(line);
+							String s = FormattingHandler.formatTooltipLine(line);
 							if(s != null) {
 								tooltip.add(s);
 							}
@@ -75,7 +74,7 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(Reference.materials);
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			Material material = entry.getValue();
@@ -89,7 +88,7 @@ public class MetaItem extends Item {
 	public String getUnlocalizedName(ItemStack stack) {
 		String s = "";
 		try {
-			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata()).replace(' ', '_');
+			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getUnlocalizedName();
 		} catch (Exception e) {
 			s = "item." + Reference.MODID + ".debug";
 		}

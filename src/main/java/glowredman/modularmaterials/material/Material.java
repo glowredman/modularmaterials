@@ -19,12 +19,10 @@ public class Material {
 	public boolean disabled;
 	public HashMap<String, Boolean> enabledTypes;
 	public int gasDensity;
-	public boolean gasHasBucket;
 	@Nonnegative
 	public int gasViscosity;
 	public boolean isBeaconPayment;
 	public int liquidDensity;
-	public boolean liquidHasBucket;
 	@Nonnegative
 	public int liquidViscosity;
 	public int meltingTemperature;
@@ -84,14 +82,6 @@ public class Material {
 
 	public int getGasDensity() {
 		return gasDensity;
-	}
-
-	public boolean hasGasBucket() {
-		return gasHasBucket;
-	}
-
-	public boolean hasLiquidBucket() {
-		return liquidHasBucket;
 	}
 
 	public int getGasViscosity() {
@@ -198,10 +188,6 @@ public class Material {
 		this.gasDensity = gasDensity;
 	}
 
-	public void setGasHasBucket(boolean gasHasBucket) {
-		this.gasHasBucket = gasHasBucket;
-	}
-
 	public void setGasViscosity(int gasViscosity) {
 		this.gasViscosity = gasViscosity;
 	}
@@ -212,10 +198,6 @@ public class Material {
 
 	public void setLiquidDensity(int liquidDensity) {
 		this.liquidDensity = liquidDensity;
-	}
-	
-	public void setLiquidHasBucket(boolean liquidHasBucket) {
-		this.liquidHasBucket = liquidHasBucket;
 	}
 
 	public void setLiquidViscosity(int liquidViscosity) {
@@ -284,6 +266,10 @@ public class Material {
 			hashMap.put((String) Reference.itemTypes.keySet().toArray()[i], value);
 		}
 		return hashMap;
+	}
+	
+	public String getUnlocalizedName() {
+		return this.name.replace(' ', '_');
 	}
 	
 }

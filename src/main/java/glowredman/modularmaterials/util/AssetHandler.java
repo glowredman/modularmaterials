@@ -13,7 +13,6 @@ import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.material.Material;
 import glowredman.modularmaterials.material.MaterialHandler;
-import glowredman.modularmaterials.material.MaterialList;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -26,7 +25,7 @@ public class AssetHandler {
 		int textureCount = 0;
 		long time = System.currentTimeMillis();
 		
-		Iterator i = MaterialHandler.getIterator(MaterialList.materials);
+		Iterator i = MaterialHandler.getIterator(Reference.materials);
 		while(i.hasNext()) {
 			Entry<String, Material> e = (Entry<String, Material>) i.next();
 			String texture = e.getValue().getTexture();
@@ -124,11 +123,11 @@ public class AssetHandler {
 					
 					newParagraph(writer);
 					
-					Iterator j = MaterialHandler.getIterator(MaterialList.materials);
+					Iterator j = MaterialHandler.getIterator(Reference.materials);
 					while(j.hasNext()) {
 						Entry<String, Material> f = (Entry<String, Material>) j.next();
-						String name = f.getValue().getName();
-						writer.write("item." + Reference.MODID + '.' +  type + '.' + name.replace(' ', '_') + ".name=" + syntax.replace("%s", name));
+						String name = f.getValue().getUnlocalizedName();
+						writer.write("item." + Reference.MODID + '.' +  type + '.' + name + ".name=" + syntax.replace("%s", name));
 						writer.newLine();
 					}
 				}

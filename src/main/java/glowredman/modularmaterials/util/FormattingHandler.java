@@ -6,7 +6,7 @@ import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
 import net.minecraft.client.Minecraft;
 
-public class Formatting {
+public class FormattingHandler {
 	
 	public static String formatTooltipLine(String line) throws IndexOutOfBoundsException, NumberFormatException, NullPointerException {
 		

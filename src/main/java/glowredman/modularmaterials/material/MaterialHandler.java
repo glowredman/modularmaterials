@@ -25,7 +25,7 @@ public class MaterialHandler {
 	
 	public static void createIDMapping() {
 		long time = System.currentTimeMillis();
-		Iterator i = getIterator(MaterialList.materials);
+		Iterator i = getIterator(materials);
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			idMapping.put(entry.getValue().getMeta(), entry.getKey());
@@ -34,13 +34,13 @@ public class MaterialHandler {
 	}
 	
 	public static void fillMaterialListIfEmpty() {
-		if(MaterialList.materials.isEmpty()) {
+		if(materials.isEmpty()) {
 			Material material = new Material();
 			material.setDisabled(true);
 			material.setEnabledTypes(new Material().getAllTypesEqualHashMap(true));
 			material.setMeta(0);
 			material.setName("null");
-			MaterialList.materials.put("null", material);
+			materials.put("null", material);
 			Main.logger.warn("The material-list was empty. Check your configuration file or report this to the mod-author!");
 		}
 	}
