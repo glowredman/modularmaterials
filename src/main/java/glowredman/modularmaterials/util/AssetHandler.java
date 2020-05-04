@@ -113,6 +113,7 @@ public class AssetHandler {
 				writer.newLine();
 				writer.newLine();
 				writer.write("item." + Reference.MODID + ".debug.name=§cInvalid Item");
+				lineCount++;
 				writer.newLine();
 				
 				Iterator i = MaterialHandler.getIterator(Reference.itemTypes);
@@ -126,14 +127,17 @@ public class AssetHandler {
 					Iterator j = MaterialHandler.getIterator(Reference.materials);
 					while(j.hasNext()) {
 						Entry<String, Material> f = (Entry<String, Material>) j.next();
-						String name = f.getValue().getUnlocalizedName();
-						writer.write("item." + Reference.MODID + '.' +  type + '.' + name + ".name=" + syntax.replace("%s", name));
+						String unlocalizedName = f.getValue().getUnlocalizedName();
+						String name = f.getValue().getName();
+						writer.write("item." + Reference.MODID + '.' +  type + '.' + unlocalizedName + ".name=" + syntax.replace("%s", name));
 						writer.newLine();
+						lineCount++;
 					}
 				}
 				
 				
 				writer.close();
+				Main.logger.info("Created " + lineCount + " localizations in " + (System.currentTimeMillis() - time) + "ms.");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
