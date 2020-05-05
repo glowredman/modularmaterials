@@ -11,8 +11,8 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
-import glowredman.modularmaterials.material.Material;
-import glowredman.modularmaterials.material.MaterialHandler;
+import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.Type;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -43,46 +43,47 @@ public class AssetHandler {
 		int modelFileCount = 0;
 		
 		//iterate through all types
-		Iterator i = MaterialHandler.getIterator(Reference.itemTypes);
+		Iterator i = MaterialHandler.getIterator(Reference.types);
 		while(i.hasNext()) {
-			Entry<String, String> entry = (Entry<String, String>) i.next();
-			String key = entry.getKey();
-			String value = entry.getValue();
+			Entry<String, Type> entry = (Entry<String, Type>) i.next();
+			String type = entry.getKey();
+			String category = entry.getValue().getCategory();
 			
 			//if the type is an item, iterate through all materials
-			for(String texture : itemTextures) {
-				File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + Reference.MODID + "/models/item/" + key);
-				File file = new File(dir, texture + ".json");
-				try {
-					dir.mkdirs();
-					
-					//if the file does not already exist or should be overridden, create it
-					if(!file.exists() || Reference.overrideModelFiles) {
-						if(file.exists() && Reference.overrideModelFiles) {
-							file.delete();
+			if(category.equals("item")) {
+				for(String texture : itemTextures) {
+					File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + Reference.MODID + "/models/item/" + type);
+					File file = new File(dir, texture + ".json");
+					try {
+						dir.mkdirs();
+						
+						//if the file does not already exist or should be overridden, create it
+						if(!file.exists() || Reference.overrideModelFiles) {
+							if(file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write("{");
+							writer.newLine();
+							writer.write("\t\"parent\": \"item/generated\",");
+							writer.newLine();
+							writer.write("\t\"textures\": {");
+							writer.newLine();
+							writer.write("\t\t\"layer0\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "\",");
+							writer.newLine();
+							writer.write("\t\t\"layer1\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "_overlay\"");
+							writer.newLine();
+							writer.write("\t}");
+							writer.newLine();
+							writer.write("}");
+							writer.close();
+							modelFileCount++;
 						}
-						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-						writer.write("{");
-						writer.newLine();
-						writer.write("\t\"parent\": \"item/generated\",");
-						writer.newLine();
-						writer.write("\t\"textures\": {");
-						writer.newLine();
-						writer.write("\t\t\"layer0\": \"" + Reference.MODID + ":items/" + texture + "/" + key + "\",");
-						writer.newLine();
-						writer.write("\t\t\"layer1\": \"" + Reference.MODID + ":items/" + texture + "/" + key + "_overlay\"");
-						writer.newLine();
-						writer.write("\t}");
-						writer.newLine();
-						writer.write("}");
-						writer.close();
-						modelFileCount++;
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
-			}
-				
+			}	
 		}
 		
 		//TODO blocks
@@ -100,7 +101,7 @@ public class AssetHandler {
 		File file = new File(dir, "en_us.lang");
 		
 		if(!file.exists() || Reference.overrideLangFile) {
-			if(file.exists() && Reference.overrideLangFile) {
+			if(file.exists()) {
 				file.delete();
 			}
 			try {
@@ -116,11 +117,11 @@ public class AssetHandler {
 				lineCount++;
 				writer.newLine();
 				
-				Iterator i = MaterialHandler.getIterator(Reference.itemTypes);
+				Iterator i = MaterialHandler.getIterator(Reference.types);
 				while(i.hasNext()) {
-					Entry<String, String> e = (Entry<String, String>) i.next();
+					Entry<String, Type> e = (Entry<String, Type>) i.next();
 					String type = e.getKey();
-					String syntax = e.getValue();
+					String syntax = e.getValue().getSyntax();
 					
 					newParagraph(writer);
 					

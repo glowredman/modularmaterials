@@ -3,10 +3,10 @@ package glowredman.modularmaterials.proxy;
 import static glowredman.modularmaterials.Main.logger;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.item.ItemHandler;
-import glowredman.modularmaterials.material.MaterialHandler;
 import glowredman.modularmaterials.util.AssetHandler;
 import glowredman.modularmaterials.util.ConfigHandler;
 import glowredman.modularmaterials.util.JSONHandler;
+import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -24,10 +24,9 @@ public class CommonProxy {
 		//TODO material config
 		//ENABLE_ALL-CHECK
 		if(Reference.enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
-		//TYPES
-		MaterialHandler.initTypes();
-		//MATERIALS
-		JSONHandler.initFiles(event);
+		//MATERIALS, TYPES
+		JSONHandler.initTypeFile(event);
+		JSONHandler.initMaterialFile(event);
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
 		//ASSETS
@@ -39,11 +38,10 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
+		ItemHandler.initColors();
 	}
 	
-	public void postinit(FMLPostInitializationEvent event) {
-		
-	}
+	public void postinit(FMLPostInitializationEvent event) {}
 	
 	public void registerItemRenderer(Item item, String name, int meta) {}
 		

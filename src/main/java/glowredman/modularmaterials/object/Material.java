@@ -1,6 +1,5 @@
-package glowredman.modularmaterials.material;
+package glowredman.modularmaterials.object;
 
-import java.awt.Color;
 import java.util.HashMap;
 
 import javax.annotation.Nonnegative;
@@ -15,9 +14,9 @@ public class Material {
 	public int blockLightLevel;
 	public float blockResistance;
 	public int boilingTemperature;
-	public Color color;
+	public Color color = new Color();
 	public boolean disabled;
-	public HashMap<String, Boolean> enabledTypes;
+	public HashMap<String, Boolean> enabledTypes = new HashMap<String, Boolean>();
 	public int gasDensity;
 	@Nonnegative
 	public int gasViscosity;
@@ -208,11 +207,7 @@ public class Material {
 		this.meltingTemperature = meltingTemperature;
 	}
 	
-	/**
-	 * 
-	 * @param meta should be a value between 0 and 32767 (inclusive)
-	 */
-	public void setMeta(int meta) {
+	public void setMeta(short meta) {
 		this.meta = meta;
 	}
 
@@ -253,23 +248,23 @@ public class Material {
 	}
 
 	public boolean isTypeEnabled(String type) {
-		return (boolean) this.enabledTypes.get(type);
+		if(this.getEnabledTypes().containsKey(type)) {
+			return this.enabledTypes.get(type);
+		} else {
+			return false;
+		}
 	}
 	
 	public void enableType(String type) {
 		this.enabledTypes.put(type, true);
 	}
 	
-	public HashMap<String, Boolean> getAllTypesEqualHashMap(boolean value) {
-		HashMap<String, Boolean> hashMap = new HashMap<String, Boolean>();
-		for(int i = 0; i < Reference.itemTypes.size(); i++) {
-			hashMap.put((String) Reference.itemTypes.keySet().toArray()[i], value);
-		}
-		return hashMap;
-	}
-	
 	public String getUnlocalizedName() {
 		return this.name.replace(' ', '_');
+	}
+
+	public void setColor(java.awt.Color color) {
+		this.color.setColor(color);
 	}
 	
 }

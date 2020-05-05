@@ -1,9 +1,13 @@
 package glowredman.modularmaterials;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
-import glowredman.modularmaterials.material.Material;
+import glowredman.modularmaterials.item.MetaItem;
+import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.Type;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
 
@@ -27,6 +31,7 @@ public class Reference {
 	//files:
 	public static final String CONFIGNAME_CORE = "core.cfg";
 	public static final String MATERIALCONFIGNAME = "materials.json";
+	public static final String TYPECONFIGNAME = "types.json";
 	
 	//values:
 	//general
@@ -48,7 +53,6 @@ public class Reference {
 	//INTERNAL
 	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
-	public static HashMap<String, String> itemTypes = new HashMap<String, String>();
-	public static HashMap<String, String> blockTypes = new HashMap<String, String>();
-	public static HashMap<String, String> fluidTypes = new HashMap<String, String>();
+	public static HashMap<String, Type> types = new HashMap<String, Type>();
+	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 }

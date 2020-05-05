@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.material;
+package glowredman.modularmaterials.object;
 
 import java.util.HashMap;
 import java.util.Iterator;

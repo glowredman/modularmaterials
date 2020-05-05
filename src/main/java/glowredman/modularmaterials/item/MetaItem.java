@@ -8,15 +8,19 @@ import javax.annotation.Nullable;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
-import glowredman.modularmaterials.material.Material;
-import glowredman.modularmaterials.material.MaterialHandler;
+import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.FormattingHandler;
+import glowredman.modularmaterials.util.MaterialHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaItem extends Item {
 	
@@ -45,30 +49,22 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		//find the right entry
-		Iterator i = MaterialHandler.getIterator(Reference.materials);
-		while(i.hasNext()) {
-			Entry<String, Material> entry = (Entry<String, Material>) i.next();
-			Material material = entry.getValue();
-			if (material.getTooltip() != null) {
-				if(material.getMeta() == stack.getMetadata()) {
-					//transfer the tooltip-information
-					for(String line : material.getTooltip()) {
-						try {
-							String s = FormattingHandler.formatTooltipLine(line);
-							if(s != null) {
-								tooltip.add(s);
-							}
-						} catch (Exception e) {
-							if(Reference.enableFormattingDebugger) {
-								e.printStackTrace();
-							}
+		if(Reference.idMapping.containsKey(stack.getMetadata())) {
+			String[] lines = Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getTooltip();
+			if(lines != null) {
+				for(String line : lines) {
+					try {
+						String s = FormattingHandler.formatTooltipLine(line);
+						if(s != null) {
+							tooltip.add(s);
+						}
+					} catch (Exception e) {
+						if(Reference.enableFormattingDebugger) {
+							e.printStackTrace();
 						}
 					}
-					break;
 				}
 			}
-			
 		}
 	}
 	
@@ -78,7 +74,7 @@ public class MetaItem extends Item {
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			Material material = entry.getValue();
-			if(!material.isDisabled()) {
+			if((!material.isDisabled() && material.isTypeEnabled(this.getType())) || Reference.enableAll) {
 				items.add(new ItemStack(this, 1, material.getMeta()));
 			}
 		}
@@ -93,6 +89,21 @@ public class MetaItem extends Item {
 			s = "item." + Reference.MODID + ".debug";
 		}
 		return s;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void registerColors() {
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
+			
+			@Override
+			public int colorMultiplier(ItemStack stack, int tintIndex) {
+				if(tintIndex == 0) {
+					return Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getColor().getARGB();
+				} else {
+					return 0xFFFFFF;
+				}
+			}
+		}, this);
 	}
 
 }

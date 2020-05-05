@@ -29,6 +29,7 @@ public class Main {
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
+		logger.info("Hello cyberspace!");
 		proxy.preInit(event);
 	}
 	
