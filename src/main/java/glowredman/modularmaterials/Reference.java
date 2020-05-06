@@ -38,6 +38,7 @@ public class Reference {
 	public static boolean enableAll = false;
 	public static boolean overrideModelFiles = false;
 	public static boolean overrideLangFile = false;
+	public static boolean enableUnitOreDict = true;
 	
 	//formatting
 	public static String triggerShiftIsPressedFormatting = "§p";

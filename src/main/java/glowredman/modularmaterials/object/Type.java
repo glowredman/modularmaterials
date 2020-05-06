@@ -2,10 +2,18 @@ package glowredman.modularmaterials.object;
 
 public class Type {
 	
+	public boolean disabled;
 	public String category;
 	public String oreDictPrefix;
 	public String syntax;
 	public String unitValue;
+	
+	public boolean isDisabled() {
+		return disabled;
+	}
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
 	
 	public String getUnitValue() {
 		return unitValue;

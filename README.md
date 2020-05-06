@@ -42,5 +42,5 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
  - [x] Support for custom Textures/Texture Sets
  - [x] Custom Tooltip-Formatting:
     - [x] Animated Segments
-    - [x] Ability to show the line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
+    - [x] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
  - [ ] GregTech-like Ore-Generation

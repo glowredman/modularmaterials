@@ -33,10 +33,11 @@ public class JSONHandler {
 			if(!fileTypes.exists()) {
 				long time = System.currentTimeMillis();
 				Type example = new Type();
+				example.setDisabled(false);
 				example.setCategory("item");
 				example.setOreDictPrefix("example");
 				example.setSyntax("%s Thingy");
-				example.setUnitValue("1");
+				example.setUnitValue("1u");
 				typeList.types.put("example", example);
 				BufferedWriter writer = new BufferedWriter(new FileWriter(fileTypes));
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(typeList));
