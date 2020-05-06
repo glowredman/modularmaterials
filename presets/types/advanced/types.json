@@ -1,0 +1,252 @@
+{
+  "types": {
+    "ingot": {
+      "category": "item",
+      "oreDictPrefix": "ingot",
+      "syntax": "%s Ingot",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "nugget": {
+      "category": "item",
+      "oreDictPrefix": "nugget",
+      "syntax": "%s Nugget",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/9u"
+    },
+    "gem": {
+      "category": "item",
+      "oreDictPrefix": "gem",
+      "syntax": "%s",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "block": {
+      "category": "block",
+      "oreDictPrefix": "block",
+      "syntax": "%s Block",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "9u"
+    },
+    "ore": {
+      "category": "ore",
+      "oreDictPrefix": "ore",
+      "syntax": "%s Ore",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1o"
+    },
+    "liquid": {
+      "category": "fluid",
+      "oreDictPrefix": "",
+      "syntax": "%s",
+	  "disabled": false,
+	  "state": "liquid",
+      "unitValue": ""
+    },
+    "gas": {
+      "category": "fluid",
+      "oreDictPrefix": "",
+      "syntax": "%l",
+	  "disabled": false,
+	  "state": "gaseous",
+      "unitValue": ""
+    },
+    "dust": {
+      "category": "item",
+      "oreDictPrefix": "dust",
+      "syntax": "%s Dust",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "plate": {
+      "category": "item",
+      "oreDictPrefix": "plate",
+      "syntax": "%s Plate",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "gear": {
+      "category": "item",
+      "oreDictPrefix": "gear",
+      "syntax": "%s Gear",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "4u"
+    },
+    "rod": {
+      "category": "item",
+      "oreDictPrefix": "rod",
+      "syntax": "%s Rod",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2u"
+    },
+    "wire": {
+      "category": "item",
+      "oreDictPrefix": "wire",
+      "syntax": "%s Wire",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/4u"
+    },
+    "bolt": {
+      "category": "item",
+      "oreDictPrefix": "bolt",
+      "syntax": "%s Bolt",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/8u"
+    },
+    "crushed": {
+      "category": "item",
+      "oreDictPrefix": "crushed",
+      "syntax": "Crushed %s Ore",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2o"
+    },
+    "crushedPurified": {
+      "category": "item",
+      "oreDictPrefix": "crushedPurified",
+      "syntax": "Purified %s Ore",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2o"
+    },
+    "smallDust": {
+      "category": "item",
+      "oreDictPrefix": "dustSmall",
+      "syntax": "Small %s Dust",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/4u"
+    },
+    "tinyDust": {
+      "category": "item",
+      "oreDictPrefix": "dustTiny",
+      "syntax": "Tiny %s Dust",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/9u"
+    },
+    "foil": {
+      "category": "item",
+      "oreDictPrefix": "foil",
+      "syntax": "%s Foil",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/4u"
+    },
+    "smallGear": {
+      "category": "item",
+      "oreDictPrefix": "gearSmall",
+      "syntax": "Small %s Gear",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "2u"
+    },
+    "lens": {
+      "category": "item",
+      "oreDictPrefix": "lens",
+      "syntax": "%s Lens",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "2u"
+    },
+    "impureDust": {
+      "category": "item",
+      "oreDictPrefix": "dustImpure",
+      "syntax": "Impure %s Dust",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "pureDust": {
+      "category": "item",
+      "oreDictPrefix": "dustPure",
+      "syntax": "Pure %s Dust",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/4u"
+    },
+    "hotIngot": {
+      "category": "item",
+      "oreDictPrefix": "ingotHot",
+      "syntax": "Double %s Ingot",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "densePlate": {
+      "category": "item",
+      "oreDictPrefix": "plateDense",
+      "syntax": "Dense %s Plate",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "9u"
+    },
+    "ring": {
+      "category": "item",
+      "oreDictPrefix": "ring",
+      "syntax": "%s Ring",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2u"
+    },
+    "rotor": {
+      "category": "item",
+      "oreDictPrefix": "rotor",
+      "syntax": "%s Rotor",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "4u"
+    },
+    "screw": {
+      "category": "item",
+      "oreDictPrefix": "screw",
+      "syntax": "%s Screw",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/8u"
+    },
+    "spring": {
+      "category": "item",
+      "oreDictPrefix": "spring",
+      "syntax": "%s Spring",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "smallSpring": {
+      "category": "item",
+      "oreDictPrefix": "springSmall",
+      "syntax": "Small %s Spring",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2u"
+    },
+    "longRod": {
+      "category": "item",
+      "oreDictPrefix": "rodLong",
+      "syntax": "Long %s Rod",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "itemCasing": {
+      "category": "item",
+      "oreDictPrefix": "itemcasing",
+      "syntax": "%s Item Casing",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/2u"
+    }
+  }
+}

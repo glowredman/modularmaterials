@@ -1,0 +1,52 @@
+{
+  "types": {
+    "ingot": {
+      "category": "item",
+      "oreDictPrefix": "ingot",
+      "syntax": "%s Ingot",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "nugget": {
+      "category": "item",
+      "oreDictPrefix": "nugget",
+      "syntax": "%s Nugget",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/9u"
+    },
+    "gem": {
+      "category": "item",
+      "oreDictPrefix": "gem",
+      "syntax": "%s",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1u"
+    },
+    "block": {
+      "category": "block",
+      "oreDictPrefix": "block",
+      "syntax": "%s Block",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "9u"
+    },
+    "ore": {
+      "category": "ore",
+      "oreDictPrefix": "ore",
+      "syntax": "%s Ore",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1o"
+    },
+    "liquid": {
+      "category": "fluid",
+      "oreDictPrefix": "",
+      "syntax": "%l",
+	  "disabled": false,
+	  "state": "liquid",
+      "unitValue": ""
+    }
+  }
+}
