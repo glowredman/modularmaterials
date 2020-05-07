@@ -44,3 +44,4 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
     - [x] Animated Segments
     - [x] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
  - [ ] GregTech-like Ore-Generation
+ - [ ] Presets for [Types](presets/types/TYPES.md), Ores and Materials

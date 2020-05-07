@@ -1,5 +1,5 @@
 
-|Type|Vanilla|Basic|Adcanced|Extended|
+| |Vanilla|Basic|Adcanced|Extended|
 |:---|:---:|:---:|:---:|:---:|
 |**Block**|X|X|X|X|
 |**Bolt**| | |X|X|
