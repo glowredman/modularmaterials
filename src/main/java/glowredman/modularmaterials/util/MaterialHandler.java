@@ -19,7 +19,6 @@ public class MaterialHandler {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			idMapping.put(entry.getValue().getMeta(), entry.getKey());
 		}
-		System.out.println(idMapping.keySet().toArray()[0] + "" + idMapping.values().toArray()[0]);
 		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	

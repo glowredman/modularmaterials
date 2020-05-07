@@ -199,7 +199,7 @@
 	  "disabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
-    }
+    },
     "lens": {
       "category": "item",
       "oreDictPrefix": "lens",
@@ -335,6 +335,6 @@
 	  "disabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
-    },
+    }
   }
 }
