@@ -25,6 +25,7 @@
 |**Ingot (Quadruple)**| | | |X|
 |**Ingot (Quintuple)**| | | |X|
 |**Ingot (Hot)**| | |X|X|
+|**Item Casing**| | |X|X|
 |**Lens**| | |X|X|
 |**Liquid**|X|X|X|X|
 |**Nugget**|X|X|X|X|
