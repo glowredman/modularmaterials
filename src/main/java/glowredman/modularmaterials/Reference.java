@@ -23,15 +23,15 @@ public class Reference {
 	public static final String SERVER = "glowredman.modularmaterials.proxy.CommonProxy";
 	
 	//CREATIVE TABS
-	public static final CreativeTabs TAB_ITEMS = CreativeTabs.MATERIALS; //TODO
+	public static final CreativeTabs TAB_ITEMS = CreativeTabs.SEARCH; //TODO
 	
 	//CONFIG
 	public static Configuration config_core;
 	
 	//files:
 	public static final String CONFIGNAME_CORE = "core.cfg";
-	public static final String MATERIALCONFIGNAME = "materials.json";
-	public static final String TYPECONFIGNAME = "types.json";
+	public static final String CONFIGNAME_MATERIALS = "materials.json";
+	public static final String CONFIGNAME_TYPES = "types.json";
 	
 	//values:
 	//general
@@ -39,6 +39,7 @@ public class Reference {
 	public static boolean overrideModelFiles = false;
 	public static boolean overrideLangFile = false;
 	public static boolean enableUnitOreDict = true;
+	public static boolean suppressTypeMissingWarnings = false;
 	
 	//formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
@@ -54,6 +55,6 @@ public class Reference {
 	//INTERNAL
 	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
-	public static HashMap<String, Type> types = new HashMap<String, Type>();
+	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 }

@@ -224,6 +224,14 @@
 	  "state": "solid",
       "unitValue": "1/9u"
     },
+    "ore": {
+      "category": "ore",
+      "oreDictPrefix": "ore",
+      "syntax": "%s Ore",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1o"
+    },
     "plate": {
       "category": "item",
       "oreDictPrefix": "plate",

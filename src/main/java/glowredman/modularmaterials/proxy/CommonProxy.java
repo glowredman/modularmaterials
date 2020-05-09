@@ -21,7 +21,6 @@ public class CommonProxy {
 		ConfigHandler.initConfigs(event);
 		ConfigHandler.readConfigs();
 		ConfigHandler.saveConfigs();
-		//TODO material config
 		//ENABLE_ALL-CHECK
 		if(Reference.enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
 		//MATERIALS, TYPES

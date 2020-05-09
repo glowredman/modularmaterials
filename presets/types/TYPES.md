@@ -29,6 +29,7 @@
 |**Lens**| | |X|X|
 |**Liquid**|X|X|X|X|
 |**Nugget**|X|X|X|X|
+|**Ore**|X|X|X|X|
 |**Plate**| |X|X|X|
 |**Plate (Double)**| | | |X|
 |**Plate (Triple)**| | | |X|

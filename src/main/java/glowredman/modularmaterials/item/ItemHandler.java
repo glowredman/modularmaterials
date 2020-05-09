@@ -24,7 +24,6 @@ public class ItemHandler {
 			Entry<String, Type> type = (Entry<String, Type>) types.next();
 			if(type.getValue().getCategory().equals("item") && (type.getValue().isDisabled() == false)) {
 				MetaItem item = new MetaItem(type.getKey());
-				item.setCreativeTab(Reference.TAB_ITEMS);
 				ForgeRegistries.ITEMS.register(item);
 				Reference.metaItems.add(item);
 			}	

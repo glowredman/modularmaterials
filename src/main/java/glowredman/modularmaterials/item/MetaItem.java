@@ -35,7 +35,7 @@ public class MetaItem extends Item {
 		Iterator i = MaterialHandler.getIterator(Reference.materials);
 		while(i.hasNext()) {
 			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
-			Main.proxy.registerItemRenderer(this, type + '/' + entry.getValue().getTexture(), entry.getValue().getMeta());
+			Main.proxy.registerItemRenderer(this, entry.getValue().getTexture() + '/' + type, entry.getValue().getMeta());
 		}
 	}
 	

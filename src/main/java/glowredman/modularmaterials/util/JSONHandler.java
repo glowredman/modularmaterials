@@ -27,7 +27,7 @@ public class JSONHandler {
 		
 		try {
 			
-			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.TYPECONFIGNAME);
+			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.CONFIGNAME_TYPES);
 			TypeList typeList = new TypeList();
 			
 			if(!fileTypes.exists()) {
@@ -58,7 +58,7 @@ public class JSONHandler {
 		
 		try {
 			
-			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.MATERIALCONFIGNAME);
+			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.CONFIGNAME_MATERIALS);
 			MaterialList materialList = new MaterialList();
 			
 			//check if the file already exists, if not create it
@@ -90,6 +90,7 @@ public class JSONHandler {
 				example.setOreResistance((float) (Math.random() * Float.MAX_VALUE));
 				example.setState("solid");
 				example.setTemperature((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
+				example.setTexture("example_texture");
 				example.setTooltip(new String[] {"§0Black §1Dark Blue §2Dark Green §3Dark Aqua", "§4Dark Red §5Dark Purple §6Gold §7Gray", "§8Dark Gray §9Blue §aGreen §bAqua", "§cRed §dLight Purple §eYellow §fWhite", "§kObfuscated", "§lBold", "§mStrikethrough", "§nUnderline", "§oItalic", "§PPress SHIFT", "§pRelease SHIFT", "§QPress CTRL", "§qRelease CTRL", "§TPress ALT", "§tRelease ALT", "§s1:50:§0,§1,§2,§3,§4,§5,§6,§7,§8,§9,§a,§b,§c,§d,§e,§f:Animated!§s", "§s1:50:§r§n,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r,§r:This also works!§s"});
 				
 				materialList.materials.put("example", example);

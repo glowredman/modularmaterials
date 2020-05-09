@@ -34,7 +34,7 @@ public class AssetHandler {
 				textureCount++;
 			}
 		}
-		Main.logger.info("Detected " + textureCount + " different meta-item-textures in " + (System.currentTimeMillis() - time) + "ms.");
+		Main.logger.info("Detected " + textureCount + " different meta-item-textures-sets in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -42,48 +42,64 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		int modelFileCount = 0;
 		
-		//iterate through all types
-		Iterator i = MaterialHandler.getIterator(Reference.types);
-		while(i.hasNext()) {
-			Entry<String, Type> entry = (Entry<String, Type>) i.next();
-			String type = entry.getKey();
-			String category = entry.getValue().getCategory();
+		//iterate through all materials
+		for(Material material : Reference.materials.values()) {
+			String texture = material.getTexture();
 			
-			//if the type is an item, iterate through all materials
-			if(category.equals("item")) {
-				for(String texture : itemTextures) {
-					File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + Reference.MODID + "/models/item/" + type);
-					File file = new File(dir, texture + ".json");
+			//check if the material should even be registered
+			if(material.isDisabled() && !Reference.enableAll) {
+				continue;
+			} else {
+				
+				//iterate through all of the materials types
+				Iterator types = MaterialHandler.getIterator(material.getEnabledTypes());
+				while(types.hasNext()) {
+					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) types.next();
+					String type = typeEntry.getKey();
+					
+					//check, if there should be an item of this type and material
+					boolean b = false;
 					try {
-						dir.mkdirs();
-						
-						//if the file does not already exist or should be overridden, create it
-						if(!file.exists() || Reference.overrideModelFiles) {
-							if(file.exists()) {
-								file.delete();
-							}
-							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write("{");
-							writer.newLine();
-							writer.write("\t\"parent\": \"item/generated\",");
-							writer.newLine();
-							writer.write("\t\"textures\": {");
-							writer.newLine();
-							writer.write("\t\t\"layer0\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "\",");
-							writer.newLine();
-							writer.write("\t\t\"layer1\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "_overlay\"");
-							writer.newLine();
-							writer.write("\t}");
-							writer.newLine();
-							writer.write("}");
-							writer.close();
-							modelFileCount++;
-						}
+						b = (typeEntry.getValue().equals(true)  && Reference.types.get(type).getCategory().equals("item") && !Reference.types.get(type).isDisabled()) || Reference.enableAll ? true : false;
 					} catch (Exception e) {
-						e.printStackTrace();
+						if(!Reference.suppressTypeMissingWarnings) {
+							Main.logger.error(Reference.CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + Reference.CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + Reference.CONFIGNAME_CORE + '.');
+						}
+					}
+					if(b) {
+						File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + Reference.MODID + "/models/item/" + texture);
+						File file = new File(dir, type + ".json");
+						try {
+							dir.mkdirs();
+							
+							//if the file does not already exist or should be overridden, create it
+							if(!file.exists() || Reference.overrideModelFiles) {
+								if(file.exists()) {
+									file.delete();
+								}
+								BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+								writer.write("{");
+								writer.newLine();
+								writer.write("\t\"parent\": \"item/generated\",");
+								writer.newLine();
+								writer.write("\t\"textures\": {");
+								writer.newLine();
+								writer.write("\t\t\"layer0\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "\",");
+								writer.newLine();
+								writer.write("\t\t\"layer1\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "_overlay\"");
+								writer.newLine();
+								writer.write("\t}");
+								writer.newLine();
+								writer.write("}");
+								writer.close();
+								modelFileCount++;
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				}
-			}	
+			}
 		}
 		
 		//TODO blocks
