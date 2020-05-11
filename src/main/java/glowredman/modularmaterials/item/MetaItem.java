@@ -84,7 +84,7 @@ public class MetaItem extends Item {
 	public String getUnlocalizedName(ItemStack stack) {
 		String s = "";
 		try {
-			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getUnlocalizedName();
+			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata());
 		} catch (Exception e) {
 			s = "item." + Reference.MODID + ".debug";
 		}

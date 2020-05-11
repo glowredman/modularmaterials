@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.util;
+package glowredman.modularmaterials.file;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +13,7 @@ import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.Reference;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -60,7 +61,7 @@ public class AssetHandler {
 					//check, if there should be an item of this type and material
 					boolean b = false;
 					try {
-						b = (typeEntry.getValue().equals(true)  && Reference.types.get(type).getCategory().equals("item") && !Reference.types.get(type).isDisabled()) || Reference.enableAll ? true : false;
+						b = ((typeEntry.getValue()  && Reference.types.get(type).getCategory().equals("item") && !Reference.types.get(type).isDisabled()) || Reference.enableAll) ? true : false;
 					} catch (Exception e) {
 						if(!Reference.suppressTypeMissingWarnings) {
 							Main.logger.error(Reference.CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + Reference.CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + Reference.CONFIGNAME_CORE + '.');
@@ -112,7 +113,7 @@ public class AssetHandler {
 	@SideOnly(Side.CLIENT)
 	public static void createLangFile() {
 		long time = System.currentTimeMillis();
-		int lineCount = 0;
+		int counter = 0;
 		File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + Reference.MODID + "/lang/");
 		File file = new File(dir, "en_us.lang");
 		
@@ -130,31 +131,55 @@ public class AssetHandler {
 				writer.newLine();
 				writer.newLine();
 				writer.write("item." + Reference.MODID + ".debug.name=§cInvalid Item");
-				lineCount++;
+				counter++;
 				writer.newLine();
 				
-				Iterator i = MaterialHandler.getIterator(Reference.types);
-				while(i.hasNext()) {
-					Entry<String, Type> e = (Entry<String, Type>) i.next();
-					String type = e.getKey();
-					String syntax = e.getValue().getSyntax();
-					
+				Iterator materials = MaterialHandler.getIterator(Reference.materials);
+				while(materials.hasNext()) {
+					Entry<String, Material> materialEntry = (Entry<String, Material>) materials.next();
+					Material material = materialEntry.getValue();
 					newParagraph(writer);
-					
-					Iterator j = MaterialHandler.getIterator(Reference.materials);
-					while(j.hasNext()) {
-						Entry<String, Material> f = (Entry<String, Material>) j.next();
-						String unlocalizedName = f.getValue().getUnlocalizedName();
-						String name = f.getValue().getName();
-						writer.write("item." + Reference.MODID + '.' +  type + '.' + unlocalizedName + ".name=" + syntax.replace("%s", name));
-						writer.newLine();
-						lineCount++;
+					writer.write("# -=-=- " + materialEntry.getKey() + " -=-=-");
+					writer.newLine();
+					Iterator types = MaterialHandler.getIterator(material.getEnabledTypes());
+					while(types.hasNext()) {
+						Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) types.next();
+						if(Reference.types.containsKey(typeEntry.getKey()) && typeEntry.getValue()) {
+							Type type = Reference.types.get(typeEntry.getKey());
+							switch (type.getCategory()) {
+							case "item":
+								writer.write("item." + Reference.MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
+								writer.newLine();
+								counter++;
+								break;
+							case "fluid":
+								if(type.getState().equals(material.getState())) {
+									writer.write("fluid." + Reference.MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + '=' + type.getSyntax().replace("%s", material.getName()));
+									writer.newLine();
+									counter++;
+								} else if (type.getState().equals("gaseous")) {
+									writer.write("fluid." + Reference.MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Gaseous " + type.getSyntax().replace("%s", material.getName()));
+									writer.newLine();
+									counter++;
+								} else if (type.getState().equals("liquid")) {
+									if(material.getState().equals("solid")) {
+										writer.write("fluid." + Reference.MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Molten " + type.getSyntax().replace("%s", material.getName()));
+										writer.newLine();
+										counter++;
+									} else {
+										writer.write("fluid." + Reference.MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Liquid " + type.getSyntax().replace("%s", material.getName()));
+										writer.newLine();
+										counter++;
+									}
+								}
+							default:
+								break;
+							}
+						}
 					}
 				}
-				
-				
 				writer.close();
-				Main.logger.info("Created " + lineCount + " localizations in " + (System.currentTimeMillis() - time) + "ms.");
+				Main.logger.info("Created " + counter + " localizations in " + (System.currentTimeMillis() - time) + "ms.");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

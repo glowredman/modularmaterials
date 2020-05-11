@@ -18,10 +18,12 @@ public class Material {
 	public boolean disabled;
 	public HashMap<String, Boolean> enabledTypes = new HashMap<String, Boolean>();
 	public int gasDensity;
+	public int gasLightLevel;
 	@Nonnegative
 	public int gasViscosity;
 	public boolean isBeaconPayment;
 	public int liquidDensity;
+	public int liquidLightLevel;
 	@Nonnegative
 	public int liquidViscosity;
 	public int meltingTemperature;
@@ -43,6 +45,22 @@ public class Material {
 	public Material() {
 	}
 	
+	public int getGasLightLevel() {
+		return gasLightLevel;
+	}
+
+	public int getLiquidLightLevel() {
+		return liquidLightLevel;
+	}
+
+	public void setGasLightLevel(int gasLightLevel) {
+		this.gasLightLevel = gasLightLevel;
+	}
+
+	public void setLiquidLightLevel(int liquidLightLevel) {
+		this.liquidLightLevel = liquidLightLevel;
+	}
+
 	public float getBlockHardness() {
 		return blockHardness;
 	}
@@ -257,10 +275,6 @@ public class Material {
 	
 	public void enableType(String type) {
 		this.enabledTypes.put(type, true);
-	}
-	
-	public String getUnlocalizedName() {
-		return this.name.replace(' ', '_');
 	}
 
 	public void setColor(java.awt.Color color) {

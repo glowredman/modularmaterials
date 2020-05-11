@@ -18,7 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemHandler {
 	
-	public static void registeritems() {
+	public static void registerItems() {
 		Iterator types = MaterialHandler.getIterator(Reference.types);
 		while(types.hasNext()) {
 			Entry<String, Type> type = (Entry<String, Type>) types.next();

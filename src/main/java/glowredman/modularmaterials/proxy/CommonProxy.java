@@ -2,10 +2,11 @@ package glowredman.modularmaterials.proxy;
 
 import static glowredman.modularmaterials.Main.logger;
 import glowredman.modularmaterials.Reference;
+import glowredman.modularmaterials.file.AssetHandler;
+import glowredman.modularmaterials.file.JSONHandler;
+import glowredman.modularmaterials.fluid.FluidHandler;
 import glowredman.modularmaterials.item.ItemHandler;
-import glowredman.modularmaterials.util.AssetHandler;
 import glowredman.modularmaterials.util.ConfigHandler;
-import glowredman.modularmaterials.util.JSONHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -33,7 +34,8 @@ public class CommonProxy {
 		AssetHandler.createModelFiles();
 		AssetHandler.createLangFile();
 		//TODO actually registering the items/blocks/fluids
-		ItemHandler.registeritems();
+		FluidHandler.registerFluids();
+		ItemHandler.registerItems();
 	}
 	
 	public void init(FMLInitializationEvent event) {

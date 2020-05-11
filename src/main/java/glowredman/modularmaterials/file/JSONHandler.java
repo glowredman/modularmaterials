@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.util;
+package glowredman.modularmaterials.file;
 
 import java.awt.Color;
 import java.io.BufferedWriter;
@@ -19,6 +19,7 @@ import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.object.TypeList;
+import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class JSONHandler {
@@ -76,8 +77,10 @@ public class JSONHandler {
 				example.setDisabled(false);
 				example.setEnabledTypes(MaterialHandler.getAllTypesEqualHashMap(true));
 				example.setGasDensity((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
+				example.setGasLightLevel((int) (Math.random() * 15));
 				example.setGasViscosity((int) (Math.random() * Integer.MAX_VALUE));
 				example.setLiquidDensity((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
+				example.setLiquidLightLevel((int) (Math.random() * 15));
 				example.setLiquidViscosity((int) (Math.random() * Integer.MAX_VALUE));
 				example.setMeltingTemperature((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
 				example.setMeta((short) 0);
