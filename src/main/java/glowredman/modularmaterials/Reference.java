@@ -10,6 +10,7 @@ import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fluids.Fluid;
 
 public class Reference {
 	
@@ -57,4 +58,5 @@ public class Reference {
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
 	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
+	public static List<Fluid> fluids = new ArrayList<Fluid>();
 }

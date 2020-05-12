@@ -12,7 +12,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
 public class FluidHandler {
-	
+		
 	public static void registerFluids() {
 		long time = System.currentTimeMillis();
 		int counter = 0;
@@ -40,7 +40,7 @@ public class FluidHandler {
 						}
 					}
 					if(b) {
-						String texture = "blocks/fluid/" + material.getTexture() + '/' + type;
+						String texture = "fluids/" + material.getTexture() + '/' + type;
 						String name = materialEntry.getKey().toLowerCase().replace(' ', '_');
 						String unlocalizedName = name;
 						int temperature = material.getTemperature();
@@ -85,7 +85,6 @@ public class FluidHandler {
 						}
 						
 						Fluid fluid = new Fluid(name, new ResourceLocation(Reference.MODID, texture + "_still"), new ResourceLocation(Reference.MODID, texture + "_flowing"), color);
-						System.out.println(fluid.getStill().getResourceDomain() + " | " + fluid.getStill().getResourcePath());
 						fluid.setDensity(density);
 						fluid.setGaseous(isGaseous);
 						fluid.setLuminosity(luminosity);
@@ -94,6 +93,7 @@ public class FluidHandler {
 						fluid.setViscosity(viscosity);
 						FluidRegistry.registerFluid(fluid);
 						FluidRegistry.addBucketForFluid(fluid);
+						Reference.fluids.add(fluid);
 						counter++;
 					}
 				}

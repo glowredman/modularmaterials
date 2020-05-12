@@ -312,6 +312,14 @@
 	  "state": "solid",
       "unitValue": "4u"
     },
+	"round": {
+      "category": "item",
+      "oreDictPrefix": "round",
+      "syntax": "%s Round",
+	  "disabled": false,
+	  "state": "solid",
+      "unitValue": "1/4u"
+	},
     "screw": {
       "category": "item",
       "oreDictPrefix": "screw",

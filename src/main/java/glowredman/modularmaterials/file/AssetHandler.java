@@ -26,10 +26,8 @@ public class AssetHandler {
 		int textureCount = 0;
 		long time = System.currentTimeMillis();
 		
-		Iterator i = MaterialHandler.getIterator(Reference.materials);
-		while(i.hasNext()) {
-			Entry<String, Material> e = (Entry<String, Material>) i.next();
-			String texture = e.getValue().getTexture();
+		for(Material material : Reference.materials.values()) {
+			String texture = material.getTexture();
 			if(!itemTextures.contains(texture)) {
 				itemTextures.add(texture);
 				textureCount++;

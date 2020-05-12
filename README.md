@@ -16,16 +16,16 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
     - [ ] Block Harvest-Level
     - [ ] Block Light-Level
     - [ ] Block Resistance
-    - [ ] Boiling Temperature
+    - [x] Boiling Temperature
     - [x] Color (alpha, red, green, blue)
     - [x] Ability to disable the Material completely
     - [x] Ability to disable the Material for certain Types
-    - [ ] Gas Density
-    - [ ] Gas Viscosity
+    - [x] Gas Density
+    - [x] Gas Viscosity
     - [ ] If the Material can be used as a Beacon-Payment
-    - [ ] Liquid Density
-    - [ ] Liquid Viscosity
-    - [ ] Melting Temperature
+    - [x] Liquid Density
+    - [x] Liquid Viscosity
+    - [x] Melting Temperature
     - [x] Meta Value
     - [x] Name
     - [x] OreDictionary Entries
@@ -33,8 +33,8 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
     - [ ] Ore Harvest-Level
     - [ ] Ore Light-Level
     - [ ] Ore Resistance
-    - [ ] State of Matter
-    - [ ] Temperature
+    - [x] State of Matter
+    - [x] Temperature
     - [x] Texture
     - [x] Tooltip
  - [x] Unit-based OreDictionary: each Type has a value associated with it (for Example Ingots, Plates, Dusts 1u, Nuggets 1/9u or Blocks 9u). This allows for more precise Inputs, because you could, for Example, set "1uCopper" as an Input for an Alloy Smelter and it would accept all Copper Ingots, Dusts, Plates, etc. This makes sense, because in this case it doesn't really matter what Shape or Form the Items have, as long as they are the same physical Amount
