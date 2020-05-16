@@ -194,7 +194,7 @@
     },
     "item_casing": {
       "category": "item",
-      "oreDictPrefix": "itemcasing",
+      "oreDictPrefix": "itemCasing",
       "syntax": "%s Item Casing",
 	  "disabled": false,
 	  "state": "solid",
