@@ -8,6 +8,9 @@ import java.util.List;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.tab.CreativeTabBlocks;
+import glowredman.modularmaterials.tab.CreativeTabItems;
+import glowredman.modularmaterials.tab.CreativeTabOres;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
@@ -24,7 +27,9 @@ public class Reference {
 	public static final String SERVER = "glowredman.modularmaterials.proxy.CommonProxy";
 	
 	//CREATIVE TABS
-	public static final CreativeTabs TAB_ITEMS = CreativeTabs.SEARCH; //TODO
+	public static final CreativeTabs TAB_BLOCKS = new CreativeTabBlocks();
+	public static final CreativeTabs TAB_ITEMS = new CreativeTabItems();
+	public static final CreativeTabs TAB_ORES = new CreativeTabOres();
 	
 	//CONFIG
 	public static Configuration config_core;

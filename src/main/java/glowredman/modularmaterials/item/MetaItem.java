@@ -70,12 +70,14 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		Iterator i = MaterialHandler.getIterator(Reference.materials);
-		while(i.hasNext()) {
-			Entry<String, Material> entry = (Entry<String, Material>) i.next();
-			Material material = entry.getValue();
-			if((!material.isDisabled() && material.isTypeEnabled(this.getType())) || Reference.enableAll) {
-				items.add(new ItemStack(this, 1, material.getMeta()));
+		if(tab.equals(Reference.TAB_ITEMS)) {
+			Iterator i = MaterialHandler.getIterator(Reference.materials);
+			while(i.hasNext()) {
+				Entry<String, Material> entry = (Entry<String, Material>) i.next();
+				Material material = entry.getValue();
+				if((!material.isDisabled() && material.isTypeEnabled(this.getType())) || Reference.enableAll) {
+					items.add(new ItemStack(this, 1, material.getMeta()));
+				}
 			}
 		}
 	}
