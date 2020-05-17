@@ -39,13 +39,13 @@ public class ConfigHandler {
 		suppressTypeMissingWarnings = config_core.getBoolean("suppressTypeMissingWarnings", GENERAL, false, "Set to 'true' to suppress any warnings, that indicate missing information in the " + CONFIGNAME_TYPES + "-config.");
 		
 		//formatting
-		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "§s", "String, to trigger animated formatting. Formatting is: §sPOSSTEP:DELAY:COLORS:STRING§s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
-		triggerCtrlIsNotPressedFormatting = config_core.getString("triggerCtrlIsNotPressedFormatting", FORMATTING, "§Q", "String, to show the line only when 'Ctrl' is not pressed");
-		triggerCtrlIsPressedFormatting = config_core.getString("triggerCtrlIsPressedFormatting", FORMATTING, "§q", "String, to show the line only when 'Ctrl' is pressed");
-		triggerShiftIsNotPressedFormatting = config_core.getString("triggerShiftIsNotPressedFormatting", FORMATTING, "§P", "String, to show the line only when 'Shift' is not pressed");
-		triggerShiftIsPressedFormatting = config_core.getString("triggerShiftIsPressedFormatting", FORMATTING, "§p", "String, to show the line only when 'Shift' is pressed");
-		triggerAltIsNotPressedFormatting = config_core.getString("triggerAltIsNotPressedFormatting", FORMATTING, "§T", "String, to show the line only when 'Alt' is not pressed");
-		triggerAltIsPressedFormatting = config_core.getString("triggerAltIsPressedFormatting", FORMATTING, "§t", "String, to show the line only when 'Alt' is pressed");
+		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "\u00a7s", "String, to trigger animated formatting. Formatting is: \u00a7sPOSSTEP:DELAY:COLORS:STRING\u00a7s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
+		triggerCtrlIsNotPressedFormatting = config_core.getString("triggerCtrlIsNotPressedFormatting", FORMATTING, "\u00a7Q", "String, to show the line only when 'Ctrl' is not pressed");
+		triggerCtrlIsPressedFormatting = config_core.getString("triggerCtrlIsPressedFormatting", FORMATTING, "\u00a7q", "String, to show the line only when 'Ctrl' is pressed");
+		triggerShiftIsNotPressedFormatting = config_core.getString("triggerShiftIsNotPressedFormatting", FORMATTING, "\u00a7P", "String, to show the line only when 'Shift' is not pressed");
+		triggerShiftIsPressedFormatting = config_core.getString("triggerShiftIsPressedFormatting", FORMATTING, "\u00a7p", "String, to show the line only when 'Shift' is pressed");
+		triggerAltIsNotPressedFormatting = config_core.getString("triggerAltIsNotPressedFormatting", FORMATTING, "\u00a7T", "String, to show the line only when 'Alt' is not pressed");
+		triggerAltIsPressedFormatting = config_core.getString("triggerAltIsPressedFormatting", FORMATTING, "\u00a7t", "String, to show the line only when 'Alt' is pressed");
 		animatedFormattingDelayFallback = config_core.getFloat("animatedFormattingDelayFallback", FORMATTING, 0.001f, 1E-45f, Float.MAX_VALUE, "If the delay set when using animated formatting is below or equal to 0, it is set to this value.");
 		enableFormattingDebugger = config_core.getBoolean("eanbleFormattingDebugger", FORMATTING, false, "Prints exceptions cought while formatting the tooltips to the console. this can be used to ensure that your tooltips are properly formatted. THIS WILL SPAM YOUR CONSOLE!");
 	}
