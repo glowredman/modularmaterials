@@ -52,6 +52,7 @@
 	    "rod": true,
 	    "rod_long": true,
 	    "rotor": true,
+		"round": true,
 	    "screw": true,
 	    "spring": true,
 	    "spring_small": true,
