@@ -4,7 +4,7 @@
       "category": "block",
       "oreDictPrefix": "block",
       "syntax": "%s Block",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "9u"
     },
@@ -12,7 +12,7 @@
       "category": "item",
       "oreDictPrefix": "bolt",
       "syntax": "%s Bolt",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/8u"
     },
@@ -20,7 +20,7 @@
       "category": "item",
       "oreDictPrefix": "crushed",
       "syntax": "Crushed %s Ore",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2o"
     },
@@ -28,7 +28,7 @@
       "category": "item",
       "oreDictPrefix": "crushedPurified",
       "syntax": "Purified %s Ore",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2o"
     },
@@ -36,7 +36,7 @@
       "category": "item",
       "oreDictPrefix": "dustImpure",
       "syntax": "Impure %s Dust",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -44,7 +44,7 @@
       "category": "item",
       "oreDictPrefix": "dustPure",
       "syntax": "Pure %s Dust",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
     },
@@ -52,7 +52,7 @@
       "category": "item",
       "oreDictPrefix": "dust",
       "syntax": "%s Dust",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -60,7 +60,7 @@
       "category": "item",
       "oreDictPrefix": "dustSmall",
       "syntax": "Small %s Dust",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
     },
@@ -68,7 +68,7 @@
       "category": "item",
       "oreDictPrefix": "dustTiny",
       "syntax": "Tiny %s Dust",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/9u"
     },
@@ -76,7 +76,7 @@
       "category": "item",
       "oreDictPrefix": "foil",
       "syntax": "%s Foil",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
     },
@@ -84,7 +84,7 @@
       "category": "fluid",
       "oreDictPrefix": "",
       "syntax": "%l",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "gaseous",
       "unitValue": ""
     },
@@ -92,7 +92,7 @@
       "category": "item",
       "oreDictPrefix": "gear",
       "syntax": "%s Gear",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "4u"
     },
@@ -100,7 +100,7 @@
       "category": "item",
       "oreDictPrefix": "gearSmall",
       "syntax": "Small %s Gear",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "2u"
     },
@@ -108,7 +108,7 @@
       "category": "item",
       "oreDictPrefix": "gemChipped",
       "syntax": "Chipped %s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
     },
@@ -116,7 +116,7 @@
       "category": "item",
       "oreDictPrefix": "gemFlawed",
       "syntax": "Flawed %s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
     },
@@ -124,7 +124,7 @@
       "category": "item",
       "oreDictPrefix": "gem",
       "syntax": "%s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -132,7 +132,7 @@
       "category": "item",
       "oreDictPrefix": "gemFlawless",
       "syntax": "Flawless %s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "2u"
     },
@@ -140,7 +140,7 @@
       "category": "item",
       "oreDictPrefix": "gemExquisite",
       "syntax": "Exquisite %s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "false",
       "unitValue": "4u"
     },
@@ -148,7 +148,7 @@
       "category": "item",
       "oreDictPrefix": "ingot",
       "syntax": "%s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -156,7 +156,7 @@
       "category": "item",
       "oreDictPrefix": "ingotDouble",
       "syntax": "Double %s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "2u"
     },
@@ -164,7 +164,7 @@
       "category": "item",
       "oreDictPrefix": "ingotTriple",
       "syntax": "Triple %s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "3u"
     },
@@ -172,7 +172,7 @@
       "category": "item",
       "oreDictPrefix": "ingotQuadruple",
       "syntax": "Quadruple %s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "4u"
     },
@@ -180,7 +180,7 @@
       "category": "item",
       "oreDictPrefix": "ingotQuintuple",
       "syntax": "Quintuple %s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "5u"
     },
@@ -188,7 +188,7 @@
       "category": "item",
       "oreDictPrefix": "ingotHot",
       "syntax": "Double %s Ingot",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -196,7 +196,7 @@
       "category": "item",
       "oreDictPrefix": "itemCasing",
       "syntax": "%s Item Casing",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
     },
@@ -204,7 +204,7 @@
       "category": "item",
       "oreDictPrefix": "lens",
       "syntax": "%s Lens",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "2u"
     },
@@ -212,7 +212,7 @@
       "category": "fluid",
       "oreDictPrefix": "",
       "syntax": "%s",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "liquid",
       "unitValue": ""
     },
@@ -220,7 +220,7 @@
       "category": "item",
       "oreDictPrefix": "nugget",
       "syntax": "%s Nugget",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/9u"
     },
@@ -228,7 +228,7 @@
       "category": "ore",
       "oreDictPrefix": "ore",
       "syntax": "%s Ore",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1o"
     },
@@ -236,7 +236,7 @@
       "category": "item",
       "oreDictPrefix": "plate",
       "syntax": "%s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -244,7 +244,7 @@
       "category": "item",
       "oreDictPrefix": "plateDouble",
       "syntax": "Double %s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "2u"
     },
@@ -252,7 +252,7 @@
       "category": "item",
       "oreDictPrefix": "plateTriple",
       "syntax": "Triple %s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "3u"
     },
@@ -260,7 +260,7 @@
       "category": "item",
       "oreDictPrefix": "plateQuadruple",
       "syntax": "Quadruple %s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "4u"
     },
@@ -268,7 +268,7 @@
       "category": "item",
       "oreDictPrefix": "plateQuintuple",
       "syntax": "Quintuple %s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "5u"
     },
@@ -276,7 +276,7 @@
       "category": "item",
       "oreDictPrefix": "plateDense",
       "syntax": "Dense %s Plate",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "9u"
     },
@@ -284,7 +284,7 @@
       "category": "item",
       "oreDictPrefix": "ring",
       "syntax": "%s Ring",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
     },
@@ -292,7 +292,7 @@
       "category": "item",
       "oreDictPrefix": "rod",
       "syntax": "%s Rod",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
     },
@@ -300,7 +300,7 @@
       "category": "item",
       "oreDictPrefix": "rodLong",
       "syntax": "Long %s Rod",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -308,7 +308,7 @@
       "category": "item",
       "oreDictPrefix": "rotor",
       "syntax": "%s Rotor",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "4u"
     },
@@ -316,7 +316,7 @@
       "category": "item",
       "oreDictPrefix": "round",
       "syntax": "%s Round",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
 	},
@@ -324,7 +324,7 @@
       "category": "item",
       "oreDictPrefix": "screw",
       "syntax": "%s Screw",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/8u"
     },
@@ -332,7 +332,7 @@
       "category": "item",
       "oreDictPrefix": "spring",
       "syntax": "%s Spring",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1u"
     },
@@ -340,7 +340,7 @@
       "category": "item",
       "oreDictPrefix": "springSmall",
       "syntax": "Small %s Spring",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/2u"
     },
@@ -348,7 +348,7 @@
       "category": "item",
       "oreDictPrefix": "wire",
       "syntax": "%s Wire",
-	  "disabled": false,
+	  "enabled": true,
 	  "state": "solid",
       "unitValue": "1/4u"
     }
