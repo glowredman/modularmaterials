@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
@@ -44,6 +45,7 @@ public class Reference {
 	public static boolean enableAll = false;
 	public static boolean overrideModelFiles = false;
 	public static boolean overrideLangFile = false;
+	public static boolean overrideBlockStateFiles = false;
 	public static boolean enableUnitOreDict = true;
 	public static boolean suppressTypeMissingWarnings = false;
 	
@@ -62,6 +64,7 @@ public class Reference {
 	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
 	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
+	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
 }

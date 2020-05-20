@@ -1,5 +1,6 @@
 # debug
 item.modularmaterials.debug.name=§cInvalid Item
+tile.modularmaterials.debug.name=§cInvalid Block
 
 # creative tabs
 itemGroup.modularmaterials.blocks=Modular Materials: Blocks
