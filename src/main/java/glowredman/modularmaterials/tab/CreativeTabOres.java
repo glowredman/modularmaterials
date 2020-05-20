@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.tab;
 
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.MODID;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 public class CreativeTabOres extends CreativeTabs {
 
 	public CreativeTabOres() {
-		super(Reference.MODID + ".ores");
+		super(MODID + ".ores");
 	}
 
 	@Override

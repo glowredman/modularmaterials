@@ -3,7 +3,7 @@ package glowredman.modularmaterials.util;
 import org.lwjgl.input.Keyboard;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.*;
 import net.minecraft.client.Minecraft;
 
 public class FormattingHandler {
@@ -11,22 +11,22 @@ public class FormattingHandler {
 	public static String formatTooltipLine(String line) throws IndexOutOfBoundsException, NumberFormatException, NullPointerException {
 		
 		//key dependent formatting
-		line = formatKey(line, Reference.triggerAltIsNotPressedFormatting, Keyboard.KEY_LMENU, Keyboard.KEY_RMENU, true);
-		line = formatKey(line, Reference.triggerAltIsPressedFormatting, Keyboard.KEY_LMENU, Keyboard.KEY_RMENU, false);
-		line = formatKey(line, Reference.triggerCtrlIsNotPressedFormatting, Keyboard.KEY_LCONTROL, Keyboard.KEY_RCONTROL, true);
-		line = formatKey(line, Reference.triggerCtrlIsPressedFormatting, Keyboard.KEY_LCONTROL, Keyboard.KEY_RCONTROL, false);
-		line = formatKey(line, Reference.triggerShiftIsNotPressedFormatting, Keyboard.KEY_LSHIFT, Keyboard.KEY_RSHIFT, true);
-		line = formatKey(line, Reference.triggerShiftIsPressedFormatting, Keyboard.KEY_LSHIFT, Keyboard.KEY_RSHIFT, false);
+		line = formatKey(line, triggerAltIsNotPressedFormatting, Keyboard.KEY_LMENU, Keyboard.KEY_RMENU, true);
+		line = formatKey(line, triggerAltIsPressedFormatting, Keyboard.KEY_LMENU, Keyboard.KEY_RMENU, false);
+		line = formatKey(line, triggerCtrlIsNotPressedFormatting, Keyboard.KEY_LCONTROL, Keyboard.KEY_RCONTROL, true);
+		line = formatKey(line, triggerCtrlIsPressedFormatting, Keyboard.KEY_LCONTROL, Keyboard.KEY_RCONTROL, false);
+		line = formatKey(line, triggerShiftIsNotPressedFormatting, Keyboard.KEY_LSHIFT, Keyboard.KEY_RSHIFT, true);
+		line = formatKey(line, triggerShiftIsPressedFormatting, Keyboard.KEY_LSHIFT, Keyboard.KEY_RSHIFT, false);
 		
 		//animated formatting
-		while(line.contains(Reference.triggerAnimatedFormattingChar)) {
+		while(line.contains(triggerAnimatedFormattingChar)) {
 			//init vars
-			int startOfSequence = line.indexOf(Reference.triggerAnimatedFormattingChar);
-			int endOfSequence = line.indexOf(Reference.triggerAnimatedFormattingChar, startOfSequence + Reference.triggerAnimatedFormattingChar.length());
+			int startOfSequence = line.indexOf(triggerAnimatedFormattingChar);
+			int endOfSequence = line.indexOf(triggerAnimatedFormattingChar, startOfSequence + triggerAnimatedFormattingChar.length());
 			//assemble string
 			String finishedLine = line.substring(0, startOfSequence);
-			finishedLine = finishedLine + formatAnimated(line.substring(startOfSequence + Reference.triggerAnimatedFormattingChar.length(), endOfSequence));
-			line = finishedLine + line.substring(endOfSequence + Reference.triggerAnimatedFormattingChar.length(), line.length());
+			finishedLine = finishedLine + formatAnimated(line.substring(startOfSequence + triggerAnimatedFormattingChar.length(), endOfSequence));
+			line = finishedLine + line.substring(endOfSequence + triggerAnimatedFormattingChar.length(), line.length());
 		}
 
 		return line;
@@ -60,7 +60,7 @@ public class FormattingHandler {
 		
 		//calculate
 		if(delay <= 0) {
-			delay = Reference.animatedFormattingDelayFallback;
+			delay = animatedFormattingDelayFallback;
 		}
 		
 		int offset = (int) (Math.floor(Minecraft.getSystemTime() / delay) % colorArray.length);

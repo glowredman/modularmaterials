@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -29,10 +29,10 @@ public class MetaItem extends Item {
 	public MetaItem(String type) {
 		this.setType(type);
 		this.setHasSubtypes(true);
-		this.setRegistryName(Reference.MODID, type);
-		this.setCreativeTab(Reference.TAB_ITEMS);
+		this.setRegistryName(MODID, type);
+		this.setCreativeTab(TAB_ITEMS);
 		
-		Iterator i = MaterialHandler.getIterator(Reference.materials);
+		Iterator i = MaterialHandler.getIterator(materials);
 		while(i.hasNext()) {
 			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
 			Main.proxy.registerItemRenderer(this, entry.getValue().getTexture() + '/' + type, entry.getValue().getMeta());
@@ -49,8 +49,8 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if(Reference.idMapping.containsKey(stack.getMetadata())) {
-			String[] lines = Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getTooltip();
+		if(idMapping.containsKey(stack.getMetadata())) {
+			String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
 			if(lines != null) {
 				for(String line : lines) {
 					try {
@@ -59,7 +59,7 @@ public class MetaItem extends Item {
 							tooltip.add(s);
 						}
 					} catch (Exception e) {
-						if(Reference.enableFormattingDebugger) {
+						if(enableFormattingDebugger) {
 							e.printStackTrace();
 						}
 					}
@@ -70,12 +70,12 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if(tab.equals(Reference.TAB_ITEMS)) {
-			Iterator i = MaterialHandler.getIterator(Reference.materials);
+		if(tab.equals(TAB_ITEMS)) {
+			Iterator i = MaterialHandler.getIterator(materials);
 			while(i.hasNext()) {
 				Entry<String, Material> entry = (Entry<String, Material>) i.next();
 				Material material = entry.getValue();
-				if((!material.isDisabled() && material.isTypeEnabled(this.getType())) || Reference.enableAll) {
+				if((material.isEnabled() && material.isTypeEnabled(this.getType())) || enableAll) {
 					items.add(new ItemStack(this, 1, material.getMeta()));
 				}
 			}
@@ -86,9 +86,9 @@ public class MetaItem extends Item {
 	public String getUnlocalizedName(ItemStack stack) {
 		String s = "";
 		try {
-			s = "item." + Reference.MODID + '.' + this.getType() + '.' + Reference.idMapping.get(stack.getMetadata());
+			s = "item." + MODID + '.' + this.getType() + '.' + idMapping.get(stack.getMetadata());
 		} catch (Exception e) {
-			s = "item." + Reference.MODID + ".debug";
+			s = "item." + MODID + ".debug";
 		}
 		return s;
 	}
@@ -100,7 +100,7 @@ public class MetaItem extends Item {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if(tintIndex == 0) {
-					return Reference.materials.get(Reference.idMapping.get(stack.getMetadata())).getColor().getARGB();
+					return MaterialHandler.getMaterialFromID(stack.getMetadata()).getColor().getARGB();
 				} else {
 					return 0xFFFFFF;
 				}

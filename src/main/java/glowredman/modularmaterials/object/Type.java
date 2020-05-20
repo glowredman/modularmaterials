@@ -3,7 +3,7 @@ package glowredman.modularmaterials.object;
 public class Type {
 	
 	public String category;
-	public boolean disabled;
+	public boolean enabled;
 	public String oreDictPrefix;
 	public String state;
 	public String syntax;
@@ -17,12 +17,12 @@ public class Type {
 		this.state = state;
 	}
 	
-	public boolean isDisabled() {
-		return disabled;
+	public boolean isEnabled() {
+		return enabled;
 	}
 	
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	public String getUnitValue() {

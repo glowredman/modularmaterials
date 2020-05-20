@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.util.ResourceLocation;
@@ -18,13 +18,13 @@ public class FluidHandler {
 		int counter = 0;
 		
 		//iterate through all materials
-		Iterator materials = MaterialHandler.getIterator(Reference.materials);
-		while(materials.hasNext()) {
-			Entry<String, Material> materialEntry = (Entry<String, Material>) materials.next();
+		Iterator materialIterator = MaterialHandler.getIterator(materials);
+		while(materialIterator.hasNext()) {
+			Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 			Material material = materialEntry.getValue();
 			
 			//check, if the material should be registered
-			if(!material.isDisabled() || Reference.enableAll) {
+			if(material.isEnabled() || enableAll) {
 				Iterator i = MaterialHandler.getIterator(material.getEnabledTypes());
 				while(i.hasNext()) {
 					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) i.next();
@@ -33,10 +33,10 @@ public class FluidHandler {
 					//check if the type is a fluid and enabled
 					boolean b = false;
 					try {
-						b = (typeEntry.getValue() && Reference.types.get(typeEntry.getKey()).getCategory().equals("fluid") && !Reference.types.get(typeEntry.getKey()).isDisabled()) ? true : false;
+						b = (typeEntry.getValue() && types.get(typeEntry.getKey()).getCategory().equals("fluid") && types.get(typeEntry.getKey()).isEnabled()) ? true : false;
 					} catch (Exception e) {
-						if(!Reference.suppressTypeMissingWarnings) {
-							Main.logger.error(Reference.CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + Reference.CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + Reference.CONFIGNAME_CORE + '.');
+						if(!suppressTypeMissingWarnings) {
+							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					if(b) {
@@ -50,7 +50,7 @@ public class FluidHandler {
 						int luminosity = 0;
 						int viscosity = 1000;
 						
-						switch (Reference.types.get(type).getState()) {
+						switch (types.get(type).getState()) {
 						case "gaseous":
 							
 							//if the materials state is also gaseous, the stats stay the same, otherwise do this:
@@ -80,20 +80,20 @@ public class FluidHandler {
 							viscosity = material.getLiquidViscosity();
 							break;
 						default:
-							name = Reference.types.get(type).getState() + name;
+							name = types.get(type).getState() + name;
 							break;
 						}
 						
-						Fluid fluid = new Fluid(name, new ResourceLocation(Reference.MODID, texture + "_still"), new ResourceLocation(Reference.MODID, texture + "_flowing"), color);
+						Fluid fluid = new Fluid(name, new ResourceLocation(MODID, texture + "_still"), new ResourceLocation(MODID, texture + "_flowing"), color);
 						fluid.setDensity(density);
 						fluid.setGaseous(isGaseous);
 						fluid.setLuminosity(luminosity);
 						fluid.setTemperature(temperature);
-						fluid.setUnlocalizedName(Reference.MODID + '.' + type + '.' + unlocalizedName);
+						fluid.setUnlocalizedName(MODID + '.' + type + '.' + unlocalizedName);
 						fluid.setViscosity(viscosity);
 						FluidRegistry.registerFluid(fluid);
 						FluidRegistry.addBucketForFluid(fluid);
-						Reference.fluids.add(fluid);
+						fluids.add(fluid);
 						counter++;
 					}
 				}

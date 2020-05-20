@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
 import glowredman.modularmaterials.object.Type;
@@ -28,13 +28,13 @@ public class JSONHandler {
 		
 		try {
 			
-			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.CONFIGNAME_TYPES);
+			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_TYPES);
 			TypeList typeList = new TypeList();
 			
 			if(!fileTypes.exists()) {
 				long time = System.currentTimeMillis();
 				Type example = new Type();
-				example.setDisabled(false);
+				example.setEnabled(true);
 				example.setCategory("item");
 				example.setOreDictPrefix("example");
 				example.setSyntax("%s Thingy");
@@ -47,7 +47,7 @@ public class JSONHandler {
 				Main.logger.info("Succesfully created \"" + fileTypes + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
 			
-			Reference.types = new Gson().fromJson(readFile(fileTypes.getPath(), StandardCharsets.UTF_8), TypeList.class).getTypes();
+			types = new Gson().fromJson(readFile(fileTypes.getPath(), StandardCharsets.UTF_8), TypeList.class).getTypes();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,7 +59,7 @@ public class JSONHandler {
 		
 		try {
 			
-			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + Reference.MODID, Reference.CONFIGNAME_MATERIALS);
+			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MATERIALS);
 			MaterialList materialList = new MaterialList();
 			
 			//check if the file already exists, if not create it
@@ -74,7 +74,7 @@ public class JSONHandler {
 				example.setBlockResistance((float) (Math.random() * Float.MAX_VALUE));
 				example.setBoilingTemperature((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
 				example.setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random()));
-				example.setDisabled(false);
+				example.setEnabled(true);
 				example.setEnabledTypes(MaterialHandler.getAllTypesEqualHashMap(true));
 				example.setGasDensity((int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE));
 				example.setGasLightLevel((int) (Math.random() * 15));
@@ -105,7 +105,7 @@ public class JSONHandler {
 			}
 						
 			//transfer config information
-			Reference.materials = new Gson().fromJson(readFile(fileMaterials.getPath(), StandardCharsets.UTF_8), MaterialList.class).getMaterials();
+			materials = new Gson().fromJson(readFile(fileMaterials.getPath(), StandardCharsets.UTF_8), MaterialList.class).getMaterials();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

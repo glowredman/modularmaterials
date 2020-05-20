@@ -5,8 +5,6 @@ import java.util.HashMap;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
-import glowredman.modularmaterials.Reference;
-
 public class Material {
 	
 	public float blockHardness;
@@ -15,7 +13,7 @@ public class Material {
 	public float blockResistance;
 	public int boilingTemperature;
 	public Color color = new Color();
-	public boolean disabled;
+	public boolean enabled;
 	public HashMap<String, Boolean> enabledTypes = new HashMap<String, Boolean>();
 	public int gasDensity;
 	public int gasLightLevel;
@@ -44,7 +42,7 @@ public class Material {
 	
 	public Material() {
 	}
-	
+
 	public int getGasLightLevel() {
 		return gasLightLevel;
 	}
@@ -89,8 +87,8 @@ public class Material {
 		return color;
 	}
 
-	public boolean isDisabled() {
-		return disabled;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
 	public HashMap<String, Boolean> getEnabledTypes() {
@@ -189,8 +187,8 @@ public class Material {
 		this.color = color;
 	}
 
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public void setEnabledTypes(HashMap<String, Boolean> enabledTypes) {
@@ -269,7 +267,7 @@ public class Material {
 		if(this.getEnabledTypes().containsKey(type)) {
 			return this.enabledTypes.get(type);
 		} else {
-			return false;
+			return true;
 		}
 	}
 	

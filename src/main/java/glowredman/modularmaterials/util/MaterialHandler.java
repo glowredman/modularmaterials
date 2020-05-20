@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
-import glowredman.modularmaterials.Reference;
+import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 
 import static glowredman.modularmaterials.Reference.*;
@@ -22,10 +22,14 @@ public class MaterialHandler {
 		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
+	public static Material getMaterialFromID(int meta) {
+		return materials.get(idMapping.get(meta));
+	}
+	
 	public static void fillMaterialListIfEmpty() {
 		if(materials.isEmpty()) {
 			Material material = new Material();
-			material.setDisabled(true);
+			material.setEnabled(false);
 			material.setEnabledTypes(getAllTypesEqualHashMap(true));
 			material.setMeta((short) 0);
 			material.setName("null");
@@ -40,8 +44,8 @@ public class MaterialHandler {
 	
 	public static HashMap<String, Boolean> getAllTypesEqualHashMap(boolean value) {
 		HashMap<String, Boolean> hashMap = new HashMap<String, Boolean>();
-		for(int i = 0; i < Reference.types.size(); i++) {
-			hashMap.put((String) Reference.types.keySet().toArray()[i], value);
+		for(int i = 0; i < types.size(); i++) {
+			hashMap.put((String) types.keySet().toArray()[i], value);
 		}
 		return hashMap;
 	}
