@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
 import static glowredman.modularmaterials.file.Templates.*;
+import glowredman.modularmaterials.object.CTTT;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -21,27 +22,124 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class AssetHandler {
 	
-	public static List<String> itemTextures = new ArrayList<String>();
+	public static List<CTTT> cttts = new ArrayList<CTTT>();
 	
-	public static void initItemTextureList() {
-		int textureCount = 0;
+	@SideOnly(Side.CLIENT)
+	public static void initCTTTList() {
+		int count = 0;
 		long time = System.currentTimeMillis();
 		
-		for(Material materialIterator : materials.values()) {
-			String texture = materialIterator.getTexture();
-			if(!itemTextures.contains(texture)) {
-				itemTextures.add(texture);
-				textureCount++;
+		for(Material material : materials.values()) {
+			if(material.isEnabled() || enableAll) {
+				Iterator typeIterator = MaterialHandler.getIterator(material.getEnabledTypes());
+				while(typeIterator.hasNext()) {
+					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
+					String typeKey = typeEntry.getKey();
+					
+					//figure out, if there should be an material with that type
+					boolean isTypeEnabled = false;
+					try {
+						isTypeEnabled = (typeEntry.getValue() && types.get(typeKey).isEnabled()) || enableAll;
+					} catch (Exception e) {
+						if(!suppressTypeMissingWarnings) {
+							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+						}
+					}
+					Type type = types.get(typeKey);
+					CTTT cttt = new CTTT(type.getCategory(), material.getTexture(), typeKey);
+					if(isTypeEnabled && !cttts.contains(cttt)) {
+						cttts.add(cttt);
+						count++;
+					}
+				}
 			}
 		}
-		Main.logger.info("Detected " + textureCount + " different meta-item-textures-sets. Took " + (System.currentTimeMillis() - time) + "ms.");
+		Main.logger.info("Detected " + count + " different category-texture-type-triples. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void createModelFiles() {
 		long time = System.currentTimeMillis();
-		int modelFileCount = 0;
-		int blockStateCount = 0;
+		int count = 0;
+		File mcDataDir = Minecraft.getMinecraft().mcDataDir;
+		
+		for(CTTT cttt : cttts) {
+			String texture = cttt.getTexture();
+			String type = cttt.getType();
+			
+			switch (cttt.getCategory()) {
+			case "item":
+				File dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
+				File file = new File(dir, type + ".json");
+				try {
+					dir.mkdirs();
+					
+					//if the file does not already exist or should be overridden, create it
+					if(!file.exists() || overrideModelFiles) {
+						if(file.exists()) {
+							file.delete();
+						}
+						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+						writer.write(getTemplateAsString(MODEL_ITEM).replace("%x", texture).replace("%t", type));
+						writer.newLine();
+						writer.close();
+						count++;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			
+			case "block":
+				//normal variant
+				dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture);
+				file = new File(dir, type + ".json");
+				try {
+					dir.mkdirs();
+					
+					if(!file.exists() || overrideModelFiles) {
+						if(file.exists()) {
+							file.delete();
+						}
+						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture).replace("%t", type));
+						writer.newLine();
+						writer.close();
+						count++;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				//inventory variant
+				dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
+				file = new File(dir, type + ".json");
+				try {
+					dir.mkdirs();
+					
+					if(!file.exists() || overrideModelFiles) {
+						if(file.exists()) {
+							file.delete();
+						}
+						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture).replace("%t", type));
+						writer.newLine();
+						writer.close();
+						count++;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			default:
+				break;
+			}
+		}
+		Main.logger.info("Created " + count + " model-files. Took " + (System.currentTimeMillis() - time) + "ms.");
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void createBlockStateFiles() {
+		long time = System.currentTimeMillis();
+		int count = 0;
 		
 		//iterate through all materials
 		Iterator materialIterator = MaterialHandler.getIterator(materials);
@@ -59,45 +157,16 @@ public class AssetHandler {
 					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
 					String type = typeEntry.getKey();
 					
-					//check, if there should be an item of this type and material
+					//check, if there should be a block of this type and material
 					boolean b = false;
 					try {
-						b = ((typeEntry.getValue()  && types.get(type).getCategory().equals("item") && types.get(type).isEnabled()) || enableAll) ? true : false;
-					} catch (Exception e) {
-						if(!suppressTypeMissingWarnings) {
-							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
-						}
-					}
-					if(b) {
-						File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
-						File file = new File(dir, type + ".json");
-						try {
-							dir.mkdirs();
-							
-							//if the file does not already exist or should be overridden, create it
-							if(!file.exists() || overrideModelFiles) {
-								if(file.exists()) {
-									file.delete();
-								}
-								BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-								writer.write(getTemplateAsString(MODEL_ITEM).replace("%x", texture).replace("%t", type));
-								writer.newLine();
-								writer.close();
-								modelFileCount++;
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-					
-					//check, if there should be a block of this type and material
-					b = false;
-					try {
-						b = ((typeEntry.getValue()  && types.get(type).getCategory().equals("block") && types.get(type).isEnabled()) || enableAll) ? true : false;
+						b = (typeEntry.getValue()  && types.get(type).getCategory().equals("block") && types.get(type).isEnabled()) || enableAll;
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					if(b) {
+						
+						//generate the blockstate file
 						File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/blockstates");
 						File file = new File(dir, type + '.' + materialEntry.getKey() + ".json");
 						try {
@@ -111,7 +180,7 @@ public class AssetHandler {
 								writer.write(getTemplateAsString(BLOCKSTATE_BLOCK).replace("%x", texture).replace("%t", type));
 								writer.newLine();
 								writer.close();
-								blockStateCount++;
+								count++;
 							}
 							
 						} catch (Exception e) {
@@ -121,14 +190,13 @@ public class AssetHandler {
 				}
 			}
 		}
-		
-		Main.logger.info("Created " + modelFileCount + " model-files and " + blockStateCount + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
+		Main.logger.info("Created " + count + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void createLangFile() {
 		long time = System.currentTimeMillis();
-		int counter = 0;
+		int count = 0;
 		File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/lang/");
 		File file = new File(dir, "en_us.lang");
 		
@@ -162,32 +230,32 @@ public class AssetHandler {
 							case "item":
 								writer.write("item." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
 								writer.newLine();
-								counter++;
+								count++;
 								break;
 							case "fluid":
 								if(type.getState().equals(material.getState())) {
 									writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + '=' + type.getSyntax().replace("%s", material.getName()));
 									writer.newLine();
-									counter++;
+									count++;
 								} else if (type.getState().equals("gaseous")) {
 									writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Gaseous " + type.getSyntax().replace("%s", material.getName()));
 									writer.newLine();
-									counter++;
+									count++;
 								} else if (type.getState().equals("liquid")) {
 									if(material.getState().equals("solid")) {
 										writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Molten " + type.getSyntax().replace("%s", material.getName()));
 										writer.newLine();
-										counter++;
+										count++;
 									} else {
 										writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Liquid " + type.getSyntax().replace("%s", material.getName()));
 										writer.newLine();
-										counter++;
+										count++;
 									}
 								}
 							case "block":
 								writer.write("tile." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
 								writer.newLine();
-								counter++;
+								count++;
 							default:
 								break;
 							}
@@ -195,7 +263,7 @@ public class AssetHandler {
 					}
 				}
 				writer.close();
-				Main.logger.info("Created " + counter + " localizations. Took " + (System.currentTimeMillis() - time) + "ms.");
+				Main.logger.info("Created " + count + " localizations. Took " + (System.currentTimeMillis() - time) + "ms.");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

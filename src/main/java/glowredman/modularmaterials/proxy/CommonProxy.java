@@ -31,7 +31,8 @@ public class CommonProxy {
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
 		//ASSETS
-		AssetHandler.initItemTextureList();
+		AssetHandler.initCTTTList();
+		AssetHandler.createBlockStateFiles();
 		AssetHandler.createModelFiles();
 		AssetHandler.createLangFile();
 		//TODO actually registering the items/blocks/fluids

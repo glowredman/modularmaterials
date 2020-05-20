@@ -31,5 +31,42 @@ public class Templates {
 			"\t}",
 			"}"
 	};
+	
+	public static final String[] MODEL_BLOCK = new String[] {
+			"{",
+			"\t\"parent\": \"block/block\",",
+			"\t\"textures\": {",
+			"\t\t\"0\": \"" + MODID + ":blocks/%x/%t\",",
+			"\t\t\"1\": \"" + MODID + ":blocks/%x/%t_overlay\",",
+			"\t\t\"particle\": \"" + MODID + ":blocks/%x/%t\"",
+			"\t},",
+			"\t\"elements\": [",
+			"\t\t{",
+			"\t\t\t\"from\": [0, 0, 0],",
+			"\t\t\t\"to\": [16, 16, 16],",
+			"\t\t\t\"faces\": {",
+			"\t\t\t\t\"north\": {\"texture\": \"#0\", \"tintindex\": 0},",
+			"\t\t\t\t\"east\": {\"texture\": \"#0\", \"tintindex\": 0},",
+			"\t\t\t\t\"south\": {\"texture\": \"#0\", \"tintindex\": 0},",
+			"\t\t\t\t\"west\": {\"texture\": \"#0\", \"tintindex\": 0},",
+			"\t\t\t\t\"up\": {\"texture\": \"#0\", \"tintindex\": 0},",
+			"\t\t\t\t\"down\": {\"texture\": \"#0\", \"tintindex\": 0}",
+			"\t\t\t}",
+			"\t\t},",
+			"\t\t{",
+			"\t\t\t\"from\": [0, 0, 0],",
+			"\t\t\t\"to\": [16, 16, 16],",
+			"\t\t\t\"faces\": {",
+			"\t\t\t\t\"north\": {\"texture\": \"#1\", \"tintindex\": -1},",
+			"\t\t\t\t\"east\": {\"texture\": \"#1\", \"tintindex\": -1},",
+			"\t\t\t\t\"south\": {\"texture\": \"#1\", \"tintindex\": -1},",
+			"\t\t\t\t\"west\": {\"texture\": \"#1\", \"tintindex\": -1},",
+			"\t\t\t\t\"up\": {\"texture\": \"#1\", \"tintindex\": -1},",
+			"\t\t\t\t\"down\": {\"texture\": \"#1\", \"tintindex\": -1}",
+			"\t\t\t}",
+			"\t\t}",
+			"\t]",
+			"}"
+	};
 
 }
