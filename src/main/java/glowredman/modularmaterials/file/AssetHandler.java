@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
+import static glowredman.modularmaterials.file.Templates.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -40,6 +41,7 @@ public class AssetHandler {
 	public static void createModelFiles() {
 		long time = System.currentTimeMillis();
 		int modelFileCount = 0;
+		int blockStateCount = 0;
 		
 		//iterate through all materials
 		Iterator materialIterator = MaterialHandler.getIterator(materials);
@@ -78,22 +80,40 @@ public class AssetHandler {
 									file.delete();
 								}
 								BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-								writer.write("{");
+								writer.write(getTemplateAsString(MODEL_ITEM).replace("%x", texture).replace("%t", type));
 								writer.newLine();
-								writer.write("\t\"parent\": \"item/generated\",");
-								writer.newLine();
-								writer.write("\t\"textures\": {");
-								writer.newLine();
-								writer.write("\t\t\"layer0\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "\",");
-								writer.newLine();
-								writer.write("\t\t\"layer1\": \"" + Reference.MODID + ":items/" + texture + "/" + type + "_overlay\"");
-								writer.newLine();
-								writer.write("\t}");
-								writer.newLine();
-								writer.write("}");
 								writer.close();
 								modelFileCount++;
 							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+					
+					//check, if there should be a block of this type and material
+					b = false;
+					try {
+						b = ((typeEntry.getValue()  && types.get(type).getCategory().equals("block") && types.get(type).isEnabled()) || enableAll) ? true : false;
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					if(b) {
+						File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/blockstates");
+						File file = new File(dir, type + '.' + materialEntry.getKey() + ".json");
+						try {
+							dir.mkdirs();
+							
+							if(!file.exists() || overrideBlockStateFiles) {
+								if(file.exists()) {
+									file.delete();
+								}
+								BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+								writer.write(getTemplateAsString(BLOCKSTATE_BLOCK).replace("%x", texture).replace("%t", type));
+								writer.newLine();
+								writer.close();
+								blockStateCount++;
+							}
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -102,11 +122,7 @@ public class AssetHandler {
 			}
 		}
 		
-		//TODO blocks
-		
-		//TODO fluids
-		
-		Main.logger.info("Created " + modelFileCount + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
+		Main.logger.info("Created " + modelFileCount + " model-files and " + blockStateCount + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -168,6 +184,10 @@ public class AssetHandler {
 										counter++;
 									}
 								}
+							case "block":
+								writer.write("tile." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
+								writer.newLine();
+								counter++;
 							default:
 								break;
 							}
