@@ -267,7 +267,7 @@ public class Material {
 		if(this.getEnabledTypes().containsKey(type)) {
 			return this.enabledTypes.get(type);
 		} else {
-			return true;
+			return false;
 		}
 	}
 	

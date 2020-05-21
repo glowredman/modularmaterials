@@ -42,7 +42,7 @@ public class AssetHandler {
 						isTypeEnabled = (typeEntry.getValue() && types.get(typeKey).isEnabled()) || enableAll;
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
-							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+							Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					Type type = types.get(typeKey);

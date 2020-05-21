@@ -75,8 +75,12 @@ public class MetaItem extends Item {
 			while(i.hasNext()) {
 				Entry<String, Material> entry = (Entry<String, Material>) i.next();
 				Material material = entry.getValue();
-				if((material.isEnabled() && material.isTypeEnabled(this.getType())) || enableAll) {
-					items.add(new ItemStack(this, 1, material.getMeta()));
+				try {
+					if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.type) && types.get(this.type).isEnabled())) {
+						items.add(new ItemStack(this, 1, material.getMeta()));
+					}
+				} catch (Exception e) {
+					Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + this.type + "\"! Add \"" + this.type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 				}
 			}
 		}

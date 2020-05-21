@@ -19,15 +19,19 @@ public class BlockHandler {
 		Iterator typeIterator = MaterialHandler.getIterator(types);
 		while(typeIterator.hasNext()) {
 			Entry<String, Type> typeEntry = (Entry<String, Type>) typeIterator.next();
-			if((typeEntry.getValue().isEnabled() || enableAll) && typeEntry.getValue().getCategory().equals("block")) {
+			Type type = typeEntry.getValue();
+			String typeKey = typeEntry.getKey();
+			if((type.isEnabled() || enableAll) && type.getCategory().equals("block")) {
 				Iterator materialIterator = MaterialHandler.getIterator(materials);
 				while(materialIterator.hasNext()) {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
-					if(materialEntry.getValue().isEnabled() || enableAll) {
-						MetaBlock block = new MetaBlock(materialEntry.getValue(), typeEntry.getKey(), materialEntry.getKey());
+					Material material = materialEntry.getValue();
+					String materialKey = materialEntry.getKey();
+					if(enableAll ||(material.isEnabled() && material.isTypeEnabled(typeKey))) {
+						MetaBlock block = new MetaBlock(material, typeKey, materialKey);
 						ForgeRegistries.BLOCKS.register(block);
 						ForgeRegistries.ITEMS.register(block.createItemBlock());
-						Main.proxy.registerItemRenderer(Item.getItemFromBlock(block), materialEntry.getValue().getTexture() + '/' + typeEntry.getKey());
+						Main.proxy.registerItemRenderer(Item.getItemFromBlock(block), material.getTexture() + '/' + typeKey);
 						metaBlocks.add(block);
 						count++;
 					}

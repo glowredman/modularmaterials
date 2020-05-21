@@ -33,7 +33,7 @@ public class FluidHandler {
 					//check if the type is a fluid and enabled
 					boolean b = false;
 					try {
-						b = (typeEntry.getValue() && types.get(typeEntry.getKey()).getCategory().equals("fluid") && types.get(typeEntry.getKey()).isEnabled()) ? true : false;
+						b = typeEntry.getValue() && types.get(typeEntry.getKey()).getCategory().equals("fluid") && types.get(typeEntry.getKey()).isEnabled();
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
 							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
