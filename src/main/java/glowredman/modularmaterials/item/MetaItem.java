@@ -32,10 +32,10 @@ public class MetaItem extends Item {
 		this.setRegistryName(MODID, type);
 		this.setCreativeTab(TAB_ITEMS);
 		
-		Iterator i = MaterialHandler.getIterator(materials);
-		while(i.hasNext()) {
-			Entry<Integer, Material> entry = (Entry<Integer, Material>) i.next();
-			Main.proxy.registerItemRenderer(this, entry.getValue().getTexture() + '/' + type, entry.getValue().getMeta());
+		for(Material material : materials.values()) {
+			if(enableAll || (material.isTypeEnabled(type) && material.isEnabled())) {
+				Main.proxy.registerItemRenderer(this, material.getTexture() + '/' + type, material.getMeta());
+			}
 		}
 	}
 	
@@ -49,23 +49,27 @@ public class MetaItem extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if(idMapping.containsKey(stack.getMetadata())) {
-			String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
-			if(lines != null) {
-				for(String line : lines) {
-					try {
-						String s = FormattingHandler.formatTooltipLine(line);
-						if(s != null) {
-							tooltip.add(s);
-						}
-					} catch (Exception e) {
-						if(enableFormattingDebugger) {
-							e.printStackTrace();
+		int meta = stack.getMetadata();
+		try {
+			Material material = MaterialHandler.getMaterialFromID(meta);
+			if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
+				String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
+				if(lines != null) {
+					for(String line : lines) {
+						try {
+							String s = FormattingHandler.formatTooltipLine(line);
+							if(s != null) {
+								tooltip.add(s);
+							}
+						} catch (Exception e) {
+							if(enableFormattingDebugger) {
+								e.printStackTrace();
+							}
 						}
 					}
 				}
 			}
-		}
+		} catch (Exception e) {}
 	}
 	
 	@Override
@@ -88,9 +92,15 @@ public class MetaItem extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
+		int meta = stack.getMetadata();
 		String s = "";
 		try {
-			s = "item." + MODID + '.' + this.getType() + '.' + idMapping.get(stack.getMetadata());
+			Material material = MaterialHandler.getMaterialFromID(meta);
+			if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
+				s = "item." + MODID + '.' + this.getType() + '.' + idMapping.get(meta);
+			} else {
+				s = "item." + MODID + ".debug";
+			}
 		} catch (Exception e) {
 			s = "item." + MODID + ".debug";
 		}
