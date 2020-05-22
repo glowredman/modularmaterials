@@ -24,10 +24,12 @@ import net.minecraft.world.World;
 public class MetaBlock extends Block {
 	
 	public Material material;
+	public String type;
 
 	public MetaBlock(Material material, String type, String name) {
 		super(net.minecraft.block.material.Material.IRON);
 		this.material = material;
+		this.type = type;
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(material.getBlockHardness());
 		this.setHarvestLevel("pickaxe", material.getBlockHarvestLevel());
@@ -36,13 +38,17 @@ public class MetaBlock extends Block {
 		this.setResistance(material.getBlockResistance());
 		this.setUnlocalizedName(MODID + '.' + type + '.' + name);
 	}
-	
+
 	public Item createItemBlock() {
 		return new ItemBlock(this).setRegistryName(this.getRegistryName());
 	}
 	
 	public Material getMaterial() {
 		return this.material;
+	}
+	
+	public String getType() {
+		return this.type;
 	}
 	
 	@Override

@@ -1,12 +1,19 @@
 package glowredman.modularmaterials.util;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
+import glowredman.modularmaterials.block.MetaBlock;
+import glowredman.modularmaterials.item.MetaItem;
+
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.Type;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import static glowredman.modularmaterials.Reference.*;
 
@@ -24,6 +31,57 @@ public class MaterialHandler {
 	
 	public static Material getMaterialFromID(int meta) {
 		return materials.get(idMapping.get(meta));
+	}
+	
+	public static void addOreDictTags() {
+		long time = System.currentTimeMillis();
+		int count = 0;
+		
+		//items
+		for(MetaItem item : metaItems) {
+			String oreDictPrefix = types.get(item.getType()).getOreDictPrefix();
+			String type = item.getType();
+			Iterator materialIterator = MaterialHandler.getIterator(materials);
+			while(materialIterator.hasNext()) {
+				Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+				Material material = materialEntry.getValue();
+				if(material.isEnabled() && material.isTypeEnabled(type)) {
+					for(String oreDict : material.getOreDict()) {
+						OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(item, 1, material.getMeta()));
+						count++;
+					}
+				}
+			}
+		}
+		
+		//blocks
+		for(MetaBlock block : metaBlocks) {
+			Material material = block.getMaterial();
+			String oreDictPrefix = types.get(block.getType()).getOreDictPrefix();
+			for(String oreDict : material.getOreDict()) {
+				OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(block, 1));
+				count++;
+			}
+		}
+
+		if(enableUnitOreDict) {
+			Collection<Type> typeList = types.values();
+			for(Type type : typeList) {
+				String oreDictPrefix = type.getOreDictPrefix();
+				String unitValue = type.getUnitValue();
+				Iterator materialIterator = MaterialHandler.getIterator(materials);
+				while(materialIterator.hasNext()) {
+					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+					for(String oreDict : materialEntry.getValue().getOreDict()) {
+						for(ItemStack item : OreDictionary.getOres(oreDictPrefix + oreDict)) {
+							OreDictionary.registerOre(unitValue + oreDict, item);
+							count++;
+						}
+					}
+				}
+			}
+		}
+		Main.logger.info("Registered " + count + " entries to the OreDictionary. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static void fillMaterialListIfEmpty() {

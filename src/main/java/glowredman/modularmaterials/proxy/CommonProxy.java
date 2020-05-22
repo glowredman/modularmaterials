@@ -42,7 +42,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
-		ItemHandler.addOreDictTags();
+		MaterialHandler.addOreDictTags();
 		ItemHandler.initColors();
 		BlockHandler.initColors();
 	}
