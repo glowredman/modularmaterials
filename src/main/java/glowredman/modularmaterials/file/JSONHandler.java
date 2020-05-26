@@ -17,6 +17,8 @@ import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
+import glowredman.modularmaterials.object.OreVariant;
+import glowredman.modularmaterials.object.OreVariantList;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.object.TypeList;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -24,8 +26,38 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class JSONHandler {
 	
+	public static void initOreVariantsFile(FMLPreInitializationEvent event) {
+		try {
+			File fileOreVariants = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_OREVARIANTS);
+			OreVariantList oreVariantList = new OreVariantList();
+			
+			if(!fileOreVariants.exists()) {
+				long time = System.currentTimeMillis();
+				OreVariant example = new OreVariant();
+				example.setBaseBlock("minecraft:stone");
+				example.setBaseTexture("minecraft:stone");
+				example.setEffectiveTool("pickaxe");
+				example.setEnabled(true);
+				example.setMaterialSound("ROCK");
+				example.setObeysGravity(false);
+				example.setOreDictPrefix("");
+				example.setSyntax("%s Ore");
+				oreVariantList.oreTypes.put("stone", example);
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fileOreVariants));
+				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(oreVariantList));
+				writer.close();
+				
+				Main.logger.info("Succesfully created \"" + fileOreVariants + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+			}
+			
+			oreVariants = new Gson().fromJson(readFile(fileOreVariants.getPath(), StandardCharsets.UTF_8), OreVariantList.class).getOreVariants();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void initTypeFile(FMLPreInitializationEvent event) {
-		
 		try {
 			
 			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_TYPES);

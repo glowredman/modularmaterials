@@ -25,9 +25,11 @@ public class CommonProxy {
 		ConfigHandler.saveConfigs();
 		//ENABLE_ALL-CHECK
 		if(enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
-		//MATERIALS, TYPES
+		//FILES
+		JSONHandler.initOreVariantsFile(event);
 		JSONHandler.initTypeFile(event);
 		JSONHandler.initMaterialFile(event);
+		//MATERIAL HANDLING
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
 		//ASSETS
@@ -35,10 +37,11 @@ public class CommonProxy {
 		AssetHandler.createBlockStateFiles();
 		AssetHandler.createModelFiles();
 		AssetHandler.createLangFile();
-		//TODO actually registering the items/blocks/fluids
+		//REGITERING
 		FluidHandler.registerFluids();
 		ItemHandler.registerItems();
 		BlockHandler.registerBlocks();
+		BlockHandler.registerOres();
 	}
 	
 	public void init(FMLInitializationEvent event) {
