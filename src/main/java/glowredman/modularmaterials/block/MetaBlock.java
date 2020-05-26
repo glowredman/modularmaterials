@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.FormattingHandler;
+import glowredman.modularmaterials.util.MaterialSoundHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -27,7 +28,7 @@ public class MetaBlock extends Block {
 	public String type;
 
 	public MetaBlock(Material material, String type, String name) {
-		super(net.minecraft.block.material.Material.IRON);
+		super(MaterialSoundHelper.getMaterialFromString(material.getMaterialSound()));
 		this.material = material;
 		this.type = type;
 		this.setCreativeTab(TAB_BLOCKS);
@@ -49,6 +50,11 @@ public class MetaBlock extends Block {
 	
 	public String getType() {
 		return this.type;
+	}
+	
+	@Override
+	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
+		return this.getMaterial().isBeaconBase();
 	}
 	
 	@Override

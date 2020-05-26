@@ -19,11 +19,13 @@ public class Material {
 	public int gasLightLevel;
 	@Nonnegative
 	public int gasViscosity;
+	public boolean isBeaconBase;
 	public boolean isBeaconPayment;
 	public int liquidDensity;
 	public int liquidLightLevel;
 	@Nonnegative
 	public int liquidViscosity;
+	public String materialSound;
 	public int meltingTemperature;
 	@Nonnegative
 	@Nonnull
@@ -41,6 +43,26 @@ public class Material {
 	
 	
 	public Material() {
+	}
+	
+	public boolean isBeaconBase() {
+		return isBeaconBase;
+	}
+
+	public void setBeaconBase(boolean isBeaconBase) {
+		this.isBeaconBase = isBeaconBase;
+	}
+	
+	public String getMaterialSound() {
+		if(materialSound != null) {
+			return materialSound;
+		} else {
+			return "ROCK";
+		}
+	}
+
+	public void setMaterialSound(String materialSound) {
+		this.materialSound = materialSound;
 	}
 
 	public int getGasLightLevel() {

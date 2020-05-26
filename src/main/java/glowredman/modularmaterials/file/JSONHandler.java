@@ -56,7 +56,9 @@ public class JSONHandler {
 	}
 	
 	public static void initMaterialFile(FMLPreInitializationEvent event) {
-		
+		for(String s : beaconPaymentItemTypes) {
+			beaconPaymentTypes.add(s);
+		}
 		try {
 			
 			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MATERIALS);
@@ -67,6 +69,7 @@ public class JSONHandler {
 				long time = System.currentTimeMillis();
 				//create an example to put in the file
 				Material example = new Material();
+				example.setBeaconBase(true);
 				example.setBeaconPayment(true);
 				example.setBlockHardness((float) (Math.random() * Float.MAX_VALUE));
 				example.setBlockHarvestLevel((int) (Math.random() * 3));

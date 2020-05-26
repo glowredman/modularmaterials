@@ -160,7 +160,7 @@ public class AssetHandler {
 					//check, if there should be a block of this type and material
 					boolean b = false;
 					try {
-						b = (typeEntry.getValue()  && types.get(type).getCategory().equals("block") && types.get(type).isEnabled()) || enableAll;
+						b = ((typeEntry.getValue() && types.get(type).isEnabled()) || enableAll) && types.get(type).getCategory().equals("block");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

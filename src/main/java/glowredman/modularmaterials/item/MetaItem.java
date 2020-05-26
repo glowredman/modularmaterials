@@ -48,6 +48,19 @@ public class MetaItem extends Item {
 	}
 	
 	@Override
+	public boolean isBeaconPayment(ItemStack stack) {
+		if(beaconPaymentTypes.contains(this.getType())) {
+			try {
+				return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment();
+			} catch (Exception e) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		int meta = stack.getMetadata();
 		try {

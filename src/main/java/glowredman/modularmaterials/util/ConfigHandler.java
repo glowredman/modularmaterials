@@ -38,6 +38,7 @@ public class ConfigHandler {
 		enableUnitOreDict = config_core.getBoolean("enableUnitOreDict", GENERAL, true, "Enables a unit-based oreDict system where each type is a specified amount worth (for example ingots, dusts, plates are 1u, nuggets 1/9u and blocks 9u). This allows for more precise specification of inputs (for example \"1uCopper\" could be used as an input in the Alloy Smelter because what difference makes the appearance of a material if it will be molten?)");
 		suppressTypeMissingWarnings = config_core.getBoolean("suppressTypeMissingWarnings", GENERAL, false, "Set to 'true' to suppress any warnings, that indicate missing information in the " + CONFIGNAME_TYPES + "-config.");
 		overrideBlockStateFiles = config_core.getBoolean("overrideBlockStateFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/blockstates/-directory. ATTENTION: requires an additional restart to create the blockstate files!");
+		beaconPaymentItemTypes = config_core.getStringList("beaconPaymentItemTypes", GENERAL, new String[] {"ingot", "gem"}, "Sets all item types, that can be used as a beacon payment. If a specific material also supports the use as a payment is set in the materials.json-config.");
 		
 		//formatting
 		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "\u00a7s", "String, to trigger animated formatting. Formatting is: \u00a7sPOSSTEP:DELAY:COLORS:STRING\u00a7s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
@@ -47,7 +48,7 @@ public class ConfigHandler {
 		triggerShiftIsPressedFormatting = config_core.getString("triggerShiftIsPressedFormatting", FORMATTING, "\u00a7p", "String, to show the line only when 'Shift' is pressed");
 		triggerAltIsNotPressedFormatting = config_core.getString("triggerAltIsNotPressedFormatting", FORMATTING, "\u00a7T", "String, to show the line only when 'Alt' is not pressed");
 		triggerAltIsPressedFormatting = config_core.getString("triggerAltIsPressedFormatting", FORMATTING, "\u00a7t", "String, to show the line only when 'Alt' is pressed");
-		animatedFormattingDelayFallback = config_core.getFloat("animatedFormattingDelayFallback", FORMATTING, 0.001f, 1E-45f, Float.MAX_VALUE, "If the delay set when using animated formatting is below or equal to 0, it is set to this value.");
+		animatedFormattingDelayFallback = config_core.getFloat("animatedFormattingDelayFallback", FORMATTING, 0.001f, 0.000001f, Float.MAX_VALUE, "If the delay set when using animated formatting is below or equal to 0, it is set to this value.");
 		enableFormattingDebugger = config_core.getBoolean("eanbleFormattingDebugger", FORMATTING, false, "Prints exceptions cought while formatting the tooltips to the console. this can be used to ensure that your tooltips are properly formatted. THIS WILL SPAM YOUR CONSOLE!");
 	}
 	

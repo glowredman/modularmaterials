@@ -48,6 +48,7 @@ public class Reference {
 	public static boolean overrideBlockStateFiles = false;
 	public static boolean enableUnitOreDict = true;
 	public static boolean suppressTypeMissingWarnings = false;
+	public static String[] beaconPaymentItemTypes = new String[] {"ingot", "gem"};
 	
 	//formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
@@ -67,4 +68,5 @@ public class Reference {
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
+	public static List<String> beaconPaymentTypes = new ArrayList<String>();
 }
