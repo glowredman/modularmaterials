@@ -35,7 +35,7 @@ public class JSONHandler {
 				long time = System.currentTimeMillis();
 				OreVariant example = new OreVariant();
 				example.setBaseBlock("minecraft:stone");
-				example.setBaseTexture("minecraft:stone");
+				example.setBaseTexture("minecraft:blocks/stone");
 				example.setEffectiveTool("pickaxe");
 				example.setEnabled(true);
 				example.setMaterialSound("ROCK");

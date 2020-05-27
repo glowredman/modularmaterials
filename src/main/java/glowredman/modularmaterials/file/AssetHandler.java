@@ -14,6 +14,7 @@ import static glowredman.modularmaterials.Reference.*;
 import static glowredman.modularmaterials.file.Templates.*;
 import glowredman.modularmaterials.object.CTTT;
 import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
@@ -84,6 +85,7 @@ public class AssetHandler {
 						writer.newLine();
 						writer.close();
 						count++;
+						break;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -106,6 +108,7 @@ public class AssetHandler {
 						writer.newLine();
 						writer.close();
 						count++;
+						break;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -129,6 +132,53 @@ public class AssetHandler {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			case "ore":
+				Iterator oreVariantsIterator = MaterialHandler.getIterator(oreVariants);
+				while(oreVariantsIterator.hasNext()) {
+					Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantsIterator.next();
+					String ore = oreVariantEntry.getKey();
+					String base = oreVariantEntry.getValue().getBaseTexture();
+					
+					//normal variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture + '/' + type);
+					file = new File(dir, ore + ".json");
+					try {
+						dir.mkdirs();
+						
+						if (!file.exists() || overrideModelFiles) {
+							if (file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture).replace("%t", type).replace("%b", base));
+							writer.newLine();
+							writer.close();
+							count++;
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					//inventory variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture + '/' + type);
+					file = new File(dir, ore + ".json");
+					try {
+						dir.mkdirs();
+						
+						if (!file.exists() || overrideModelFiles) {
+							if (file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture).replace("%t", type).replace("%b", base));
+							writer.newLine();
+							writer.close();
+							count++;
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				break;
 			default:
 				break;
 			}
@@ -186,6 +236,44 @@ public class AssetHandler {
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+					} else {
+						
+						//check, if there should be a ore of this type and material
+						try {
+							b = ((typeEntry.getValue() && types.get(type).isEnabled()) || enableAll) && types.get(type).getCategory().equals("ore");
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						if(b) {
+							Iterator oreVariantIterator = MaterialHandler.getIterator(oreVariants);
+							while(oreVariantIterator.hasNext()) {
+								Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
+								String ore = oreVariantEntry.getKey();
+								if(oreVariantEntry.getValue().isEnabled() || enableAll) {
+									
+									//generate the blockstate file
+									File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/blockstates");
+									File file = new File(dir, type + '.' + ore + '.' + materialEntry.getKey() + ".json");
+									try {
+										dir.mkdirs();
+										
+										if(!file.exists() || overrideBlockStateFiles) {
+											if(file.exists()) {
+												file.delete();
+											}
+											BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+											writer.write(getTemplateAsString(BLOCKSTATE_ORE).replace("%x", texture).replace("%t", type).replace("%o", ore));
+											writer.newLine();
+											writer.close();
+											count++;
+										}
+										
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -218,44 +306,60 @@ public class AssetHandler {
 				while(materialIterator.hasNext()) {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 					Material material = materialEntry.getValue();
+					String materialKey = materialEntry.getKey();
+					String materialName = material.getName();
 					newParagraph(writer);
-					writer.write("# -=-=- " + materialEntry.getKey() + " -=-=-");
+					writer.write("# -=-=- " + materialKey + " -=-=-");
 					writer.newLine();
 					Iterator typeIterator = MaterialHandler.getIterator(material.getEnabledTypes());
 					while(typeIterator.hasNext()) {
 						Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
-						if(types.containsKey(typeEntry.getKey()) && typeEntry.getValue()) {
-							Type type = types.get(typeEntry.getKey());
+						String typeKey = typeEntry.getKey();
+						if(types.containsKey(typeKey) && typeEntry.getValue()) {
+							Type type = types.get(typeKey);
+							String typeSyntax = type.getSyntax();
 							switch (type.getCategory()) {
 							case "item":
-								writer.write("item." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
+								writer.write("item." + MODID + '.' + typeKey + '.' + materialKey + ".name=" + typeSyntax.replace("%s", materialName));
 								writer.newLine();
 								count++;
 								break;
 							case "fluid":
 								if(type.getState().equals(material.getState())) {
-									writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + '=' + type.getSyntax().replace("%s", material.getName()));
+									writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + '=' + typeSyntax.replace("%s", materialName));
 									writer.newLine();
 									count++;
 								} else if (type.getState().equals("gaseous")) {
-									writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Gaseous " + type.getSyntax().replace("%s", material.getName()));
+									writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + "=Gaseous " + typeSyntax.replace("%s", materialName));
 									writer.newLine();
 									count++;
 								} else if (type.getState().equals("liquid")) {
 									if(material.getState().equals("solid")) {
-										writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Molten " + type.getSyntax().replace("%s", material.getName()));
+										writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + "=Molten " + typeSyntax.replace("%s", materialName));
 										writer.newLine();
 										count++;
 									} else {
-										writer.write("fluid." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + "=Liquid " + type.getSyntax().replace("%s", material.getName()));
+										writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + "=Liquid " + typeSyntax.replace("%s", materialName));
 										writer.newLine();
 										count++;
 									}
 								}
+								break;
 							case "block":
-								writer.write("tile." + MODID + '.' + typeEntry.getKey() + '.' + materialEntry.getKey() + ".name=" + type.getSyntax().replace("%s", material.getName()));
+								writer.write("tile." + MODID + '.' + typeKey + '.' + materialKey + ".name=" + typeSyntax.replace("%s", materialName));
 								writer.newLine();
 								count++;
+								break;
+							case "ore":
+								Iterator oreVariantIterator = MaterialHandler.getIterator(oreVariants);
+								while(oreVariantIterator.hasNext()) {
+									Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
+									String oreSyntax = oreVariantEntry.getValue().getSyntax();
+									String oreKey = oreVariantEntry.getKey();
+									writer.write("tile." + MODID + '.' + typeKey + '.' + oreKey + '.' + materialKey + ".name=" + oreSyntax.replace("%s", materialName));
+									writer.newLine();
+								}
+								break;
 							default:
 								break;
 							}

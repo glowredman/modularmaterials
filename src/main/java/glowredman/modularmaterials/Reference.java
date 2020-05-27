@@ -42,7 +42,7 @@ public class Reference {
 	public static final String CONFIGNAME_CORE = "core.cfg";
 	public static final String CONFIGNAME_MATERIALS = "materials.json";
 	public static final String CONFIGNAME_TYPES = "types.json";
-	public static final String CONFIGNAME_OREVARIANTS = "orevariants.json";
+	public static final String CONFIGNAME_OREVARIANTS = "oreVariants.json";
 	
 	//values:
 	//general

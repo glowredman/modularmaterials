@@ -11,7 +11,7 @@
         "green": ,
         "blue": 
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,

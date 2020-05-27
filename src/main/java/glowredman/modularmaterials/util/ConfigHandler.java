@@ -33,11 +33,11 @@ public class ConfigHandler {
 		
 		//general
 		enableAll = config_core.getBoolean("enableAll", GENERAL, false, "Set to 'true' to ignore ALL other restrictions -> all items/blocks/fluids will be enabled. USE WITH CAUTION!");
-		overrideModelFiles = config_core.getBoolean("overrideModelFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/models/-directory. ATTENTION: requires an additional restart to create the model files!");
-		overrideLangFile = config_core.getBoolean("overrideLangFile", GENERAL, false, "Set to true to regenerate the lang-file. ATTENTION: requires an additional restart to create the lang file!");
+		overrideModelFiles = config_core.getBoolean("overrideModelFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/models/-directory. ATTENTION: requires an additional restart to create the model files (or use F3+T ingame)!");
+		overrideLangFile = config_core.getBoolean("overrideLangFile", GENERAL, false, "Set to true to regenerate the lang-file. ATTENTION: requires an additional restart to create the lang file (or use F3+T ingame)!");
 		enableUnitOreDict = config_core.getBoolean("enableUnitOreDict", GENERAL, true, "Enables a unit-based oreDict system where each type is a specified amount worth (for example ingots, dusts, plates are 1u, nuggets 1/9u and blocks 9u). This allows for more precise specification of inputs (for example \"1uCopper\" could be used as an input in the Alloy Smelter because what difference makes the appearance of a material if it will be molten?)");
 		suppressTypeMissingWarnings = config_core.getBoolean("suppressTypeMissingWarnings", GENERAL, false, "Set to 'true' to suppress any warnings, that indicate missing information in the " + CONFIGNAME_TYPES + "-config.");
-		overrideBlockStateFiles = config_core.getBoolean("overrideBlockStateFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/blockstates/-directory. ATTENTION: requires an additional restart to create the blockstate files!");
+		overrideBlockStateFiles = config_core.getBoolean("overrideBlockStateFiles", GENERAL, false, "Set to true to regenerate all files in the /resources/blockstates/-directory. ATTENTION: requires an additional restart to create the blockstate files (or use F3+T ingame)!");
 		beaconPaymentItemTypes = config_core.getStringList("beaconPaymentItemTypes", GENERAL, new String[] {"ingot", "gem"}, "Sets all item types, that can be used as a beacon payment. If a specific material also supports the use as a payment is set in the materials.json-config.");
 		
 		//formatting
