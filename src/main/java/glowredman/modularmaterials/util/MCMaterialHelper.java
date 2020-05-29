@@ -3,7 +3,7 @@ package glowredman.modularmaterials.util;
 import net.minecraft.block.material.Material;
 import static net.minecraft.block.material.Material.*;
 
-public class MaterialSoundHelper {
+public class MCMaterialHelper {
 	
 	public static Material getMaterialFromString(String material) {
 		switch (material) {
@@ -45,6 +45,8 @@ public class MaterialSoundHelper {
 			return ICE;
 		case "IRON":
 			return IRON;
+		case "LADDER":
+			return WOOD;
 		case "LAVA":
 			return LAVA;
 		case "LEAVES":

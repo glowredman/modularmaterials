@@ -7,7 +7,8 @@ import javax.annotation.Nullable;
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.MaterialSoundHelper;
+import glowredman.modularmaterials.util.MCMaterialHelper;
+import glowredman.modularmaterials.util.MCSoundTypeHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -28,7 +29,7 @@ public class MetaBlock extends Block {
 	public String type;
 
 	public MetaBlock(Material material, String type, String name) {
-		super(MaterialSoundHelper.getMaterialFromString(material.getMaterialSound()));
+		super(MCMaterialHelper.getMaterialFromString(material.getMaterialSound()));
 		this.material = material;
 		this.type = type;
 		this.setCreativeTab(TAB_BLOCKS);
@@ -37,6 +38,7 @@ public class MetaBlock extends Block {
 		this.setLightLevel(material.getBlockLightLevel() / 15);
 		this.setRegistryName(MODID, type + '.' + name);
 		this.setResistance(material.getBlockResistance());
+		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(material.getMaterialSound()));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + name);
 	}
 

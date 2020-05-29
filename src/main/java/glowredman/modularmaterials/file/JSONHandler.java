@@ -88,9 +88,6 @@ public class JSONHandler {
 	}
 	
 	public static void initMaterialFile(FMLPreInitializationEvent event) {
-		for(String s : beaconPaymentItemTypes) {
-			beaconPaymentTypes.add(s);
-		}
 		try {
 			
 			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MATERIALS);

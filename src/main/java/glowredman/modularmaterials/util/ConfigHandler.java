@@ -20,6 +20,9 @@ public class ConfigHandler {
 	
 	public static void readConfigs() {
 		readCoreConfig();
+		for(String s : beaconPaymentItemTypes) {
+			beaconPaymentTypes.add(s);
+		}
 	}
 	
 	public static void saveConfigs() {

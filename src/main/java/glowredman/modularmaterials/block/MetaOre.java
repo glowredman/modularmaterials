@@ -8,7 +8,8 @@ import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.MaterialSoundHelper;
+import glowredman.modularmaterials.util.MCMaterialHelper;
+import glowredman.modularmaterials.util.MCSoundTypeHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -30,7 +31,7 @@ public class MetaOre extends Block {
 	public String type;
 
 	public MetaOre(Material material, OreVariant ore, String type, String name) {
-		super(MaterialSoundHelper.getMaterialFromString(ore.getMaterialSound()));
+		super(MCMaterialHelper.getMaterialFromString(ore.getMaterialSound()));
 		this.material = material;
 		this.ore = ore;
 		this.type = type;
@@ -39,6 +40,7 @@ public class MetaOre extends Block {
 		this.setHarvestLevel(ore.getEffectiveTool(), material.getOreHarvestLevel());
 		this.setLightLevel(material.getOreLightLevel() / 15);
 		this.setRegistryName(MODID, "ore." + type + '.' + name);
+		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(ore.getMaterialSound()));
 		this.setUnlocalizedName(MODID + ".ore." + type + '.' + name);
 	}
 	
