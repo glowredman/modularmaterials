@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MCMaterialHelper;
 import glowredman.modularmaterials.util.MCSoundTypeHelper;
@@ -27,11 +28,24 @@ public class MetaBlock extends Block {
 	
 	public Material material;
 	public String type;
+	private boolean hasTooltip;
+	private boolean isBeaconBase;
+	private boolean isBeaconPayment;
 
 	public MetaBlock(Material material, String type, String name) {
 		super(MCMaterialHelper.getMaterialFromString(material.getMaterialSound()));
 		this.material = material;
 		this.type = type;
+		try {
+			Type t = types.get(type);
+			this.hasTooltip = t.hasTooltip() && material.getTooltip() != null;
+			this.isBeaconBase = t.isBeaconBase() && material.isBeaconBase();
+			this.isBeaconPayment = t.isBeaconPayment() && material.isBeaconPayment();
+		} catch (Exception e) {
+			this.hasTooltip = false;
+			this.isBeaconBase = false;
+			this.isBeaconPayment = false;
+		}
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(material.getBlockHardness());
 		this.setHarvestLevel("pickaxe", material.getBlockHarvestLevel());
@@ -56,25 +70,25 @@ public class MetaBlock extends Block {
 	
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
-		return this.getMaterial().isBeaconBase();
+		return this.isBeaconBase;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		String[] lines = this.material.getTooltip();
-		if(lines != null) {
-			for(String line : lines) {
+		if(this.hasTooltip) {
+			String[] lines = this.material.getTooltip();
+			for (String line : lines) {
 				try {
 					String s = FormattingHandler.formatTooltipLine(line);
-					if(s != null) {
+					if (s != null) {
 						tooltip.add(s);
 					}
 				} catch (Exception e) {
-					if(enableFormattingDebugger) {
+					if (enableFormattingDebugger) {
 						e.printStackTrace();
 					}
 				}
-			}
+			} 
 		}
 	}
 	

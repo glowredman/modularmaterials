@@ -25,13 +25,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MetaItem extends Item {
 	
 	public String type;
+	private boolean hasTooltip;
+	private boolean isBeaconPayment;
 	
 	public MetaItem(String type) {
 		this.setType(type);
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, type);
 		this.setCreativeTab(TAB_ITEMS);
-		
+		try {
+			
+		} catch (Exception e) {
+			this.hasTooltip = false;
+			this.isBeaconPayment = false;
+		}
 		for(Material material : materials.values()) {
 			if(enableAll || (material.isTypeEnabled(type) && material.isEnabled())) {
 				Main.proxy.registerItemRenderer(this, material.getTexture() + '/' + type, material.getMeta());
@@ -49,12 +56,8 @@ public class MetaItem extends Item {
 	
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
-		if(beaconPaymentTypes.contains(this.getType())) {
-			try {
-				return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment();
-			} catch (Exception e) {
-				return false;
-			}
+		if(this.isBeaconPayment) {
+			return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment();
 		} else {
 			return false;
 		}
@@ -63,26 +66,29 @@ public class MetaItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		int meta = stack.getMetadata();
-		try {
-			Material material = MaterialHandler.getMaterialFromID(meta);
-			if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
-				String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
-				if(lines != null) {
-					for(String line : lines) {
-						try {
-							String s = FormattingHandler.formatTooltipLine(line);
-							if(s != null) {
-								tooltip.add(s);
-							}
-						} catch (Exception e) {
-							if(enableFormattingDebugger) {
-								e.printStackTrace();
+		if(hasTooltip) {
+			try {
+				Material material = MaterialHandler.getMaterialFromID(meta);
+				if (enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
+					String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
+					if (lines != null) {
+						for (String line : lines) {
+							try {
+								String s = FormattingHandler.formatTooltipLine(line);
+								if (s != null) {
+									tooltip.add(s);
+								}
+							} catch (Exception e) {
+								if (enableFormattingDebugger) {
+									e.printStackTrace();
+								}
 							}
 						}
 					}
 				}
-			}
-		} catch (Exception e) {}
+			} catch (Exception e) {
+			} 
+		}
 	}
 	
 	@Override
