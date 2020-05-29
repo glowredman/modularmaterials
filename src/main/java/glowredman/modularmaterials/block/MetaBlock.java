@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import static glowredman.modularmaterials.Reference.*;
+import glowredman.modularmaterials.item.MetaItemBlock;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
@@ -17,7 +18,6 @@ import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
@@ -57,7 +57,7 @@ public class MetaBlock extends Block {
 	}
 
 	public Item createItemBlock() {
-		return new ItemBlock(this).setRegistryName(this.getRegistryName());
+		return new MetaItemBlock(this, this.isBeaconPayment);
 	}
 	
 	public Material getMaterial() {
