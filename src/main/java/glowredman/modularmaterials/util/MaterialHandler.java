@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.block.MetaBlock;
+import glowredman.modularmaterials.block.MetaOre;
+import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
 
 import static glowredman.modularmaterials.Reference.*;
@@ -56,10 +58,27 @@ public class MaterialHandler {
 		
 		//blocks
 		for(MetaBlock block : metaBlocks) {
-			Material material = block.getMaterial();
 			String oreDictPrefix = types.get(block.getType()).getOreDictPrefix();
-			for(String oreDict : material.getOreDict()) {
+			for(String oreDict : block.getMaterial().getOreDict()) {
 				OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(block, 1));
+				count++;
+			}
+		}
+		
+		//ores
+		for(MetaOre ore : metaOres) {
+			String oreOreDictPrefix = ore.getOre().getOreDictPrefix();
+			String typeOrePrefix = types.get(ore.getType()).getOreDictPrefix();
+			for(String oreDict : ore.getMaterial().getOreDict()) {
+				OreDictionary.registerOre(typeOrePrefix + oreOreDictPrefix + oreDict, ore);
+				count++;
+			}
+		}
+		for(MetaOreFalling ore : metaOresFalling) {
+			String oreOreDictPrefix = ore.getOre().getOreDictPrefix();
+			String typeOrePrefix = types.get(ore.getType()).getOreDictPrefix();
+			for(String oreDict : ore.getMaterial().getOreDict()) {
+				OreDictionary.registerOre(typeOrePrefix + oreOreDictPrefix + oreDict, ore);
 				count++;
 			}
 		}

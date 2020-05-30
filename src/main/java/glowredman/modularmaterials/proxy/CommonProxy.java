@@ -37,7 +37,7 @@ public class CommonProxy {
 		AssetHandler.createBlockStateFiles();
 		AssetHandler.createModelFiles();
 		AssetHandler.createLangFile();
-		//REGITERING
+		//REGISTERING
 		FluidHandler.registerFluids();
 		ItemHandler.registerItems();
 		BlockHandler.registerBlocks();

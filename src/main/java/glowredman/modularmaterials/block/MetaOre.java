@@ -30,15 +30,17 @@ public class MetaOre extends Block {
 	public Material material;
 	public OreVariant ore;
 	public String type;
+	public String variant;
 	private boolean hasTooltip;
 	private boolean isBeaconBase;
 	private boolean isBeaconPayment;
 
-	public MetaOre(Material material, OreVariant ore, String type, String name) {
+	public MetaOre(Material material, OreVariant ore, String type, String variant, String name) {
 		super(MCMaterialHelper.getMaterialFromString(ore.getMaterialSound()));
 		this.material = material;
 		this.ore = ore;
 		this.type = type;
+		this.variant = variant;
 		try {
 			Type t = types.get(type);
 			this.hasTooltip = t.hasTooltip() && material.getTooltip() != null;
@@ -53,9 +55,9 @@ public class MetaOre extends Block {
 		this.setHardness(material.getOreHardness());
 		this.setHarvestLevel(ore.getEffectiveTool(), material.getOreHarvestLevel());
 		this.setLightLevel(material.getOreLightLevel() / 15);
-		this.setRegistryName(MODID, "ore." + type + '.' + name);
+		this.setRegistryName(MODID, type + '.' + variant + '.' + name);
 		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(ore.getMaterialSound()));
-		this.setUnlocalizedName(MODID + ".ore." + type + '.' + name);
+		this.setUnlocalizedName(MODID + '.' + type + '.' + variant + '.' + name);
 	}
 	
 	public Item createItemBlock() {
@@ -72,6 +74,10 @@ public class MetaOre extends Block {
 	
 	public String getType() {
 		return this.type;
+	}
+	
+	public String getVariant() {
+		return this.variant;
 	}
 	
 	@Override

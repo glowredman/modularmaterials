@@ -64,14 +64,14 @@ public class BlockHandler {
 							String oreKey = oreEntry.getKey();
 							if(ore.isEnabled() || enableAll) {
 								if(ore.obeysGravity()) {
-									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, oreKey, materialKey);
+									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
 									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.getTexture() + '/' + typeKey + '/' + oreKey);
 									metaOresFalling.add(oreBlock);
 									count++;
 								} else {
-									MetaOre oreBlock = new MetaOre(material, ore, oreKey, materialKey);
+									MetaOre oreBlock = new MetaOre(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
 									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.getTexture() + '/' + typeKey + '/' + oreKey);
