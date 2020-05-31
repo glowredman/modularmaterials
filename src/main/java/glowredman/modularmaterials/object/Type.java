@@ -1,18 +1,29 @@
 package glowredman.modularmaterials.object;
 
+import static glowredman.modularmaterials.Reference.*;
+
 public class Type {
 	
-	public String category;
+	public String category = categoryFallback;
+	public String effectiveTool = effectiveToolFallback;
 	public boolean enabled;
 	public boolean hasTooltip;
 	public boolean isBeaconBase;
 	public boolean isBeaconPayment;
-	public String oreDictPrefix;
-	public String state;
-	public String syntax;
-	public String unitValue;
+	public String oreDictPrefix = "";
+	public String state = stateFallback;
+	public String syntax = "";
+	public String unitValue = unitValueFallback;
 	
 	public Type() {
+	}
+
+	public String getEffectiveTool() {
+		return effectiveTool;
+	}
+
+	public void setEffectiveTool(String effectiveTool) {
+		this.effectiveTool = effectiveTool;
 	}
 
 	public String getCategory() {

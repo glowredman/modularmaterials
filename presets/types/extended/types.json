@@ -2,8 +2,9 @@
   "types": {
     "block": {
       "category": "block",
+	  "effectiveTool": "pickaxe",
 	  "hasTooltip": true,
-	  "isBeaconbase": true,
+	  "isBeaconBase": true,
       "oreDictPrefix": "block",
       "syntax": "%s Block",
 	  "enabled": true,

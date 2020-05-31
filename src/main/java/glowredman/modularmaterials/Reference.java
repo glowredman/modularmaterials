@@ -52,6 +52,10 @@ public class Reference {
 	public static boolean overrideBlockStateFiles = false;
 	public static boolean enableUnitOreDict = true;
 	public static boolean suppressTypeMissingWarnings = false;
+	public static String categoryFallback = "item";
+	public static String effectiveToolFallback = "pickaxe";
+	public static String stateFallback = "solid";
+	public static String unitValueFallback = "1u";
 	
 	//core formatting
 	public static String triggerShiftIsPressedFormatting = "§p";

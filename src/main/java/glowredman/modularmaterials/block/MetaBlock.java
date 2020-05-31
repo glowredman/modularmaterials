@@ -41,6 +41,7 @@ public class MetaBlock extends Block {
 			this.hasTooltip = t.hasTooltip() && material.getTooltip() != null;
 			this.isBeaconBase = t.isBeaconBase() && material.isBeaconBase();
 			this.isBeaconPayment = t.isBeaconPayment() && material.isBeaconPayment();
+			this.setHarvestLevel(t.getEffectiveTool(), material.getBlockHarvestLevel());
 		} catch (Exception e) {
 			this.hasTooltip = false;
 			this.isBeaconBase = false;
@@ -48,7 +49,6 @@ public class MetaBlock extends Block {
 		}
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(material.getBlockHardness());
-		this.setHarvestLevel("pickaxe", material.getBlockHarvestLevel());
 		this.setLightLevel(material.getBlockLightLevel() / 15);
 		this.setRegistryName(MODID, type + '.' + name);
 		this.setResistance(material.getBlockResistance());

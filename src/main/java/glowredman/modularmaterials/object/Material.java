@@ -5,12 +5,14 @@ import java.util.HashMap;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
+import static glowredman.modularmaterials.Reference.stateFallback;;
+
 public class Material {
 	
 	public float blockHardness;
 	public int blockHarvestLevel;
 	public int blockLightLevel;
-	public String blockMaterialSound;
+	public String blockMaterialSound = "IRON";
 	public float blockResistance;
 	public int boilingTemperature;
 	public Color color = new Color();
@@ -30,15 +32,15 @@ public class Material {
 	@Nonnegative
 	@Nonnull
 	public int meta;
-	public String name;
+	public String name = "material_" + meta;
 	public String[] oreDict = new String[] {};
 	public float oreHardness;
 	public int oreHarvestLevel;
 	public int oreLightLevel;
 	public float oreResistance;	
-	public String state;
+	public String state = stateFallback;
 	public int temperature;
-	public String texture;
+	public String texture = "";
 	public String[] tooltip = new String[] {};
 	
 	
@@ -54,11 +56,7 @@ public class Material {
 	}
 	
 	public String getMaterialSound() {
-		if(blockMaterialSound != null) {
-			return blockMaterialSound;
-		} else {
-			return "IRON";
-		}
+		return blockMaterialSound;
 	}
 
 	public void setMaterialSound(String materialSound) {
