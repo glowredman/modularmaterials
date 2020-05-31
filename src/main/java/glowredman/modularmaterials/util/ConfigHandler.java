@@ -1,21 +1,21 @@
 package glowredman.modularmaterials.util;
 
-import static glowredman.modularmaterials.Reference.*;
-
 import java.io.File;
 
+import static glowredman.modularmaterials.Reference.*;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ConfigHandler {
 	
 	// ---CATEGORIES---
+	//core
 	public static final String GENERAL = "general";
 	public static final String FORMATTING = "formatting";
 	
 	// ---PHASES---
 	public static void initConfigs(FMLPreInitializationEvent event) {
-		config_core = new Configuration(new File(event.getModConfigurationDirectory().getPath() + "/" + MODID, CONFIGNAME_CORE));
+		config_core = new Configuration(new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_CORE));
 	}
 	
 	public static void readConfigs() {
@@ -28,7 +28,7 @@ public class ConfigHandler {
 	
 	// ---INIT CONFIGS---
 	private static void initCoreConfig() {
-		config_core.addCustomCategoryComment(GENERAL, "");
+		config_core.setCategoryRequiresMcRestart(FORMATTING, true);
 		config_core.setCategoryRequiresMcRestart(GENERAL, true);
 		
 		//general

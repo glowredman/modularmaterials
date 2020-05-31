@@ -3,6 +3,7 @@
       "blockHardness": ,
       "blockHarvestLevel": ,
       "blockLightLevel": ,
+	  "blockMaterialSound": "",
       "blockResistance": ,
       "boilingTemperature": ,
       "color": {
@@ -61,6 +62,7 @@
       "gasDensity": ,
       "gasLightLevel": ,
       "gasViscosity": ,
+	  "isBeaconBase": ,
       "isBeaconPayment": ,
       "liquidDensity": ,
       "liquidLightLevel": ,

@@ -45,7 +45,7 @@ public class Reference {
 	public static final String CONFIGNAME_OREVARIANTS = "oreVariants.json";
 	
 	//values:
-	//general
+	//core general
 	public static boolean enableAll = false;
 	public static boolean overrideModelFiles = false;
 	public static boolean overrideLangFile = false;
@@ -53,7 +53,7 @@ public class Reference {
 	public static boolean enableUnitOreDict = true;
 	public static boolean suppressTypeMissingWarnings = false;
 	
-	//formatting
+	//core formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
 	public static String triggerShiftIsNotPressedFormatting = "§P";
 	public static String triggerCtrlIsPressedFormatting = "§q";

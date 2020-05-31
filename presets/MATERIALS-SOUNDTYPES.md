@@ -38,4 +38,3 @@
 |**WATER**|WATER|STONE|Water|
 |**WEB**|WEB|STONE|Cobweb|
 |**WOOD**|WOOD|WOOD|Logs, Planks|
-|*default*|ROCK|STONE||

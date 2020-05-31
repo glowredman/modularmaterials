@@ -26,7 +26,13 @@ public class MaterialHandler {
 		Iterator i = getIterator(materials);
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
-			idMapping.put(entry.getValue().getMeta(), entry.getKey());
+			String key = entry.getKey();
+			int meta = entry.getValue().getMeta();
+			if(idMapping.containsKey(meta)) {
+				Main.logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
+			} else {
+				idMapping.put(meta, key);
+			}
 		}
 		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
@@ -111,7 +117,7 @@ public class MaterialHandler {
 			material.setMeta((short) 0);
 			material.setName("null");
 			materials.put("null", material);
-			Main.logger.warn("The material-list was empty. Check your configuration file or report this to the mod-author!");
+			Main.logger.warn("The material-list was empty. Check your configuration file or report this issue to the mod-author!");
 		}
 	}
 	

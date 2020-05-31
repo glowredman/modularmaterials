@@ -10,6 +10,7 @@ public class Material {
 	public float blockHardness;
 	public int blockHarvestLevel;
 	public int blockLightLevel;
+	public String blockMaterialSound;
 	public float blockResistance;
 	public int boilingTemperature;
 	public Color color = new Color();
@@ -25,7 +26,6 @@ public class Material {
 	public int liquidLightLevel;
 	@Nonnegative
 	public int liquidViscosity;
-	public String materialSound;
 	public int meltingTemperature;
 	@Nonnegative
 	@Nonnull
@@ -54,15 +54,15 @@ public class Material {
 	}
 	
 	public String getMaterialSound() {
-		if(materialSound != null) {
-			return materialSound;
+		if(blockMaterialSound != null) {
+			return blockMaterialSound;
 		} else {
-			return "ROCK";
+			return "IRON";
 		}
 	}
 
 	public void setMaterialSound(String materialSound) {
-		this.materialSound = materialSound;
+		this.blockMaterialSound = materialSound;
 	}
 
 	public int getGasLightLevel() {
