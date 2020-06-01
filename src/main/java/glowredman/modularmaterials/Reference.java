@@ -11,6 +11,7 @@ import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
+import glowredman.modularmaterials.object.OreVein;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.tab.CreativeTabBlocks;
 import glowredman.modularmaterials.tab.CreativeTabItems;
@@ -43,6 +44,7 @@ public class Reference {
 	public static final String CONFIGNAME_MATERIALS = "materials.json";
 	public static final String CONFIGNAME_TYPES = "types.json";
 	public static final String CONFIGNAME_OREVARIANTS = "oreVariants.json";
+	public static final String CONFIGNAME_OREGENERATION = "oreGeneration.json";
 	
 	//values:
 	//core general
@@ -56,6 +58,9 @@ public class Reference {
 	public static String effectiveToolFallback = "pickaxe";
 	public static String stateFallback = "solid";
 	public static String unitValueFallback = "1u";
+	public static boolean enableOreGen = true;
+	public static int modGenerationWeight = 0;
+	public static boolean disableVanillaOreGen = true;
 	
 	//core formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
@@ -73,6 +78,7 @@ public class Reference {
 	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
 	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
 	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>();
+	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>();
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();

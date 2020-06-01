@@ -42,6 +42,9 @@ public class ConfigHandler {
 		effectiveToolFallback = config_core.getString("effectiveToolFallback", GENERAL, "pickaxe", "If no effectiveTool is configured, this value will be used. Configs: " + CONFIGNAME_TYPES);
 		stateFallback = config_core.getString("stateFallback", GENERAL, "solid", "If no state is configured, this value will be used. Configs: " + CONFIGNAME_MATERIALS + " and " + CONFIGNAME_TYPES, new String[] {"solid", "liquid", "gaseous"});
 		unitValueFallback = config_core.getString("unitValueFallback", GENERAL, "1u", "If no unitValue is configured, this value will be used. Configs: " + CONFIGNAME_TYPES);
+		enableOreGen = config_core.getBoolean("enableOreGen", GENERAL, true, "Enables ore generation. The ore-gen is configured in " + CONFIGNAME_OREGENERATION + " and is GT5-styled. If you want vanilla-like ore-gen, use CoFH World.");
+		modGenerationWeight = config_core.getInt("modGenerationWeight", GENERAL, 0, 0, Integer.MAX_VALUE, "The priority this mod is given while generating terrain, a lower number means a higher priority. DO NOT TOUCH THIS IF YOU DON'T KNOW WHAT YOU'RE DOING!");
+		disableVanillaOreGen = config_core.getBoolean("disableVanillaOreGen", GENERAL, true, "");
 		
 		//formatting
 		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "\u00a7s", "String, to trigger animated formatting. Formatting is: \u00a7sPOSSTEP:DELAY:COLORS:STRING\u00a7s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");

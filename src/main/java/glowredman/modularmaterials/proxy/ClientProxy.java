@@ -5,14 +5,15 @@ import glowredman.modularmaterials.util.ClientHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new ClientHandler());
+		//SUBSCRIBE EVENTS
+		ClientHandler.register();
+		//COMMON
 		super.preInit(event);
 	}
 	

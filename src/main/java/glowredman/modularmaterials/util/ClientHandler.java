@@ -3,10 +3,17 @@ package glowredman.modularmaterials.util;
 import static glowredman.modularmaterials.Reference.fluids;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ClientHandler {
+	
+	public static final ClientHandler INSTANCE = new ClientHandler();
+	
+	public static void register() {
+		MinecraftForge.EVENT_BUS.register(INSTANCE);
+	}
 	
 	@SubscribeEvent
 	public void onTextureStitchEvent(TextureStitchEvent.Pre event) {

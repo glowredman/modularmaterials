@@ -9,6 +9,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +20,8 @@ import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.OreVariantList;
+import glowredman.modularmaterials.object.OreVein;
+import glowredman.modularmaterials.object.OreVeinList;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.object.TypeList;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -30,9 +33,11 @@ public class JSONHandler {
 		try {
 			File fileOreVariants = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_OREVARIANTS);
 			OreVariantList oreVariantList = new OreVariantList();
-			
+
+			//check if the file already exists, if not create it
 			if(!fileOreVariants.exists()) {
 				long time = System.currentTimeMillis();
+				//create an example to put in the file
 				OreVariant example = new OreVariant();
 				example.setBaseBlock("minecraft:stone");
 				example.setBaseTexture("minecraft:blocks/stone");
@@ -49,7 +54,8 @@ public class JSONHandler {
 				
 				Main.logger.info("Succesfully created \"" + fileOreVariants + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
-			
+
+			//transfer config information
 			oreVariants = new Gson().fromJson(readFile(fileOreVariants.getPath(), StandardCharsets.UTF_8), OreVariantList.class).getOreVariants();
 			
 		} catch (Exception e) {
@@ -62,10 +68,12 @@ public class JSONHandler {
 			
 			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_TYPES);
 			TypeList typeList = new TypeList();
-			
+
+			//check if the file already exists, if not create it
 			if(!fileTypes.exists()) {
 				long time = System.currentTimeMillis();
 				Type example = new Type();
+				//create an example to put in the file
 				example.setEnabled(true);
 				example.setCategory("item");
 				example.setOreDictPrefix("example");
@@ -78,7 +86,8 @@ public class JSONHandler {
 				
 				Main.logger.info("Succesfully created \"" + fileTypes + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
-			
+
+			//transfer config information
 			types = new Gson().fromJson(readFile(fileTypes.getPath(), StandardCharsets.UTF_8), TypeList.class).getTypes();
 			
 		} catch (Exception e) {
@@ -92,12 +101,12 @@ public class JSONHandler {
 			
 			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MATERIALS);
 			MaterialList materialList = new MaterialList();
-			
+
 			//check if the file already exists, if not create it
 			if(!fileMaterials.exists()) {
 				long time = System.currentTimeMillis();
-				//create an example to put in the file
 				Material example = new Material();
+				//create an example to put in the file
 				example.setBeaconBase(true);
 				example.setBeaconPayment(true);
 				example.setBlockHardness((float) (Math.random() * Float.MAX_VALUE));
@@ -118,7 +127,7 @@ public class JSONHandler {
 				example.setMeta((short) 0);
 				example.setName("Example Material");
 				example.setOreDict(new String[] {"Example", "ExampleButDifferent"});
-				example.setOreHardness((float) (Math.random() * Float.MAX_EXPONENT));
+				example.setOreHardness((float) (Math.random() * Float.MAX_VALUE));
 				example.setOreHarvestLevel((int) (Math.random() * 3));
 				example.setOreHarvestLevel((int) (Math.random() * 3));
 				example.setOreLightLevel((int) (Math.random() * 15));
@@ -135,16 +144,54 @@ public class JSONHandler {
 				
 				Main.logger.info("Succesfully created \"" + fileMaterials + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
-						
+			
 			//transfer config information
 			materials = new Gson().fromJson(readFile(fileMaterials.getPath(), StandardCharsets.UTF_8), MaterialList.class).getMaterials();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+	}
+	
+	public static void initOreGenerationFile(FMLPreInitializationEvent event) {
+		try {
+			File fileOreGeneration = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_OREGENERATION);
+			OreVeinList oreVeinList = new OreVeinList();
+			OreVein example = new OreVein();
+
+			//check if the file already exists, if not create it
+			if(!fileOreGeneration.exists()) {
+				long time = System.currentTimeMillis();
+				//create an example to put in the file
+				example.setBiomes(Arrays.asList());
+				example.setDenisty(2);
+				example.setDimensions(Arrays.asList("overworld"));
+				example.setEnabled(true);
+				example.setInbewteen("platinum");
+				example.setInvertBiomes(true);
+				example.setInvertDimensions(false);
+				example.setMaxHeight(250);
+				example.setMinHeight(5);
+				example.setPrimary("gold");
+				example.setSecondary("iridium");
+				example.setSize(32);
+				example.setSporadic("osmium");
+				example.setWeight(100);
+				
+				oreVeinList.oreGeneration.put("example", example);
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fileOreGeneration));
+				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(oreVeinList));
+				writer.close();
+
+				Main.logger.info("Succesfully created \"" + fileOreGeneration + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+			}
+
+			//transfer config information
+			oreVeins = new Gson().fromJson(readFile(fileOreGeneration.getPath(), StandardCharsets.UTF_8), OreVeinList.class).getOreGeneration();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private static String readFile(String path, Charset encoding) throws IOException, OutOfMemoryError, SecurityException {
