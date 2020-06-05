@@ -36,36 +36,4 @@ public class Color {
 		return red * 0x10000 + green * 0x100 + blue;
 	}
 
-	public int getAlpha() {
-		return alpha;
-	}
-
-	public int getRed() {
-		return red;
-	}
-
-	public int getGreen() {
-		return green;
-	}
-
-	public int getBlue() {
-		return blue;
-	}
-
-	public void setAlpha(int alpha) {
-		this.alpha = alpha;
-	}
-
-	public void setRed(int red) {
-		this.red = red;
-	}
-
-	public void setGreen(int green) {
-		this.green = green;
-	}
-
-	public void setBlue(int blue) {
-		this.blue = blue;
-	}
-
 }

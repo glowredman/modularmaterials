@@ -24,8 +24,8 @@ public class FluidHandler {
 			Material material = materialEntry.getValue();
 			
 			//check, if the material should be registered
-			if(material.isEnabled() || enableAll) {
-				Iterator i = MaterialHandler.getIterator(material.getEnabledTypes());
+			if(material.enabled || enableAll) {
+				Iterator i = MaterialHandler.getIterator(material.enabledTypes);
 				while(i.hasNext()) {
 					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) i.next();
 					String type = typeEntry.getKey();
@@ -33,54 +33,54 @@ public class FluidHandler {
 					//check if the type is a fluid and enabled
 					boolean b = false;
 					try {
-						b = typeEntry.getValue() && types.get(typeEntry.getKey()).getCategory().equals("fluid") && types.get(typeEntry.getKey()).isEnabled();
+						b = typeEntry.getValue() && types.get(typeEntry.getKey()).category.equals("fluid") && types.get(typeEntry.getKey()).enabled;
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
 							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					if(b) {
-						String texture = "fluids/" + material.getTexture() + '/' + type;
+						String texture = "fluids/" + material.texture + '/' + type;
 						String name = materialEntry.getKey().toLowerCase().replace(' ', '_');
 						String unlocalizedName = name;
-						int temperature = material.getTemperature();
-						int color = material.getColor().getARGB();
+						int temperature = material.temperature;
+						int color = material.color.getARGB();
 						int density = 1000;
 						boolean isGaseous = false;
 						int luminosity = 0;
 						int viscosity = 1000;
 						
-						switch (types.get(type).getState()) {
+						switch (types.get(type).state) {
 						case "gaseous":
 							
 							//if the materials state is also gaseous, the stats stay the same, otherwise do this:
-							if(!material.getState().equals("gaseous")) {
+							if(!material.state.equals("gaseous")) {
 								name = "gaseous_" + name;
-								temperature = material.getBoilingTemperature();
+								temperature = material.boilingTemperature;
 							}
-							density = material.getGasDensity();
+							density = material.gasDensity;
 							isGaseous = true;
-							luminosity = material.getGasLightLevel();
-							viscosity = material.getGasViscosity();
+							luminosity = material.gasLightLevel;
+							viscosity = material.gasViscosity;
 							break;
 						case "liquid":
-							switch (material.getState()) {
+							switch (material.state) {
 							case "gaseous":
 								name = "liquid_" + name;
-								temperature = material.getMeltingTemperature();
+								temperature = material.meltingTemperature;
 								break;
 							case "liquid":
 								break;
 							default:
-								temperature = material.getMeltingTemperature();
+								temperature = material.meltingTemperature;
 								break;
 							}
-							density = material.getLiquidDensity();
-							luminosity = material.getLiquidLightLevel();
-							viscosity = material.getLiquidViscosity();
+							density = material.liquidDensity;
+							luminosity = material.liquidLightLevel;
+							viscosity = material.liquidViscosity;
 							break;
 						default:
-							name = types.get(type).getState() + name;
+							name = types.get(type).state + name;
 							break;
 						}
 						

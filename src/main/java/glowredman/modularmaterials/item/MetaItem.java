@@ -25,70 +25,47 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class MetaItem extends Item {
 	
 	public String type;
-	private boolean hasTooltip;
-	private boolean isBeaconPayment;
 	
 	public MetaItem(String type) {
-		this.setType(type);
+		this.type = type;
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, type);
 		this.setCreativeTab(TAB_ITEMS);
-		try {
-			
-		} catch (Exception e) {
-			this.hasTooltip = false;
-			this.isBeaconPayment = false;
-		}
 		for(Material material : materials.values()) {
-			if(enableAll || (material.isTypeEnabled(type) && material.isEnabled())) {
-				Main.proxy.registerItemRenderer(this, material.getTexture() + '/' + type, material.getMeta());
+			if(enableAll || (material.isTypeEnabled(type) && material.enabled)) {
+				Main.proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
 			}
 		}
 	}
 	
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	public String getType() {
-		return this.type;
-	}
-	
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
-		if(this.isBeaconPayment) {
-			return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment();
-		} else {
-			return false;
-		}
+		return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		int meta = stack.getMetadata();
-		if(hasTooltip) {
-			try {
-				Material material = MaterialHandler.getMaterialFromID(meta);
-				if (enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
-					String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).getTooltip();
-					if (lines != null) {
-						for (String line : lines) {
-							try {
-								String s = FormattingHandler.formatTooltipLine(line);
-								if (s != null) {
-									tooltip.add(s);
-								}
-							} catch (Exception e) {
-								if (enableFormattingDebugger) {
-									e.printStackTrace();
-								}
+		try {
+			Material material = MaterialHandler.getMaterialFromID(stack.getMetadata());
+			if (enableAll || (material.enabled && material.isTypeEnabled(type))) {
+				String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).tooltip;
+				if (lines != null) {
+					for (String line : lines) {
+						try {
+							String s = FormattingHandler.formatTooltipLine(line);
+							if (s != null) {
+								tooltip.add(s);
+							}
+						} catch (Exception e) {
+							if (enableFormattingDebugger) {
+								e.printStackTrace();
 							}
 						}
 					}
 				}
-			} catch (Exception e) {
-			} 
-		}
+			}
+		} catch (Exception e) {
+		} 
 	}
 	
 	@Override
@@ -99,11 +76,11 @@ public class MetaItem extends Item {
 				Entry<String, Material> entry = (Entry<String, Material>) i.next();
 				Material material = entry.getValue();
 				try {
-					if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.type) && types.get(this.type).isEnabled())) {
-						items.add(new ItemStack(this, 1, material.getMeta()));
+					if(enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {
+						items.add(new ItemStack(this, 1, material.meta));
 					}
 				} catch (Exception e) {
-					Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + this.type + "\"! Add \"" + this.type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+					Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 				}
 			}
 		}
@@ -115,8 +92,8 @@ public class MetaItem extends Item {
 		String s = "";
 		try {
 			Material material = MaterialHandler.getMaterialFromID(meta);
-			if(enableAll || (material.isEnabled() && material.isTypeEnabled(this.getType()))) {
-				s = "item." + MODID + '.' + this.getType() + '.' + idMapping.get(meta);
+			if(enableAll || (material.enabled && material.isTypeEnabled(type))) {
+				s = "item." + MODID + '.' + type + '.' + idMapping.get(meta);
 			} else {
 				s = "item." + MODID + ".debug";
 			}
@@ -133,7 +110,7 @@ public class MetaItem extends Item {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if(tintIndex == 0) {
-					return MaterialHandler.getMaterialFromID(stack.getMetadata()).getColor().getARGB();
+					return MaterialHandler.getMaterialFromID(stack.getMetadata()).color.getARGB();
 				} else {
 					return 0xFFFFFF;
 				}

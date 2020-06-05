@@ -7,7 +7,7 @@ public class Templates {
 	public static String getTemplateAsString(String[] template) {
 		String out = template[0];
 		for(int i = 1; i < template.length; i++) {
-			out = out + '\n' + template[i];
+			out += '\n' + template[i];
 		}
 		return out;
 	}

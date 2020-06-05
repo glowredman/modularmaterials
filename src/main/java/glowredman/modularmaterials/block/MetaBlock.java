@@ -33,50 +33,36 @@ public class MetaBlock extends Block {
 	private boolean isBeaconPayment;
 
 	public MetaBlock(Material material, String type, String name) {
-		super(MCMaterialHelper.getMaterialFromString(material.getMaterialSound()));
+		super(MCMaterialHelper.getMaterialFromString(material.blockMaterialSound));
+		Type type_ = types.get(type);
 		this.material = material;
 		this.type = type;
-		try {
-			Type t = types.get(type);
-			this.hasTooltip = t.hasTooltip() && material.getTooltip() != null;
-			this.isBeaconBase = t.isBeaconBase() && material.isBeaconBase();
-			this.isBeaconPayment = t.isBeaconPayment() && material.isBeaconPayment();
-			this.setHarvestLevel(t.getEffectiveTool(), material.getBlockHarvestLevel());
-		} catch (Exception e) {
-			this.hasTooltip = false;
-			this.isBeaconBase = false;
-			this.isBeaconPayment = false;
-		}
+		this.hasTooltip = type_.hasTooltip && material.tooltip != null;
+		this.isBeaconBase = type_.isBeaconBase && material.isBeaconBase;
+		this.isBeaconPayment = type_.isBeaconPayment && material.isBeaconPayment;
+		this.setHarvestLevel(type_.effectiveTool, material.blockHarvestLevel);
 		this.setCreativeTab(TAB_BLOCKS);
-		this.setHardness(material.getBlockHardness());
-		this.setLightLevel(material.getBlockLightLevel() / 15);
+		this.setHardness(material.blockHardness);
+		this.setLightLevel(material.blockLightLevel / 15);
 		this.setRegistryName(MODID, type + '.' + name);
-		this.setResistance(material.getBlockResistance());
-		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(material.getMaterialSound()));
+		this.setResistance(material.blockResistance);
+		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(material.blockMaterialSound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + name);
 	}
 
 	public Item createItemBlock() {
-		return new MetaItemBlock(this, this.isBeaconPayment);
-	}
-	
-	public Material getMaterial() {
-		return this.material;
-	}
-	
-	public String getType() {
-		return this.type;
+		return new MetaItemBlock(this, isBeaconPayment);
 	}
 	
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
-		return this.isBeaconBase;
+		return isBeaconBase;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if(this.hasTooltip) {
-			String[] lines = this.material.getTooltip();
+			String[] lines = material.tooltip;
 			for (String line : lines) {
 				try {
 					String s = FormattingHandler.formatTooltipLine(line);
@@ -102,14 +88,14 @@ public class MetaBlock extends Block {
 			
 			@Override
 			public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-				return tintIndex == 0 ? material.getColor().getRGB() : 0xFFFFFF;
+				return tintIndex == 0 ? material.color.getRGB() : 0xFFFFFF;
 			}
 		}, this);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
 			
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				return tintIndex == 0 ? material.getColor().getARGB() : 0xFFFFFFFF;
+				return tintIndex == 0 ? material.color.getARGB() : 0xFFFFFFFF;
 			}
 		}, this);
 	}

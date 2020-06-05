@@ -18,28 +18,4 @@ public class CTTT {
 		this.type = type;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public String getTexture() {
-		return texture;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public void setTexture(String texture) {
-		this.texture = texture;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 }

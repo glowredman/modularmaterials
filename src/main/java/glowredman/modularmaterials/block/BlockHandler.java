@@ -5,10 +5,13 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
+import glowredman.modularmaterials.gen.OreGenHandler;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.MaterialHandler;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
@@ -22,17 +25,17 @@ public class BlockHandler {
 			Entry<String, Type> typeEntry = (Entry<String, Type>) typeIterator.next();
 			Type type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
-			if((type.isEnabled() || enableAll) && type.getCategory().equals("block")) {
+			if((type.enabled || enableAll) && type.category.equals("block")) {
 				Iterator materialIterator = MaterialHandler.getIterator(materials);
 				while(materialIterator.hasNext()) {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					if(enableAll ||(material.isEnabled() && material.isTypeEnabled(typeKey))) {
+					if(enableAll ||(material.enabled && material.isTypeEnabled(typeKey))) {
 						MetaBlock block = new MetaBlock(material, typeKey, materialKey);
 						ForgeRegistries.BLOCKS.register(block);
 						ForgeRegistries.ITEMS.register(block.createItemBlock());
-						Main.proxy.registerItemRenderer(Item.getItemFromBlock(block), material.getTexture() + '/' + typeKey);
+						Main.proxy.registerItemRenderer(Item.getItemFromBlock(block), material.texture + '/' + typeKey);
 						metaBlocks.add(block);
 						count++;
 					}
@@ -50,32 +53,35 @@ public class BlockHandler {
 			Entry<String, Type> typeEntry = (Entry<String, Type>) typeIterator.next();
 			Type type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
-			if((type.isEnabled() || enableAll) && type.getCategory().equals("ore")) {
+			if((type.enabled || enableAll) && type.category.equals("ore")) {
 				Iterator materialIterator = MaterialHandler.getIterator(materials);
 				while(materialIterator.hasNext()) {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					if ((material.isEnabled() && material.isTypeEnabled(typeKey)) || enableAll) {
+					if ((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
 						Iterator oreIterator = MaterialHandler.getIterator(oreVariants);
 						while (oreIterator.hasNext()) {
 							Entry<String, OreVariant> oreEntry = (Entry<String, OreVariant>) oreIterator.next();
 							OreVariant ore = oreEntry.getValue();
 							String oreKey = oreEntry.getKey();
-							if(ore.isEnabled() || enableAll) {
-								if(ore.obeysGravity()) {
+							IBlockState blockBaseState = OreGenHandler.getBlockStateFromBlockName(ore.baseBlock);
+							if(ore.enabled || enableAll) {
+								if(ore.obeysGravity) {
 									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.getTexture() + '/' + typeKey + '/' + oreKey);
+									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
 									metaOresFalling.add(oreBlock);
+									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
 								} else {
 									MetaOre oreBlock = new MetaOre(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.getTexture() + '/' + typeKey + '/' + oreKey);
+									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
 									metaOres.add(oreBlock);
+									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
 								}
 							}

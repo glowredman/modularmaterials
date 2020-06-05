@@ -19,7 +19,7 @@ public class ItemHandler {
 		Iterator typeIterator = MaterialHandler.getIterator(types);
 		while(typeIterator.hasNext()) {
 			Entry<String, Type> type = (Entry<String, Type>) typeIterator.next();
-			if(type.getValue().getCategory().equals("item") && ((type.getValue().isEnabled() == true) || enableAll)) {
+			if(type.getValue().category.equals("item") && (type.getValue().enabled || enableAll)) {
 				MetaItem item = new MetaItem(type.getKey());
 				ForgeRegistries.ITEMS.register(item);
 				metaItems.add(item);

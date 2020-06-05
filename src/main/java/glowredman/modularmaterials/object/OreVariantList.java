@@ -4,13 +4,6 @@ import java.util.HashMap;
 
 public class OreVariantList {
 	
-	public HashMap<String, OreVariant> oreTypes = new HashMap<String, OreVariant>();
-	
-	public OreVariantList() {
-	}
-	
-	public HashMap<String, OreVariant> getOreVariants() {
-		return oreTypes;
-	}
+	public HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>();
 
 }

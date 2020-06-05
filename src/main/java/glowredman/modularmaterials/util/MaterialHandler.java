@@ -27,7 +27,7 @@ public class MaterialHandler {
 		while(i.hasNext()) {
 			Entry<String, Material> entry = (Entry<String, Material>) i.next();
 			String key = entry.getKey();
-			int meta = entry.getValue().getMeta();
+			int meta = entry.getValue().meta;
 			if(idMapping.containsKey(meta)) {
 				Main.logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
 			} else {
@@ -47,15 +47,15 @@ public class MaterialHandler {
 		
 		//items
 		for(MetaItem item : metaItems) {
-			String oreDictPrefix = types.get(item.getType()).getOreDictPrefix();
-			String type = item.getType();
+			String oreDictPrefix = types.get(item.type).oreDictPrefix;
+			String type = item.type;
 			Iterator materialIterator = MaterialHandler.getIterator(materials);
 			while(materialIterator.hasNext()) {
 				Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 				Material material = materialEntry.getValue();
-				if(material.isEnabled() && material.isTypeEnabled(type)) {
-					for(String oreDict : material.getOreDict()) {
-						OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(item, 1, material.getMeta()));
+				if(material.enabled && material.isTypeEnabled(type)) {
+					for(String oreDict : material.oreDict) {
+						OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(item, 1, material.meta));
 						count++;
 					}
 				}
@@ -64,8 +64,8 @@ public class MaterialHandler {
 		
 		//blocks
 		for(MetaBlock block : metaBlocks) {
-			String oreDictPrefix = types.get(block.getType()).getOreDictPrefix();
-			for(String oreDict : block.getMaterial().getOreDict()) {
+			String oreDictPrefix = types.get(block.type).oreDictPrefix;
+			for(String oreDict : block.material.oreDict) {
 				OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(block, 1));
 				count++;
 			}
@@ -73,17 +73,17 @@ public class MaterialHandler {
 		
 		//ores
 		for(MetaOre ore : metaOres) {
-			String oreOreDictPrefix = ore.getOre().getOreDictPrefix();
-			String typeOrePrefix = types.get(ore.getType()).getOreDictPrefix();
-			for(String oreDict : ore.getMaterial().getOreDict()) {
+			String oreOreDictPrefix = ore.ore.oreDictPrefix;
+			String typeOrePrefix = types.get(ore.type).oreDictPrefix;
+			for(String oreDict : ore.material.oreDict) {
 				OreDictionary.registerOre(typeOrePrefix + oreOreDictPrefix + oreDict, ore);
 				count++;
 			}
 		}
 		for(MetaOreFalling ore : metaOresFalling) {
-			String oreOreDictPrefix = ore.getOre().getOreDictPrefix();
-			String typeOrePrefix = types.get(ore.getType()).getOreDictPrefix();
-			for(String oreDict : ore.getMaterial().getOreDict()) {
+			String oreOreDictPrefix = ore.ore.oreDictPrefix;
+			String typeOrePrefix = types.get(ore.type).oreDictPrefix;
+			for(String oreDict : ore.material.oreDict) {
 				OreDictionary.registerOre(typeOrePrefix + oreOreDictPrefix + oreDict, ore);
 				count++;
 			}
@@ -92,12 +92,12 @@ public class MaterialHandler {
 		if(enableUnitOreDict) {
 			Collection<Type> typeList = types.values();
 			for(Type type : typeList) {
-				String oreDictPrefix = type.getOreDictPrefix();
-				String unitValue = type.getUnitValue();
+				String oreDictPrefix = type.oreDictPrefix;
+				String unitValue = type.unitValue;
 				Iterator materialIterator = MaterialHandler.getIterator(materials);
 				while(materialIterator.hasNext()) {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
-					for(String oreDict : materialEntry.getValue().getOreDict()) {
+					for(String oreDict : materialEntry.getValue().oreDict) {
 						for(ItemStack item : OreDictionary.getOres(oreDictPrefix + oreDict)) {
 							OreDictionary.registerOre(unitValue + oreDict, item);
 							count++;
@@ -112,11 +112,11 @@ public class MaterialHandler {
 	public static void fillMaterialListIfEmpty() {
 		if(materials.isEmpty()) {
 			Material material = new Material();
-			material.setEnabled(false);
-			material.setEnabledTypes(getAllTypesEqualHashMap(true));
-			material.setMeta((short) 0);
-			material.setName("null");
-			materials.put("null", material);
+			material.enabled = false;
+			material.enabledTypes = getAllTypesEqualHashMap(true);
+			material.meta = 0;
+			material.name = "placeholder";
+			materials.put("placeholder", material);
 			Main.logger.warn("The material-list was empty. Check your configuration file or report this issue to the mod-author!");
 		}
 	}

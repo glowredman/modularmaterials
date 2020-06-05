@@ -31,8 +31,8 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		
 		for(Material material : materials.values()) {
-			if(material.isEnabled() || enableAll) {
-				Iterator typeIterator = MaterialHandler.getIterator(material.getEnabledTypes());
+			if(material.enabled || enableAll) {
+				Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
 				while(typeIterator.hasNext()) {
 					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
 					String typeKey = typeEntry.getKey();
@@ -40,14 +40,14 @@ public class AssetHandler {
 					//figure out, if there should be an material with that type
 					boolean isTypeEnabled = false;
 					try {
-						isTypeEnabled = (typeEntry.getValue() && types.get(typeKey).isEnabled()) || enableAll;
+						isTypeEnabled = (typeEntry.getValue() && types.get(typeKey).enabled) || enableAll;
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
 							Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					Type type = types.get(typeKey);
-					CTTT cttt = new CTTT(type.getCategory(), material.getTexture(), typeKey);
+					CTTT cttt = new CTTT(type.category, material.texture, typeKey);
 					if(isTypeEnabled && !cttts.contains(cttt)) {
 						cttts.add(cttt);
 						count++;
@@ -65,10 +65,10 @@ public class AssetHandler {
 		File mcDataDir = Minecraft.getMinecraft().mcDataDir;
 		
 		for(CTTT cttt : cttts) {
-			String texture = cttt.getTexture();
-			String type = cttt.getType();
+			String texture = cttt.texture;
+			String type = cttt.type;
 			
-			switch (cttt.getCategory()) {
+			switch (cttt.category) {
 			case "item":
 				File dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
 				File file = new File(dir, type + ".json");
@@ -137,7 +137,7 @@ public class AssetHandler {
 				while(oreVariantsIterator.hasNext()) {
 					Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantsIterator.next();
 					String ore = oreVariantEntry.getKey();
-					String base = oreVariantEntry.getValue().getBaseTexture();
+					String base = oreVariantEntry.getValue().baseTexture;
 					
 					//normal variant
 					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture + '/' + type);
@@ -196,13 +196,13 @@ public class AssetHandler {
 		while(materialIterator.hasNext()) {
 			Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 			Material material = materialEntry.getValue();
-			String texture = material.getTexture();
+			String texture = material.texture;
 			
 			//check if the material should even be registered
-			if(material.isEnabled() || enableAll) {
+			if(material.enabled || enableAll) {
 
 				//iterate through all of the materials types
-				Iterator typeIterator = MaterialHandler.getIterator(material.getEnabledTypes());
+				Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
 				while(typeIterator.hasNext()) {
 					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
 					String type = typeEntry.getKey();
@@ -210,7 +210,7 @@ public class AssetHandler {
 					//check, if there should be a block of this type and material
 					boolean b = false;
 					try {
-						b = ((typeEntry.getValue() && types.get(type).isEnabled()) || enableAll) && types.get(type).getCategory().equals("block");
+						b = ((typeEntry.getValue() && types.get(type).enabled) || enableAll) && types.get(type).category.equals("block");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -240,7 +240,7 @@ public class AssetHandler {
 						
 						//check, if there should be a ore of this type and material
 						try {
-							b = ((typeEntry.getValue() && types.get(type).isEnabled()) || enableAll) && types.get(type).getCategory().equals("ore");
+							b = ((typeEntry.getValue() && types.get(type).enabled) || enableAll) && types.get(type).category.equals("ore");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -249,7 +249,7 @@ public class AssetHandler {
 							while(oreVariantIterator.hasNext()) {
 								Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
 								String ore = oreVariantEntry.getKey();
-								if(oreVariantEntry.getValue().isEnabled() || enableAll) {
+								if(oreVariantEntry.getValue().enabled || enableAll) {
 									
 									//generate the blockstate file
 									File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/blockstates");
@@ -307,34 +307,34 @@ public class AssetHandler {
 					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					String materialName = material.getName();
+					String materialName = material.name;
 					newParagraph(writer);
 					writer.write("# -=-=- " + materialKey + " -=-=-");
 					writer.newLine();
-					Iterator typeIterator = MaterialHandler.getIterator(material.getEnabledTypes());
+					Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
 					while(typeIterator.hasNext()) {
 						Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
 						String typeKey = typeEntry.getKey();
 						if(types.containsKey(typeKey) && typeEntry.getValue()) {
 							Type type = types.get(typeKey);
-							String typeSyntax = type.getSyntax();
-							switch (type.getCategory()) {
+							String typeSyntax = type.syntax;
+							switch (type.category) {
 							case "item":
 								writer.write("item." + MODID + '.' + typeKey + '.' + materialKey + ".name=" + typeSyntax.replace("%s", materialName));
 								writer.newLine();
 								count++;
 								break;
 							case "fluid":
-								if(type.getState().equals(material.getState())) {
+								if(type.state.equals(material.state)) {
 									writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + '=' + typeSyntax.replace("%s", materialName));
 									writer.newLine();
 									count++;
-								} else if (type.getState().equals("gaseous")) {
+								} else if (type.state.equals("gaseous")) {
 									writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + "=Gaseous " + typeSyntax.replace("%s", materialName));
 									writer.newLine();
 									count++;
-								} else if (type.getState().equals("liquid")) {
-									if(material.getState().equals("solid")) {
+								} else if (type.state.equals("liquid")) {
+									if(material.state.equals("solid")) {
 										writer.write("fluid." + MODID + '.' + typeKey + '.' + materialKey + "=Molten " + typeSyntax.replace("%s", materialName));
 										writer.newLine();
 										count++;
@@ -354,7 +354,7 @@ public class AssetHandler {
 								Iterator oreVariantIterator = MaterialHandler.getIterator(oreVariants);
 								while(oreVariantIterator.hasNext()) {
 									Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
-									String oreSyntax = oreVariantEntry.getValue().getSyntax();
+									String oreSyntax = oreVariantEntry.getValue().syntax;
 									String oreKey = oreVariantEntry.getKey();
 									writer.write("tile." + MODID + '.' + typeKey + '.' + oreKey + '.' + materialKey + ".name=" + oreSyntax.replace("%s", materialName));
 									writer.newLine();

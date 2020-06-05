@@ -36,59 +36,37 @@ public class MetaOreFalling extends BlockFalling {
 	private boolean isBeaconPayment;
 	
 	public MetaOreFalling(Material material, OreVariant ore, String type, String variant, String name) {
-		super(MCMaterialHelper.getMaterialFromString(ore.getMaterialSound()));
+		super(MCMaterialHelper.getMaterialFromString(ore.materialSound));
+		Type t = types.get(type);
 		this.material = material;
 		this.ore = ore;
 		this.type = type;
 		this.variant = variant;
-		try {
-			Type t = types.get(type);
-			this.hasTooltip = t.hasTooltip() && material.getTooltip() != null;
-			this.isBeaconBase = t.isBeaconBase() && material.isBeaconBase();
-			this.isBeaconPayment = t.isBeaconPayment() && material.isBeaconPayment();
-		} catch (Exception e) {
-			this.hasTooltip = false;
-			this.isBeaconBase = false;
-			this.isBeaconPayment = false;
-		}
+		this.hasTooltip = t.hasTooltip && material.tooltip != null;
+		this.isBeaconBase = t.isBeaconBase && material.isBeaconBase;
+		this.isBeaconPayment = t.isBeaconPayment && material.isBeaconPayment;
 		this.setCreativeTab(TAB_ORES);
-		this.setHardness(material.getOreHardness());
-		this.setHarvestLevel(ore.getEffectiveTool(), material.getOreHarvestLevel());
-		this.setLightLevel(material.getOreLightLevel() / 15);
+		this.setHardness(material.oreHardness);
+		this.setHarvestLevel(ore.effectiveTool, material.oreHarvestLevel);
+		this.setLightLevel(material.oreLightLevel / 15);
 		this.setRegistryName(MODID, type + '.' + variant + '.' + name);
-		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(ore.getMaterialSound()));
+		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(ore.materialSound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + variant + '.' + name);
 	}
 	
 	public Item createItemBlock() {
-		return new MetaItemBlock(this, this.isBeaconPayment);
-	}
-	
-	public Material getMaterial() {
-		return this.material;
-	}
-	
-	public OreVariant getOre() {
-		return this.ore;
-	}
-	
-	public String getType() {
-		return this.type;
-	}
-	
-	public String getVariant() {
-		return this.variant;
+		return new MetaItemBlock(this, isBeaconPayment);
 	}
 	
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
-		return this.isBeaconBase;
+		return isBeaconBase;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if(hasTooltip) {
-			String[] lines = this.material.getTooltip();
+			String[] lines = material.tooltip;
 			for(String line : lines) {
 				try {
 					String s = FormattingHandler.formatTooltipLine(line);
@@ -114,14 +92,14 @@ public class MetaOreFalling extends BlockFalling {
 			
 			@Override
 			public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-				return tintIndex == 0 ? material.getColor().getRGB() : 0xFFFFFF;
+				return tintIndex == 0 ? material.color.getRGB() : 0xFFFFFF;
 			}
 		}, this);
 		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
 			
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				return tintIndex == 0 ? material.getColor().getARGB() : 0xFFFFFFFF;
+				return tintIndex == 0 ? material.color.getARGB() : 0xFFFFFFFF;
 			}
 		}, this);
 	}
