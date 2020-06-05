@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.item;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -71,9 +70,7 @@ public class MetaItem extends Item {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if(tab.equals(TAB_ITEMS)) {
-			Iterator i = MaterialHandler.getIterator(materials);
-			while(i.hasNext()) {
-				Entry<String, Material> entry = (Entry<String, Material>) i.next();
+			for(Entry<String, Material> entry : materials.entrySet()) {
 				Material material = entry.getValue();
 				try {
 					if(enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {

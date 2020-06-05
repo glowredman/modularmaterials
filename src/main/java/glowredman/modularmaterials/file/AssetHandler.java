@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -32,9 +31,7 @@ public class AssetHandler {
 		
 		for(Material material : materials.values()) {
 			if(material.enabled || enableAll) {
-				Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
-				while(typeIterator.hasNext()) {
-					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
+				for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 					String typeKey = typeEntry.getKey();
 					
 					//figure out, if there should be an material with that type
@@ -133,9 +130,7 @@ public class AssetHandler {
 					e.printStackTrace();
 				}
 			case "ore":
-				Iterator oreVariantsIterator = MaterialHandler.getIterator(oreVariants);
-				while(oreVariantsIterator.hasNext()) {
-					Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantsIterator.next();
+				for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
 					String ore = oreVariantEntry.getKey();
 					String base = oreVariantEntry.getValue().baseTexture;
 					
@@ -192,9 +187,7 @@ public class AssetHandler {
 		int count = 0;
 		
 		//iterate through all materials
-		Iterator materialIterator = MaterialHandler.getIterator(materials);
-		while(materialIterator.hasNext()) {
-			Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+		for(Entry<String, Material> materialEntry : materials.entrySet()) {
 			Material material = materialEntry.getValue();
 			String texture = material.texture;
 			
@@ -202,9 +195,7 @@ public class AssetHandler {
 			if(material.enabled || enableAll) {
 
 				//iterate through all of the materials types
-				Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
-				while(typeIterator.hasNext()) {
-					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
+				for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 					String type = typeEntry.getKey();
 					
 					//check, if there should be a block of this type and material
@@ -245,9 +236,7 @@ public class AssetHandler {
 							e.printStackTrace();
 						}
 						if(b) {
-							Iterator oreVariantIterator = MaterialHandler.getIterator(oreVariants);
-							while(oreVariantIterator.hasNext()) {
-								Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
+							for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
 								String ore = oreVariantEntry.getKey();
 								if(oreVariantEntry.getValue().enabled || enableAll) {
 									
@@ -302,18 +291,14 @@ public class AssetHandler {
 				writer.newLine();
 				writer.newLine();
 				
-				Iterator materialIterator = MaterialHandler.getIterator(materials);
-				while(materialIterator.hasNext()) {
-					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+				for(Entry<String, Material> materialEntry : materials.entrySet()) {
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					String materialName = material.name;
 					newParagraph(writer);
 					writer.write("# -=-=- " + materialKey + " -=-=-");
 					writer.newLine();
-					Iterator typeIterator = MaterialHandler.getIterator(material.enabledTypes);
-					while(typeIterator.hasNext()) {
-						Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) typeIterator.next();
+					for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 						String typeKey = typeEntry.getKey();
 						if(types.containsKey(typeKey) && typeEntry.getValue()) {
 							Type type = types.get(typeKey);
@@ -351,9 +336,7 @@ public class AssetHandler {
 								count++;
 								break;
 							case "ore":
-								Iterator oreVariantIterator = MaterialHandler.getIterator(oreVariants);
-								while(oreVariantIterator.hasNext()) {
-									Entry<String, OreVariant> oreVariantEntry = (Entry<String, OreVariant>) oreVariantIterator.next();
+								for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
 									String oreSyntax = oreVariantEntry.getValue().syntax;
 									String oreKey = oreVariantEntry.getKey();
 									writer.write("tile." + MODID + '.' + typeKey + '.' + oreKey + '.' + materialKey + ".name=" + oreSyntax.replace("%s", materialName));

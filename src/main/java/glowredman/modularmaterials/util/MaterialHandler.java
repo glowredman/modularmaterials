@@ -2,7 +2,6 @@ package glowredman.modularmaterials.util;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
@@ -23,9 +22,7 @@ public class MaterialHandler {
 	
 	public static void createIDMapping() {
 		long time = System.currentTimeMillis();
-		Iterator i = getIterator(materials);
-		while(i.hasNext()) {
-			Entry<String, Material> entry = (Entry<String, Material>) i.next();
+		for(Entry<String, Material> entry : materials.entrySet()) {
 			String key = entry.getKey();
 			int meta = entry.getValue().meta;
 			if(idMapping.containsKey(meta)) {
@@ -49,9 +46,7 @@ public class MaterialHandler {
 		for(MetaItem item : metaItems) {
 			String oreDictPrefix = types.get(item.type).oreDictPrefix;
 			String type = item.type;
-			Iterator materialIterator = MaterialHandler.getIterator(materials);
-			while(materialIterator.hasNext()) {
-				Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+			for(Entry<String, Material> materialEntry : materials.entrySet()) {
 				Material material = materialEntry.getValue();
 				if(material.enabled && material.isTypeEnabled(type)) {
 					for(String oreDict : material.oreDict) {
@@ -94,9 +89,7 @@ public class MaterialHandler {
 			for(Type type : typeList) {
 				String oreDictPrefix = type.oreDictPrefix;
 				String unitValue = type.unitValue;
-				Iterator materialIterator = MaterialHandler.getIterator(materials);
-				while(materialIterator.hasNext()) {
-					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+				for(Entry<String, Material> materialEntry : materials.entrySet()) {
 					for(String oreDict : materialEntry.getValue().oreDict) {
 						for(ItemStack item : OreDictionary.getOres(oreDictPrefix + oreDict)) {
 							OreDictionary.registerOre(unitValue + oreDict, item);
@@ -119,10 +112,6 @@ public class MaterialHandler {
 			materials.put("placeholder", material);
 			Main.logger.warn("The material-list was empty. Check your configuration file or report this issue to the mod-author!");
 		}
-	}
-	
-	public static Iterator getIterator(HashMap map) {
-		return map.entrySet().iterator();
 	}
 	
 	public static HashMap<String, Boolean> getAllTypesEqualHashMap(boolean value) {

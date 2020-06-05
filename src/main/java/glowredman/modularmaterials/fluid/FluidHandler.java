@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.fluid;
 
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
@@ -18,16 +17,12 @@ public class FluidHandler {
 		int counter = 0;
 		
 		//iterate through all materials
-		Iterator materialIterator = MaterialHandler.getIterator(materials);
-		while(materialIterator.hasNext()) {
-			Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+		for(Entry<String, Material> materialEntry : materials.entrySet()) {
 			Material material = materialEntry.getValue();
 			
 			//check, if the material should be registered
 			if(material.enabled || enableAll) {
-				Iterator i = MaterialHandler.getIterator(material.enabledTypes);
-				while(i.hasNext()) {
-					Entry<String, Boolean> typeEntry = (Entry<String, Boolean>) i.next();
+				for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 					String type = typeEntry.getKey();
 					
 					//check if the type is a fluid and enabled

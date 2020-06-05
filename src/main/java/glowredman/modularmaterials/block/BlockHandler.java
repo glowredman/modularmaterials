@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.block;
 
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
@@ -9,7 +8,6 @@ import glowredman.modularmaterials.gen.OreGenHandler;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
-import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -20,15 +18,11 @@ public class BlockHandler {
 	public static void registerBlocks() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		Iterator typeIterator = MaterialHandler.getIterator(types);
-		while(typeIterator.hasNext()) {
-			Entry<String, Type> typeEntry = (Entry<String, Type>) typeIterator.next();
+		for(Entry<String, Type> typeEntry : types.entrySet()) {
 			Type type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
 			if((type.enabled || enableAll) && type.category.equals("block")) {
-				Iterator materialIterator = MaterialHandler.getIterator(materials);
-				while(materialIterator.hasNext()) {
-					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+				for(Entry<String, Material> materialEntry : materials.entrySet()) {
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					if(enableAll ||(material.enabled && material.isTypeEnabled(typeKey))) {
@@ -48,21 +42,15 @@ public class BlockHandler {
 	public static void registerOres() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		Iterator typeIterator = MaterialHandler.getIterator(types);
-		while(typeIterator.hasNext()) {
-			Entry<String, Type> typeEntry = (Entry<String, Type>) typeIterator.next();
+		for(Entry<String, Type> typeEntry : types.entrySet()) {
 			Type type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
 			if((type.enabled || enableAll) && type.category.equals("ore")) {
-				Iterator materialIterator = MaterialHandler.getIterator(materials);
-				while(materialIterator.hasNext()) {
-					Entry<String, Material> materialEntry = (Entry<String, Material>) materialIterator.next();
+				for(Entry<String, Material> materialEntry : materials.entrySet()) {
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					if ((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
-						Iterator oreIterator = MaterialHandler.getIterator(oreVariants);
-						while (oreIterator.hasNext()) {
-							Entry<String, OreVariant> oreEntry = (Entry<String, OreVariant>) oreIterator.next();
+						for(Entry<String, OreVariant> oreEntry : oreVariants.entrySet()) {
 							OreVariant ore = oreEntry.getValue();
 							String oreKey = oreEntry.getKey();
 							IBlockState blockBaseState = OreGenHandler.getBlockStateFromBlockName(ore.baseBlock);

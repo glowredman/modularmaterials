@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.item;
 
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
@@ -16,9 +15,7 @@ public class ItemHandler {
 	public static void registerItems() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		Iterator typeIterator = MaterialHandler.getIterator(types);
-		while(typeIterator.hasNext()) {
-			Entry<String, Type> type = (Entry<String, Type>) typeIterator.next();
+		for(Entry<String, Type> type : types.entrySet()) {
 			if(type.getValue().category.equals("item") && (type.getValue().enabled || enableAll)) {
 				MetaItem item = new MetaItem(type.getKey());
 				ForgeRegistries.ITEMS.register(item);
