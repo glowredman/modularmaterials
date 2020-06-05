@@ -16,6 +16,8 @@ import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.tab.CreativeTabBlocks;
 import glowredman.modularmaterials.tab.CreativeTabItems;
 import glowredman.modularmaterials.tab.CreativeTabOres;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
@@ -61,6 +63,7 @@ public class Reference {
 	public static boolean enableOreGen = true;
 	public static int modGenerationWeight = 0;
 	public static boolean disableVanillaOreGen = true;
+	public static float veinGenerationProbability = 0.75f;
 	
 	//core formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
@@ -79,9 +82,11 @@ public class Reference {
 	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
 	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>();
 	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>();
+	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>();
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();
 	public static List<MetaOreFalling> metaOresFalling = new ArrayList<MetaOreFalling>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
+	public static int weight = 0;
 }
