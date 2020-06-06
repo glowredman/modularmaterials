@@ -49,7 +49,7 @@ public class BlockHandler {
 				for(Entry<String, Material> materialEntry : materials.entrySet()) {
 					Material material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					if ((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
+					if((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
 						for(Entry<String, OreVariant> oreEntry : oreVariants.entrySet()) {
 							OreVariant ore = oreEntry.getValue();
 							String oreKey = oreEntry.getKey();

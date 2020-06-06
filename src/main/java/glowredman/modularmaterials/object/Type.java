@@ -4,15 +4,15 @@ import static glowredman.modularmaterials.Reference.*;
 
 public class Type {
 	
-	public String category = categoryFallback;
-	public String effectiveTool = effectiveToolFallback;
-	public boolean enabled;
-	public boolean hasTooltip;
-	public boolean isBeaconBase;
-	public boolean isBeaconPayment;
-	public String oreDictPrefix = "";
-	public String state = stateFallback;
-	public String syntax = "";
-	public String unitValue = unitValueFallback;
+	public String category = tCategory;
+	public String effectiveTool = tEffectiveTool;
+	public boolean enabled = tEnabled;
+	public boolean hasTooltip = tHasTooltip;
+	public boolean isBeaconBase = tIsBeaconBase;
+	public boolean isBeaconPayment = tIsBeaconPayment;
+	public String oreDictPrefix = tOreDictPrefix;
+	public String state = tState;
+	public String syntax = tSyntax;
+	public String unitValue = tUnitValue;
 	
 }

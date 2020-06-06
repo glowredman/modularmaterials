@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.object;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +7,7 @@ import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.gen.OreGenHandler;
+import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.state.IBlockState;
@@ -18,20 +18,20 @@ import net.minecraft.world.World;
 
 public class OreVein {
 	
-	public String primary = "";
-	public String secondary = "";
-	public String inbewteen = "";
-	public String sporadic = "";
-	public boolean enabled;
-	public short denisty;
-	public short maxHeight;
-	public short minHeight;
-	public short size;
-	public short weight;
-	public boolean invertDimensions;
-	public List<String> dimensions = new ArrayList<String>();
-	public boolean invertBiomes;
-	public List<String> biomes = new ArrayList<String>();
+	public String primary = vPrimary;
+	public String secondary = vSecondary;
+	public String inbewteen = vInbetween;
+	public String sporadic = vSporadic;
+	public boolean enabled = vEnabled;
+	public short denisty = vDensity;
+	public short maxHeight = vMaxHeight;
+	public short minHeight = vMinHeight;
+	public short size = vSize;
+	public short weight = vWeight;
+	public boolean invertDimensions = vInvertDimensions;
+	public List<String> dimensions = MaterialHandler.getListFormArray(vDimensions);
+	public boolean invertBiomes = vInvertBiomes;
+	public List<String> biomes = MaterialHandler.getListFormArray(vBiomes);
 
 	public boolean executeOreGen(World world, Random random, String biome, String dimension, int chunkX, int chunkZ) {
 		//check if biome and dimension are correct

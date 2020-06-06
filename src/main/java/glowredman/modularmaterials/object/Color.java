@@ -1,11 +1,13 @@
 package glowredman.modularmaterials.object;
 
+import static glowredman.modularmaterials.Reference.*;
+
 public class Color {
 	
-	public int alpha;
-	public int red;
-	public int green;
-	public int blue;
+	public int alpha = cAlpha;
+	public int red = cRed;
+	public int green = cGreen;
+	public int blue = cBlue;
 	
 	public void setColor(int alpha, int red, int green, int blue) {
 		this.alpha = alpha;

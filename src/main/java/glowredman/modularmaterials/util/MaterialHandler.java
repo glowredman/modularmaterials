@@ -1,7 +1,9 @@
 package glowredman.modularmaterials.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.Main;
@@ -36,6 +38,14 @@ public class MaterialHandler {
 	
 	public static Material getMaterialFromID(int meta) {
 		return materials.get(idMapping.get(meta));
+	}
+	
+	public static List<String> getListFormArray(String[] array){
+		List<String> out = new ArrayList<String>();
+		for(String s : array) {
+			out.add(s);
+		}
+		return out;
 	}
 	
 	public static void addOreDictTags() {

@@ -4,13 +4,13 @@ import static glowredman.modularmaterials.Reference.*;
 
 public class OreVariant {
 
-	public String baseBlock = "";
-	public String baseTexture = "";
-	public String effectiveTool = effectiveToolFallback;
-	public boolean enabled;
-	public String materialSound = "ROCK";
-	public boolean obeysGravity;
-	public String oreDictPrefix = "";
-	public String syntax = "%s Ore";
+	public String baseBlock = oBaseBlock;
+	public String baseTexture = oBaseTexture;
+	public String effectiveTool = oEffectiveTool;
+	public boolean enabled = oEnabled;
+	public String materialSound = oMaterialSound;
+	public boolean obeysGravity = oObeysGravity;
+	public String oreDictPrefix = oOreDictPrefix;
+	public String syntax = oSyntax;
 	
 }
