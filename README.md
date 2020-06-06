@@ -1,3 +1,5 @@
+[![](http://cf.way2muchnoise.eu/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials) [![](http://cf.way2muchnoise.eu/versions/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials)
+
 Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
 =================
 Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Resource-Loader) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/resource-loader))
