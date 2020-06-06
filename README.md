@@ -6,33 +6,36 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
 
 #### Features
 
- - [ ] Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json` (only Items are already implemented)
+ - [x] Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json` (only Items are already implemented)
     - [x] Category (If the Type should be an Item, Block, Fluid or Ore)
     - [x] OreDictionary Prefix (for Example the "ingot" of "ingotCopper")
     - [x] Unit Value (how much the Type should be "worth", see below)
     - [x] Localization-Syntax
- - [ ] Per-Material Tweaks (`./config/modularmaterials/materials.json`):
-    - [ ] Block Hardness
-    - [ ] Block Harvest-Level
-    - [ ] Block Light-Level
-    - [ ] Block Resistance
+ - [x] Per-Material Tweaks (`./config/modularmaterials/materials.json`):
+    - [x] Block Hardness
+    - [x] Block Harvest-Level
+    - [x] Block Light-Level
+    - [x] Block Resistance
     - [x] Boiling Temperature
     - [x] Color (alpha, red, green, blue)
     - [x] Ability to disable the Material completely
     - [x] Ability to disable the Material for certain Types
     - [x] Gas Density
+    - [x] Gas Light-Level
     - [x] Gas Viscosity
-    - [ ] If the Material can be used as a Beacon-Payment
+    - [x] If the Material can be used as a Beacon-Base
+    - [x] If the Material can be used as a Beacon-Payment
     - [x] Liquid Density
+    - [x] Liquid Light-Level
     - [x] Liquid Viscosity
     - [x] Melting Temperature
     - [x] Meta Value
     - [x] Name
     - [x] OreDictionary Entries
-    - [ ] Ore Hardness
-    - [ ] Ore Harvest-Level
-    - [ ] Ore Light-Level
-    - [ ] Ore Resistance
+    - [x] Ore Hardness
+    - [x] Ore Harvest-Level
+    - [x] Ore Light-Level
+    - [x] Ore Resistance
     - [x] State of Matter
     - [x] Temperature
     - [x] Texture
@@ -43,6 +46,6 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
  - [x] Custom Tooltip-Formatting:
     - [x] Animated Segments
     - [x] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
- - [ ] GregTech-like Ore-Generation
+ - [x] GregTech-like Ore-Generation
  - [ ] [Presets](presets/) for Types, Ores and Materials
  - [ ] Wiki
