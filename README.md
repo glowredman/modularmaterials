@@ -48,6 +48,7 @@ Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Res
  - [x] Custom Tooltip-Formatting:
     - [x] Animated Segments
     - [x] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
- - [x] GregTech-like Ore-Generation
+ - [x] GregTech 5-like Ore-Generation
+ - [x] Option to disable Vanilla Ore-Generation
  - [ ] [Presets](presets/) for Types, Ores and Materials
  - [ ] Wiki

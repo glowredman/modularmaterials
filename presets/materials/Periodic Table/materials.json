@@ -8,7 +8,7 @@
         "green": 0,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -38,7 +38,7 @@
         "green": 255,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -71,7 +71,7 @@
         "green": 220,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "nugget": true,
 		"ore": true,
@@ -143,7 +143,7 @@
         "green": 180,
         "blue": 100
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "nugget": true,
 		"ore": true,
@@ -215,7 +215,7 @@
         "green": 250,
         "blue": 210
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "nugget": true,
 		"ore": true,
@@ -288,7 +288,7 @@
         "green": 20,
         "blue": 20
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "nugget": true,
 		"ore": true,
@@ -354,7 +354,7 @@
         "green": 150,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -384,7 +384,7 @@
         "green": 100,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -414,7 +414,7 @@
         "green": 255,
         "blue": 127
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 
         "gas": true,
@@ -444,7 +444,7 @@
         "green": 32,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -478,7 +478,7 @@
         "green": 0,
         "blue": 150
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "nugget": true,
         "rotor": true,
@@ -551,7 +551,7 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -624,7 +624,7 @@
         "green": 200,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -698,7 +698,7 @@
         "green": 60,
         "blue": 80
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -771,7 +771,7 @@
         "green": 255,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -845,7 +845,7 @@
         "green": 200,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -915,7 +915,7 @@
         "green": 255,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -945,7 +945,7 @@
         "green": 255,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
         "liquid": true
@@ -979,7 +979,7 @@
         "green": 250,
         "blue": 250
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1052,7 +1052,7 @@
         "green": 245,
         "blue": 245
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1125,7 +1125,7 @@
         "green": 180,
         "blue": 180
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1198,7 +1198,7 @@
         "green": 160,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1272,7 +1272,7 @@
         "green": 50,
         "blue": 50
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1346,7 +1346,7 @@
         "green": 230,
         "blue": 230
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1421,7 +1421,7 @@
         "green": 250,
         "blue": 250
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1483,6 +1483,10 @@
       ]
     },
     "iron": {
+      "blockHardness": 5.0,
+      "blockHarvestLevel": 1,
+      "blockLightLevel": 0,
+      "blockResistance": 6.0,
       "boilingTemperature": 3134,
       "color": {
         "alpha": 0,
@@ -1490,8 +1494,9 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
+	    "block": false,
         "bolt": true,
         "crushed": true,
         "crushed_purified": true,
@@ -1536,6 +1541,10 @@
       "meltingTemperature": 1811,
       "meta": 26,
       "name": "Iron",
+      "oreHardness": 3.0,
+      "oreHarvestLevel": 1,
+      "oreLightLevel": 0,
+      "oreResistance": 3.0,
       "oreDict": [
         "Iron",
 		"AnyIron"
@@ -1559,7 +1568,7 @@
         "green": 80,
         "blue": 250
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1633,7 +1642,7 @@
         "green": 200,
         "blue": 250
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1706,7 +1715,7 @@
         "green": 100,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1780,7 +1789,7 @@
         "green": 240,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1853,7 +1862,7 @@
         "green": 220,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1926,7 +1935,7 @@
         "green": 255,
         "blue": 190
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -1999,7 +2008,7 @@
         "green": 180,
         "blue": 186
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -2069,7 +2078,7 @@
         "green": 155,
         "blue": 155
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "block": true,
         "bolt": true,
@@ -2138,7 +2147,7 @@
         "green": 10,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
         "gas": true,
 		"liquid": true
@@ -2168,7 +2177,7 @@
 		"green": 128,
 		"blue": 255
 	  },
-	  "disabled": false,
+	  "enabled": true,
 	  "enabledTypes": {
 		"gas": true,
 		"liquid": true
@@ -2202,7 +2211,7 @@
         "green": 30,
         "blue": 20
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2277,7 +2286,7 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2352,7 +2361,7 @@
         "green": 250,
         "blue": 220
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2427,7 +2436,7 @@
         "green": 240,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2503,7 +2512,7 @@
         "green": 180,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2579,7 +2588,7 @@
         "green": 180,
         "blue": 220
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2646,7 +2655,7 @@
     "technetium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 3,
       "blockResistance": 6.0,
       "boilingTemperature": 4538,
       "color": {
@@ -2655,7 +2664,7 @@
         "green": 200,
         "blue": 210
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2697,10 +2706,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 3,
       "gasViscosity": 100,
       "liquidDensity": 11000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 3,
       "liquidViscosity": 1500,
       "meltingTemperature": 2430,
       "meta": 43,
@@ -2708,6 +2717,10 @@
       "oreDict": [
 	    "Technetium"
       ],
+      "oreHardness": 3.0,
+      "oreHarvestLevel": 1,
+      "oreLightLevel": 2,
+      "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
       "texture": "radioactive",
@@ -2727,7 +2740,7 @@
         "green": 200,
         "blue": 210
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2803,7 +2816,7 @@
         "green": 190,
         "blue": 180
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2879,7 +2892,7 @@
         "green": 128,
         "blue": 128
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -2954,7 +2967,7 @@
         "green": 220,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3029,7 +3042,7 @@
         "green": 50,
         "blue": 60
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3104,7 +3117,7 @@
         "green": 0,
         "blue": 128
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3179,7 +3192,7 @@
         "green": 220,
         "blue": 220
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3254,7 +3267,7 @@
         "green": 220,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3329,7 +3342,7 @@
         "green": 200,
         "blue": 190
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3404,7 +3417,7 @@
         "green": 70,
         "blue": 80
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3475,7 +3488,7 @@
         "green": 0,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
@@ -3511,7 +3524,7 @@
         "green": 230,
         "blue": 230
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3587,7 +3600,7 @@
         "green": 230,
         "blue": 230
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3662,7 +3675,7 @@
         "green": 240,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3737,7 +3750,7 @@
         "green": 220,
         "blue": 220
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3812,7 +3825,7 @@
         "green": 225,
         "blue": 225
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3887,7 +3900,7 @@
         "green": 100,
         "blue": 100
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -3953,7 +3966,7 @@
     "promethium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 8,
       "blockResistance": 6.0,
       "boilingTemperature": 3273,
       "color": {
@@ -3962,7 +3975,7 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4003,10 +4016,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 8,
       "gasViscosity": 100,
       "liquidDensity": 7260,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 8,
       "liquidViscosity": 1500,
       "meltingTemperature": 1315,
       "meta": 61,
@@ -4016,7 +4029,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 4,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -4037,7 +4050,7 @@
         "green": 255,
         "blue": 204
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4112,7 +4125,7 @@
         "green": 220,
         "blue": 75
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4187,7 +4200,7 @@
         "green": 190,
         "blue": 250
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4262,7 +4275,7 @@
         "green": 140,
         "blue": 120
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4337,7 +4350,7 @@
         "green": 210,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4412,7 +4425,7 @@
         "green": 210,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4487,7 +4500,7 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4562,7 +4575,7 @@
         "green": 175,
         "blue": 175
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4637,7 +4650,7 @@
         "green": 225,
         "blue": 225
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4712,7 +4725,7 @@
         "green": 225,
         "blue": 225
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4788,7 +4801,7 @@
         "green": 225,
         "blue": 225
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4864,7 +4877,7 @@
         "green": 225,
         "blue": 225
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -4940,7 +4953,7 @@
         "green": 50,
         "blue": 50
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5017,7 +5030,7 @@
         "green": 110,
         "blue": 110
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5093,7 +5106,7 @@
         "green": 50,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5169,7 +5182,7 @@
         "green": 240,
         "blue": 245
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5245,7 +5258,7 @@
         "green": 255,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5310,6 +5323,10 @@
       ]
     },
     "gold": {
+      "blockHardness": 3.0,
+      "blockHarvestLevel": 2,
+      "blockLightLevel": 0,
+      "blockResistance": 6.0,
       "boilingTemperature": 3243,
       "color": {
         "alpha": 0,
@@ -5317,7 +5334,7 @@
         "green": 255,
         "blue": 30
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "bolt": true,
 	    "crushed": true,
@@ -5365,6 +5382,10 @@
       "meltingTemperature": 1337,
       "meta": 79,
       "name": "Gold",
+      "oreHardness": 3.0,
+      "oreHarvestLevel": 2,
+      "oreLightLevel": 0,
+      "oreResistance": 3.0,
       "oreDict": [
 	    "Gold"
       ],
@@ -5387,7 +5408,7 @@
         "green": 220,
         "blue": 220
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
@@ -5424,7 +5445,7 @@
         "green": 225,
         "blue": 230
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5499,7 +5520,7 @@
         "green": 100,
         "blue": 140
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5574,7 +5595,7 @@
         "green": 160,
         "blue": 160
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5640,7 +5661,7 @@
     "polonium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 9,
       "blockResistance": 6.0,
       "boilingTemperature": 1235,
       "color": {
@@ -5649,7 +5670,7 @@
         "green": 230,
         "blue": 10
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5690,10 +5711,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 9,
       "gasViscosity": 100,
       "liquidDensity": 9297,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 9,
       "liquidViscosity": 1500,
       "meltingTemperature": 527,
       "meta": 84,
@@ -5703,7 +5724,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 5,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -5715,7 +5736,7 @@
     "astatine": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 12,
       "blockResistance": 6.0,
       "boilingTemperature": 610,
       "color": {
@@ -5724,7 +5745,7 @@
         "green": 40,
         "blue": 90
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5765,10 +5786,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 12,
       "gasViscosity": 100,
       "liquidDensity": 6350,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 12,
       "liquidViscosity": 1500,
       "meltingTemperature": 575,
       "meta": 85,
@@ -5778,7 +5799,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 6,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -5795,16 +5816,16 @@
         "green": 0,
         "blue": 255
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
       },
       "gasDensity": -990,
-      "gasLightLevel": 0,
+      "gasLightLevel": 12,
       "gasViscosity": 1,
       "liquidDensity": 4400,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 12,
       "liquidViscosity": 1500,
       "meltingTemperature": 202,
       "meta": 86,
@@ -5827,16 +5848,16 @@
         "green": 60,
         "blue": 30
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
       },
       "gasDensity": -750,
-      "gasLightLevel": 0,
+      "gasLightLevel": 13,
       "gasViscosity": 50,
       "liquidDensity": 2480,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 13,
       "liquidViscosity": 1500,
       "meltingTemperature": 281,
       "meta": 87,
@@ -5854,7 +5875,7 @@
     "radium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 5,
       "blockResistance": 6.0,
       "boilingTemperature": 2010,
       "color": {
@@ -5863,7 +5884,7 @@
         "green": 190,
         "blue": 50
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5904,10 +5925,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 5,
       "gasViscosity": 100,
       "liquidDensity": 5500,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 5,
       "liquidViscosity": 1500,
       "meltingTemperature": 973,
       "meta": 88,
@@ -5917,7 +5938,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 3,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -5929,7 +5950,7 @@
     "actinium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 7,
       "blockResistance": 6.0,
       "boilingTemperature": 3500,
       "color": {
@@ -5938,7 +5959,7 @@
         "green": 170,
         "blue": 170
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -5979,10 +6000,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 7,
       "gasViscosity": 100,
       "liquidDensity": 10000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 7,
       "liquidViscosity": 1500,
       "meltingTemperature": 1500,
       "meta": 89,
@@ -5992,7 +6013,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 4,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6004,7 +6025,7 @@
     "thorium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 1,
       "blockResistance": 6.0,
       "boilingTemperature": 5061,
       "color": {
@@ -6013,7 +6034,7 @@
         "green": 30,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6055,10 +6076,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 1,
       "gasViscosity": 100,
       "liquidDensity": 11700,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 1,
       "liquidViscosity": 1500,
       "meltingTemperature": 2023,
       "meta": 90,
@@ -6068,7 +6089,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 1,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6080,7 +6101,7 @@
     "protactinium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 4,
       "blockResistance": 6.0,
       "boilingTemperature": 4300,
       "color": {
@@ -6089,7 +6110,7 @@
         "green": 215,
         "blue": 20
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6130,10 +6151,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 4,
       "gasViscosity": 100,
       "liquidDensity": 15370,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 4,
       "liquidViscosity": 1500,
       "meltingTemperature": 1841,
       "meta": 91,
@@ -6143,7 +6164,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 2,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6155,7 +6176,7 @@
     "uranium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 2,
-      "blockLightLevel": 0,
+      "blockLightLevel": 1,
       "blockResistance": 6.0,
       "boilingTemperature": 4404,
       "color": {
@@ -6164,7 +6185,7 @@
         "green": 240,
         "blue": 50
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6205,10 +6226,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 1,
       "gasViscosity": 100,
       "liquidDensity": 17300,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 1,
       "liquidViscosity": 1500,
       "meltingTemperature": 1405,
       "meta": 92,
@@ -6219,7 +6240,7 @@
       ],
       "oreHardness": 4.0,
       "oreHarvestLevel": 2,
-      "oreLightLevel": 0,
+      "oreLightLevel": 1,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6231,7 +6252,7 @@
     "neptunium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 2,
       "blockResistance": 6.0,
       "boilingTemperature": 4447,
       "color": {
@@ -6240,7 +6261,7 @@
         "green": 205,
         "blue": 205
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6281,10 +6302,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 2,
       "gasViscosity": 100,
       "liquidDensity": 19380,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 2,
       "liquidViscosity": 1500,
       "meltingTemperature": 912,
       "meta": 93,
@@ -6294,7 +6315,7 @@
       ],
       "oreHardness": 3.0,
       "oreHarvestLevel": 1,
-      "oreLightLevel": 0,
+      "oreLightLevel": 1,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6306,7 +6327,7 @@
     "plutonium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 2,
-      "blockLightLevel": 0,
+      "blockLightLevel": 1,
       "blockResistance": 6.0,
       "boilingTemperature": 3505,
       "color": {
@@ -6315,7 +6336,7 @@
         "green": 50,
         "blue": 50
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6356,10 +6377,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 1,
       "gasViscosity": 100,
       "liquidDensity": 16630,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 1,
       "liquidViscosity": 1500,
       "meltingTemperature": 913,
       "meta": 94,
@@ -6370,7 +6391,7 @@
       ],
       "oreHardness": 4.0,
       "oreHarvestLevel": 2,
-      "oreLightLevel": 0,
+      "oreLightLevel": 1,
       "oreResistance": 0.0,
       "state": "solid",
       "temperature": 293,
@@ -6382,7 +6403,7 @@
     "americium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 2,
-      "blockLightLevel": 0,
+      "blockLightLevel": 5,
       "blockResistance": 6.0,
       "boilingTemperature": 2880,
       "color": {
@@ -6391,7 +6412,7 @@
         "green": 200,
         "blue": 200
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6427,10 +6448,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 5,
       "gasViscosity": 100,
       "liquidDensity": 12000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 5,
       "liquidViscosity": 1500,
       "meltingTemperature": 1449,
       "meta": 95,
@@ -6448,7 +6469,7 @@
     "curium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 1,
       "blockResistance": 6.0,
       "boilingTemperature": 3383,
       "color": {
@@ -6457,7 +6478,7 @@
         "green": 10,
         "blue": 160
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6493,10 +6514,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 1,
       "gasViscosity": 100,
       "liquidDensity": 13510,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 1,
       "liquidViscosity": 1500,
       "meltingTemperature": 1613,
       "meta": 96,
@@ -6514,7 +6535,7 @@
     "berkelium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 5,
       "blockResistance": 6.0,
       "boilingTemperature": 2900,
       "color": {
@@ -6523,7 +6544,7 @@
         "green": 160,
         "blue": 135
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6559,10 +6580,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 5,
       "gasViscosity": 100,
       "liquidDensity": 1325,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 5,
       "liquidViscosity": 1500,
       "meltingTemperature": 1259,
       "meta": 97,
@@ -6580,7 +6601,7 @@
     "californium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 6,
       "blockResistance": 6.0,
       "boilingTemperature": 1743,
       "color": {
@@ -6589,7 +6610,7 @@
         "green": 160,
         "blue": 160
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6625,10 +6646,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 6,
       "gasViscosity": 100,
       "liquidDensity": 15100,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 6,
       "liquidViscosity": 1500,
       "meltingTemperature": 1173,
       "meta": 98,
@@ -6646,7 +6667,7 @@
     "einsteinium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 8,
       "blockResistance": 6.0,
       "boilingTemperature": 1269,
       "color": {
@@ -6655,7 +6676,7 @@
         "green": 175,
         "blue": 150
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6691,10 +6712,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 8,
       "gasViscosity": 100,
       "liquidDensity": 8840,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 8,
       "liquidViscosity": 1500,
       "meltingTemperature": 1133,
       "meta": 99,
@@ -6712,7 +6733,7 @@
     "fermium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 9,
       "blockResistance": 6.0,
       "boilingTemperature": 3140,
       "color": {
@@ -6721,7 +6742,7 @@
         "green": 255,
         "blue": 240
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6757,10 +6778,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 9,
       "gasViscosity": 100,
       "liquidDensity": 9710,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 9,
       "liquidViscosity": 1500,
       "meltingTemperature": 1800,
       "meta": 100,
@@ -6778,7 +6799,7 @@
     "mendelevium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 9,
       "blockResistance": 6.0,
       "boilingTemperature": 2000,
       "color": {
@@ -6787,7 +6808,7 @@
         "green": 0,
         "blue": 215
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6823,10 +6844,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 9,
       "gasViscosity": 100,
       "liquidDensity": 10370,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 9,
       "liquidViscosity": 1500,
       "meltingTemperature": 1100,
       "meta": 101,
@@ -6844,7 +6865,7 @@
     "nobelium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 12,
       "blockResistance": 6.0,
       "boilingTemperature": 2000,
       "color": {
@@ -6853,7 +6874,7 @@
         "green": 0,
         "blue": 215
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6889,10 +6910,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 12,
       "gasViscosity": 100,
       "liquidDensity": 9940,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 12,
       "liquidViscosity": 1500,
       "meltingTemperature": 1100,
       "meta": 102,
@@ -6910,7 +6931,7 @@
     "lawrencium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 11,
       "blockResistance": 6.0,
       "boilingTemperature": 3600,
       "color": {
@@ -6919,7 +6940,7 @@
         "green": 0,
         "blue": 215
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -6955,10 +6976,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 11,
       "gasViscosity": 100,
       "liquidDensity": 16100,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 11,
       "liquidViscosity": 1500,
       "meltingTemperature": 1900,
       "meta": 103,
@@ -6976,7 +6997,7 @@
     "rutherfordium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 12,
       "blockResistance": 6.0,
       "boilingTemperature": 5800,
       "color": {
@@ -6985,7 +7006,7 @@
         "green": 130,
         "blue": 0
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7022,10 +7043,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 12,
       "gasViscosity": 100,
       "liquidDensity": 23200,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 12,
       "liquidViscosity": 1500,
       "meltingTemperature": 2400,
       "meta": 104,
@@ -7043,7 +7064,7 @@
     "dubnium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 11,
       "blockResistance": 6.0,
       "boilingTemperature": 5700,
       "color": {
@@ -7052,7 +7073,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7089,10 +7110,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 11,
       "gasViscosity": 100,
       "liquidDensity": 29300,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 11,
       "liquidViscosity": 1500,
       "meltingTemperature": 3300,
       "meta": 105,
@@ -7110,7 +7131,7 @@
     "seaborgium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 13,
       "blockResistance": 6.0,
       "boilingTemperature": 6500,
       "color": {
@@ -7119,7 +7140,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7156,10 +7177,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 13,
       "gasViscosity": 100,
       "liquidDensity": 35000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 13,
       "liquidViscosity": 1500,
       "meltingTemperature": 4000,
       "meta": 106,
@@ -7177,7 +7198,7 @@
     "bohrium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 14,
       "blockResistance": 6.0,
       "boilingTemperature": 6000,
       "color": {
@@ -7186,7 +7207,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7223,10 +7244,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 14,
       "gasViscosity": 100,
       "liquidDensity": 37100,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 14,
       "liquidViscosity": 1500,
       "meltingTemperature": 3500,
       "meta": 107,
@@ -7244,7 +7265,7 @@
     "hassium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 5300,
       "color": {
@@ -7253,7 +7274,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7290,10 +7311,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 41000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 3300,
       "meta": 108,
@@ -7311,7 +7332,7 @@
     "meitnerium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 4500,
       "color": {
@@ -7320,7 +7341,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7357,10 +7378,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 37400,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 2800,
       "meta": 109,
@@ -7378,7 +7399,7 @@
     "darmstadtium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 4500,
       "color": {
@@ -7387,7 +7408,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7424,10 +7445,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 34800,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 2500,
       "meta": 110,
@@ -7445,7 +7466,7 @@
     "roentgenium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 14,
       "blockResistance": 6.0,
       "boilingTemperature": 3500,
       "color": {
@@ -7454,7 +7475,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7490,10 +7511,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 14,
       "gasViscosity": 100,
       "liquidDensity": 28700,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 14,
       "liquidViscosity": 1500,
       "meltingTemperature": 1500,
       "meta": 111,
@@ -7516,16 +7537,16 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
       },
       "gasDensity": -750,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 50,
       "liquidDensity": 14000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1000,
       "meltingTemperature": 283,
       "meta": 112,
@@ -7543,7 +7564,7 @@
     "nihonium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 1430,
       "color": {
@@ -7552,7 +7573,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7588,10 +7609,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 16000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 700,
       "meta": 113,
@@ -7614,16 +7635,16 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "gas": true,
 	    "liquid": true
       },
       "gasDensity": -916,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 1,
       "liquidDensity": 14000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 100,
       "meltingTemperature": 100,
       "meta": 114,
@@ -7641,7 +7662,7 @@
     "moscovium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 1400,
       "color": {
@@ -7650,7 +7671,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7686,10 +7707,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 13500,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 670,
       "meta": 115,
@@ -7707,7 +7728,7 @@
     "livermorium": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 1085,
       "color": {
@@ -7716,7 +7737,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7752,10 +7773,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 12900,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 708,
       "meta": 116,
@@ -7773,7 +7794,7 @@
     "tennessine": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 883,
       "color": {
@@ -7782,7 +7803,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7818,10 +7839,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 7200,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 723,
       "meta": 117,
@@ -7839,7 +7860,7 @@
     "oganesson": {
       "blockHardness": 5.0,
       "blockHarvestLevel": 1,
-      "blockLightLevel": 0,
+      "blockLightLevel": 15,
       "blockResistance": 6.0,
       "boilingTemperature": 350,
       "color": {
@@ -7848,7 +7869,7 @@
         "green": 185,
         "blue": 185
       },
-      "disabled": false,
+      "enabled": true,
       "enabledTypes": {
 	    "block": true,
 	    "bolt": true,
@@ -7884,10 +7905,10 @@
 	    "wire": true
       },
       "gasDensity": -500,
-      "gasLightLevel": 0,
+      "gasLightLevel": 15,
       "gasViscosity": 100,
       "liquidDensity": 5000,
-      "liquidLightLevel": 0,
+      "liquidLightLevel": 15,
       "liquidViscosity": 1500,
       "meltingTemperature": 320,
       "meta": 118,
