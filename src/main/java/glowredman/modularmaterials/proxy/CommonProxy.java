@@ -3,7 +3,7 @@ package glowredman.modularmaterials.proxy;
 import static glowredman.modularmaterials.Main.logger;
 import static glowredman.modularmaterials.Reference.enableAll;
 import glowredman.modularmaterials.block.BlockHandler;
-import glowredman.modularmaterials.file.AssetHandler;
+import glowredman.modularmaterials.command.Command;
 import glowredman.modularmaterials.file.JSONHandler;
 import glowredman.modularmaterials.fluid.FluidHandler;
 import glowredman.modularmaterials.gen.OreGenHandler;
@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 public class CommonProxy {
 	
@@ -35,11 +36,6 @@ public class CommonProxy {
 		//MATERIAL HANDLING
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();
-		//ASSETS
-		AssetHandler.initCTTTList();
-		AssetHandler.createBlockStateFiles();
-		AssetHandler.createModelFiles();
-		AssetHandler.createLangFile();
 		//REGISTERING
 		FluidHandler.registerFluids();
 		ItemHandler.registerItems();
@@ -50,15 +46,16 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent event) {
 		//ORE DICT
 		MaterialHandler.addOreDictTags();
-		//COLORS
-		ItemHandler.initColors();
-		BlockHandler.initColors();
 		//ORE GEN
 		OreGenHandler.initWeight();
 		WorldGenerator.register();
 	}
 	
 	public void postinit(FMLPostInitializationEvent event) {}
+	
+	public void serverStarting(FMLServerStartingEvent event) {
+		event.registerServerCommand(new Command());
+	}
 	
 	public void registerItemRenderer(Item item, String name, int meta) {}
 		
