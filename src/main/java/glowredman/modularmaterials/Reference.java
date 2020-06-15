@@ -29,7 +29,7 @@ public class Reference {
 	public static final String MODDEPENDENCIES = "";
 	public static final String MODID = "modularmaterials";
 	public static final String MODNAME = "Modular Materials";
-	public static final String MODVERSION = "0.4-beta";
+	public static final String MODVERSION = "0.5-beta";
 	public static final String CLIENT = "glowredman.modularmaterials.proxy.ClientProxy";
 	public static final String SERVER = "glowredman.modularmaterials.proxy.CommonProxy";
 	
