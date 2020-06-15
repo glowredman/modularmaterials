@@ -6,10 +6,12 @@ import javax.annotation.Nullable;
 
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.item.MetaItemBlock;
+import glowredman.modularmaterials.object.Drop;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
+import static glowredman.modularmaterials.util.MaterialHandler.*;
 import glowredman.modularmaterials.util.mc.MaterialHelper;
 import glowredman.modularmaterials.util.mc.SoundTypeHelper;
 import net.minecraft.block.BlockFalling;
@@ -18,9 +20,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -58,6 +62,39 @@ public class MetaOreFalling extends BlockFalling {
 	
 	public Item createItemBlock() {
 		return new MetaItemBlock(this, isBeaconPayment);
+	}
+	
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return true;
+	}
+	
+	@Override
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		for(Drop drop : material.drops) {
+			ItemStack item;
+			switch (drop.mode) {
+			case "amount":
+				item = getItemStackFromString(drop.item, drop.amount, this);
+				if(item != null) drops.add(item);
+				break;
+			case "binomial":
+				int amount = drop.amount;
+				for(int i = 0; i < drop.n; i++) {
+					amount += Math.random() < drop.p ? 1 : 0;
+				}
+				item = getItemStackFromString(drop.item, amount, this);
+				if(item != null) drops.add(item);
+				break;
+			case "percentage_table":
+				item = getItemStackFromString(drop.item, drop.amount, this);
+				if(item != null && Math.random() < drop.getProbability(fortune)) drops.add(item);
+				break;
+			default:
+				drops.add(new ItemStack(this));
+				break;
+			}
+		}
 	}
 	
 	@Override

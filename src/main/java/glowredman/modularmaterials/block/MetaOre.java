@@ -11,10 +11,9 @@ import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
+import static glowredman.modularmaterials.util.MaterialHandler.*;
 import glowredman.modularmaterials.util.mc.MaterialHelper;
 import glowredman.modularmaterials.util.mc.SoundTypeHelper;
-
-import static glowredman.modularmaterials.util.MaterialHandler.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -63,6 +62,39 @@ public class MetaOre extends Block {
 	
 	public Item createItemBlock() {
 		return new MetaItemBlock(this, isBeaconPayment);
+	}
+	
+	@Override
+	public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
+		return true;
+	}
+	
+	@Override
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		for(Drop drop : material.drops) {
+			ItemStack item;
+			switch (drop.mode) {
+			case "amount":
+				item = getItemStackFromString(drop.item, drop.amount, this);
+				if(item != null) drops.add(item);
+				break;
+			case "binomial":
+				int amount = drop.amount;
+				for(int i = 0; i < drop.n; i++) {
+					amount += Math.random() < drop.p ? 1 : 0;
+				}
+				item = getItemStackFromString(drop.item, amount, this);
+				if(item != null) drops.add(item);
+				break;
+			case "percentage_table":
+				item = getItemStackFromString(drop.item, drop.amount, this);
+				if(item != null && Math.random() < drop.getProbability(fortune)) drops.add(item);
+				break;
+			default:
+				drops.add(new ItemStack(this));
+				break;
+			}
+		}
 	}
 	
 	@Override

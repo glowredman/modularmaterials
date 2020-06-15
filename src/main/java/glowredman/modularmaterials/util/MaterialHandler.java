@@ -15,6 +15,8 @@ import glowredman.modularmaterials.item.MetaItem;
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -38,6 +40,33 @@ public class MaterialHandler {
 	
 	public static Material getMaterialFromID(short meta) {
 		return materials.get(idMapping.get(meta));
+	}
+	
+	public static ItemStack getItemStackFromString(String item, int amount, Block itself) {
+		String[] parts = item.split(":");
+		if (item.equals("itself")) {
+			return new ItemStack(itself, amount);
+		} else {
+			switch (parts.length) {
+			case 1:
+				return new ItemStack(Item.getByNameOrId(item), amount);
+			case 2:
+				try {
+					int meta = Integer.parseInt(parts[1]);
+					return new ItemStack(Item.getByNameOrId(parts[0]), amount, Integer.parseInt(parts[1]));
+				} catch (Exception e) {
+					return new ItemStack(Item.getByNameOrId(item), amount);
+				}
+			case 3:
+				try {
+					return new ItemStack(Item.getByNameOrId(parts[0] + ':' + parts[1]), amount,
+							Integer.parseInt(parts[2]));
+				} catch (Exception e) {
+					return null;
+				}
+			}
+		}
+		return null;
 	}
 	
 	public static List<String> getListFormArray(String[] array){

@@ -1,9 +1,10 @@
 package glowredman.modularmaterials.object;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Nonnegative;
-import javax.annotation.Nonnull;
 
 import glowredman.modularmaterials.util.MaterialHandler;
 
@@ -18,8 +19,9 @@ public class Material {
 	public float blockResistance = mBlockResistance;
 	public int boilingTemperature = mBoilingTemperature;
 	public Color color = new Color();
+	public List<Drop> drops = new ArrayList<Drop>();
 	public boolean enabled = mEnabled;
-	public HashMap<String, Boolean> enabledTypes = MaterialHandler.getAllTypesEqualHashMap(mTypeEnabled);
+	public HashMap<String, Boolean> enabledTypes = MaterialHandler.getAllTypesEqualHashMap(mTypeEnabled); //typeKey, isEnabled
 	public int gasDensity = mGasDenisity;
 	public byte gasLightLevel = mGasLightLevel;
 	@Nonnegative
@@ -32,7 +34,6 @@ public class Material {
 	public int liquidViscosity = mLiquidViscosity;
 	public int meltingTemperature = mMeltingTemperature;
 	@Nonnegative
-	@Nonnull
 	public short meta = (short) (Math.random() * Short.MAX_VALUE);
 	public String name = "material_" + meta;
 	public String[] oreDict = new String[] {};
