@@ -62,6 +62,7 @@ public class Reference {
 	public static int modGenerationWeight = 0;
 	public static boolean disableVanillaOreGen = true;
 	public static float veinGenerationProbability = 0.75f;
+	public static String commandName = "mm";
 	
 	//core formatting
 	public static String triggerShiftIsPressedFormatting = "§p";
@@ -145,12 +146,12 @@ public class Reference {
 	public static String tUnitValue = "1u";
 	
 	//INTERNAL
-	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>();
-	public static HashMap<Integer, String> idMapping = new HashMap<Integer, String>(); 
-	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>();
-	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>();
-	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>();
-	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>();
+	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>(); //materialKey, material
+	public static HashMap<Short, String> idMapping = new HashMap<Short, String>(); //meta, materialKey
+	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>(); //typeKey, type
+	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>(); //oreVariantKey, oreVariant
+	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>(); //oreVeinKey, oreVein
+	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();

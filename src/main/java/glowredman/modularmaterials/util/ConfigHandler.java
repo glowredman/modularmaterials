@@ -52,9 +52,10 @@ public class ConfigHandler {
 		modGenerationWeight = config_core.getInt("modGenerationWeight", GENERAL, 0, 0, Integer.MAX_VALUE, "The priority this mod is given while generating terrain, a lower number means a higher priority. DO NOT TOUCH THIS IF YOU DON'T KNOW WHAT YOU'RE DOING!");
 		disableVanillaOreGen = config_core.getBoolean("disableVanillaOreGen", GENERAL, true, "");
 		veinGenerationProbability = config_core.getFloat("veinGenerationProbability", GENERAL, 0.75f, 0, 1, "The probility, that there is a vein in a vein location.");
+		commandName = config_core.getString("commandName", GENERAL, "mm", "Change this if the command \"/mm\" is already taken.");
 		
 		//formatting
-		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "\u00a7s", "String, to trigger animated formatting. Formatting is: \u00a7sPOSSTEP:DELAY:COLORS:STRING\u00a7s where STEP and POSSTEP integers are, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
+		triggerAnimatedFormattingChar = config_core.getString("triggerAnimatedFormattingChar", FORMATTING, "\u00a7s", "String, to trigger animated formatting. Formatting is: \u00a7sPOSSTEP:DELAY:COLORS:STRING\u00a7s where  POSSTEP an integers is, DELAY a double is and COLORS an array of Minecraft-formatting-codes seperated by commas (-> https://minecraft.gamepedia.com/Formatting_codes).  (works only for tooltips)");
 		triggerCtrlIsNotPressedFormatting = config_core.getString("triggerCtrlIsNotPressedFormatting", FORMATTING, "\u00a7Q", "String, to show the line only when 'Ctrl' is not pressed");
 		triggerCtrlIsPressedFormatting = config_core.getString("triggerCtrlIsPressedFormatting", FORMATTING, "\u00a7q", "String, to show the line only when 'Ctrl' is pressed");
 		triggerShiftIsNotPressedFormatting = config_core.getString("triggerShiftIsNotPressedFormatting", FORMATTING, "\u00a7P", "String, to show the line only when 'Shift' is not pressed");

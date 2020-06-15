@@ -10,6 +10,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 
@@ -43,5 +45,14 @@ public class Main {
 		proxy.postinit(event);
 	}
 	
-
+	@EventHandler
+	public static void serverStarting(FMLServerStartingEvent event) {
+		proxy.serverStarting(event);
+	}
+	
+	@EventHandler
+	public static void serverStarted(FMLServerStartedEvent event) {
+		proxy.serverStarted(event);
+	}
+	
 }

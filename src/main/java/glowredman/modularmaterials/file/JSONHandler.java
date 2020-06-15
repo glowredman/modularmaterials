@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -17,6 +16,7 @@ import com.google.gson.GsonBuilder;
 
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
+import glowredman.modularmaterials.object.Drop;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
 import glowredman.modularmaterials.object.OreVariant;
@@ -120,6 +120,7 @@ public class JSONHandler {
 				example.blockResistance = (float) (Math.random() * Float.MAX_VALUE);
 				example.boilingTemperature = (int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE);
 				example.color.setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random()));
+				example.drops = new ArrayList<Drop>();
 				example.enabled = true;
 				example.enabledTypes = MaterialHandler.getAllTypesEqualHashMap(true);
 				example.gasDensity = (int) (Math.random() * Integer.MAX_VALUE - 2 * Math.random() * Integer.MAX_VALUE);
@@ -200,7 +201,7 @@ public class JSONHandler {
 		}
 	}
 	
-	private static String readFile(String path, Charset encoding) throws IOException, OutOfMemoryError, SecurityException {
+	private static String readFile(String path, Charset encoding) throws Exception {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded, encoding);
 	}

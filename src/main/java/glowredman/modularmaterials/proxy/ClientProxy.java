@@ -16,8 +16,10 @@ import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -62,6 +64,10 @@ public class ClientProxy extends CommonProxy {
 		//ORE GEN
 		OreGenHandler.initWeight();
 		WorldGenerator.register();
+	}
+	
+	@Override
+	public void serverStarted(FMLServerStartedEvent event) {
 	}
 	
 	@Override

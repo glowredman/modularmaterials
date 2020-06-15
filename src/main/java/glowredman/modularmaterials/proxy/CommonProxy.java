@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 public class CommonProxy {
@@ -56,6 +57,8 @@ public class CommonProxy {
 	public void serverStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(new Command());
 	}
+
+	public void serverStarted(FMLServerStartedEvent event) {}
 	
 	public void registerItemRenderer(Item item, String name, int meta) {}
 		
