@@ -39,15 +39,15 @@ public class MetaItem extends Item {
 	
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
-		return MaterialHandler.getMaterialFromID(stack.getMetadata()).isBeaconPayment;
+		return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).isBeaconPayment;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		try {
-			Material material = MaterialHandler.getMaterialFromID(stack.getMetadata());
+			Material material = MaterialHandler.getMaterialFromID((short) stack.getMetadata());
 			if (enableAll || (material.enabled && material.isTypeEnabled(type))) {
-				String[] lines = MaterialHandler.getMaterialFromID(stack.getMetadata()).tooltip;
+				String[] lines = MaterialHandler.getMaterialFromID((short) stack.getMetadata()).tooltip;
 				if (lines != null) {
 					for (String line : lines) {
 						try {
@@ -85,7 +85,7 @@ public class MetaItem extends Item {
 	
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		int meta = stack.getMetadata();
+		short meta = (short) stack.getMetadata();
 		String s = "";
 		try {
 			Material material = MaterialHandler.getMaterialFromID(meta);
@@ -107,7 +107,7 @@ public class MetaItem extends Item {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if(tintIndex == 0) {
-					return MaterialHandler.getMaterialFromID(stack.getMetadata()).color.getARGB();
+					return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).color.getARGB();
 				} else {
 					return 0xFFFFFF;
 				}

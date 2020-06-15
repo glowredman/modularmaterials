@@ -9,8 +9,8 @@ import glowredman.modularmaterials.item.MetaItemBlock;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.MCMaterialHelper;
-import glowredman.modularmaterials.util.MCSoundTypeHelper;
+import glowredman.modularmaterials.util.mc.MaterialHelper;
+import glowredman.modularmaterials.util.mc.SoundTypeHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -23,6 +23,8 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaBlock extends Block {
 	
@@ -33,20 +35,20 @@ public class MetaBlock extends Block {
 	private boolean isBeaconPayment;
 
 	public MetaBlock(Material material, String type, String name) {
-		super(MCMaterialHelper.getMaterialFromString(material.blockMaterialSound));
+		super(MaterialHelper.getMaterialFromString(material.blockMaterialSound));
 		Type type_ = types.get(type);
 		this.material = material;
 		this.type = type;
 		this.hasTooltip = type_.hasTooltip && material.tooltip != null;
 		this.isBeaconBase = type_.isBeaconBase && material.isBeaconBase;
 		this.isBeaconPayment = type_.isBeaconPayment && material.isBeaconPayment;
+		this.lightValue = material.blockLightLevel;
 		this.setHarvestLevel(type_.effectiveTool, material.blockHarvestLevel);
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(material.blockHardness);
-		this.setLightLevel(material.blockLightLevel / 15);
 		this.setRegistryName(MODID, type + '.' + name);
 		this.setResistance(material.blockResistance);
-		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(material.blockMaterialSound));
+		this.setSoundType(SoundTypeHelper.getMaterialFromString(material.blockMaterialSound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + name);
 	}
 
@@ -83,6 +85,7 @@ public class MetaBlock extends Block {
 		return true;
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public void registerColor() {
 		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
 			

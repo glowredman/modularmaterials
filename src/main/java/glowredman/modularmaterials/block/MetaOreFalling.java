@@ -10,8 +10,8 @@ import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.MCMaterialHelper;
-import glowredman.modularmaterials.util.MCSoundTypeHelper;
+import glowredman.modularmaterials.util.mc.MaterialHelper;
+import glowredman.modularmaterials.util.mc.SoundTypeHelper;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -24,6 +24,8 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaOreFalling extends BlockFalling {
 	
@@ -36,7 +38,7 @@ public class MetaOreFalling extends BlockFalling {
 	private boolean isBeaconPayment;
 	
 	public MetaOreFalling(Material material, OreVariant ore, String type, String variant, String name) {
-		super(MCMaterialHelper.getMaterialFromString(ore.materialSound));
+		super(MaterialHelper.getMaterialFromString(ore.materialSound));
 		Type t = types.get(type);
 		this.material = material;
 		this.ore = ore;
@@ -45,12 +47,12 @@ public class MetaOreFalling extends BlockFalling {
 		this.hasTooltip = t.hasTooltip && material.tooltip != null;
 		this.isBeaconBase = t.isBeaconBase && material.isBeaconBase;
 		this.isBeaconPayment = t.isBeaconPayment && material.isBeaconPayment;
+		this.lightValue = material.oreLightLevel;
 		this.setCreativeTab(TAB_ORES);
 		this.setHardness(material.oreHardness);
 		this.setHarvestLevel(ore.effectiveTool, material.oreHarvestLevel);
-		this.setLightLevel(material.oreLightLevel / 15);
 		this.setRegistryName(MODID, type + '.' + variant + '.' + name);
-		this.setSoundType(MCSoundTypeHelper.getMaterialFromString(ore.materialSound));
+		this.setSoundType(SoundTypeHelper.getMaterialFromString(ore.materialSound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + variant + '.' + name);
 	}
 	
@@ -87,6 +89,7 @@ public class MetaOreFalling extends BlockFalling {
 		return true;
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public void registerColor() {
 		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
 			

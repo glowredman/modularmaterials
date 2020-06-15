@@ -26,7 +26,7 @@ public class MaterialHandler {
 		long time = System.currentTimeMillis();
 		for(Entry<String, Material> entry : materials.entrySet()) {
 			String key = entry.getKey();
-			int meta = entry.getValue().meta;
+			short meta = entry.getValue().meta;
 			if(idMapping.containsKey(meta)) {
 				Main.logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
 			} else {
@@ -36,7 +36,7 @@ public class MaterialHandler {
 		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
-	public static Material getMaterialFromID(int meta) {
+	public static Material getMaterialFromID(short meta) {
 		return materials.get(idMapping.get(meta));
 	}
 	

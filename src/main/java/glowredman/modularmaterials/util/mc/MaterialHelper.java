@@ -1,9 +1,9 @@
-package glowredman.modularmaterials.util;
+package glowredman.modularmaterials.util.mc;
 
 import net.minecraft.block.material.Material;
 import static net.minecraft.block.material.Material.*;
 
-public class MCMaterialHelper {
+public class MaterialHelper {
 	
 	public static Material getMaterialFromString(String material) {
 		switch (material) {

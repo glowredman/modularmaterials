@@ -8,7 +8,7 @@ import java.util.Random;
 import glowredman.modularmaterials.Main;
 import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.OreVein;
-import glowredman.modularmaterials.object.XSTR;
+import glowredman.modularmaterials.util.XSTR;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;

@@ -26,7 +26,7 @@ public class Reference {
 	
 	//MOD INFORMATION
 	public static final String MCVERSION = "1.12.2";
-	public static final String MODDEPENDENCIES = "required-after:resourceloader";
+	public static final String MODDEPENDENCIES = "";
 	public static final String MODID = "modularmaterials";
 	public static final String MODNAME = "Modular Materials";
 	public static final String MODVERSION = "0.4-beta";

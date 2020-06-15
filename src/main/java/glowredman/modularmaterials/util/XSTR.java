@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.object;
+package glowredman.modularmaterials.util;
 /**
  * A subclass of java.util.random that implements the Xorshift random number
  * generator

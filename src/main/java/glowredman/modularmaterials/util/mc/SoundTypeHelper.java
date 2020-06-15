@@ -1,10 +1,10 @@
-package glowredman.modularmaterials.util;
+package glowredman.modularmaterials.util.mc;
 
 import net.minecraft.block.SoundType;
 import static net.minecraft.block.SoundType.*;
 import net.minecraft.block.material.Material;
 
-public class MCSoundTypeHelper {
+public class SoundTypeHelper {
 	
 	public static SoundType getMaterialFromString(String material) {
 		switch (material) {
