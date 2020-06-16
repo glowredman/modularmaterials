@@ -34,9 +34,9 @@ public class Command extends CommandBase {
 	@Override
 	public String getUsage(ICommandSender sender) {
 		if(sender instanceof EntityPlayer) {
-			return commandName + " <getMaterialKey|getMeta|hand|help|here>";
+			return commandName + " <getBiome|getMaterialKey|getMeta|hand|help|here>";
 		} else {
-			return commandName + " <getMaterialKey|getMeta|help>";
+			return commandName + " <getBiome|getMaterialKey|getMeta|help>";
 		}
 	}
 
@@ -120,6 +120,24 @@ public class Command extends CommandBase {
 					}
 				}
 				break;
+			case "getBiome":
+				if(args.length == 2) {
+					String arg = args[1];
+					try {
+						int id = Integer.parseInt(arg);
+						Biome b = Biome.getBiomeForId(id);
+						if(b != null) {
+							send(sender, arg + ": " + b.getRegistryName().toString());
+						} else {
+							send(sender, "There is no biome with the id '" + arg + "'!");
+						}
+					} catch (Exception e) {
+						send(sender, RED + "'" + arg + "' is not a valid number!");
+					}
+				} else {
+					send(sender, RED + "Usage: /mm getBiome <id>");
+				}
+				break;
 			default:
 				printHelpPage(sender);
 				break;
@@ -129,15 +147,17 @@ public class Command extends CommandBase {
 	
 	public void printHelpPage(ICommandSender sender) {
 		if(sender instanceof EntityPlayer) {
+			help(sender, "getBiome <id>");
+			help(sender, "getMaterialKey <meta>");
+			help(sender, "getMeta <materialKey>");
 			help(sender, "hand");
 			help(sender, "help");
 			help(sender, "here");
-			help(sender, "getMaterialKey <meta>");
-			help(sender, "getMeta <materialKey>");
 		} else {
-			help(sender, "help");
+			help(sender, "getBiome <id>");
 			help(sender, "getMaterialKey <meta>");
 			help(sender, "getMeta <materialKey>");
+			help(sender, "help");
 		}
 	}
 	
