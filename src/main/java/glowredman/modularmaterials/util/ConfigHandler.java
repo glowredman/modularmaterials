@@ -83,7 +83,7 @@ public class ConfigHandler {
 		mBlockHardness = config_defaults.getFloat("blockHardness", MATERIAL, 5, -1, Float.MAX_VALUE, "Hardness effects how long it takes to break the block. -1 means unbreakable.");
 		mBlockHardness = mBlockHardness < 0 ? -1 : mBlockHardness; //assures that every negative value is -1
 		mBlockHarvestLevel = config_defaults.getInt("blockHarvestLevel", MATERIAL, 1, 0, Integer.MAX_VALUE, "0 = wood, 1 = stone, 2 = iron, 3 = diamond");
-		mBlockLightLevel = (byte) config_core.getInt("blockLightLevel", MATERIAL, 0, 0, 15, "How much light the block emits.");
+		mBlockLightLevel = (byte) config_defaults.getInt("blockLightLevel", MATERIAL, 0, 0, 15, "How much light the block emits.");
 		mBlockMaterialSound = config_defaults.getString("blockMaterialSound", MATERIAL, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
 		mBlockResistance = config_defaults.getFloat("blockResistance", MATERIAL, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
 		mBoilingTemperature = config_defaults.getInt("boilingTemperature", MATERIAL, 373, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (373K = 100°C = 212°F)");
