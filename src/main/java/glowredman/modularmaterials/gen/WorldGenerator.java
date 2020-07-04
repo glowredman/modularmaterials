@@ -1,13 +1,12 @@
 package glowredman.modularmaterials.gen;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.Map.Entry;
 import java.util.Random;
 
-import static glowredman.modularmaterials.Reference.*;
-
-import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.object.OreVein;
-import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -46,7 +45,7 @@ public class WorldGenerator implements IWorldGenerator {
 						if(randomWeight <= 0) {
 							veinGenerationSuccesfull = oreVein.executeOreGen(world, random, biomeName, dimensionName, chunkX, chunkZ);
 							if(veinGenerationSuccesfull) {
-								Main.logger.info("Generated vein at " + chunkX + ", " + chunkZ + "(x=" + chunkX * 16 + ", z=" + chunkZ * 16 + ").");
+								logger.info("Generated vein at " + chunkX + ", " + chunkZ + "(x=" + chunkX * 16 + ", z=" + chunkZ * 16 + ").");
 							}
 							break;
 						}

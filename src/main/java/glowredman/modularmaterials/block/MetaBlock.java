@@ -1,10 +1,11 @@
 package glowredman.modularmaterials.block;
 
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.item.MetaItemBlock;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;

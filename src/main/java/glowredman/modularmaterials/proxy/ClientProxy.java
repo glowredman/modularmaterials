@@ -3,6 +3,7 @@ package glowredman.modularmaterials.proxy;
 import static glowredman.modularmaterials.Main.logger;
 import static glowredman.modularmaterials.Reference.MODID;
 import static glowredman.modularmaterials.Reference.enableAll;
+
 import glowredman.modularmaterials.block.BlockHandler;
 import glowredman.modularmaterials.file.AssetHandler;
 import glowredman.modularmaterials.file.JSONHandler;
@@ -16,7 +17,6 @@ import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;

@@ -1,6 +1,7 @@
 package glowredman.modularmaterials.tab;
 
 import static glowredman.modularmaterials.Reference.MODID;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;

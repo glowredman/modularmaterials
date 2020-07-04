@@ -2,6 +2,7 @@ package glowredman.modularmaterials.proxy;
 
 import static glowredman.modularmaterials.Main.logger;
 import static glowredman.modularmaterials.Reference.enableAll;
+
 import glowredman.modularmaterials.block.BlockHandler;
 import glowredman.modularmaterials.command.Command;
 import glowredman.modularmaterials.file.JSONHandler;

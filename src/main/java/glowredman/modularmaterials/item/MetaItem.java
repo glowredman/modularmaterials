@@ -1,12 +1,14 @@
 package glowredman.modularmaterials.item;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Main.proxy;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.List;
 import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -32,7 +34,7 @@ public class MetaItem extends Item {
 		this.setCreativeTab(TAB_ITEMS);
 		for(Material material : materials.values()) {
 			if(enableAll || (material.isTypeEnabled(type) && material.enabled)) {
-				Main.proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
+				proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
 			}
 		}
 	}
@@ -77,7 +79,7 @@ public class MetaItem extends Item {
 						items.add(new ItemStack(this, 1, material.meta));
 					}
 				} catch (Exception e) {
-					Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+					logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 				}
 			}
 		}

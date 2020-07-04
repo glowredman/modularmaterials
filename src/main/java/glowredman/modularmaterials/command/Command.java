@@ -1,12 +1,11 @@
 package glowredman.modularmaterials.command;
 
+import static glowredman.modularmaterials.Reference.*;
+import static net.minecraft.util.text.TextFormatting.*;
+
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
-import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -14,14 +13,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import static net.minecraft.util.text.TextFormatting.*;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class Command extends CommandBase {

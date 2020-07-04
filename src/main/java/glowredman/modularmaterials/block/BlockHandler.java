@@ -1,14 +1,15 @@
 package glowredman.modularmaterials.block;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Main.proxy;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.gen.OreGenHandler;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -29,14 +30,14 @@ public class BlockHandler {
 						MetaBlock block = new MetaBlock(material, typeKey, materialKey);
 						ForgeRegistries.BLOCKS.register(block);
 						ForgeRegistries.ITEMS.register(block.createItemBlock());
-						Main.proxy.registerItemRenderer(Item.getItemFromBlock(block), material.texture + '/' + typeKey);
+						proxy.registerItemRenderer(Item.getItemFromBlock(block), material.texture + '/' + typeKey);
 						metaBlocks.add(block);
 						count++;
 					}
 				}
 			}
 		}
-		Main.logger.info("Registered " + count + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Registered " + count + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static void registerOres() {
@@ -59,7 +60,7 @@ public class BlockHandler {
 									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
+									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
 									metaOresFalling.add(oreBlock);
 									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
@@ -67,7 +68,7 @@ public class BlockHandler {
 									MetaOre oreBlock = new MetaOre(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									Main.proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
+									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
 									metaOres.add(oreBlock);
 									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
@@ -78,7 +79,7 @@ public class BlockHandler {
 				}
 			}
 		}
-		Main.logger.info("Registered " + count + " ores. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Registered " + count + " ores. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static void initColors() {

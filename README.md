@@ -2,9 +2,7 @@
 
 Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
 =================
-Requires Resource Loader by Lumien231 ([GitHub](https://github.com/lumien231/Resource-Loader) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/resource-loader))
-
-*Coding and code-structuring advice highly appreciated :)*
+Requires Resource Loader by Lumien231 *only on client-side!* ([GitHub](https://github.com/lumien231/Resource-Loader) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/resource-loader))
 
 #### Features
 

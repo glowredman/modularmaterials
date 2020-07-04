@@ -1,11 +1,11 @@
 package glowredman.modularmaterials.fluid;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -31,7 +31,7 @@ public class FluidHandler {
 						b = typeEntry.getValue() && types.get(typeEntry.getKey()).category.equals("fluid") && types.get(typeEntry.getKey()).enabled;
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
-							Main.logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+							logger.error(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					if(b) {
@@ -94,7 +94,7 @@ public class FluidHandler {
 				}
 			}
 		}
-		Main.logger.info("Registered " + counter + " fluids in " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Registered " + counter + " fluids in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 }

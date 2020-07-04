@@ -1,9 +1,9 @@
 package glowredman.modularmaterials.util;
 
+import static glowredman.modularmaterials.Reference.*;
+
 import org.lwjgl.input.Keyboard;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import net.minecraft.client.Minecraft;
 
 public class FormattingHandler {

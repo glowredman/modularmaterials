@@ -1,5 +1,9 @@
 package glowredman.modularmaterials.file;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+import static glowredman.modularmaterials.file.Templates.*;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,14 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
-import static glowredman.modularmaterials.file.Templates.*;
 import glowredman.modularmaterials.object.CTTT;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
-import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -40,7 +40,7 @@ public class AssetHandler {
 						isTypeEnabled = (typeEntry.getValue() && types.get(typeKey).enabled) || enableAll;
 					} catch (Exception e) {
 						if(!suppressTypeMissingWarnings) {
-							Main.logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+							logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
 					Type type = types.get(typeKey);
@@ -52,7 +52,7 @@ public class AssetHandler {
 				}
 			}
 		}
-		Main.logger.info("Detected " + count + " different category-texture-type-triples. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Detected " + count + " different category-texture-type-triples. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -178,7 +178,7 @@ public class AssetHandler {
 				break;
 			}
 		}
-		Main.logger.info("Created " + count + " model-files. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Created " + count + " model-files. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -267,7 +267,7 @@ public class AssetHandler {
 				}
 			}
 		}
-		Main.logger.info("Created " + count + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Created " + count + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -350,7 +350,7 @@ public class AssetHandler {
 					}
 				}
 				writer.close();
-				Main.logger.info("Created " + count + " localizations. Took " + (System.currentTimeMillis() - time) + "ms.");
+				logger.info("Created " + count + " localizations. Took " + (System.currentTimeMillis() - time) + "ms.");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

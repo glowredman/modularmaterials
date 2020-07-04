@@ -1,5 +1,8 @@
 package glowredman.modularmaterials.file;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,8 +17,6 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Drop;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.MaterialList;
@@ -53,7 +54,7 @@ public class JSONHandler {
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(oreVariantList));
 				writer.close();
 				
-				Main.logger.info("Succesfully created \"" + fileOreVariants + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+				logger.info("Succesfully created \"" + fileOreVariants + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
 
 			//transfer config information
@@ -90,7 +91,7 @@ public class JSONHandler {
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(typeList));
 				writer.close();
 				
-				Main.logger.info("Succesfully created \"" + fileTypes + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+				logger.info("Succesfully created \"" + fileTypes + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
 
 			//transfer config information
@@ -149,7 +150,7 @@ public class JSONHandler {
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(materialList));
 				writer.close();
 				
-				Main.logger.info("Succesfully created \"" + fileMaterials + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+				logger.info("Succesfully created \"" + fileMaterials + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
 			
 			//transfer config information
@@ -190,7 +191,7 @@ public class JSONHandler {
 				writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(oreVeinList));
 				writer.close();
 
-				Main.logger.info("Succesfully created \"" + fileOreGeneration + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+				logger.info("Succesfully created \"" + fileOreGeneration + "\" in " + (System.currentTimeMillis() - time) + "ms.");
 			}
 
 			//transfer config information

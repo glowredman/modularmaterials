@@ -1,19 +1,20 @@
 package glowredman.modularmaterials;
 
+import static glowredman.modularmaterials.Reference.*;
+
 import org.apache.logging.log4j.Logger;
 
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.proxy.CommonProxy;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
 
 @Mod(acceptedMinecraftVersions = MCVERSION, dependencies = MODDEPENDENCIES, modid = MODID, name = MODNAME, version = MODVERSION)
 public class Main {

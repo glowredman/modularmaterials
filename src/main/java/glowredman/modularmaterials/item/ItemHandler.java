@@ -1,11 +1,11 @@
 package glowredman.modularmaterials.item;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Type;
-import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -23,7 +23,7 @@ public class ItemHandler {
 				count++;
 			}	
 		}
-		Main.logger.info("Registered " + count + " items. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Registered " + count + " items. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)

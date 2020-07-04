@@ -1,6 +1,8 @@
 package glowredman.modularmaterials.util;
 
-import static glowredman.modularmaterials.Reference.*;
+import static glowredman.modularmaterials.Reference.MODNAME;
+import static glowredman.modularmaterials.Reference.fluids;
+
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;

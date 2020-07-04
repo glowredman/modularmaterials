@@ -1,26 +1,24 @@
 package glowredman.modularmaterials.util;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.Main;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
-
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.Type;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import static glowredman.modularmaterials.Reference.*;
 
 public class MaterialHandler {
 	
@@ -30,12 +28,12 @@ public class MaterialHandler {
 			String key = entry.getKey();
 			short meta = entry.getValue().meta;
 			if(idMapping.containsKey(meta)) {
-				Main.logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
+				logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
 			} else {
 				idMapping.put(meta, key);
 			}
 		}
-		Main.logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static Material getMaterialFromID(short meta) {
@@ -138,7 +136,7 @@ public class MaterialHandler {
 				}
 			}
 		}
-		Main.logger.info("Registered " + count + " entries to the OreDictionary. Took " + (System.currentTimeMillis() - time) + "ms.");
+		logger.info("Registered " + count + " entries to the OreDictionary. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static void fillMaterialListIfEmpty() {
@@ -149,7 +147,7 @@ public class MaterialHandler {
 			material.meta = 0;
 			material.name = "placeholder";
 			materials.put("placeholder", material);
-			Main.logger.warn("The material-list was empty. Check your configuration file or report this issue to the mod-author!");
+			logger.warn("The material-list was empty. Check your configuration file or report this issue to the mod-author!");
 		}
 	}
 	

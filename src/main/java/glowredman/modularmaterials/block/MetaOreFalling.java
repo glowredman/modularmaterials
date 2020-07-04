@@ -1,17 +1,18 @@
 package glowredman.modularmaterials.block;
 
+import static glowredman.modularmaterials.Reference.*;
+import static glowredman.modularmaterials.util.MaterialHandler.getItemStackFromString;
+
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.item.MetaItemBlock;
 import glowredman.modularmaterials.object.Drop;
 import glowredman.modularmaterials.object.Material;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.Type;
 import glowredman.modularmaterials.util.FormattingHandler;
-import static glowredman.modularmaterials.util.MaterialHandler.*;
 import glowredman.modularmaterials.util.mc.MaterialHelper;
 import glowredman.modularmaterials.util.mc.SoundTypeHelper;
 import net.minecraft.block.BlockFalling;

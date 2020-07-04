@@ -1,8 +1,8 @@
 package glowredman.modularmaterials.util.mc;
 
-import net.minecraft.block.SoundType;
 import static net.minecraft.block.SoundType.*;
-import net.minecraft.block.material.Material;
+
+import net.minecraft.block.SoundType;
 
 public class SoundTypeHelper {
 	

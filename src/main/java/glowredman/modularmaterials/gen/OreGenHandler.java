@@ -1,12 +1,14 @@
 package glowredman.modularmaterials.gen;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.*;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import glowredman.modularmaterials.Main;
-import static glowredman.modularmaterials.Reference.*;
 import glowredman.modularmaterials.object.OreVein;
 import glowredman.modularmaterials.util.XSTR;
 import net.minecraft.block.Block;
@@ -16,10 +18,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType;
-import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.*;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.eventhandler.Event.Result;
 
 public class OreGenHandler {
 	
@@ -35,7 +36,7 @@ public class OreGenHandler {
 		for(OreVein oreVein : oreVeins.values()) {
 			weight += oreVein.enabled ? oreVein.weight : 0;
 		}
-		Main.logger.debug("The ore veins have a combined weight of " + weight + '.');
+		logger.debug("The ore veins have a combined weight of " + weight + '.');
 	}
 	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)

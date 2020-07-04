@@ -1,7 +1,8 @@
 package glowredman.modularmaterials.util.mc;
 
-import net.minecraft.block.material.Material;
 import static net.minecraft.block.material.Material.*;
+
+import net.minecraft.block.material.Material;
 
 public class MaterialHelper {
 	
