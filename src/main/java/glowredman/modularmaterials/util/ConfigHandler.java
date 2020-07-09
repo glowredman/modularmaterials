@@ -15,7 +15,10 @@ public class ConfigHandler {
 	public static final String FORMATTING = "formatting";
 	
 	//defaults
+	public static final String BLOCK = "block";
 	public static final String COLOR = "color";
+	public static final String FLUID = "fluid";
+	public static final String ITEM = "item";
 	public static final String MATERIAL = "material";
 	public static final String VARIANT = "oreVariant";
 	public static final String VEIN = "oreVein";
@@ -63,22 +66,54 @@ public class ConfigHandler {
 		triggerShiftIsPressedFormatting = config_core.getString("triggerShiftIsPressedFormatting", FORMATTING, "\u00a7p", "String, to show the line only when 'Shift' is pressed");
 		triggerAltIsNotPressedFormatting = config_core.getString("triggerAltIsNotPressedFormatting", FORMATTING, "\u00a7T", "String, to show the line only when 'Alt' is not pressed");
 		triggerAltIsPressedFormatting = config_core.getString("triggerAltIsPressedFormatting", FORMATTING, "\u00a7t", "String, to show the line only when 'Alt' is pressed");
-		animatedFormattingDelayFallback = config_core.getFloat("animatedFormattingDelayFallback", FORMATTING, 0.001f, 0.000001f, Float.MAX_VALUE, "If the delay set when using animated formatting is below or equal to 0, it is set to this value.");
 		enableFormattingDebugger = config_core.getBoolean("eanbleFormattingDebugger", FORMATTING, false, "Prints exceptions cought while formatting the tooltips to the console. this can be used to ensure that your tooltips are properly formatted. THIS WILL SPAM YOUR CONSOLE!");
 	}
 	
 	private static void initDefaultsConfig() {
+		config_defaults.addCustomCategoryComment(BLOCK, "Default values for Block objects. These are used when no value is set.");
 		config_defaults.addCustomCategoryComment(COLOR, "Default values for Color objects. These are used when no value is set.");
+		config_defaults.addCustomCategoryComment(FLUID, "Default values for Fluid objects. These are used when no value is set.");
+		config_defaults.addCustomCategoryComment(ITEM, "Default values for Item objects. These are used when no value is set.");
 		config_defaults.addCustomCategoryComment(MATERIAL, "Default values for Material objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(VARIANT, "Default values for OreVariant objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(VEIN, "Default values for OreVein objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(TYPE, "Default values for Type objects. These are used when no other value is set.");
 		
+		//block
+		bEffectiveTool = config_defaults.getString("effectiveTool", BLOCK, "pickaxe", "Which tool the player has to use to break the block.");
+		bEnabled = config_defaults.getBoolean("enabled", BLOCK, false, "Whether or not the block is enabled.");
+		bHardness = config_defaults.getFloat("hardness", BLOCK, 5, -1, Integer.MAX_VALUE, "Hardness effects how long it takes to break the block. -1 means unbreakable.");
+		bHardness = bHardness < 0 ? -1 : bHardness; //assures that every negative value is -1
+		bHarvestLevel = config_defaults.getInt("harvestLevel", BLOCK, 1, 0, Integer.MAX_VALUE, "0 = wood, 1 = stone, 2 = iron, 3 = diamond");
+		bIsBeaconBase = config_defaults.getBoolean("isBeaconBase", BLOCK, false, "Whether or not this block can be used as a beacon base.");
+		bIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", BLOCK, false, "Whether or not the material can be used to activate a beacon.");
+		bLightLevel = (byte) config_defaults.getInt("lightLevel", BLOCK, 0, 0, 15, "How much light the block emits.");
+		bMaterialSound = config_defaults.getString("materialSound", BLOCK, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
+		bResistance = config_defaults.getFloat("resistance", BLOCK, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
+		bTexture = config_defaults.getString("texture", BLOCK, MODID + ":void", "The block's texture.");
+		bUseColor = config_defaults.getBoolean("useColor", BLOCK, false, "Whether or not the texture should be colored.");
+		
 		//color
-		cAlpha = config_defaults.getInt("alpha", COLOR, 0, 0, 255, "");
-		cRed = config_defaults.getInt("red", COLOR, 255, 0, 255, "");
-		cGreen = config_defaults.getInt("green", COLOR, 255, 0, 255, "");
-		cBlue = config_defaults.getInt("blue", COLOR, 255, 0, 255, "");
+		cAlpha = config_defaults.getInt("alpha", COLOR, 0, 0, 255, "The color's alpha value.");
+		cRed = config_defaults.getInt("red", COLOR, 255, 0, 255, "The color's red component.");
+		cGreen = config_defaults.getInt("green", COLOR, 255, 0, 255, "The color's green component.");
+		cBlue = config_defaults.getInt("blue", COLOR, 255, 0, 255, "The color's blue component.");
+		
+		//fluid
+		fDensity = config_defaults.getInt("density", FLUID, 1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is kg/m\u00b3, negative means lighter than air. (Water is 1000)");
+		fEnabled = config_defaults.getBoolean("enabled", FLUID, false, "Whether or not the fluid is enabled.");
+		fIsGaseous = config_defaults.getBoolean("isBoolean", FLUID, false, "Whether or not this fluid should be treated as a gas.");
+		fLightLevel = (byte) config_defaults.getInt("lightLevel", FLUID, 0, 0, 15, "How much light the fluid emits.");
+		fTemperature = config_defaults.getInt("temperature", FLUID, 293, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (373K = 100\u00b0C = 212\u00b0F)");
+		fTexture = config_defaults.getString("texture", FLUID, MODID + ":void", "The fluid's texture. \"_still\" or \"_flowing\" will be appended depending on the fluid's state.");
+		fUseColor = config_defaults.getBoolean("useColor", FLUID, false, "Whether or not the texture should be colored.");
+		fViscosity = config_defaults.getInt("viscosity", FLUID, 1000, 0, Integer.MAX_VALUE, "Unit is 10\u207b\u00b3m/s\u00b2, higher means the fluid moves more slowly (Water is 1000)");
+		
+		//item
+		iEnabled = config_defaults.getBoolean("enabled", ITEM, false, "Wheter or not the item is enabled.");
+		iIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", ITEM, false, "Whether or not the material can be used to activate a beacon.");
+		iTexture = config_defaults.getString("texture", ITEM, MODID + ":void", "The item's texture.");
+		iUseColor = config_defaults.getBoolean("useColor", ITEM, false, "Whether or not the texture should be colored.");
 		
 		//material
 		mBlockHardness = config_defaults.getFloat("blockHardness", MATERIAL, 5, -1, Float.MAX_VALUE, "Hardness effects how long it takes to break the block. -1 means unbreakable.");
@@ -87,25 +122,25 @@ public class ConfigHandler {
 		mBlockLightLevel = (byte) config_defaults.getInt("blockLightLevel", MATERIAL, 0, 0, 15, "How much light the block emits.");
 		mBlockMaterialSound = config_defaults.getString("blockMaterialSound", MATERIAL, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
 		mBlockResistance = config_defaults.getFloat("blockResistance", MATERIAL, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
-		mBoilingTemperature = config_defaults.getInt("boilingTemperature", MATERIAL, 373, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (373K = 100°C = 212°F)");
+		mBoilingTemperature = config_defaults.getInt("boilingTemperature", MATERIAL, 373, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (373K = 100\u00b0C = 212\u00b0F)");
 		mEnabled = config_defaults.getBoolean("enabled", MATERIAL, false, "Whether or not the material is enabled.");
 		mTypeEnabled = config_defaults.getBoolean("typeEnabled", MATERIAL, false, "Wheter or not the types are enabled.");
-		mGasDenisity = config_defaults.getInt("gasDensity", MATERIAL, -1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is kg/m³, negative means lighter than air. (Water is 1000)");
+		mGasDenisity = config_defaults.getInt("gasDensity", MATERIAL, -1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is kg/m\u00b3, negative means lighter than air. (Water is 1000)");
 		mGasLightLevel = (byte) config_defaults.getInt("gasLightLevel", MATERIAL, 0, 0, 15, "How much light the gas emits.");
-		mGasViscosity = config_defaults.getInt("gasViscosity", MATERIAL, 0, 0, Integer.MAX_VALUE, "Unit is 10\u207b³m/s², higher means the fluid moves more slowly (Water is 1000)");
+		mGasViscosity = config_defaults.getInt("gasViscosity", MATERIAL, 0, 0, Integer.MAX_VALUE, "Unit is 10\u207b\u00b3m/s\u00b2, higher means the fluid moves more slowly (Water is 1000)");
 		mIsBeaconBase = config_defaults.getBoolean("isBeaconBase", MATERIAL, false, "Whether or not the material can be used as a beacon base.");
 		mIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", MATERIAL, false, "Whether or not the material can be used to activate a beacon.");
-		mLiquidDensity = config_defaults.getInt("liquidDensity", MATERIAL, 1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is kg/m³, negative means lighter than air. (Water is 1000)");
+		mLiquidDensity = config_defaults.getInt("liquidDensity", MATERIAL, 1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is kg/m\u00b3, negative means lighter than air. (Water is 1000)");
 		mLiquidLightLevel = (byte) config_defaults.getInt("liquidLightLevel", MATERIAL, 0, 0, 15, "How much light the liquid emits.");
-		mLiquidViscosity = config_defaults.getInt("liquidViscosity", MATERIAL, 1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is 10\u207b³m/s², higher means the fluid moves more slowly (Water is 1000)");
-		mMeltingTemperature = config_defaults.getInt("meltingTemperature", MATERIAL, 273, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (273K = 0°C = 32°F)");
+		mLiquidViscosity = config_defaults.getInt("liquidViscosity", MATERIAL, 1000, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is 10\u207b\u00b3m/s\u00b2, higher means the fluid moves more slowly (Water is 1000)");
+		mMeltingTemperature = config_defaults.getInt("meltingTemperature", MATERIAL, 273, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (273K = 0\u00b0C = 32\u00b0F)");
 		mOreHardness = config_defaults.getFloat("oreHardness", MATERIAL, 3, -1, Float.MAX_VALUE, "Hardness effects how long it takes to break the ore. -1 means unbreakable.");
 		mOreHardness = mOreHardness < 0 ? -1 : mOreHardness; //assures that every negative value is -1
 		mOreHarvestLevel = config_defaults.getInt("oreHarvestLevel", MATERIAL, 1, 0, Integer.MAX_VALUE, "0 = wood, 1 = stone, 2 = iron, 3 = diamond");
 		mOreLightLevel = (byte) config_defaults.getInt("oreLightLevel", MATERIAL, 0, 0, 15, "How much light the ore emits.");
 		mOreResistance = config_defaults.getFloat("oreResistance", MATERIAL, 0, 0, Float.MAX_VALUE, "");
 		mState = config_defaults.getString("state", MATERIAL, "solid", "The physical state the material has at room temperature.");
-		mTemperature = config_defaults.getInt("temperature", MATERIAL, 293, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (293K = 20°C = 68°F)");
+		mTemperature = config_defaults.getInt("temperature", MATERIAL, 293, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (293K = 20\u00b0C = 68\u00b0F)");
 		mTexture = config_defaults.getString("texture", MATERIAL, "metallic", "Which texture set to use");
 		
 		//oreVariant

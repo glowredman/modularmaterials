@@ -31,7 +31,7 @@ public class Color {
 	}
 	
 	public int getARGB() {
-		return new java.awt.Color(red, green, blue, alpha).getRGB();
+		return alpha * 0x1000000 + red * 0x10000 + green * 0x100 + blue;
 	}
 	
 	public int getRGB() {

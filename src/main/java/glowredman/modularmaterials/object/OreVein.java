@@ -1,15 +1,16 @@
 package glowredman.modularmaterials.object;
 
+import static glowredman.modularmaterials.Main.logger;
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.List;
 import java.util.Random;
 
-import static glowredman.modularmaterials.Reference.*;
-import glowredman.modularmaterials.block.MetaOre;
-import glowredman.modularmaterials.block.MetaOreFalling;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
+
 import glowredman.modularmaterials.gen.OreGenHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -23,10 +24,15 @@ public class OreVein {
 	public String inbewteen = vInbetween;
 	public String sporadic = vSporadic;
 	public boolean enabled = vEnabled;
+	@Nonnegative
+	@Nonnull
 	public short denisty = vDensity;
 	public short maxHeight = vMaxHeight;
 	public short minHeight = vMinHeight;
+	@Nonnegative
+	@Nonnull
 	public short size = vSize;
+	@Nonnegative
 	public short weight = vWeight;
 	public boolean invertDimensions = vInvertDimensions;
 	public List<String> dimensions = MaterialHandler.getListFormArray(vDimensions);
@@ -81,16 +87,16 @@ public class OreVein {
 				return true;
 			} else {
 				if(!hasPrimary) {
-					System.out.println(primary + " has no ore!");
+					logger.warn(primary + " has no ore!");
 				}
 				if(!hasSecondary) {
-					System.out.println(secondary + " has no ore!");
+					logger.warn(secondary + " has no ore!");
 				}
 				if(!hasInbetweent) {
-					System.out.println(inbewteen + " has no ore!");
+					logger.warn(inbewteen + " has no ore!");
 				}
 				if(!hasSporadic) {
-					System.out.println(sporadic + " has no ore!");
+					logger.warn(sporadic + " has no ore!");
 				}
 				return false;
 			}

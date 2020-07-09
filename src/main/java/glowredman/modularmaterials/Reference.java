@@ -10,6 +10,9 @@ import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.MiscBlock;
+import glowredman.modularmaterials.object.MiscFluid;
+import glowredman.modularmaterials.object.MiscItem;
 import glowredman.modularmaterials.object.OreVariant;
 import glowredman.modularmaterials.object.OreVein;
 import glowredman.modularmaterials.object.Type;
@@ -72,14 +75,42 @@ public class Reference {
 	public static String triggerAltIsPressedFormatting = "§t";
 	public static String triggerAltIsNotPressedFormatting = "§T";
 	public static String triggerAnimatedFormattingChar = "§s";
-	public static float animatedFormattingDelayFallback = 0.001f;
 	public static boolean enableFormattingDebugger = false;
+	
+	//defaults block
+	public static String bEffectiveTool = "pickaxe";
+	public static boolean bEnabled = false;
+	public static float bHardness = 5.0f;
+	public static int bHarvestLevel = 1;
+	public static boolean bIsBeaconBase = false;
+	public static boolean bIsBeaconPayment = false;
+	public static byte bLightLevel = 0;
+	public static String bMaterialSound = "IRON";
+	public static float bResistance = 6.0f;
+	public static String bTexture = MODID + ":void";
+	public static boolean bUseColor = false;
 	
 	//defaults color
 	public static int cAlpha = 0;
 	public static int cRed = 255;
 	public static int cGreen = 255;
 	public static int cBlue = 255;
+	
+	//defaults fluid
+	public static int fDensity = 1000;
+	public static boolean fEnabled = false;
+	public static boolean fIsGaseous = false;
+	public static byte fLightLevel = 0;
+	public static int fTemperature = 293;
+	public static String fTexture = MODID + ":void";
+	public static boolean fUseColor = false;
+	public static int fViscosity = 1000;
+	
+	//defaults item
+	public static boolean iEnabled = false;
+	public static boolean iIsBeaconPayment = false;
+	public static String iTexture = MODID + ":void";
+	public static boolean iUseColor = false;
 	
 	//defaults material
 	public static float mBlockHardness = 5.0f;
@@ -146,16 +177,23 @@ public class Reference {
 	public static String tUnitValue = "1u";
 	
 	//INTERNAL
+	//sources
 	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>(); //materialKey, material
-	public static HashMap<Short, String> idMapping = new HashMap<Short, String>(); //meta, materialKey
 	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>(); //typeKey, type
+	public static LinkedHashMap<String, MiscBlock> miscBlocks = new LinkedHashMap<String, MiscBlock>(); //blockKey, block
+	public static LinkedHashMap<String, MiscFluid> miscFluids = new LinkedHashMap<String, MiscFluid>(); //fluidKey, fluid
+	public static LinkedHashMap<String, MiscItem> miscItems = new LinkedHashMap<String, MiscItem>(); //itemKey, item
 	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>(); //oreVariantKey, oreVariant
 	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>(); //oreVeinKey, oreVein
+	//mappings
+	public static HashMap<Short, String> idMapping = new HashMap<Short, String>(); //meta, materialKey
 	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore
+	//registered objects lists
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();
 	public static List<MetaOreFalling> metaOresFalling = new ArrayList<MetaOreFalling>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
+	//ore gen
 	public static int weight = 0;
 }

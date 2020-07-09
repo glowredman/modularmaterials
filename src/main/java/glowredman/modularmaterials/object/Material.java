@@ -1,5 +1,7 @@
 package glowredman.modularmaterials.object;
 
+import static glowredman.modularmaterials.Reference.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +9,6 @@ import java.util.List;
 import javax.annotation.Nonnegative;
 
 import glowredman.modularmaterials.util.MaterialHandler;
-
-import static glowredman.modularmaterials.Reference.*;
 
 public class Material {
 	
@@ -46,24 +46,12 @@ public class Material {
 	public String texture = mTexture;
 	public String[] tooltip = new String[] {};
 
-	public void setType(String type, boolean state) {
-		enabledTypes.put(type, state);
-	}
-
 	public boolean isTypeEnabled(String type) {
 		if(enabledTypes.containsKey(type)) {
 			return enabledTypes.get(type);
 		} else {
 			return mTypeEnabled;
 		}
-	}
-	
-	public void enableType(String type) {
-		enabledTypes.put(type, true);
-	}
-
-	public void setColor(java.awt.Color color) {
-		this.color.setColor(color);
 	}
 	
 }

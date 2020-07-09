@@ -60,7 +60,7 @@ public class FormattingHandler {
 		
 		//calculate
 		if(delay <= 0) {
-			delay = animatedFormattingDelayFallback;
+			delay = 0.001;
 		}
 		
 		int offset = (int) (Math.floor(Minecraft.getSystemTime() / delay) % colorArray.length);
