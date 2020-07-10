@@ -92,7 +92,7 @@ public class MetaItem extends Item {
 		try {
 			JMaterial material = MaterialHandler.getMaterialFromID(meta);
 			if(enableAll || (material.enabled && material.isTypeEnabled(type))) {
-				s = "item." + MODID + '.' + type + '.' + idMapping.get(meta);
+				s = "item." + MODID + '.' + type + '.' + idMaterialMapping.get(meta);
 			} else {
 				s = "item." + MODID + ".debug";
 			}

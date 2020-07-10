@@ -85,8 +85,8 @@ public class Command extends CommandBase {
 					String arg = args[1];
 					try {
 						short key = Short.parseShort(arg);
-						if(idMapping.containsKey(key)) {
-							send(sender, key + ": " + idMapping.get(key));
+						if(idMaterialMapping.containsKey(key)) {
+							send(sender, key + ": " + idMaterialMapping.get(key));
 						} else {
 							send(sender, RED + "The meta '" + arg + "' is not occupied!");
 						}

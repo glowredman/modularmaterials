@@ -14,6 +14,7 @@ import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscItem;
 import glowredman.modularmaterials.object.JType;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -24,20 +25,38 @@ public class MaterialHandler {
 	
 	public static void createIDMapping() {
 		long time = System.currentTimeMillis();
+		
+		//materials
 		for(Entry<String, JMaterial> entry : materials.entrySet()) {
 			String key = entry.getKey();
 			short meta = entry.getValue().meta;
-			if(idMapping.containsKey(meta)) {
-				logger.error("Duplicate meta detected (" + meta + ")! Change the meta of " + idMapping.get(meta) + " or " + key + " to resolve this issue! " + key + " won't be registered.");
+			if(idMaterialMapping.containsKey(meta)) {
+				logger.error("Duplicate meta detected (" + meta + ")! Change the meta of material \"" + idMaterialMapping.get(meta) + "\" or \"" + key + "\" to resolve this issue! \"" + key + "\" won't be registered.");
 			} else {
-				idMapping.put(meta, key);
+				idMaterialMapping.put(meta, key);
 			}
 		}
-		logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
+		
+		//miscItems
+		for(Entry<String, JMiscItem> entry : miscItems.entrySet()) {
+			String key = entry.getKey();
+			short meta = entry.getValue().meta;
+			if(idMiscMapping.containsKey(meta)) {
+				logger.error("Duplicate meta detected (" + meta + ")! Change the meta of item \"" + idMiscMapping.get(meta) + "\" or \"" + key + "\" to resolve this issue! \"" + key + "\" won't be registered.");
+			} else {
+				idMiscMapping.put(meta, key);
+			}
+		}
+		
+		logger.info("Finished mapping a total of " + idMaterialMapping.size() + " materials and " + idMiscMapping.size() + " misc items to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	public static JMaterial getMaterialFromID(short meta) {
-		return materials.get(idMapping.get(meta));
+		return materials.get(idMaterialMapping.get(meta));
+	}
+	
+	public static JMiscItem getMiscItemFromID(short meta) {
+		return miscItems.get(idMiscMapping.get(meta));
 	}
 	
 	public static ItemStack getItemStackFromString(String item, int amount, Block itself) {

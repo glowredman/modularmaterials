@@ -188,7 +188,8 @@ public class Reference {
 	public static HashMap<String, JOreVariant> oreVariants = new HashMap<String, JOreVariant>(); //oreVariantKey, oreVariant
 	public static HashMap<String, JOreVein> oreVeins = new HashMap<String, JOreVein>(); //oreVeinKey, oreVein
 	//mappings
-	public static HashMap<Short, String> idMapping = new HashMap<Short, String>(); //meta, materialKey
+	public static HashMap<Short, String> idMaterialMapping = new HashMap<Short, String>(); //meta, materialKey
+	public static HashMap<Short, String> idMiscMapping = new HashMap<Short, String>(); //meta, miscItem
 	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore
 	//registered objects lists
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
