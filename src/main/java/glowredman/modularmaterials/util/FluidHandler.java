@@ -1,4 +1,4 @@
-package glowredman.modularmaterials.fluid;
+package glowredman.modularmaterials.util;
 
 import static glowredman.modularmaterials.Main.logger;
 import static glowredman.modularmaterials.Reference.*;
