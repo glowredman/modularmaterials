@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import glowredman.modularmaterials.item.MetaItemBlock;
+import glowredman.modularmaterials.item.AdvItemBlock;
 import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.util.FormattingHandler;
@@ -54,7 +54,7 @@ public class MetaBlock extends Block {
 	}
 
 	public Item createItemBlock() {
-		return new MetaItemBlock(this, isBeaconPayment);
+		return new AdvItemBlock(this, isBeaconPayment);
 	}
 	
 	@Override
@@ -65,8 +65,7 @@ public class MetaBlock extends Block {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if(this.hasTooltip) {
-			String[] lines = material.tooltip;
-			for (String line : lines) {
+			for (String line : material.tooltip) {
 				try {
 					String s = FormattingHandler.formatTooltipLine(line);
 					if (s != null) {

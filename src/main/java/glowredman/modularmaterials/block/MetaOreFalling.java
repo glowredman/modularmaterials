@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import glowredman.modularmaterials.item.MetaItemBlock;
+import glowredman.modularmaterials.item.AdvItemBlock;
 import glowredman.modularmaterials.object.JDrop;
 import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.object.JOreVariant;
@@ -62,7 +62,7 @@ public class MetaOreFalling extends BlockFalling {
 	}
 	
 	public Item createItemBlock() {
-		return new MetaItemBlock(this, isBeaconPayment);
+		return new AdvItemBlock(this, isBeaconPayment);
 	}
 	
 	@Override
