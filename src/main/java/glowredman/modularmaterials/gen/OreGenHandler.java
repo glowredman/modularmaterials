@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import glowredman.modularmaterials.object.OreVein;
+import glowredman.modularmaterials.object.JOreVein;
 import glowredman.modularmaterials.util.XSTR;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -33,7 +33,7 @@ public class OreGenHandler {
 	}
 	
 	public static void initWeight() {
-		for(OreVein oreVein : oreVeins.values()) {
+		for(JOreVein oreVein : oreVeins.values()) {
 			weight += oreVein.enabled ? oreVein.weight : 0;
 		}
 		logger.debug("The ore veins have a combined weight of " + weight + '.');

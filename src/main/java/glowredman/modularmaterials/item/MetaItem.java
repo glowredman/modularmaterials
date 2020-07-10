@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
-import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
@@ -32,7 +32,7 @@ public class MetaItem extends Item {
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, type);
 		this.setCreativeTab(TAB_ITEMS);
-		for(Material material : materials.values()) {
+		for(JMaterial material : materials.values()) {
 			if(enableAll || (material.isTypeEnabled(type) && material.enabled)) {
 				proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
 			}
@@ -47,7 +47,7 @@ public class MetaItem extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		try {
-			Material material = MaterialHandler.getMaterialFromID((short) stack.getMetadata());
+			JMaterial material = MaterialHandler.getMaterialFromID((short) stack.getMetadata());
 			if (enableAll || (material.enabled && material.isTypeEnabled(type))) {
 				String[] lines = MaterialHandler.getMaterialFromID((short) stack.getMetadata()).tooltip;
 				if (lines != null) {
@@ -72,8 +72,8 @@ public class MetaItem extends Item {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if(tab.equals(TAB_ITEMS)) {
-			for(Entry<String, Material> entry : materials.entrySet()) {
-				Material material = entry.getValue();
+			for(Entry<String, JMaterial> entry : materials.entrySet()) {
+				JMaterial material = entry.getValue();
 				try {
 					if(enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {
 						items.add(new ItemStack(this, 1, material.meta));
@@ -90,7 +90,7 @@ public class MetaItem extends Item {
 		short meta = (short) stack.getMetadata();
 		String s = "";
 		try {
-			Material material = MaterialHandler.getMaterialFromID(meta);
+			JMaterial material = MaterialHandler.getMaterialFromID(meta);
 			if(enableAll || (material.enabled && material.isTypeEnabled(type))) {
 				s = "item." + MODID + '.' + type + '.' + idMapping.get(meta);
 			} else {

@@ -2,7 +2,7 @@ package glowredman.modularmaterials.object;
 
 import static glowredman.modularmaterials.Reference.*;
 
-public class Type {
+public class JType {
 	
 	public String category = tCategory;
 	public String effectiveTool = tEffectiveTool;

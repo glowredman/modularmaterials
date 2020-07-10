@@ -13,8 +13,8 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JType;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ public class MaterialHandler {
 	
 	public static void createIDMapping() {
 		long time = System.currentTimeMillis();
-		for(Entry<String, Material> entry : materials.entrySet()) {
+		for(Entry<String, JMaterial> entry : materials.entrySet()) {
 			String key = entry.getKey();
 			short meta = entry.getValue().meta;
 			if(idMapping.containsKey(meta)) {
@@ -36,7 +36,7 @@ public class MaterialHandler {
 		logger.info("Finished mapping a total of " + idMapping.size() + " materials to their meta-values. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
-	public static Material getMaterialFromID(short meta) {
+	public static JMaterial getMaterialFromID(short meta) {
 		return materials.get(idMapping.get(meta));
 	}
 	
@@ -83,8 +83,8 @@ public class MaterialHandler {
 		for(MetaItem item : metaItems) {
 			String oreDictPrefix = types.get(item.type).oreDictPrefix;
 			String type = item.type;
-			for(Entry<String, Material> materialEntry : materials.entrySet()) {
-				Material material = materialEntry.getValue();
+			for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+				JMaterial material = materialEntry.getValue();
 				if(material.enabled && material.isTypeEnabled(type)) {
 					for(String oreDict : material.oreDict) {
 						OreDictionary.registerOre(oreDictPrefix + oreDict, new ItemStack(item, 1, material.meta));
@@ -122,11 +122,11 @@ public class MaterialHandler {
 		}
 
 		if(enableUnitOreDict) {
-			Collection<Type> typeList = types.values();
-			for(Type type : typeList) {
+			Collection<JType> typeList = types.values();
+			for(JType type : typeList) {
 				String oreDictPrefix = type.oreDictPrefix;
 				String unitValue = type.unitValue;
-				for(Entry<String, Material> materialEntry : materials.entrySet()) {
+				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
 					for(String oreDict : materialEntry.getValue().oreDict) {
 						for(ItemStack item : OreDictionary.getOres(oreDictPrefix + oreDict)) {
 							OreDictionary.registerOre(unitValue + oreDict, item);
@@ -141,7 +141,7 @@ public class MaterialHandler {
 	
 	public static void fillMaterialListIfEmpty() {
 		if(materials.isEmpty()) {
-			Material material = new Material();
+			JMaterial material = new JMaterial();
 			material.enabled = false;
 			material.enabledTypes = getAllTypesEqualHashMap(true);
 			material.meta = 0;

@@ -2,9 +2,9 @@ package glowredman.modularmaterials.object;
 
 import static glowredman.modularmaterials.Reference.*;
 
-public class MiscItem {
+public class JMiscItem {
 	
-	public Color color = new Color();
+	public JColor color = new JColor();
 	public boolean enabled = iEnabled;
 	public boolean isBeaconPayment = iIsBeaconPayment;
 	public short meta = (short) (Math.random() * Short.MAX_VALUE);

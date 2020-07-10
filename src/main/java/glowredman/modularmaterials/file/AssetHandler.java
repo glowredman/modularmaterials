@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.object.CTTT;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.OreVariant;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JType;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,7 +29,7 @@ public class AssetHandler {
 		int count = 0;
 		long time = System.currentTimeMillis();
 		
-		for(Material material : materials.values()) {
+		for(JMaterial material : materials.values()) {
 			if(material.enabled || enableAll) {
 				for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 					String typeKey = typeEntry.getKey();
@@ -43,7 +43,7 @@ public class AssetHandler {
 							logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + typeKey + "\"! Add \"" + typeKey + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
 						}
 					}
-					Type type = types.get(typeKey);
+					JType type = types.get(typeKey);
 					CTTT cttt = new CTTT(type.category, material.texture, typeKey);
 					if(isTypeEnabled && !cttts.contains(cttt)) {
 						cttts.add(cttt);
@@ -130,7 +130,7 @@ public class AssetHandler {
 					e.printStackTrace();
 				}
 			case "ore":
-				for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
+				for(Entry<String, JOreVariant> oreVariantEntry : oreVariants.entrySet()) {
 					String ore = oreVariantEntry.getKey();
 					String base = oreVariantEntry.getValue().baseTexture;
 					
@@ -187,8 +187,8 @@ public class AssetHandler {
 		int count = 0;
 		
 		//iterate through all materials
-		for(Entry<String, Material> materialEntry : materials.entrySet()) {
-			Material material = materialEntry.getValue();
+		for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+			JMaterial material = materialEntry.getValue();
 			String texture = material.texture;
 			
 			//check if the material should even be registered
@@ -236,7 +236,7 @@ public class AssetHandler {
 							e.printStackTrace();
 						}
 						if(b) {
-							for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
+							for(Entry<String, JOreVariant> oreVariantEntry : oreVariants.entrySet()) {
 								String ore = oreVariantEntry.getKey();
 								if(oreVariantEntry.getValue().enabled || enableAll) {
 									
@@ -291,8 +291,8 @@ public class AssetHandler {
 				writer.newLine();
 				writer.newLine();
 				
-				for(Entry<String, Material> materialEntry : materials.entrySet()) {
-					Material material = materialEntry.getValue();
+				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					String materialName = material.name;
 					newParagraph(writer);
@@ -301,7 +301,7 @@ public class AssetHandler {
 					for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
 						String typeKey = typeEntry.getKey();
 						if(types.containsKey(typeKey) && typeEntry.getValue()) {
-							Type type = types.get(typeKey);
+							JType type = types.get(typeKey);
 							String typeSyntax = type.syntax;
 							switch (type.category) {
 							case "item":
@@ -336,7 +336,7 @@ public class AssetHandler {
 								count++;
 								break;
 							case "ore":
-								for(Entry<String, OreVariant> oreVariantEntry : oreVariants.entrySet()) {
+								for(Entry<String, JOreVariant> oreVariantEntry : oreVariants.entrySet()) {
 									String oreSyntax = oreVariantEntry.getValue().syntax;
 									String oreKey = oreVariantEntry.getKey();
 									writer.write("tile." + MODID + '.' + typeKey + '.' + oreKey + '.' + materialKey + ".name=" + oreSyntax.replace("%s", materialName));

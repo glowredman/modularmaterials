@@ -10,7 +10,7 @@ import javax.annotation.Nonnegative;
 
 import glowredman.modularmaterials.util.MaterialHandler;
 
-public class Material {
+public class JMaterial {
 	
 	public float blockHardness = mBlockHardness;
 	public int blockHarvestLevel = mBlockHarvestLevel;
@@ -18,8 +18,8 @@ public class Material {
 	public String blockMaterialSound = mBlockMaterialSound;
 	public float blockResistance = mBlockResistance;
 	public int boilingTemperature = mBoilingTemperature;
-	public Color color = new Color();
-	public List<Drop> drops = new ArrayList<Drop>();
+	public JColor color = new JColor();
+	public List<JDrop> drops = new ArrayList<JDrop>();
 	public boolean enabled = mEnabled;
 	public HashMap<String, Boolean> enabledTypes = MaterialHandler.getAllTypesEqualHashMap(mTypeEnabled); //typeKey, isEnabled
 	public int gasDensity = mGasDenisity;

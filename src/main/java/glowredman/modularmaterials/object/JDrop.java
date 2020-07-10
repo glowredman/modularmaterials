@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import javax.annotation.Nonnegative;
 
-public class Drop {
+public class JDrop {
 	
 	public String mode;
 	public String item;
@@ -20,7 +20,7 @@ public class Drop {
 	public int max;
 	public HashMap<Integer, Float> table = new HashMap<Integer, Float>();
 	
-	public Drop() {
+	public JDrop() {
 		mode = "itself";
 		amount = 1;
 	}

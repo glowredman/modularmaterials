@@ -7,8 +7,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import glowredman.modularmaterials.item.MetaItemBlock;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.mc.MaterialHelper;
 import glowredman.modularmaterials.util.mc.SoundTypeHelper;
@@ -29,15 +29,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaBlock extends Block {
 	
-	public Material material;
+	public JMaterial material;
 	public String type;
 	private boolean hasTooltip;
 	private boolean isBeaconBase;
 	private boolean isBeaconPayment;
 
-	public MetaBlock(Material material, String type, String name) {
+	public MetaBlock(JMaterial material, String type, String name) {
 		super(MaterialHelper.getMaterialFromString(material.blockMaterialSound));
-		Type type_ = types.get(type);
+		JType type_ = types.get(type);
 		this.material = material;
 		this.type = type;
 		this.hasTooltip = type_.hasTooltip && material.tooltip != null;

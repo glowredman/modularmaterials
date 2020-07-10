@@ -9,13 +9,13 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.MiscBlock;
-import glowredman.modularmaterials.object.MiscFluid;
-import glowredman.modularmaterials.object.MiscItem;
-import glowredman.modularmaterials.object.OreVariant;
-import glowredman.modularmaterials.object.OreVein;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscBlock;
+import glowredman.modularmaterials.object.JMiscFluid;
+import glowredman.modularmaterials.object.JMiscItem;
+import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JOreVein;
+import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.tab.CreativeTabBlocks;
 import glowredman.modularmaterials.tab.CreativeTabItems;
 import glowredman.modularmaterials.tab.CreativeTabOres;
@@ -180,13 +180,13 @@ public class Reference {
 	
 	//INTERNAL
 	//sources
-	public static LinkedHashMap<String, Material> materials = new LinkedHashMap<String, Material>(); //materialKey, material
-	public static LinkedHashMap<String, Type> types = new LinkedHashMap<String, Type>(); //typeKey, type
-	public static LinkedHashMap<String, MiscBlock> miscBlocks = new LinkedHashMap<String, MiscBlock>(); //blockKey, block
-	public static LinkedHashMap<String, MiscFluid> miscFluids = new LinkedHashMap<String, MiscFluid>(); //fluidKey, fluid
-	public static LinkedHashMap<String, MiscItem> miscItems = new LinkedHashMap<String, MiscItem>(); //itemKey, item
-	public static HashMap<String, OreVariant> oreVariants = new HashMap<String, OreVariant>(); //oreVariantKey, oreVariant
-	public static HashMap<String, OreVein> oreVeins = new HashMap<String, OreVein>(); //oreVeinKey, oreVein
+	public static LinkedHashMap<String, JMaterial> materials = new LinkedHashMap<String, JMaterial>(); //materialKey, material
+	public static LinkedHashMap<String, JType> types = new LinkedHashMap<String, JType>(); //typeKey, type
+	public static LinkedHashMap<String, JMiscBlock> miscBlocks = new LinkedHashMap<String, JMiscBlock>(); //blockKey, block
+	public static LinkedHashMap<String, JMiscFluid> miscFluids = new LinkedHashMap<String, JMiscFluid>(); //fluidKey, fluid
+	public static LinkedHashMap<String, JMiscItem> miscItems = new LinkedHashMap<String, JMiscItem>(); //itemKey, item
+	public static HashMap<String, JOreVariant> oreVariants = new HashMap<String, JOreVariant>(); //oreVariantKey, oreVariant
+	public static HashMap<String, JOreVein> oreVeins = new HashMap<String, JOreVein>(); //oreVeinKey, oreVein
 	//mappings
 	public static HashMap<Short, String> idMapping = new HashMap<Short, String>(); //meta, materialKey
 	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore

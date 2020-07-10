@@ -2,14 +2,16 @@ package glowredman.modularmaterials.object;
 
 import static glowredman.modularmaterials.Reference.*;
 
-public class Color {
+import java.awt.Color;
+
+public class JColor {
 	
 	public int alpha = cAlpha;
 	public int red = cRed;
 	public int green = cGreen;
 	public int blue = cBlue;
 	
-	public Color setColor(int alpha, int red, int green, int blue) {
+	public JColor setColor(int alpha, int red, int green, int blue) {
 		this.alpha = alpha;
 		this.blue = blue;
 		this.green = green;
@@ -17,7 +19,7 @@ public class Color {
 		return this;
 	}
 	
-	public Color setColor(int red, int green, int blue) {
+	public JColor setColor(int red, int green, int blue) {
 		this.alpha = 0;
 		this.blue = blue;
 		this.green = green;
@@ -25,7 +27,7 @@ public class Color {
 		return this;
 	}
 	
-	public Color setColor(java.awt.Color color) {
+	public JColor setColor(Color color) {
 		this.alpha = color.getAlpha();
 		this.blue = color.getBlue();
 		this.green = color.getGreen();

@@ -3,6 +3,7 @@ package glowredman.modularmaterials.file;
 import static glowredman.modularmaterials.Main.logger;
 import static glowredman.modularmaterials.Reference.*;
 
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -15,20 +16,20 @@ import java.util.Arrays;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import glowredman.modularmaterials.object.Color;
-import glowredman.modularmaterials.object.Drop;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.MaterialList;
-import glowredman.modularmaterials.object.MiscBlock;
-import glowredman.modularmaterials.object.MiscFluid;
-import glowredman.modularmaterials.object.MiscItem;
-import glowredman.modularmaterials.object.MiscLists;
-import glowredman.modularmaterials.object.OreVariant;
-import glowredman.modularmaterials.object.OreVariantList;
-import glowredman.modularmaterials.object.OreVein;
-import glowredman.modularmaterials.object.OreVeinList;
-import glowredman.modularmaterials.object.Type;
-import glowredman.modularmaterials.object.TypeList;
+import glowredman.modularmaterials.object.JColor;
+import glowredman.modularmaterials.object.JDrop;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMaterialList;
+import glowredman.modularmaterials.object.JMiscBlock;
+import glowredman.modularmaterials.object.JMiscFluid;
+import glowredman.modularmaterials.object.JMiscItem;
+import glowredman.modularmaterials.object.JMiscLists;
+import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JOreVariantList;
+import glowredman.modularmaterials.object.JOreVein;
+import glowredman.modularmaterials.object.JOreVeinList;
+import glowredman.modularmaterials.object.JType;
+import glowredman.modularmaterials.object.JTypeList;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -37,13 +38,13 @@ public class JSONHandler {
 	public static void initOreVariantsFile(FMLPreInitializationEvent event) {
 		try {
 			File fileOreVariants = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_OREVARIANTS);
-			OreVariantList oreVariantList = new OreVariantList();
+			JOreVariantList oreVariantList = new JOreVariantList();
 
 			//check if the file already exists, if not create it
 			if(!fileOreVariants.exists()) {
 				long time = System.currentTimeMillis();
 				//create an example to put in the file
-				OreVariant example = new OreVariant();
+				JOreVariant example = new JOreVariant();
 				example.baseBlock = "minecraft:stone:0";
 				example.baseTexture = "minecraft:blocks/stone";
 				example.effectiveTool = "pickaxe";
@@ -61,7 +62,7 @@ public class JSONHandler {
 			}
 
 			//transfer config information
-			oreVariants = new Gson().fromJson(readFile(fileOreVariants.getPath()), OreVariantList.class).oreVariants;
+			oreVariants = new Gson().fromJson(readFile(fileOreVariants.getPath()), JOreVariantList.class).oreVariants;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,12 +73,12 @@ public class JSONHandler {
 		try {
 			
 			File fileTypes = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_TYPES);
-			TypeList typeList = new TypeList();
+			JTypeList typeList = new JTypeList();
 
 			//check if the file already exists, if not create it
 			if(!fileTypes.exists()) {
 				long time = System.currentTimeMillis();
-				Type example = new Type();
+				JType example = new JType();
 				//create an example to put in the file
 				example.category = "item";
 				example.effectiveTool = "pickaxe";
@@ -98,7 +99,7 @@ public class JSONHandler {
 			}
 
 			//transfer config information
-			types = new Gson().fromJson(readFile(fileTypes.getPath()), TypeList.class).types;
+			types = new Gson().fromJson(readFile(fileTypes.getPath()), JTypeList.class).types;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,12 +111,12 @@ public class JSONHandler {
 		try {
 			
 			File fileMaterials = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MATERIALS);
-			MaterialList materialList = new MaterialList();
+			JMaterialList materialList = new JMaterialList();
 
 			//check if the file already exists, if not create it
 			if(!fileMaterials.exists()) {
 				long time = System.currentTimeMillis();
-				Material example = new Material();
+				JMaterial example = new JMaterial();
 				//create an example to put in the file
 				example.blockHardness = (float) (Math.random() * Float.MAX_VALUE);
 				example.blockHarvestLevel = (int) (Math.random() * 3);
@@ -123,8 +124,8 @@ public class JSONHandler {
 				example.blockMaterialSound = "ROCK";
 				example.blockResistance = (float) (Math.random() * Float.MAX_VALUE);
 				example.boilingTemperature = (int) (Math.random() * Integer.MAX_VALUE - Math.random() * Integer.MAX_VALUE);
-				example.color.setColor(new java.awt.Color((float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random()));
-				example.drops = new ArrayList<Drop>();
+				example.color.setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random()));
+				example.drops = new ArrayList<JDrop>();
 				example.enabled = true;
 				example.enabledTypes = MaterialHandler.getAllTypesEqualHashMap(true);
 				example.gasDensity = (int) (Math.random() * Integer.MAX_VALUE - Math.random() * Integer.MAX_VALUE);
@@ -157,7 +158,7 @@ public class JSONHandler {
 			}
 			
 			//transfer config information
-			materials = new Gson().fromJson(readFile(fileMaterials.getPath()), MaterialList.class).materials;
+			materials = new Gson().fromJson(readFile(fileMaterials.getPath()), JMaterialList.class).materials;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,8 +168,8 @@ public class JSONHandler {
 	public static void initOreGenerationFile(FMLPreInitializationEvent event) {
 		try {
 			File fileOreGeneration = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_OREGENERATION);
-			OreVeinList oreVeinList = new OreVeinList();
-			OreVein example = new OreVein();
+			JOreVeinList oreVeinList = new JOreVeinList();
+			JOreVein example = new JOreVein();
 
 			//check if the file already exists, if not create it
 			if(!fileOreGeneration.exists()) {
@@ -198,7 +199,7 @@ public class JSONHandler {
 			}
 
 			//transfer config information
-			oreVeins = new Gson().fromJson(readFile(fileOreGeneration.getPath()), OreVeinList.class).oreGeneration;
+			oreVeins = new Gson().fromJson(readFile(fileOreGeneration.getPath()), JOreVeinList.class).oreGeneration;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,18 +209,18 @@ public class JSONHandler {
 	public static void initMiscFile(FMLPreInitializationEvent event) {
 		try {
 			File fileMisc = new File(event.getModConfigurationDirectory().getPath() + '/' + MODID, CONFIGNAME_MISC);
-			MiscLists miscLists = new MiscLists();
-			MiscBlock exampleBlock = new MiscBlock();
-			MiscFluid exampleFluid = new MiscFluid();
-			MiscItem exampleItem = new MiscItem();
+			JMiscLists miscLists = new JMiscLists();
+			JMiscBlock exampleBlock = new JMiscBlock();
+			JMiscFluid exampleFluid = new JMiscFluid();
+			JMiscItem exampleItem = new JMiscItem();
 			
 			//check if the file already exists, if not create it
 			if(true/*!fileMisc.exists()*/) {
 				long time = System.currentTimeMillis();
 				
 				//create examples to put in the file
-				exampleBlock.color = new Color().setColor(new java.awt.Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
-				exampleBlock.drops.add(new Drop());
+				exampleBlock.color = new JColor().setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
+				exampleBlock.drops.add(new JDrop());
 				exampleBlock.effectiveTool = "pickaxe";
 				exampleBlock.enabled = true;
 				exampleBlock.hardness = (float) (Math.random() * Float.MAX_VALUE);
@@ -236,7 +237,7 @@ public class JSONHandler {
 				exampleBlock.tooltip = new String[] {"§s1:50:§0§1§2§3§4§5§6§7§8§9§a§b§c§d§e§f:§sThis is an example!", "§p§q§t§oYou uncovered a secret!"};
 				exampleBlock.useColor = true;
 				
-				exampleFluid.color = new Color().setColor(new java.awt.Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
+				exampleFluid.color = new JColor().setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
 				exampleFluid.density = (int) (Math.random() * Integer.MAX_VALUE - Math.random() * Integer.MAX_VALUE);
 				exampleFluid.enabled = true;
 				exampleFluid.isGaseous = exampleFluid.density < 0 ? true : false;
@@ -247,7 +248,7 @@ public class JSONHandler {
 				exampleFluid.useColor = true;
 				exampleFluid.viscosity = (int) (Math.random() * Integer.MAX_VALUE);
 				
-				exampleItem.color = new Color().setColor(new java.awt.Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
+				exampleItem.color = new JColor().setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random()));
 				exampleItem.enabled = true;
 				exampleItem.isBeaconPayment = false;
 				exampleItem.meta = 0;
@@ -269,7 +270,7 @@ public class JSONHandler {
 			}
 			
 			//transfer config information
-			MiscLists list = new Gson().fromJson(readFile(fileMisc.getPath()), MiscLists.class);
+			JMiscLists list = new Gson().fromJson(readFile(fileMisc.getPath()), JMiscLists.class);
 			miscBlocks = list.blocks;
 			miscFluids = list.fluids;
 			miscItems = list.items;

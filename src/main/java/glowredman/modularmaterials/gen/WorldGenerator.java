@@ -6,7 +6,7 @@ import static glowredman.modularmaterials.Reference.*;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import glowredman.modularmaterials.object.OreVein;
+import glowredman.modularmaterials.object.JOreVein;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -39,8 +39,8 @@ public class WorldGenerator implements IWorldGenerator {
 				for(int i = 0; i < 64 && !veinGenerationSuccesfull; i++) {
 					//choose a random vein to attempt to generate
 					int randomWeight = random.nextInt(weight);
-					for(Entry<String, OreVein> oreVeinEntry : oreVeins.entrySet()) {
-						OreVein oreVein = oreVeinEntry.getValue();
+					for(Entry<String, JOreVein> oreVeinEntry : oreVeins.entrySet()) {
+						JOreVein oreVein = oreVeinEntry.getValue();
 						randomWeight -= oreVein.weight;
 						if(randomWeight <= 0) {
 							veinGenerationSuccesfull = oreVein.executeOreGen(world, random, biomeName, dimensionName, chunkX, chunkZ);

@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class OreVein {
+public class JOreVein {
 	
 	public String primary = vPrimary;
 	public String secondary = vSecondary;

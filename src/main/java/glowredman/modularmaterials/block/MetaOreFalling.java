@@ -8,10 +8,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import glowredman.modularmaterials.item.MetaItemBlock;
-import glowredman.modularmaterials.object.Drop;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.OreVariant;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JDrop;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.mc.MaterialHelper;
 import glowredman.modularmaterials.util.mc.SoundTypeHelper;
@@ -34,17 +34,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaOreFalling extends BlockFalling {
 	
-	public Material material;
-	public OreVariant ore;
+	public JMaterial material;
+	public JOreVariant ore;
 	public String type;
 	public String variant;
 	private boolean hasTooltip;
 	private boolean isBeaconBase;
 	private boolean isBeaconPayment;
 	
-	public MetaOreFalling(Material material, OreVariant ore, String type, String variant, String name) {
+	public MetaOreFalling(JMaterial material, JOreVariant ore, String type, String variant, String name) {
 		super(MaterialHelper.getMaterialFromString(ore.materialSound));
-		Type t = types.get(type);
+		JType t = types.get(type);
 		this.material = material;
 		this.ore = ore;
 		this.type = type;
@@ -72,7 +72,7 @@ public class MetaOreFalling extends BlockFalling {
 	
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		for(Drop drop : material.drops) {
+		for(JDrop drop : material.drops) {
 			ItemStack item;
 			switch (drop.mode) {
 			case "amount":

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class OreVeinList {
+public class JOreVeinList {
 	
 	public List<String> asteroidDims = new ArrayList<String>();
-	public HashMap<String, OreVein> oreGeneration = new HashMap<String, OreVein>();
+	public HashMap<String, JOreVein> oreGeneration = new HashMap<String, JOreVein>();
 
 }

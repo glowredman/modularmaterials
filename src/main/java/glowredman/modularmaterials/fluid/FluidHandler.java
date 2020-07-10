@@ -5,7 +5,7 @@ import static glowredman.modularmaterials.Reference.*;
 
 import java.util.Map.Entry;
 
-import glowredman.modularmaterials.object.Material;
+import glowredman.modularmaterials.object.JMaterial;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -17,8 +17,8 @@ public class FluidHandler {
 		int counter = 0;
 		
 		//iterate through all materials
-		for(Entry<String, Material> materialEntry : materials.entrySet()) {
-			Material material = materialEntry.getValue();
+		for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+			JMaterial material = materialEntry.getValue();
 			
 			//check, if the material should be registered
 			if(material.enabled || enableAll) {

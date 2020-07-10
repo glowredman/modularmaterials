@@ -2,7 +2,7 @@ package glowredman.modularmaterials.object;
 
 import static glowredman.modularmaterials.Reference.*;
 
-public class OreVariant {
+public class JOreVariant {
 
 	public String baseBlock = oBaseBlock;
 	public String baseTexture = oBaseTexture;

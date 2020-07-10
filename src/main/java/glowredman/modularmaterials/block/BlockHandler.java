@@ -7,9 +7,9 @@ import static glowredman.modularmaterials.Reference.*;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.gen.OreGenHandler;
-import glowredman.modularmaterials.object.Material;
-import glowredman.modularmaterials.object.OreVariant;
-import glowredman.modularmaterials.object.Type;
+import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -19,12 +19,12 @@ public class BlockHandler {
 	public static void registerBlocks() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		for(Entry<String, Type> typeEntry : types.entrySet()) {
-			Type type = typeEntry.getValue();
+		for(Entry<String, JType> typeEntry : types.entrySet()) {
+			JType type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
 			if((type.enabled || enableAll) && type.category.equals("block")) {
-				for(Entry<String, Material> materialEntry : materials.entrySet()) {
-					Material material = materialEntry.getValue();
+				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					if(enableAll ||(material.enabled && material.isTypeEnabled(typeKey))) {
 						MetaBlock block = new MetaBlock(material, typeKey, materialKey);
@@ -43,16 +43,16 @@ public class BlockHandler {
 	public static void registerOres() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		for(Entry<String, Type> typeEntry : types.entrySet()) {
-			Type type = typeEntry.getValue();
+		for(Entry<String, JType> typeEntry : types.entrySet()) {
+			JType type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
 			if((type.enabled || enableAll) && type.category.equals("ore")) {
-				for(Entry<String, Material> materialEntry : materials.entrySet()) {
-					Material material = materialEntry.getValue();
+				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
 					if((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
-						for(Entry<String, OreVariant> oreEntry : oreVariants.entrySet()) {
-							OreVariant ore = oreEntry.getValue();
+						for(Entry<String, JOreVariant> oreEntry : oreVariants.entrySet()) {
+							JOreVariant ore = oreEntry.getValue();
 							String oreKey = oreEntry.getKey();
 							IBlockState blockBaseState = OreGenHandler.getBlockStateFromBlockName(ore.baseBlock);
 							if(ore.enabled || enableAll) {
