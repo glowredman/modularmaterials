@@ -35,6 +35,7 @@ public class CommonProxy {
 		JSONHandler.initTypeFile(event);
 		JSONHandler.initMaterialFile(event);
 		JSONHandler.initOreGenerationFile(event);
+		JSONHandler.initMiscFile(event);
 		//MATERIAL HANDLING
 		MaterialHandler.fillMaterialListIfEmpty();
 		MaterialHandler.createIDMapping();

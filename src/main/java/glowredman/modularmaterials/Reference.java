@@ -49,9 +49,10 @@ public class Reference {
 	public static final String CONFIGNAME_CORE = "core.cfg";
 	public static final String CONFIGNAME_DEFAULTS = "defaults.cfg";
 	public static final String CONFIGNAME_MATERIALS = "materials.json";
-	public static final String CONFIGNAME_TYPES = "types.json";
-	public static final String CONFIGNAME_OREVARIANTS = "oreVariants.json";
+	public static final String CONFIGNAME_MISC = "misc.json";
 	public static final String CONFIGNAME_OREGENERATION = "oreGeneration.json";
+	public static final String CONFIGNAME_OREVARIANTS = "oreVariants.json";
+	public static final String CONFIGNAME_TYPES = "types.json";
 	
 	//values:
 	//core general

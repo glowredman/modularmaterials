@@ -20,6 +20,11 @@ public class Drop {
 	public int max;
 	public HashMap<Integer, Float> table = new HashMap<Integer, Float>();
 	
+	public Drop() {
+		mode = "itself";
+		amount = 1;
+	}
+	
 	public float getProbability(int fortune) {
 		if(table.containsKey(fortune)) {
 			return table.get(fortune);

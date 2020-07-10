@@ -9,25 +9,28 @@ public class Color {
 	public int green = cGreen;
 	public int blue = cBlue;
 	
-	public void setColor(int alpha, int red, int green, int blue) {
+	public Color setColor(int alpha, int red, int green, int blue) {
 		this.alpha = alpha;
 		this.blue = blue;
 		this.green = green;
 		this.red = red;
+		return this;
 	}
 	
-	public void setColor(int red, int green, int blue) {
+	public Color setColor(int red, int green, int blue) {
 		this.alpha = 0;
 		this.blue = blue;
 		this.green = green;
 		this.red = red;
+		return this;
 	}
 	
-	public void setColor(java.awt.Color color) {
+	public Color setColor(java.awt.Color color) {
 		this.alpha = color.getAlpha();
 		this.blue = color.getBlue();
 		this.green = color.getGreen();
 		this.red = color.getRed();
+		return this;
 	}
 	
 	public int getARGB() {
