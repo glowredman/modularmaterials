@@ -89,6 +89,7 @@ public class ConfigHandler {
 		bIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", BLOCK, false, "Whether or not the material can be used to activate a beacon.");
 		bLightLevel = (byte) config_defaults.getInt("lightLevel", BLOCK, 0, 0, 15, "How much light the block emits.");
 		bMaterialSound = config_defaults.getString("materialSound", BLOCK, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
+		bObeysGravity = config_defaults.getBoolean("obeysGravity", BLOCK, false, "Whether or not the ore falls down, if there is no block under it.");
 		bResistance = config_defaults.getFloat("resistance", BLOCK, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
 		bTexture = config_defaults.getString("texture", BLOCK, MODID + ":void", "The block's texture.");
 		bUseColor = config_defaults.getBoolean("useColor", BLOCK, false, "Whether or not the texture should be colored.");
@@ -153,6 +154,17 @@ public class ConfigHandler {
 		oOreDictPrefix = config_defaults.getString("oreDictPrefix", VARIANT, "", "The ores will be registered to the OreDictionary in this format: type's oreDictPrefix + oreVariant's oreDictPrefix + material's oreDictName");
 		oSyntax = config_defaults.getString("syntax", VARIANT, "%s Ore", "%s will be replaced by the material's name when generating the lang file.");
 		
+		//type
+		tCategory = config_defaults.getString("category", TYPE, "item", "Allowed values: block, fluid, item, ore", new String[] {"item", "block", "fluid", "ore"});
+		tEffectiveTool = config_defaults.getString("effectiveTool", TYPE, "pickaxe", "Which tool the player has to use to break the block/ore.");
+		tEnabled = config_defaults.getBoolean("enabled", TYPE, false, "Whether or not the type is enabled.");
+		tHasTooltip = config_defaults.getBoolean("hasTooltip", TYPE, true, "Whether or not the type's tooltip is displayed.");
+		tIsBeaconBase = config_defaults.getBoolean("isBeaconBase", TYPE, false, "Whether or not the type can be used as a beacon base.");
+		tOreDictPrefix = config_defaults.getString("oreDictPrefix", TYPE, "", "The prefix to use before the material's oreDict name.");
+		tState = config_defaults.getString("state", TYPE, "solid", "The type's physical state.");
+		tSyntax = config_defaults.getString("syntax", TYPE, "%s", "%s will be replaced by the material's name when generating the lang file.");
+		tUnitValue = config_defaults.getString("unitValue", TYPE, "1u", "How much the type is \"worth\" in units.");
+		
 		//oreVein
 		vBiomes = config_defaults.getStringList("biomes", VEIN, new String[] {}, "All biomes the ore vein is allowed to spawn in. Can be inverted.");
 		vDensity = (short) config_defaults.getInt("density", VEIN, 2, 1, Short.MAX_VALUE, "How dense the ore vein is, higher means higher density.");
@@ -168,17 +180,6 @@ public class ConfigHandler {
 		vSize = (short) config_defaults.getInt("size", VEIN, 32, 1, Short.MAX_VALUE, "How many blocks the ore vein extends at most in each direction from the center chunk. The final size is random and between 16 and 2 * size + 16. CAUTION: higher values can lead to more world cascading lag or infinite chunk generation loops!");
 		vSporadic = config_defaults.getString("sporadic", VEIN, "carbon", "The ore that spawns sporadicly throughout the whole ore vein.");
 		vWeight = (short) config_defaults.getInt("weight", VEIN, 100, 0, Short.MAX_VALUE, "How likely the ore vein generates. A higher value means the ore vein attempts to generate more often relative to ore veins with a lower value. How easy it is to find the ore vein is influenced by the allowed biomes/dimensions, as well as the min/max height.");
-		
-		//type
-		tCategory = config_defaults.getString("category", TYPE, "item", "Allowed values: block, fluid, item, ore", new String[] {"item", "block", "fluid", "ore"});
-		tEffectiveTool = config_defaults.getString("effectiveTool", TYPE, "pickaxe", "Which tool the player has to use to break the block/ore.");
-		tEnabled = config_defaults.getBoolean("enabled", TYPE, false, "Whether or not the type is enabled.");
-		tHasTooltip = config_defaults.getBoolean("hasTooltip", TYPE, true, "Whether or not the type's tooltip is displayed.");
-		tIsBeaconBase = config_defaults.getBoolean("isBeaconBase", TYPE, false, "Whether or not the type can be used as a beacon base.");
-		tOreDictPrefix = config_defaults.getString("oreDictPrefix", TYPE, "", "The prefix to use before the material's oreDict name.");
-		tState = config_defaults.getString("state", TYPE, "solid", "The type's physical state.");
-		tSyntax = config_defaults.getString("syntax", TYPE, "%s", "%s will be replaced by the material's name when generating the lang file.");
-		tUnitValue = config_defaults.getString("unitValue", TYPE, "1u", "How much the type is \"worth\" in units.");
 	}
 	
 	// ---READ CONFIGS---

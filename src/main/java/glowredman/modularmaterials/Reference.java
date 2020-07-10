@@ -87,6 +87,7 @@ public class Reference {
 	public static boolean bIsBeaconPayment = false;
 	public static byte bLightLevel = 0;
 	public static String bMaterialSound = "IRON";
+	public static boolean bObeysGravity = false;
 	public static float bResistance = 6.0f;
 	public static String bTexture = MODID + ":void";
 	public static boolean bUseColor = false;

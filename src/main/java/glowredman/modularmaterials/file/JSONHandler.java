@@ -229,6 +229,7 @@ public class JSONHandler {
 				exampleBlock.lightLevel = (byte) (Math.random() * 15);
 				exampleBlock.materialSound = "ROCK";
 				exampleBlock.name = "Example Block";
+				exampleBlock.obeysGravity = false;
 				exampleBlock.oreDict = new String[] {"blockExample", "example"};
 				exampleBlock.resistance = (float) (Math.random() * Float.MAX_VALUE);
 				exampleBlock.texture = MODID + ":blocks/rough/block";
