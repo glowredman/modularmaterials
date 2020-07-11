@@ -1,18 +1,16 @@
 package glowredman.modularmaterials.item;
 
-import static glowredman.modularmaterials.Main.logger;
-import static glowredman.modularmaterials.Main.proxy;
 import static glowredman.modularmaterials.Reference.*;
 
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
-import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscItem;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,39 +18,36 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MetaItem extends Item {
+public class MiscItem extends Item {
 	
-	public String type;
-	
-	public MetaItem(String type) {
-		this.type = type;
+	public MiscItem() {
 		this.setHasSubtypes(true);
-		this.setRegistryName(MODID, type);
-		this.setCreativeTab(TAB_ITEMS);
-		for(JMaterial material : materials.values()) {
-			if(enableAll || (material.isTypeEnabled(type) && material.enabled)) {
-				proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
+		this.setRegistryName(MODID, "miscItem");
+		for(JMiscItem item : miscItems.values()) {
+			if(enableAll || item.enabled) {
+				ModelLoader.setCustomModelResourceLocation(this, item.meta, new ModelResourceLocation(item.texture, "inventory"));
 			}
 		}
 	}
 	
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
-		return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).isBeaconPayment;
+		return MaterialHandler.getMiscItemFromID((short) stack.getMetadata()).isBeaconPayment;
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		try {
-			JMaterial material = MaterialHandler.getMaterialFromID((short) stack.getMetadata());
-			if((enableAll || (material.enabled && material.isTypeEnabled(type))) && material.tooltip != null) {
-				for (String line : material.tooltip) {
+			JMiscItem item = MaterialHandler.getMiscItemFromID((short) stack.getMetadata());
+			if((enableAll || item.enabled) && item.tooltip != null) {
+				for(String line : item.tooltip) {
 					try {
 						String s = FormattingHandler.formatTooltipLine(line);
-						if (s != null) {
+						if(s != null) {
 							tooltip.add(s);
 						}
 					} catch (Exception e) {
@@ -63,19 +58,15 @@ public class MetaItem extends Item {
 				}
 			}
 		} catch (Exception e) {
-		} 
+		}
 	}
 	
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if(tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
-			for(JMaterial material : materials.values()) {
-				try {
-					if(enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {
-						items.add(new ItemStack(this, 1, material.meta));
-					}
-				} catch (Exception e) {
-					logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+			for(JMiscItem item : miscItems.values()) {
+				if(enableAll || item.enabled) {
+					items.add(new ItemStack(this, 1, item.meta));
 				}
 			}
 		}
@@ -86,9 +77,9 @@ public class MetaItem extends Item {
 		short meta = (short) stack.getMetadata();
 		String s;
 		try {
-			JMaterial material = MaterialHandler.getMaterialFromID(meta);
-			if(enableAll || (material.enabled && material.isTypeEnabled(type))) {
-				s = "item." + MODID + '.' + type + '.' + idMaterialMapping.get(meta);
+			JMiscItem item = MaterialHandler.getMiscItemFromID(meta);
+			if(enableAll || item.enabled) {
+				s = "item." + MODID + ".miscItem." + idMiscMapping.get(meta);
 			} else {
 				s = "item." + MODID + ".debug";
 			}
@@ -105,9 +96,10 @@ public class MetaItem extends Item {
 			@Override
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				if(tintIndex == 0) {
-					return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).color.getARGB();
+					JMiscItem item = MaterialHandler.getMiscItemFromID((short) stack.getMetadata());
+					return item.useColor ? item.color.getARGB() : 0xFFFFFFFF;
 				} else {
-					return 0xFFFFFF;
+					return 0xFFFFFFFF;
 				}
 			}
 		}, this);
