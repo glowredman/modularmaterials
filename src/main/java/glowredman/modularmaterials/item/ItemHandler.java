@@ -15,6 +15,8 @@ public class ItemHandler {
 	public static void registerItems() {
 		int count = 0;
 		long time = System.currentTimeMillis();
+		
+		//materials
 		for(Entry<String, JType> type : types.entrySet()) {
 			if(type.getValue().category.equals("item") && (type.getValue().enabled || enableAll)) {
 				MetaItem item = new MetaItem(type.getKey());
@@ -23,14 +25,25 @@ public class ItemHandler {
 				count++;
 			}	
 		}
+		
+		//miscItem
+		ForgeRegistries.ITEMS.register(MISC_ITEM);
+		count++;
+		
 		logger.info("Registered " + count + " items. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void initColors() {
+		
+		//materials
 		for(MetaItem item : metaItems) {
 			item.registerColors();
 		}
+		
+		//miscItem
+		MISC_ITEM.registerColors();
+		
 	}
 
 }

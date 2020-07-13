@@ -204,6 +204,7 @@ public class Reference {
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();
 	public static List<MetaOreFalling> metaOresFalling = new ArrayList<MetaOreFalling>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
+	public static final MiscItem MISC_ITEM = new MiscItem();
 	//ore gen
 	public static int weight = 0;
 }
