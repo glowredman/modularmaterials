@@ -88,9 +88,11 @@ public class ConfigHandler {
 		bIsBeaconBase = config_defaults.getBoolean("isBeaconBase", BLOCK, false, "Whether or not this block can be used as a beacon base.");
 		bIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", BLOCK, false, "Whether or not the material can be used to activate a beacon.");
 		bLightLevel = (byte) config_defaults.getInt("lightLevel", BLOCK, 0, 0, 15, "How much light the block emits.");
-		bMaterialSound = config_defaults.getString("materialSound", BLOCK, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
+		bMapColor = config_defaults.getString("mapColor", BLOCK, "AUTO", "How the blocks appears on maps. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
+		bMaterial = config_defaults.getString("materialSound", BLOCK, "IRON", "Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		bObeysGravity = config_defaults.getBoolean("obeysGravity", BLOCK, false, "Whether or not the ore falls down, if there is no block under it.");
 		bResistance = config_defaults.getFloat("resistance", BLOCK, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
+		bSound = config_defaults.getString("sound", BLOCK, "METAL", "How the block sounds when breaking it, falling on it or walking on it. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		bTexture = config_defaults.getString("texture", BLOCK, MODID + ":void", "The block's texture.");
 		bUseColor = config_defaults.getBoolean("useColor", BLOCK, false, "Whether or not the texture should be colored.");
 		
@@ -121,8 +123,10 @@ public class ConfigHandler {
 		mBlockHardness = mBlockHardness < 0 ? -1 : mBlockHardness; //assures that every negative value is -1
 		mBlockHarvestLevel = config_defaults.getInt("blockHarvestLevel", MATERIAL, 1, 0, Integer.MAX_VALUE, "0 = wood, 1 = stone, 2 = iron, 3 = diamond");
 		mBlockLightLevel = (byte) config_defaults.getInt("blockLightLevel", MATERIAL, 0, 0, 15, "How much light the block emits.");
-		mBlockMaterialSound = config_defaults.getString("blockMaterialSound", MATERIAL, "IRON", "This effects how the block sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
+		mBlockMapColor = config_defaults.getString("blockMapColor", MATERIAL, "AUTO", "How the blocks appears on maps. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
+		mBlockMaterial = config_defaults.getString("blockMaterialSound", MATERIAL, "IRON", "Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		mBlockResistance = config_defaults.getFloat("blockResistance", MATERIAL, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
+		mBlockSound = config_defaults.getString("blockSound", MATERIAL, "METAL", "How the block sounds when breaking it, falling on it or walking on it. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		mBoilingTemperature = config_defaults.getInt("boilingTemperature", MATERIAL, 373, Integer.MIN_VALUE, Integer.MAX_VALUE, "Unit is Kelvin (373K = 100\u00b0C = 212\u00b0F)");
 		mEnabled = config_defaults.getBoolean("enabled", MATERIAL, false, "Whether or not the material is enabled.");
 		mTypeEnabled = config_defaults.getBoolean("typeEnabled", MATERIAL, false, "Wheter or not the types are enabled.");
@@ -149,9 +153,11 @@ public class ConfigHandler {
 		oBaseTexture = config_defaults.getString("baseTexture", VARIANT, "blocks/stone", "The baseBlock's texture. Vanilla textures don't need the \"minecraft\"-prefix.");
 		oEffectiveTool = config_defaults.getString("effectiveTool", VARIANT, "pickaxe", "Which tool the player has to use to break the ore.");
 		oEnabled = config_defaults.getBoolean("enabled", VARIANT, false, "Whether or not the ore variant is enabled.");
-		oMaterialSound = config_defaults.getString("materialSound", VARIANT, "ROCK", "This effects how the ore sounds when breaking it or stepping on it. Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES.md");
+		oMapColor = config_defaults.getString("mapColor", VARIANT, "STONE", "How the blocks appears on maps. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
+		oMaterial = config_defaults.getString("material", VARIANT, "ROCK", "Use with caution, as the material can have unwanted interactions with other game-mechanics. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		oObeysGravity = config_defaults.getBoolean("obeysGravity", VARIANT, false, "Whether or not the ore falls down, if there is no block under it.");
 		oOreDictPrefix = config_defaults.getString("oreDictPrefix", VARIANT, "", "The ores will be registered to the OreDictionary in this format: type's oreDictPrefix + oreVariant's oreDictPrefix + material's oreDictName");
+		oSound = config_defaults.getString("sound", VARIANT, "STONE", "How the block sounds when breaking it, falling on it or walking on it. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		oSyntax = config_defaults.getString("syntax", VARIANT, "%s Ore", "%s will be replaced by the material's name when generating the lang file.");
 		
 		//type

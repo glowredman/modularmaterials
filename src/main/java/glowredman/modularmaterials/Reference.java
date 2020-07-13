@@ -9,6 +9,7 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
 import glowredman.modularmaterials.item.MetaItem;
+import glowredman.modularmaterials.item.MiscItem;
 import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.object.JMiscBlock;
 import glowredman.modularmaterials.object.JMiscFluid;
@@ -86,10 +87,12 @@ public class Reference {
 	public static boolean bIsBeaconBase = false;
 	public static boolean bIsBeaconPayment = false;
 	public static byte bLightLevel = 0;
-	public static String bMaterialSound = "IRON";
+	public static String bMapColor = "AUTO";
+	public static String bMaterial = "IRON";
 	public static boolean bObeysGravity = false;
 	public static float bResistance = 6.0f;
 	public static String bTexture = MODID + ":void";
+	public static String bSound = "METAL";
 	public static boolean bUseColor = false;
 	
 	//defaults color
@@ -118,8 +121,10 @@ public class Reference {
 	public static float mBlockHardness = 5.0f;
 	public static int mBlockHarvestLevel = 1;
 	public static byte mBlockLightLevel = 0;
-	public static String mBlockMaterialSound = "IRON";
+	public static String mBlockMapColor = "AUTO";
+	public static String mBlockMaterial = "IRON";
 	public static float mBlockResistance = 6.0f;
+	public static String mBlockSound = "METAL";
 	public static int mBoilingTemperature = 373;
 	public static boolean mEnabled = false;
 	public static boolean mTypeEnabled = false;
@@ -145,9 +150,11 @@ public class Reference {
 	public static String oBaseTexture = "blocks/stone";
 	public static String oEffectiveTool = "pickaxe";
 	public static boolean oEnabled = false;
-	public static String oMaterialSound = "ROCK";
+	public static String oMapColor =  "STONE";
+	public static String oMaterial = "ROCK";
 	public static boolean oObeysGravity = false;
 	public static String oOreDictPrefix = "";
+	public static String oSound = "STONE";
 	public static String oSyntax = "%s Ore";
 	
 	//defaults oreVein

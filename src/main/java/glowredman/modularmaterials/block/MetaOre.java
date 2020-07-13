@@ -8,13 +8,13 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import glowredman.modularmaterials.item.AdvItemBlock;
+import glowredman.modularmaterials.object.JColor;
 import glowredman.modularmaterials.object.JDrop;
 import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.object.JOreVariant;
 import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.mc.MaterialHelper;
-import glowredman.modularmaterials.util.mc.SoundTypeHelper;
+import glowredman.modularmaterials.util.MinecraftHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -43,7 +43,7 @@ public class MetaOre extends Block {
 	private boolean isBeaconPayment;
 
 	public MetaOre(JMaterial material, JOreVariant ore, String type, String variant, String name) {
-		super(MaterialHelper.getMaterialFromString(ore.materialSound));
+		super(MinecraftHelper.getMaterial(ore.material), MinecraftHelper.getMapColor(ore.mapColor, new JColor().setColor(96, 96, 96)));
 		JType t = types.get(type);
 		this.material = material;
 		this.ore = ore;
@@ -57,7 +57,7 @@ public class MetaOre extends Block {
 		this.setHardness(material.oreHardness);
 		this.setHarvestLevel(ore.effectiveTool, material.oreHarvestLevel);
 		this.setRegistryName(MODID, type + '.' + variant + '.' + name);
-		this.setSoundType(SoundTypeHelper.getMaterialFromString(ore.materialSound));
+		this.setSoundType(MinecraftHelper.getSoundType(ore.sound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + variant + '.' + name);
 	}
 	

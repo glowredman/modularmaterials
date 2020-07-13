@@ -49,9 +49,10 @@ public class JSONHandler {
 				example.baseTexture = "minecraft:blocks/stone";
 				example.effectiveTool = "pickaxe";
 				example.enabled = true;
-				example.materialSound = "ROCK";
+				example.material = "ROCK";
 				example.obeysGravity = false;
 				example.oreDictPrefix = "";
+				example.sound = "STONE";
 				example.syntax = "%s Ore";
 				oreVariantList.oreVariants.put("stone", example);
 				BufferedWriter writer = new BufferedWriter(new FileWriter(fileOreVariants));
@@ -121,8 +122,9 @@ public class JSONHandler {
 				example.blockHardness = (float) (Math.random() * Float.MAX_VALUE);
 				example.blockHarvestLevel = (int) (Math.random() * 3);
 				example.blockLightLevel = (byte) (Math.random() * 15);
-				example.blockMaterialSound = "ROCK";
+				example.blockMaterial = "ROCK";
 				example.blockResistance = (float) (Math.random() * Float.MAX_VALUE);
+				example.blockSound = "STONE";
 				example.boilingTemperature = (int) (Math.random() * Integer.MAX_VALUE - Math.random() * Integer.MAX_VALUE);
 				example.color.setColor(new Color((float) Math.random(), (float) Math.random(), (float) Math.random(), (float) Math.random()));
 				example.drops = new ArrayList<JDrop>();
@@ -228,11 +230,12 @@ public class JSONHandler {
 				exampleBlock.isBeaconBase = false;
 				exampleBlock.isBeaconPayment = false;
 				exampleBlock.lightLevel = (byte) (Math.random() * 15);
-				exampleBlock.materialSound = "ROCK";
+				exampleBlock.material = "ROCK";
 				exampleBlock.name = "Example Block";
 				exampleBlock.obeysGravity = false;
 				exampleBlock.oreDict = new String[] {"blockExample", "example"};
 				exampleBlock.resistance = (float) (Math.random() * Float.MAX_VALUE);
+				exampleBlock.sound = "STONE";
 				exampleBlock.texture = MODID + ":blocks/rough/block";
 				exampleBlock.tooltip = new String[] {"§s1:50:§0§1§2§3§4§5§6§7§8§9§a§b§c§d§e§f:§sThis is an example!", "§p§q§t§oYou uncovered a secret!"};
 				exampleBlock.useColor = true;

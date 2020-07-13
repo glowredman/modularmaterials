@@ -10,9 +10,9 @@ import glowredman.modularmaterials.item.AdvItemBlock;
 import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.mc.MaterialHelper;
-import glowredman.modularmaterials.util.mc.SoundTypeHelper;
+import glowredman.modularmaterials.util.MinecraftHelper;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -36,20 +36,20 @@ public class MetaBlock extends Block {
 	private boolean isBeaconPayment;
 
 	public MetaBlock(JMaterial material, String type, String name) {
-		super(MaterialHelper.getMaterialFromString(material.blockMaterialSound));
-		JType type_ = types.get(type);
+		super(MinecraftHelper.getMaterial(material.blockMaterial), MinecraftHelper.getMapColor(material.blockMapColor, material.color));
+		JType jtype = types.get(type);
 		this.material = material;
 		this.type = type;
-		this.hasTooltip = type_.hasTooltip && material.tooltip != null;
-		this.isBeaconBase = type_.isBeaconBase && material.isBeaconBase;
-		this.isBeaconPayment = type_.isBeaconPayment && material.isBeaconPayment;
+		this.hasTooltip = jtype.hasTooltip && material.tooltip != null;
+		this.isBeaconBase = jtype.isBeaconBase && material.isBeaconBase;
+		this.isBeaconPayment = jtype.isBeaconPayment && material.isBeaconPayment;
 		this.lightValue = material.blockLightLevel;
-		this.setHarvestLevel(type_.effectiveTool, material.blockHarvestLevel);
+		this.setHarvestLevel(jtype.effectiveTool, material.blockHarvestLevel);
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(material.blockHardness);
 		this.setRegistryName(MODID, type + '.' + name);
 		this.setResistance(material.blockResistance);
-		this.setSoundType(SoundTypeHelper.getMaterialFromString(material.blockMaterialSound));
+		this.setSoundType(MinecraftHelper.getSoundType(material.blockSound));
 		this.setUnlocalizedName(MODID + '.' + type + '.' + name);
 	}
 

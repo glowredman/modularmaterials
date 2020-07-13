@@ -40,7 +40,11 @@ public class JColor {
 	}
 	
 	public int getRGB() {
-		return red * 0x10000 + green * 0x100 + blue;
+		return 0xFF000000 + red * 0x10000 + green * 0x100 + blue;
+	}
+	
+	public Color getColor() {
+		return new Color(red, green, blue, alpha);
 	}
 
 }

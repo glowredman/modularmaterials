@@ -15,8 +15,10 @@ public class JMaterial {
 	public float blockHardness = mBlockHardness;
 	public int blockHarvestLevel = mBlockHarvestLevel;
 	public byte blockLightLevel = mBlockLightLevel;
-	public String blockMaterialSound = mBlockMaterialSound;
+	public String blockMapColor = mBlockMapColor;
+	public String blockMaterial = mBlockMaterial;
 	public float blockResistance = mBlockResistance;
+	public String blockSound = mBlockSound;
 	public int boilingTemperature = mBoilingTemperature;
 	public JColor color = new JColor();
 	public List<JDrop> drops = new ArrayList<JDrop>();

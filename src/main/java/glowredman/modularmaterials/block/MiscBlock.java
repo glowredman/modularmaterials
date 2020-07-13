@@ -7,8 +7,7 @@ import java.util.List;
 import glowredman.modularmaterials.item.AdvItemBlock;
 import glowredman.modularmaterials.object.JMiscBlock;
 import glowredman.modularmaterials.util.FormattingHandler;
-import glowredman.modularmaterials.util.mc.MaterialHelper;
-import glowredman.modularmaterials.util.mc.SoundTypeHelper;
+import glowredman.modularmaterials.util.MinecraftHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -29,7 +28,7 @@ public class MiscBlock extends Block {
 	public JMiscBlock block;
 
 	public MiscBlock(JMiscBlock block, String name) {
-		super(MaterialHelper.getMaterialFromString(block.materialSound));
+		super(MinecraftHelper.getMaterial(block.material), MinecraftHelper.getMapColor(block.mapColor, block.color));
 		this.block = block;
 		this.lightValue = block.lightLevel;
 		this.setCreativeTab(TAB_BLOCKS);
@@ -37,7 +36,7 @@ public class MiscBlock extends Block {
 		this.setHarvestLevel(block.effectiveTool, block.harvestLevel);
 		this.setRegistryName(MODID, "miscBlock." + name);
 		this.setResistance(block.resistance);
-		this.setSoundType(SoundTypeHelper.getMaterialFromString(block.materialSound));
+		this.setSoundType(MinecraftHelper.getSoundType(block.sound));
 		this.setUnlocalizedName(MODID + ".miscBlock." + name);
 	}
 	
