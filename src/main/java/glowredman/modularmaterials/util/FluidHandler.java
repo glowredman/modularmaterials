@@ -6,6 +6,7 @@ import static glowredman.modularmaterials.Reference.*;
 import java.util.Map.Entry;
 
 import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscFluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -15,6 +16,9 @@ public class FluidHandler {
 	public static void registerFluids() {
 		long time = System.currentTimeMillis();
 		int counter = 0;
+		
+		
+		//materials
 		
 		//iterate through all materials
 		for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
@@ -94,6 +98,27 @@ public class FluidHandler {
 				}
 			}
 		}
+		
+		
+		//miscFluids
+		for(Entry<String, JMiscFluid> fluidEntry : miscFluidMap.entrySet()) {
+			JMiscFluid jfluid = fluidEntry.getValue();
+			String key = fluidEntry.getKey();
+			if(jfluid.enabled || enableAll) {
+				Fluid fluid = new Fluid(key, new ResourceLocation(jfluid.texture + "_still"), new ResourceLocation(jfluid.texture + "_flowing"));
+				fluid.setColor(jfluid.color.getARGB());
+				fluid.setDensity(jfluid.density);
+				fluid.setGaseous(jfluid.isGaseous);
+				fluid.setLuminosity(jfluid.lightLevel);
+				fluid.setTemperature(jfluid.temperature);
+				fluid.setUnlocalizedName(MODID + ".miscFluid." + key);
+				fluid.setViscosity(jfluid.viscosity);
+				FluidRegistry.registerFluid(fluid);
+				FluidRegistry.addBucketForFluid(fluid);
+				miscFluids.add(fluid);
+			}
+		}
+		
 		logger.info("Registered " + counter + " fluids in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	

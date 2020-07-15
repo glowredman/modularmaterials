@@ -8,6 +8,8 @@ import java.util.List;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
 import glowredman.modularmaterials.block.MetaOreFalling;
+import glowredman.modularmaterials.block.MiscBlock;
+import glowredman.modularmaterials.block.MiscBlockFalling;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.item.MiscItem;
 import glowredman.modularmaterials.object.JMaterial;
@@ -189,9 +191,9 @@ public class Reference {
 	//sources
 	public static LinkedHashMap<String, JMaterial> materials = new LinkedHashMap<String, JMaterial>(); //materialKey, material
 	public static LinkedHashMap<String, JType> types = new LinkedHashMap<String, JType>(); //typeKey, type
-	public static LinkedHashMap<String, JMiscBlock> miscBlocks = new LinkedHashMap<String, JMiscBlock>(); //blockKey, block
-	public static LinkedHashMap<String, JMiscFluid> miscFluids = new LinkedHashMap<String, JMiscFluid>(); //fluidKey, fluid
-	public static LinkedHashMap<String, JMiscItem> miscItems = new LinkedHashMap<String, JMiscItem>(); //itemKey, item
+	public static LinkedHashMap<String, JMiscBlock> miscBlockMap = new LinkedHashMap<String, JMiscBlock>(); //blockKey, block
+	public static LinkedHashMap<String, JMiscFluid> miscFluidMap = new LinkedHashMap<String, JMiscFluid>(); //fluidKey, fluid
+	public static LinkedHashMap<String, JMiscItem> miscItemMap = new LinkedHashMap<String, JMiscItem>(); //itemKey, item
 	public static HashMap<String, JOreVariant> oreVariants = new HashMap<String, JOreVariant>(); //oreVariantKey, oreVariant
 	public static HashMap<String, JOreVein> oreVeins = new HashMap<String, JOreVein>(); //oreVeinKey, oreVein
 	//mappings
@@ -204,6 +206,9 @@ public class Reference {
 	public static List<MetaOre> metaOres = new ArrayList<MetaOre>();
 	public static List<MetaOreFalling> metaOresFalling = new ArrayList<MetaOreFalling>();
 	public static List<Fluid> fluids = new ArrayList<Fluid>();
+	public static List<MiscBlock> miscBlocks = new ArrayList<MiscBlock>();
+	public static List<MiscBlockFalling> miscBlocksFalling = new ArrayList<MiscBlockFalling>();
+	public static List<Fluid> miscFluids = new ArrayList<Fluid>();
 	public static final MiscItem MISC_ITEM = new MiscItem();
 	//ore gen
 	public static int weight = 0;

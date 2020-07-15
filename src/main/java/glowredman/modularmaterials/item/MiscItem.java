@@ -1,5 +1,6 @@
 package glowredman.modularmaterials.item;
 
+import static glowredman.modularmaterials.Main.proxy;
 import static glowredman.modularmaterials.Reference.*;
 
 import java.util.List;
@@ -10,7 +11,6 @@ import glowredman.modularmaterials.object.JMiscItem;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,9 +26,9 @@ public class MiscItem extends Item {
 	public MiscItem() {
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, "miscItem");
-		for(JMiscItem item : miscItems.values()) {
+		for(JMiscItem item : miscItemMap.values()) {
 			if(enableAll || item.enabled) {
-				ModelLoader.setCustomModelResourceLocation(this, item.meta, new ModelResourceLocation(item.texture, "inventory"));
+				proxy.registerItemRenderer(this, item.texture, item.meta);
 			}
 		}
 	}
@@ -64,7 +63,7 @@ public class MiscItem extends Item {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if(tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
-			for(JMiscItem item : miscItems.values()) {
+			for(JMiscItem item : miscItemMap.values()) {
 				if(enableAll || item.enabled) {
 					items.add(new ItemStack(this, 1, item.meta));
 				}

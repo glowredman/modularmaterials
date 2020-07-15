@@ -247,7 +247,7 @@ public class JSONHandler {
 				exampleFluid.lightLevel = (byte) (Math.random() * 15);
 				exampleFluid.name = "Example Fluid";
 				exampleFluid.temperature = (int) (Math.random() * Integer.MAX_VALUE - Math.random() * Integer.MAX_VALUE);
-				exampleFluid.texture = MODID + ":fluids/water" + (exampleFluid.isGaseous ? "gas" : "liquid");
+				exampleFluid.texture = MODID + ":fluids/water/" + (exampleFluid.isGaseous ? "gas" : "liquid");
 				exampleFluid.useColor = true;
 				exampleFluid.viscosity = (int) (Math.random() * Integer.MAX_VALUE);
 				
@@ -274,9 +274,9 @@ public class JSONHandler {
 			
 			//transfer config information
 			JMiscLists list = new Gson().fromJson(readFile(fileMisc.getPath()), JMiscLists.class);
-			miscBlocks = list.blocks;
-			miscFluids = list.fluids;
-			miscItems = list.items;
+			miscBlockMap = list.blocks;
+			miscFluidMap = list.fluids;
+			miscItemMap = list.items;
 			
 		} catch (Exception e) {
 			e.printStackTrace();

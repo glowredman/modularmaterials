@@ -8,17 +8,22 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.gen.OreGenHandler;
 import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscBlock;
 import glowredman.modularmaterials.object.JOreVariant;
 import glowredman.modularmaterials.object.JType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHandler {
 	
 	public static void registerBlocks() {
 		int count = 0;
 		long time = System.currentTimeMillis();
+		
+		//materials
 		for(Entry<String, JType> typeEntry : types.entrySet()) {
 			JType type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
@@ -37,6 +42,29 @@ public class BlockHandler {
 				}
 			}
 		}
+		
+		//miscBlocks
+		for(Entry<String, JMiscBlock> blockEntry : miscBlockMap.entrySet()) {
+			JMiscBlock jblock = blockEntry.getValue();
+			String key = blockEntry.getKey();
+			if(jblock.enabled || enableAll) {
+				if(jblock.obeysGravity) {
+					MiscBlockFalling block_ = new MiscBlockFalling(jblock, key);
+					ForgeRegistries.BLOCKS.register(block_);
+					ForgeRegistries.ITEMS.register(block_.createItemBlock());
+					proxy.registerItemRenderer(Item.getItemFromBlock(block_), jblock.texture);
+					miscBlocksFalling.add(block_);
+				} else {
+					MiscBlock block = new MiscBlock(jblock, key);
+					ForgeRegistries.BLOCKS.register(block);
+					ForgeRegistries.ITEMS.register(block.createItemBlock());
+					proxy.registerItemRenderer(Item.getItemFromBlock(block), jblock.texture);
+					miscBlocks.add(block);
+				}
+				count++;
+			}
+		}
+		
 		logger.info("Registered " + count + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
@@ -82,6 +110,7 @@ public class BlockHandler {
 		logger.info("Registered " + count + " ores. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void initColors() {
 		for(MetaBlock block : metaBlocks) {
 			block.registerColor();

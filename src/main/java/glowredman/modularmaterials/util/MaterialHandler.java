@@ -38,7 +38,7 @@ public class MaterialHandler {
 		}
 		
 		//miscItems
-		for(Entry<String, JMiscItem> entry : miscItems.entrySet()) {
+		for(Entry<String, JMiscItem> entry : miscItemMap.entrySet()) {
 			String key = entry.getKey();
 			short meta = entry.getValue().meta;
 			if(idMiscMapping.containsKey(meta)) {
@@ -56,7 +56,7 @@ public class MaterialHandler {
 	}
 	
 	public static JMiscItem getMiscItemFromID(short meta) {
-		return miscItems.get(idMiscMapping.get(meta));
+		return miscItemMap.get(idMiscMapping.get(meta));
 	}
 	
 	public static ItemStack getItemStackFromString(String item, int amount, Block itself) {
