@@ -28,7 +28,7 @@ public class MiscItem extends Item {
 		this.setRegistryName(MODID, "miscItem");
 		for(JMiscItem item : miscItemMap.values()) {
 			if(enableAll || item.enabled) {
-				proxy.registerItemRenderer(this, item.texture, item.meta);
+				proxy.registerItemRenderer(this, item.texture.model, item.meta);
 			}
 		}
 	}

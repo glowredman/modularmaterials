@@ -10,7 +10,7 @@ public class JMiscItem {
 	public short meta = (short) (Math.random() * Short.MAX_VALUE);
 	public String name = "item_" + meta;
 	public String[] oreDict = new String[] {};
-	public String texture = iTexture;
+	public JTexture texture = new JTexture();
 	public String[] tooltip = new String[] {};
 	public boolean useColor = iUseColor;
 

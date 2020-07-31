@@ -93,7 +93,6 @@ public class Reference {
 	public static String bMaterial = "IRON";
 	public static boolean bObeysGravity = false;
 	public static float bResistance = 6.0f;
-	public static String bTexture = MODID + ":void";
 	public static String bSound = "METAL";
 	public static boolean bUseColor = false;
 	
@@ -116,7 +115,6 @@ public class Reference {
 	//defaults item
 	public static boolean iEnabled = false;
 	public static boolean iIsBeaconPayment = false;
-	public static String iTexture = MODID + ":void";
 	public static boolean iUseColor = false;
 	
 	//defaults material
@@ -174,6 +172,12 @@ public class Reference {
 	public static String[] vDimensions = new String[] {"overworld"};
 	public static boolean vInvertBiomes = true;
 	public static String[] vBiomes = new String[] {};
+	
+	//defaults texture
+	public static String xModel = "void";
+	public static String xParent = "block/block";
+	public static String xParticle = MODID + ":void";
+	public static String xTexture = MODID + ":void";
 	
 	//defaults type
 	public static String tCategory = "item";

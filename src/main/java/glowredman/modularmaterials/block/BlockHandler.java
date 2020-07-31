@@ -52,13 +52,13 @@ public class BlockHandler {
 					MiscBlockFalling block_ = new MiscBlockFalling(jblock, key);
 					ForgeRegistries.BLOCKS.register(block_);
 					ForgeRegistries.ITEMS.register(block_.createItemBlock());
-					proxy.registerItemRenderer(Item.getItemFromBlock(block_), jblock.texture);
+					proxy.registerItemRenderer(Item.getItemFromBlock(block_), jblock.texture.model);
 					miscBlocksFalling.add(block_);
 				} else {
 					MiscBlock block = new MiscBlock(jblock, key);
 					ForgeRegistries.BLOCKS.register(block);
 					ForgeRegistries.ITEMS.register(block.createItemBlock());
-					proxy.registerItemRenderer(Item.getItemFromBlock(block), jblock.texture);
+					proxy.registerItemRenderer(Item.getItemFromBlock(block), jblock.texture.model);
 					miscBlocks.add(block);
 				}
 				count++;

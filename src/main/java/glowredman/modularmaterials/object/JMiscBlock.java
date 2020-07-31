@@ -23,7 +23,7 @@ public class JMiscBlock {
 	public String[] oreDict = new String[] {};
 	public float resistance = bResistance;
 	public String sound = bSound;
-	public String texture = bTexture;
+	public JTexture texture = new JTexture();
 	public String[] tooltip = new String[] {};
 	public boolean useColor = bUseColor;
 

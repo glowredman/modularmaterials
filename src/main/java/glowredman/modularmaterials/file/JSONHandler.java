@@ -28,6 +28,7 @@ import glowredman.modularmaterials.object.JOreVariant;
 import glowredman.modularmaterials.object.JOreVariantList;
 import glowredman.modularmaterials.object.JOreVein;
 import glowredman.modularmaterials.object.JOreVeinList;
+import glowredman.modularmaterials.object.JTexture;
 import glowredman.modularmaterials.object.JType;
 import glowredman.modularmaterials.object.JTypeList;
 import glowredman.modularmaterials.util.MaterialHandler;
@@ -236,7 +237,7 @@ public class JSONHandler {
 				exampleBlock.oreDict = new String[] {"blockExample", "example"};
 				exampleBlock.resistance = (float) (Math.random() * Float.MAX_VALUE);
 				exampleBlock.sound = "STONE";
-				exampleBlock.texture = MODID + ":blocks/rough/block";
+				exampleBlock.texture = new JTexture(MODID + ":blocks/rough/block");
 				exampleBlock.tooltip = new String[] {"§s1:50:§0§1§2§3§4§5§6§7§8§9§a§b§c§d§e§f:§sThis is an example!", "§p§q§t§oYou uncovered a secret!"};
 				exampleBlock.useColor = true;
 				
@@ -257,7 +258,7 @@ public class JSONHandler {
 				exampleItem.meta = 0;
 				exampleItem.name = "Example Item";
 				exampleItem.oreDict = new String[] {"itemExample", "example"};
-				exampleItem.texture = MODID + ":items/netherstar/gem";
+				exampleItem.texture = new JTexture(MODID + ":items/netherstar/gem");
 				exampleItem.tooltip = new String[] {"You can't read this:", "§kHey! Stop it!"};
 				exampleItem.useColor = true;
 				

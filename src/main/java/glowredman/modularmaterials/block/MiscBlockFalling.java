@@ -34,7 +34,7 @@ public class MiscBlockFalling extends BlockFalling {
 		this.setCreativeTab(TAB_BLOCKS);
 		this.setHardness(block.hardness);
 		this.setHarvestLevel(block.effectiveTool, block.harvestLevel);
-		this.setRegistryName(MODID, "miscBlock." + name);
+		this.setRegistryName(MODID, "miscblock." + name);
 		this.setResistance(block.resistance);
 		this.setSoundType(MinecraftHelper.getSoundType(block.sound));
 		this.setUnlocalizedName(MODID + ".miscBlock." + name);

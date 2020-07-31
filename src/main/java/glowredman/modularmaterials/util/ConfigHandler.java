@@ -22,6 +22,7 @@ public class ConfigHandler {
 	public static final String MATERIAL = "material";
 	public static final String VARIANT = "oreVariant";
 	public static final String VEIN = "oreVein";
+	public static final String TEXTURE = "texture";
 	public static final String TYPE = "type";
 	
 	// ---PHASES---
@@ -77,6 +78,7 @@ public class ConfigHandler {
 		config_defaults.addCustomCategoryComment(MATERIAL, "Default values for Material objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(VARIANT, "Default values for OreVariant objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(VEIN, "Default values for OreVein objects. These are used when no other value is set.");
+		config_defaults.addCustomCategoryComment(TEXTURE, "Default values for Texture objects. These are used when no other value is set.");
 		config_defaults.addCustomCategoryComment(TYPE, "Default values for Type objects. These are used when no other value is set.");
 		
 		//block
@@ -93,7 +95,6 @@ public class ConfigHandler {
 		bObeysGravity = config_defaults.getBoolean("obeysGravity", BLOCK, false, "Whether or not the ore falls down, if there is no block under it.");
 		bResistance = config_defaults.getFloat("resistance", BLOCK, 6, 0, Float.MAX_VALUE, "This effects how resistant the block is against explosions.");
 		bSound = config_defaults.getString("sound", BLOCK, "METAL", "How the block sounds when breaking it, falling on it or walking on it. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
-		bTexture = config_defaults.getString("texture", BLOCK, MODID + ":void", "The block's texture.");
 		bUseColor = config_defaults.getBoolean("useColor", BLOCK, false, "Whether or not the texture should be colored.");
 		
 		//color
@@ -115,7 +116,6 @@ public class ConfigHandler {
 		//item
 		iEnabled = config_defaults.getBoolean("enabled", ITEM, false, "Wheter or not the item is enabled.");
 		iIsBeaconPayment = config_defaults.getBoolean("isBeaconPayment", ITEM, false, "Whether or not the material can be used to activate a beacon.");
-		iTexture = config_defaults.getString("texture", ITEM, MODID + ":void", "The item's texture.");
 		iUseColor = config_defaults.getBoolean("useColor", ITEM, false, "Whether or not the texture should be colored.");
 		
 		//material
@@ -159,6 +159,12 @@ public class ConfigHandler {
 		oOreDictPrefix = config_defaults.getString("oreDictPrefix", VARIANT, "", "The ores will be registered to the OreDictionary in this format: type's oreDictPrefix + oreVariant's oreDictPrefix + material's oreDictName");
 		oSound = config_defaults.getString("sound", VARIANT, "STONE", "How the block sounds when breaking it, falling on it or walking on it. See https://github.com/glowredman/modularmaterials/blob/new-api/presets/MATERIALS-SOUNDTYPES-MAPCOLORS.md");
 		oSyntax = config_defaults.getString("syntax", VARIANT, "%s Ore", "%s will be replaced by the material's name when generating the lang file.");
+		
+		//texture
+		xModel = config_defaults.getString("model", TEXTURE, "void", "The model file's path in resources/" + MODID + "/models/<block|item>/. You shouldn't use the same path for different blocks/items/fluids unless they should have the same texture.");
+		xParent = config_defaults.getString("parent", TEXTURE, "block/block", "The parent-model the specified model inherents its properties from. Depending on this, different texture-variable-names must be used.");
+		xParticle = config_defaults.getString("particle", TEXTURE, MODID + ":void", "The particles that occure when you break or step on a block.");
+		xTexture = config_defaults.getString("texture", TEXTURE, MODID + ":void", "The item's or block's texture.");
 		
 		//type
 		tCategory = config_defaults.getString("category", TYPE, "item", "Allowed values: block, fluid, item, ore", new String[] {"item", "block", "fluid", "ore"});

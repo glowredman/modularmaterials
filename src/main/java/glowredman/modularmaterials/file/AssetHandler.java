@@ -14,7 +14,11 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.object.CTTT;
 import glowredman.modularmaterials.object.JMaterial;
+import glowredman.modularmaterials.object.JMiscBlock;
+import glowredman.modularmaterials.object.JMiscFluid;
+import glowredman.modularmaterials.object.JMiscItem;
 import glowredman.modularmaterials.object.JOreVariant;
+import glowredman.modularmaterials.object.JTexture;
 import glowredman.modularmaterials.object.JType;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,6 +33,7 @@ public class AssetHandler {
 		int count = 0;
 		long time = System.currentTimeMillis();
 		
+		//materials
 		for(JMaterial material : materials.values()) {
 			if(material.enabled || enableAll) {
 				for(Entry<String, Boolean> typeEntry : material.enabledTypes.entrySet()) {
@@ -44,7 +49,7 @@ public class AssetHandler {
 						}
 					}
 					JType type = types.get(typeKey);
-					CTTT cttt = new CTTT(type.category, material.texture, typeKey);
+					CTTT cttt = new CTTT(type.category, new JTexture(material.texture), typeKey);
 					if(isTypeEnabled && !cttts.contains(cttt)) {
 						cttts.add(cttt);
 						count++;
@@ -52,6 +57,29 @@ public class AssetHandler {
 				}
 			}
 		}
+		
+		//miscItems
+		for(JMiscItem item : miscItemMap.values()) {
+			if(item.enabled || enableAll) {
+				CTTT cttt = new CTTT("miscItem", item.texture, "" + item.useColor);
+				if(!cttts.contains(cttt)) {
+					cttts.add(cttt);
+					count++;
+				}
+			}
+		}
+		
+		//miscBlocks
+		for(JMiscBlock block : miscBlockMap.values()) {
+			if(block.enabled || enableAll) {
+				CTTT cttt = new CTTT("miscBlock", block.texture, "" + block.useColor);
+				if(!cttts.contains(cttt)) {
+					cttts.add(cttt);
+					count++;
+				}
+			}
+		}
+		
 		logger.info("Detected " + count + " different category-texture-type-triples. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
@@ -62,12 +90,12 @@ public class AssetHandler {
 		File mcDataDir = Minecraft.getMinecraft().mcDataDir;
 		
 		for(CTTT cttt : cttts) {
-			String texture = cttt.texture;
+			JTexture texture = cttt.texture;
 			String type = cttt.type;
 			
 			switch (cttt.category) {
 			case "item":
-				File dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
+				File dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture.getTexture());
 				File file = new File(dir, type + ".json");
 				try {
 					dir.mkdirs();
@@ -78,7 +106,7 @@ public class AssetHandler {
 							file.delete();
 						}
 						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-						writer.write(getTemplateAsString(MODEL_ITEM).replace("%x", texture).replace("%t", type));
+						writer.write(getTemplateAsString(MODEL_ITEM).replace("%x", texture.getTexture()).replace("%t", type));
 						writer.newLine();
 						writer.close();
 						count++;
@@ -91,7 +119,7 @@ public class AssetHandler {
 			
 			case "block":
 				//normal variant
-				dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture);
+				dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture.getTexture());
 				file = new File(dir, type + ".json");
 				try {
 					dir.mkdirs();
@@ -101,7 +129,7 @@ public class AssetHandler {
 							file.delete();
 						}
 						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture).replace("%t", type));
+						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture.getTexture()).replace("%t", type));
 						writer.newLine();
 						writer.close();
 						count++;
@@ -111,7 +139,7 @@ public class AssetHandler {
 					e.printStackTrace();
 				}
 				//inventory variant
-				dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture);
+				dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture.getTexture());
 				file = new File(dir, type + ".json");
 				try {
 					dir.mkdirs();
@@ -121,7 +149,7 @@ public class AssetHandler {
 							file.delete();
 						}
 						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture).replace("%t", type));
+						writer.write(getTemplateAsString(MODEL_BLOCK).replace("%x", texture.getTexture()).replace("%t", type));
 						writer.newLine();
 						writer.close();
 						count++;
@@ -135,7 +163,7 @@ public class AssetHandler {
 					String base = oreVariantEntry.getValue().baseTexture;
 					
 					//normal variant
-					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture + '/' + type);
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/" + texture.getTexture() + '/' + type);
 					file = new File(dir, ore + ".json");
 					try {
 						dir.mkdirs();
@@ -145,7 +173,7 @@ public class AssetHandler {
 								file.delete();
 							}
 							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture).replace("%t", type).replace("%b", base));
+							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture.getTexture()).replace("%t", type).replace("%b", base));
 							writer.newLine();
 							writer.close();
 							count++;
@@ -154,7 +182,7 @@ public class AssetHandler {
 						e.printStackTrace();
 					}
 					//inventory variant
-					dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture + '/' + type);
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/" + texture.getTexture() + '/' + type);
 					file = new File(dir, ore + ".json");
 					try {
 						dir.mkdirs();
@@ -164,7 +192,7 @@ public class AssetHandler {
 								file.delete();
 							}
 							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture).replace("%t", type).replace("%b", base));
+							writer.write(getTemplateAsString(MODEL_ORE).replace("%x", texture.getTexture()).replace("%t", type).replace("%b", base));
 							writer.newLine();
 							writer.close();
 							count++;
@@ -291,6 +319,7 @@ public class AssetHandler {
 				writer.newLine();
 				writer.newLine();
 				
+				//materials
 				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
 					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
@@ -341,6 +370,7 @@ public class AssetHandler {
 									String oreKey = oreVariantEntry.getKey();
 									writer.write("tile." + MODID + '.' + typeKey + '.' + oreKey + '.' + materialKey + ".name=" + oreSyntax.replace("%s", materialName));
 									writer.newLine();
+									count++;
 								}
 								break;
 							default:
