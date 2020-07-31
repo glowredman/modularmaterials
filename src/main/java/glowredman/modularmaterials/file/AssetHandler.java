@@ -202,6 +202,120 @@ public class AssetHandler {
 					}
 				}
 				break;
+			case "miscItem":
+				dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/");
+				file = new File(dir, texture.model + ".json");
+				try {
+					dir.mkdirs();
+					
+					//if the file does not already exist or should be overridden, create it
+					if(!file.exists() || overrideModelFiles) {
+						if(file.exists()) {
+							file.delete();
+						}
+						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+						writer.write(getItemModelByJTexture(texture));
+						writer.newLine();
+						writer.close();
+						count++;
+						break;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "miscBlock":
+				
+				//when the texture should be colored, an other model must be used
+				if(cttt.type.equals("true")) {
+					
+					//normal variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "models/block/");
+					file = new File(dir, texture.model + ".json");
+					try {
+						dir.mkdirs();
+
+						//if the file does not already exist or should be overridden, create it
+						if(!file.exists() || overrideModelFiles) {
+							if(file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.particle).replace("%t", texture.textures.get("meta")));
+							writer.newLine();
+							writer.close();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					//inventory variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "models/item/");
+					file = new File(dir, texture.model + ".json");
+					try {
+						dir.mkdirs();
+
+						//if the file does not already exist or should be overridden, create it
+						if(!file.exists() || overrideModelFiles) {
+							if(file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.particle).replace("%t", texture.textures.get("meta")));
+							writer.newLine();
+							writer.close();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				} else {
+
+					//normal variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/");
+					file = new File(dir, texture.model + ".json");
+					try {
+						dir.mkdirs();
+
+						//if the file does not already exist or should be overridden, create it
+						if(!file.exists() || overrideModelFiles) {
+							if(file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getBlockModelByJTexture(texture));
+							writer.newLine();
+							writer.close();
+							count++;
+							break;
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					//inventory variant
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/");
+					file = new File(dir, texture.model + ".json");
+					try {
+						dir.mkdirs();
+
+						//if the file does not already exist or should be overridden, create it
+						if(!file.exists() || overrideModelFiles) {
+							if(file.exists()) {
+								file.delete();
+							}
+							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+							writer.write(getBlockModelByJTexture(texture));
+							writer.newLine();
+							writer.close();
+							count++;
+							break;
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				break;
 			default:
 				break;
 			}
@@ -295,6 +409,33 @@ public class AssetHandler {
 				}
 			}
 		}
+		
+		//miscBlocks
+		for(Entry<String, JMiscBlock> blockEntry : miscBlockMap.entrySet()) {
+			JMiscBlock block = blockEntry.getValue();
+			if(block.enabled || enableAll) {
+				String key = blockEntry.getKey();
+				File dir = new File(Minecraft.getMinecraft().mcDataDir + "/resources/" + MODID + "/blockstates");
+				File file = new File(dir, "miscblock." + key + ".json");
+				try {
+					dir.mkdirs();
+					
+					if(!file.exists() || overrideBlockStateFiles) {
+						if(file.exists()) {
+							file.delete();
+						}
+						BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+						writer.write(getTemplateAsString(BLOCKSTATE_MISCBLOCK).replace("%m", block.texture.model));
+						writer.newLine();
+						writer.close();
+						count++;
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		logger.info("Created " + count + " blockstate-files. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
@@ -379,6 +520,42 @@ public class AssetHandler {
 						}
 					}
 				}
+				
+				//misc
+				newParagraph(writer);
+				writer.write("# -=-=- misc blocks -=-=-");
+				writer.newLine();
+				for(Entry<String, JMiscBlock> blockEntry : miscBlockMap.entrySet()) {
+					JMiscBlock block = blockEntry.getValue();
+					if(block.enabled || enableAll) {
+						writer.write("tile." + MODID + ".miscBlock." + blockEntry.getKey() + ".name=" + block.name);
+						writer.newLine();
+						count++;
+					}
+				}
+				newParagraph(writer);
+				writer.write("# -=-=- misc fluids -=-=-");
+				writer.newLine();
+				for(Entry<String, JMiscFluid> fluidEntry : miscFluidMap.entrySet()) {
+					JMiscFluid fluid = fluidEntry.getValue();
+					if(fluid.enabled || enableAll) {
+						writer.write("fluid." + MODID + ".miscFluid." + fluidEntry.getKey() + '=' + fluid.name);
+						writer.newLine();
+						count++;
+					}
+				}
+				newParagraph(writer);
+				writer.write("# -=-=- misc items -=-=-");
+				writer.newLine();
+				for(Entry<String, JMiscItem> itemEntry : miscItemMap.entrySet()) {
+					JMiscItem item = itemEntry.getValue();
+					if(item.enabled || enableAll) {
+						writer.write("item." + MODID + ".miscItem." + itemEntry.getKey() + ".name=" + item.name);
+						writer.newLine();
+						count++;
+					}
+				}
+				
 				writer.close();
 				logger.info("Created " + count + " localizations. Took " + (System.currentTimeMillis() - time) + "ms.");
 			} catch (Exception e) {
