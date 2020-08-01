@@ -133,7 +133,6 @@ public class AssetHandler {
 						writer.newLine();
 						writer.close();
 						count++;
-						break;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -157,6 +156,8 @@ public class AssetHandler {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
+				
 			case "ore":
 				for(Entry<String, JOreVariant> oreVariantEntry : oreVariants.entrySet()) {
 					String ore = oreVariantEntry.getKey();
