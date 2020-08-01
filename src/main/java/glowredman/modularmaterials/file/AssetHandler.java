@@ -231,7 +231,7 @@ public class AssetHandler {
 				if(cttt.type.equals("true")) {
 					
 					//normal variant
-					dir = new File(mcDataDir + "/resources/" + MODID + "models/block/");
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/block/");
 					file = new File(dir, texture.model + ".json");
 					try {
 						dir.mkdirs();
@@ -242,7 +242,7 @@ public class AssetHandler {
 								file.delete();
 							}
 							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.particle).replace("%t", texture.textures.get("meta")));
+							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%p", texture.particle).replace("%t", texture.textures.get("meta")));
 							writer.newLine();
 							writer.close();
 						}
@@ -251,7 +251,7 @@ public class AssetHandler {
 					}
 					
 					//inventory variant
-					dir = new File(mcDataDir + "/resources/" + MODID + "models/item/");
+					dir = new File(mcDataDir + "/resources/" + MODID + "/models/item/");
 					file = new File(dir, texture.model + ".json");
 					try {
 						dir.mkdirs();
