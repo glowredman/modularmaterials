@@ -8,15 +8,16 @@ public class JTexture {
 	
 	public String model = xModel;
 	public String parent = xParent;
-	public String particle = xParticle;
 	public HashMap<String, String> textures = new HashMap<String, String>();
 	
 	public JTexture(String texture) {
 		textures.put("all", texture);
+		textures.put("particle", texture);
 	}
 	
 	public JTexture() {
 		textures.put("all", xTexture);
+		textures.put("particle", xTexture);
 	}
 	
 	public String getTexture() {

@@ -49,10 +49,6 @@ public class Templates {
 	}
 	
 	public static String getBlockModelByJTexture(JTexture texture) {
-		
-		//add particle texture to textures HashMap
-		texture.textures.put("particle", texture.particle);
-		
 		return getItemModelByJTexture(texture);
 	}
 	
@@ -70,7 +66,7 @@ public class Templates {
 			"{",
 			"\t\"variants\": {",
 			"\t\t\"normal\": {",
-			"\t\t\t\"model\": \"%m\"",
+			"\t\t\t\"model\": \"" + MODID + ":%m\"",
 			"\t\t}",
 			"\t}",
 			"}"

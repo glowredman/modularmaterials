@@ -242,7 +242,7 @@ public class AssetHandler {
 								file.delete();
 							}
 							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%p", texture.particle).replace("%t", texture.textures.get("meta")));
+							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.textures.get("all")).replace("%p", texture.textures.get("particle").toString())); // .toString() ensures that null -> "null"
 							writer.newLine();
 							writer.close();
 						}
@@ -262,7 +262,7 @@ public class AssetHandler {
 								file.delete();
 							}
 							BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.particle).replace("%t", texture.textures.get("meta")));
+							writer.write(getTemplateAsString(MODEL_MISCBLOCK).replace("%t", texture.textures.get("all")).replace("%p", texture.textures.get("particle").toString())); // .toString() ensures that null -> "null"
 							writer.newLine();
 							writer.close();
 						}
