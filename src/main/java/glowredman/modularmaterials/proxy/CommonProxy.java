@@ -29,7 +29,7 @@ public class CommonProxy {
 		ConfigHandler.readConfigs();
 		ConfigHandler.saveConfigs();
 		//ENABLE_ALL-CHECK
-		if(enableAll) {logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");}
+		if(enableAll) logger.warn("\"enableAll\" is set to true, registering EVERYTHING!");
 		//FILES
 		JSONHandler.initOreVariantsFile(event);
 		JSONHandler.initTypeFile(event);
