@@ -5382,10 +5382,6 @@
       "meltingTemperature": 1337,
       "meta": 79,
       "name": "Gold",
-      "oreHardness": 3.0,
-      "oreHarvestLevel": 2,
-      "oreLightLevel": 0,
-      "oreResistance": 3.0,
       "oreDict": [
 	    "Gold"
       ],
