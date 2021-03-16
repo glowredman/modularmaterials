@@ -28,7 +28,7 @@ public class Command extends CommandBase {
 
 	@Override
 	public String getUsage(ICommandSender sender) {
-		if(sender instanceof EntityPlayer) {
+		if (sender instanceof EntityPlayer) {
 			return commandName + " <getBiome|getMaterialKey|getMeta|hand|help|here>";
 		} else {
 			return commandName + " <getBiome|getMaterialKey|getMeta|help>";
@@ -37,7 +37,7 @@ public class Command extends CommandBase {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
-		if(args.length == 0) {
+		if (args.length == 0) {
 			printHelpPage(sender);
 		} else {
 			World world = sender.getEntityWorld();
@@ -45,19 +45,19 @@ public class Command extends CommandBase {
 			Biome biome = world.getBiome(pos);
 			switch (args[0]) {
 			case "here":
-				if(sender instanceof EntityPlayer) {
-					//pos info
+				if (sender instanceof EntityPlayer) {
+					// pos info
 					int x = pos.getX();
 					int y = pos.getY();
 					int z = pos.getZ();
-					//biome info
+					// biome info
 					String biomeName = biome.getBiomeName();
 					String biomeKey = biome.getRegistryName().toString();
 					int biomeID = Biome.getIdForBiome(biome);
-					//dimension info
+					// dimension info
 					String dimName = world.provider.getDimensionType().getName();
 					int dimID = world.provider.getDimension();
-					
+
 					send(sender, GOLD + "Information for " + AQUA + '[' + x + ", " + y + ", " + z + ']' + GOLD + ':');
 					send(sender, BLUE + "Biome Name: " + WHITE + biomeName);
 					send(sender, BLUE + "Biome NamespacedID: " + WHITE + biomeKey);
@@ -69,9 +69,9 @@ public class Command extends CommandBase {
 				}
 				break;
 			case "getMeta":
-				if(args.length == 2) {
+				if (args.length == 2) {
 					String key = args[1];
-					if(materials.containsKey(key)) {
+					if (materials.containsKey(key)) {
 						send(sender, key + ": " + materials.get(key).meta);
 					} else {
 						send(sender, RED + "The material '" + key + "' does not exist!");
@@ -81,11 +81,11 @@ public class Command extends CommandBase {
 				}
 				break;
 			case "getMaterialKey":
-				if(args.length == 2) {
+				if (args.length == 2) {
 					String arg = args[1];
 					try {
 						short key = Short.parseShort(arg);
-						if(idMaterialMapping.containsKey(key)) {
+						if (idMaterialMapping.containsKey(key)) {
 							send(sender, key + ": " + idMaterialMapping.get(key));
 						} else {
 							send(sender, RED + "The meta '" + arg + "' is not occupied!");
@@ -98,30 +98,31 @@ public class Command extends CommandBase {
 				}
 				break;
 			case "hand":
-				if(sender instanceof EntityPlayer) {
+				if (sender instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer) sender;
 					ItemStack stack = player.inventory.getCurrentItem();
-					if(!stack.getItem().getRegistryName().equals(Blocks.AIR.getRegistryName())) {
+					if (!stack.getItem().getRegistryName().equals(Blocks.AIR.getRegistryName())) {
 						String out = stack.getItem().getRegistryName().toString() + ":" + stack.getMetadata();
 						send(sender, out);
-						for(int id : OreDictionary.getOreIDs(stack)) {
+						for (int id : OreDictionary.getOreIDs(stack)) {
 							send(sender, "> " + OreDictionary.getOreName(id));
 						}
-						//copy to clipboard
+						// copy to clipboard
 						StringSelection selection = new StringSelection(out);
-						Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);;
+						Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+						;
 					} else {
 						send(sender, "Your hand is empty!");
 					}
 				}
 				break;
 			case "getBiome":
-				if(args.length == 2) {
+				if (args.length == 2) {
 					String arg = args[1];
 					try {
 						int id = Integer.parseInt(arg);
 						Biome b = Biome.getBiomeForId(id);
-						if(b != null) {
+						if (b != null) {
 							send(sender, arg + ": " + b.getRegistryName().toString());
 						} else {
 							send(sender, "There is no biome with the id '" + arg + "'!");
@@ -139,9 +140,9 @@ public class Command extends CommandBase {
 			}
 		}
 	}
-	
+
 	public void printHelpPage(ICommandSender sender) {
-		if(sender instanceof EntityPlayer) {
+		if (sender instanceof EntityPlayer) {
 			help(sender, "getBiome <id>");
 			help(sender, "getMaterialKey <meta>");
 			help(sender, "getMeta <materialKey>");
@@ -155,11 +156,11 @@ public class Command extends CommandBase {
 			help(sender, "help");
 		}
 	}
-	
+
 	private void help(ICommandSender sender, String command) {
 		send(sender, BLUE + "/" + commandName + ' ' + command);
 	}
-	
+
 	private void send(ICommandSender sender, String msg) {
 		sender.sendMessage(new TextComponentString(msg));
 	}

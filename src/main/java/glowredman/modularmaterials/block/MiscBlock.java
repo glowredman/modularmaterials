@@ -11,8 +11,6 @@ import glowredman.modularmaterials.util.MinecraftHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,11 +18,9 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MiscBlock extends Block {
-	
+
 	public JMiscBlock block;
 
 	public MiscBlock(JMiscBlock block, String name) {
@@ -39,19 +35,19 @@ public class MiscBlock extends Block {
 		this.setSoundType(MinecraftHelper.getSoundType(block.sound));
 		this.setUnlocalizedName(MODID + ".miscBlock." + name);
 	}
-	
+
 	public Item createItemBlock() {
 		return new AdvItemBlock(this, block.isBeaconPayment);
 	}
-	
+
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) {
 		return block.isBeaconBase;
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced) {
-		for(String line : block.tooltip) {
+		for (String line : block.tooltip) {
 			try {
 				String s = FormattingHandler.formatTooltipLine(line);
 				if (s != null) {
@@ -64,29 +60,18 @@ public class MiscBlock extends Block {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) {
 		return true;
 	}
-	
-	@SideOnly(Side.CLIENT)
+
 	public void registerColor() {
-		if(block.useColor) {
-			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor() {
-				
-				@Override
-				public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-					return tintIndex == 0 ? block.color.getRGB() : 0xFFFFFF;
-				}
-			}, this);
-			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
-				
-				@Override
-				public int colorMultiplier(ItemStack stack, int tintIndex) {
-					return tintIndex == 0 ? block.color.getARGB() : 0xFFFFFFFF;
-				}
-			}, this);
+		if (block.useColor) {
+			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(
+					(state, world, pos, tintIndex) -> tintIndex == 0 ? block.color.getRGB() : 0xFFFFFF, this);
+			Minecraft.getMinecraft().getItemColors().registerItemColorHandler(
+					(stack, tintIndex) -> tintIndex == 0 ? block.color.getARGB() : 0xFFFFFF, this);
 		}
 	}
 

@@ -11,7 +11,6 @@ import glowredman.modularmaterials.object.JMiscItem;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -22,31 +21,31 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MiscItem extends Item {
-	
+
 	public MiscItem() {
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, "miscItem");
-		for(JMiscItem item : miscItemMap.values()) {
-			if(enableAll || item.enabled) {
+		for (JMiscItem item : miscItemMap.values()) {
+			if (enableAll || item.enabled) {
 				proxy.registerItemRenderer(this, item.texture.model, item.meta);
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
 		return MaterialHandler.getMiscItemFromID((short) stack.getMetadata()).isBeaconPayment;
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		try {
 			JMiscItem item = MaterialHandler.getMiscItemFromID((short) stack.getMetadata());
-			if((enableAll || item.enabled) && item.tooltip != null) {
-				for(String line : item.tooltip) {
+			if ((enableAll || item.enabled) && item.tooltip != null) {
+				for (String line : item.tooltip) {
 					try {
 						String s = FormattingHandler.formatTooltipLine(line);
-						if(s != null) {
+						if (s != null) {
 							tooltip.add(s);
 						}
 					} catch (Exception e) {
@@ -59,25 +58,25 @@ public class MiscItem extends Item {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if(tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
-			for(JMiscItem item : miscItemMap.values()) {
-				if(enableAll || item.enabled) {
+		if (tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
+			for (JMiscItem item : miscItemMap.values()) {
+				if (enableAll || item.enabled) {
 					items.add(new ItemStack(this, 1, item.meta));
 				}
 			}
 		}
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		short meta = (short) stack.getMetadata();
 		String s;
 		try {
 			JMiscItem item = MaterialHandler.getMiscItemFromID(meta);
-			if(enableAll || item.enabled) {
+			if (enableAll || item.enabled) {
 				s = "item." + MODID + ".miscItem." + idMiscMapping.get(meta);
 			} else {
 				s = "item." + MODID + ".debug";
@@ -87,19 +86,15 @@ public class MiscItem extends Item {
 		}
 		return s;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void registerColors() {
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
-			
-			@Override
-			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				if(tintIndex == 0) {
-					JMiscItem item = MaterialHandler.getMiscItemFromID((short) stack.getMetadata());
-					return item.useColor ? item.color.getARGB() : 0xFFFFFFFF;
-				} else {
-					return 0xFFFFFFFF;
-				}
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			if (tintIndex == 0) {
+				JMiscItem item = MaterialHandler.getMiscItemFromID((short) stack.getMetadata());
+				return item.useColor ? item.color.getARGB() : 0xFFFFFFFF;
+			} else {
+				return 0xFFFFFFFF;
 			}
 		}, this);
 	}

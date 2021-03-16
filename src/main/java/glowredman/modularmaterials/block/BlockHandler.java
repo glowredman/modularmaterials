@@ -14,24 +14,22 @@ import glowredman.modularmaterials.object.JType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockHandler {
-	
+
 	public static void registerBlocks() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		
-		//materials
-		for(Entry<String, JType> typeEntry : types.entrySet()) {
+
+		// materials
+		for (Entry<String, JType> typeEntry : types.entrySet()) {
 			JType type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
-			if((type.enabled || enableAll) && type.category.equals("block")) {
-				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+			if ((type.enabled || enableAll) && type.category.equals("block")) {
+				for (Entry<String, JMaterial> materialEntry : materials.entrySet()) {
 					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					if(enableAll ||(material.enabled && material.isTypeEnabled(typeKey))) {
+					if (enableAll || (material.enabled && material.isTypeEnabled(typeKey))) {
 						MetaBlock block = new MetaBlock(material, typeKey, materialKey);
 						ForgeRegistries.BLOCKS.register(block);
 						ForgeRegistries.ITEMS.register(block.createItemBlock());
@@ -42,13 +40,13 @@ public class BlockHandler {
 				}
 			}
 		}
-		
-		//miscBlocks
-		for(Entry<String, JMiscBlock> blockEntry : miscBlockMap.entrySet()) {
+
+		// miscBlocks
+		for (Entry<String, JMiscBlock> blockEntry : miscBlockMap.entrySet()) {
 			JMiscBlock jblock = blockEntry.getValue();
 			String key = blockEntry.getKey();
-			if(jblock.enabled || enableAll) {
-				if(jblock.obeysGravity) {
+			if (jblock.enabled || enableAll) {
+				if (jblock.obeysGravity) {
 					MiscBlockFalling block_ = new MiscBlockFalling(jblock, key);
 					ForgeRegistries.BLOCKS.register(block_);
 					ForgeRegistries.ITEMS.register(block_.createItemBlock());
@@ -64,31 +62,33 @@ public class BlockHandler {
 				count++;
 			}
 		}
-		
+
 		logger.info("Registered " + count + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
-	
+
 	public static void registerOres() {
 		int count = 0;
 		long time = System.currentTimeMillis();
-		for(Entry<String, JType> typeEntry : types.entrySet()) {
+		for (Entry<String, JType> typeEntry : types.entrySet()) {
 			JType type = typeEntry.getValue();
 			String typeKey = typeEntry.getKey();
-			if((type.enabled || enableAll) && type.category.equals("ore")) {
-				for(Entry<String, JMaterial> materialEntry : materials.entrySet()) {
+			if ((type.enabled || enableAll) && type.category.equals("ore")) {
+				for (Entry<String, JMaterial> materialEntry : materials.entrySet()) {
 					JMaterial material = materialEntry.getValue();
 					String materialKey = materialEntry.getKey();
-					if((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
-						for(Entry<String, JOreVariant> oreEntry : oreVariants.entrySet()) {
+					if ((material.enabled && material.isTypeEnabled(typeKey)) || enableAll) {
+						for (Entry<String, JOreVariant> oreEntry : oreVariants.entrySet()) {
 							JOreVariant ore = oreEntry.getValue();
 							String oreKey = oreEntry.getKey();
 							IBlockState blockBaseState = OreGenHandler.getBlockStateFromBlockName(ore.baseBlock);
-							if(ore.enabled || enableAll) {
-								if(ore.obeysGravity) {
-									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, typeKey, oreKey, materialKey);
+							if (ore.enabled || enableAll) {
+								if (ore.obeysGravity) {
+									MetaOreFalling oreBlock = new MetaOreFalling(material, ore, typeKey, oreKey,
+											materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
+									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock),
+											material.texture + '/' + typeKey + '/' + oreKey);
 									metaOresFalling.add(oreBlock);
 									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
@@ -96,31 +96,31 @@ public class BlockHandler {
 									MetaOre oreBlock = new MetaOre(material, ore, typeKey, oreKey, materialKey);
 									ForgeRegistries.BLOCKS.register(oreBlock);
 									ForgeRegistries.ITEMS.register(oreBlock.createItemBlock());
-									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock), material.texture + '/' + typeKey + '/' + oreKey);
+									proxy.registerItemRenderer(Item.getItemFromBlock(oreBlock),
+											material.texture + '/' + typeKey + '/' + oreKey);
 									metaOres.add(oreBlock);
 									OreGenHandler.addToStateOreMapping(blockBaseState, materialKey, oreBlock);
 									count++;
 								}
 							}
-						} 
+						}
 					}
 				}
 			}
 		}
 		logger.info("Registered " + count + " ores. Took " + (System.currentTimeMillis() - time) + "ms.");
 	}
-	
-	@SideOnly(Side.CLIENT)
+
 	public static void initColors() {
-		for(MetaBlock block : metaBlocks) {
+		for (MetaBlock block : metaBlocks) {
 			block.registerColor();
 		}
-		for(MetaOre ore : metaOres) {
+		for (MetaOre ore : metaOres) {
 			ore.registerColor();
 		}
-		for(MetaOreFalling ore : metaOresFalling) {
+		for (MetaOreFalling ore : metaOresFalling) {
 			ore.registerColor();
 		}
 	}
-	
+
 }

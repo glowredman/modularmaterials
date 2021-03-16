@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.block.MetaOre;
@@ -72,13 +73,13 @@ public class Reference {
 	public static String commandName = "mm";
 	
 	//core formatting
-	public static String triggerShiftIsPressedFormatting = "§p";
-	public static String triggerShiftIsNotPressedFormatting = "§P";
-	public static String triggerCtrlIsPressedFormatting = "§q";
-	public static String triggerCtrlIsNotPressedFormatting = "§Q";
-	public static String triggerAltIsPressedFormatting = "§t";
-	public static String triggerAltIsNotPressedFormatting = "§T";
-	public static String triggerAnimatedFormattingChar = "§s";
+	public static String triggerShiftIsPressedFormatting = "\00a7p";
+	public static String triggerShiftIsNotPressedFormatting = "\00a7P";
+	public static String triggerCtrlIsPressedFormatting = "\00a7q";
+	public static String triggerCtrlIsNotPressedFormatting = "\00a7Q";
+	public static String triggerAltIsPressedFormatting = "\00a7t";
+	public static String triggerAltIsNotPressedFormatting = "\00a7T";
+	public static String triggerAnimatedFormattingChar = "\00a7s";
 	public static boolean enableFormattingDebugger = false;
 	
 	//defaults block
@@ -193,17 +194,17 @@ public class Reference {
 	
 	//INTERNAL
 	//sources
-	public static LinkedHashMap<String, JMaterial> materials = new LinkedHashMap<String, JMaterial>(); //materialKey, material
-	public static LinkedHashMap<String, JType> types = new LinkedHashMap<String, JType>(); //typeKey, type
-	public static LinkedHashMap<String, JMiscBlock> miscBlockMap = new LinkedHashMap<String, JMiscBlock>(); //blockKey, block
-	public static LinkedHashMap<String, JMiscFluid> miscFluidMap = new LinkedHashMap<String, JMiscFluid>(); //fluidKey, fluid
-	public static LinkedHashMap<String, JMiscItem> miscItemMap = new LinkedHashMap<String, JMiscItem>(); //itemKey, item
-	public static HashMap<String, JOreVariant> oreVariants = new HashMap<String, JOreVariant>(); //oreVariantKey, oreVariant
-	public static HashMap<String, JOreVein> oreVeins = new HashMap<String, JOreVein>(); //oreVeinKey, oreVein
+	public static Map<String, JMaterial> materials = new LinkedHashMap<String, JMaterial>(); //materialKey, material
+	public static Map<String, JType> types = new LinkedHashMap<String, JType>(); //typeKey, type
+	public static Map<String, JMiscBlock> miscBlockMap = new LinkedHashMap<String, JMiscBlock>(); //blockKey, block
+	public static Map<String, JMiscFluid> miscFluidMap = new LinkedHashMap<String, JMiscFluid>(); //fluidKey, fluid
+	public static Map<String, JMiscItem> miscItemMap = new LinkedHashMap<String, JMiscItem>(); //itemKey, item
+	public static Map<String, JOreVariant> oreVariants = new HashMap<String, JOreVariant>(); //oreVariantKey, oreVariant
+	public static Map<String, JOreVein> oreVeins = new HashMap<String, JOreVein>(); //oreVeinKey, oreVein
 	//mappings
-	public static HashMap<Short, String> idMaterialMapping = new HashMap<Short, String>(); //meta, materialKey
-	public static HashMap<Short, String> idMiscMapping = new HashMap<Short, String>(); //meta, miscItem
-	public static HashMap<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore
+	public static Map<Short, String> idMaterialMapping = new HashMap<Short, String>(); //meta, materialKey
+	public static Map<Short, String> idMiscMapping = new HashMap<Short, String>(); //meta, miscItem
+	public static Map<IBlockState, HashMap<String, Block>> stateOreMapping = new HashMap<IBlockState, HashMap<String, Block>>(); //blockState, materialKey, ore
 	//registered objects lists
 	public static List<MetaBlock> metaBlocks = new ArrayList<MetaBlock>();
 	public static List<MetaItem> metaItems = new ArrayList<MetaItem>();

@@ -7,51 +7,52 @@ import java.util.Map.Entry;
 import glowredman.modularmaterials.object.JTexture;
 
 public class Templates {
-	
+
 	public static String getTemplateAsString(String[] template) {
 		String out = template[0];
-		for(int i = 1; i < template.length; i++) {
+		for (int i = 1; i < template.length; i++) {
 			out += '\n' + template[i];
 		}
 		return out;
 	}
-	
+
 	public static String getItemModelByJTexture(JTexture texture) {
-		if(texture.textures.size() == 0) {
+		if (texture.textures.size() == 0) {
 			return getTemplateAsString(MODEL_MISCITEM).replace("%p", texture.parent).replace("%t\n", "");
 		} else {
 			String textures = "";
 			int entryCounter = 1;
 			Entry<String, String> lastEntry = null;
-			
-			for(Entry<String, String> entry : texture.textures.entrySet()) {
-				
-				//the last line must have no ,\n at the end so the normal procedure can not be applied. Because of that, the HashMaps last entry is saved for later.
-				if(entryCounter >= texture.textures.size()) {
+
+			for (Entry<String, String> entry : texture.textures.entrySet()) {
+
+				// the last line must have no ,\n at the end so the normal procedure can not be
+				// applied. Because of that, the HashMaps last entry is saved for later.
+				if (entryCounter >= texture.textures.size()) {
 					lastEntry = entry;
 					break;
 				} else {
 					String key = entry.getKey();
 					String resLoc = entry.getValue();
 					textures = textures + "\t\t\"" + key + "\": \"" + resLoc + "\",\n";
-					
+
 					entryCounter++;
 				}
 			}
-			
-			//last line
+
+			// last line
 			String key = lastEntry.getKey();
 			String resLoc = lastEntry.getValue();
 			textures = textures + "\t\t\"" + key + "\": \"" + resLoc + '"';
-			
+
 			return getTemplateAsString(MODEL_MISCITEM).replace("%p", texture.parent).replace("%t", textures);
 		}
 	}
-	
+
 	public static String getBlockModelByJTexture(JTexture texture) {
 		return getItemModelByJTexture(texture);
 	}
-	
+
 	public static final String[] BLOCKSTATE_BLOCK = new String[] {
 			"{",
 			"\t\"variants\": {",
@@ -61,7 +62,7 @@ public class Templates {
 			"\t}",
 			"}"
 	};
-	
+
 	public static final String[] BLOCKSTATE_MISCBLOCK = new String[] {
 			"{",
 			"\t\"variants\": {",
@@ -71,7 +72,7 @@ public class Templates {
 			"\t}",
 			"}"
 	};
-	
+
 	public static final String[] BLOCKSTATE_ORE = new String[] {
 			"{",
 			"\t\"variants\": {",
@@ -81,7 +82,7 @@ public class Templates {
 			"\t}",
 			"}"
 	};
-	
+
 	public static final String[] MODEL_ITEM = new String[] {
 			"{",
 			"\t\"parent\": \"item/generated\",",
@@ -91,7 +92,7 @@ public class Templates {
 			"\t}",
 			"}"
 	};
-	
+
 	public static final String[] MODEL_MISCITEM = new String[] {
 			"{",
 			"\t\"parent\": \"%p\",",
@@ -100,7 +101,7 @@ public class Templates {
 			"\t}",
 			"}"
 	};
-	
+
 	public static final String[] MODEL_MISCBLOCK = new String[] {
 			"{",
 			"\t\"parent\": \"block/block\",",
@@ -137,7 +138,7 @@ public class Templates {
 			"\t]",
 			"}"
 	};
-	
+
 	public static final String[] MODEL_BLOCK = new String[] {
 			"{",
 			"\t\"parent\": \"block/block\",",
@@ -174,7 +175,7 @@ public class Templates {
 			"\t]",
 			"}"
 	};
-	
+
 	public static final String[] MODEL_ORE = new String[] {
 			"{",
 			"\t\"parent\": \"block/block\",",

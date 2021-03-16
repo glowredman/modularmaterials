@@ -13,7 +13,6 @@ import glowredman.modularmaterials.object.JMaterial;
 import glowredman.modularmaterials.util.FormattingHandler;
 import glowredman.modularmaterials.util.MaterialHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -24,31 +23,31 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MetaItem extends Item {
-	
+
 	public String type;
-	
+
 	public MetaItem(String type) {
 		this.type = type;
 		this.setHasSubtypes(true);
 		this.setRegistryName(MODID, type);
 		this.setCreativeTab(TAB_ITEMS);
-		for(JMaterial material : materials.values()) {
-			if(enableAll || (material.isTypeEnabled(type) && material.enabled)) {
+		for (JMaterial material : materials.values()) {
+			if (enableAll || (material.isTypeEnabled(type) && material.enabled)) {
 				proxy.registerItemRenderer(this, material.texture + '/' + type, material.meta);
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean isBeaconPayment(ItemStack stack) {
 		return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).isBeaconPayment;
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		try {
 			JMaterial material = MaterialHandler.getMaterialFromID((short) stack.getMetadata());
-			if((enableAll || (material.enabled && material.isTypeEnabled(type))) && material.tooltip != null) {
+			if ((enableAll || (material.enabled && material.isTypeEnabled(type))) && material.tooltip != null) {
 				for (String line : material.tooltip) {
 					try {
 						String s = FormattingHandler.formatTooltipLine(line);
@@ -63,31 +62,33 @@ public class MetaItem extends Item {
 				}
 			}
 		} catch (Exception e) {
-		} 
+		}
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		if(tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
-			for(JMaterial material : materials.values()) {
+		if (tab.equals(TAB_ITEMS) || tab.equals(CreativeTabs.SEARCH)) {
+			for (JMaterial material : materials.values()) {
 				try {
-					if(enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {
+					if (enableAll || (material.enabled && material.isTypeEnabled(type) && types.get(type).enabled)) {
 						items.add(new ItemStack(this, 1, material.meta));
 					}
 				} catch (Exception e) {
-					logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \"" + type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in " + CONFIGNAME_CORE + '.');
+					logger.warn(CONFIGNAME_TYPES + " does not contain information for the type \"" + type + "\"! Add \""
+							+ type + "\" to " + CONFIGNAME_TYPES + " or enable 'suppressMissingTypeWarnings' in "
+							+ CONFIGNAME_CORE + '.');
 				}
 			}
 		}
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		short meta = (short) stack.getMetadata();
 		String s;
 		try {
 			JMaterial material = MaterialHandler.getMaterialFromID(meta);
-			if(enableAll || (material.enabled && material.isTypeEnabled(type))) {
+			if (enableAll || (material.enabled && material.isTypeEnabled(type))) {
 				s = "item." + MODID + '.' + type + '.' + idMaterialMapping.get(meta);
 			} else {
 				s = "item." + MODID + ".debug";
@@ -97,18 +98,14 @@ public class MetaItem extends Item {
 		}
 		return s;
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void registerColors() {
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new IItemColor() {
-			
-			@Override
-			public int colorMultiplier(ItemStack stack, int tintIndex) {
-				if(tintIndex == 0) {
-					return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).color.getARGB();
-				} else {
-					return 0xFFFFFF;
-				}
+		Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+			if (tintIndex == 0) {
+				return MaterialHandler.getMaterialFromID((short) stack.getMetadata()).color.getARGB();
+			} else {
+				return 0xFFFFFF;
 			}
 		}, this);
 	}
