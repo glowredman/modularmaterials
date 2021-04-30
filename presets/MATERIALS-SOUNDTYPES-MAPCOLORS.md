@@ -109,7 +109,7 @@
 |**DIAMOND**|31|[#4FBCB7](https://image-color.com/color-picker.html#4FBCB7)|
 |**LAPIS**|32|[#3F6EDC](https://image-color.com/color-picker.html#3F6EDC)|
 |**EMERALD**|33|[#00BB32](https://image-color.com/color-picker.html#00BB32)|
-|**OBSIDIAN**|34|[#6F4A2A](https://image-color.com/color-picker.html#6F4A2A)|
+|**OBSIDIAN**|34|[#6F4A2A](https://image-color.com/color-picker.html#5CDBD5)|
 |**NETHERRACK**|35|[#600100](https://image-color.com/color-picker.html#600100)|
 |**WHITE_CLAY**|36|[#B4988A](https://image-color.com/color-picker.html#B4988A)|
 |**ORANGE_CLAY**|37|[#89461F](https://image-color.com/color-picker.html#89461F)|
