@@ -20,5 +20,6 @@ build
 # other
 eclipse
 run
-libs
-logo.xcf
+
+# Files from Forge MDK
+forge*changelog.txt
