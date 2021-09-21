@@ -19,6 +19,7 @@ public class ModularMaterials {
 	
 	public ModularMaterials() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		MinecraftForge.EVENT_BUS.register(new MM_Commands());
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ClientHandler());
 		});
