@@ -1,10 +1,13 @@
 package glowredman.modularmaterials;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
+import glowredman.modularmaterials.item.MetaItem;
 
 public class MM_Reference {
 	
@@ -24,5 +27,6 @@ public class MM_Reference {
 	
 	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
+	public static final List<MetaItem> ITEMS = new LinkedList<>();
 
 }
