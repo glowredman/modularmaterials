@@ -1,5 +1,11 @@
 package glowredman.modularmaterials;
 
+import java.util.Map;
+
+import glowredman.modularmaterials.data.JSONHandler;
+import glowredman.modularmaterials.data.object.MM_Material;
+import glowredman.modularmaterials.data.object.MM_Type;
+
 public class MM_Reference {
 	
 	//Mod
@@ -14,5 +20,9 @@ public class MM_Reference {
 	public static String triggerAltIsNotPressedFormatting = "\u00a7T";
 	public static String triggerAnimatedFormattingChar = "\u00a7s";
 	public static boolean enableFormattingDebugger = false;
+	
+	
+	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();
+	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
 
 }
