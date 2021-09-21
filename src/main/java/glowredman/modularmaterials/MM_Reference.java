@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
@@ -24,9 +25,17 @@ public class MM_Reference {
 	public static String triggerAnimatedFormattingChar = "\u00a7s";
 	public static boolean enableFormattingDebugger = false;
 	
+	//Config
+	public static boolean enableAll = false;
+	public static boolean oresInheritHardness = true;
+	public static boolean oresInheritHarvestLevel = false;
+	public static boolean oresInheritLightLevel = false;
+	public static boolean oresInheritResistance = true;
+	
 	
 	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
 	public static final List<MetaItem> ITEMS = new LinkedList<>();
+	public static final List<MetaBlock> BLOCKS = new LinkedList<>();
 
 }
