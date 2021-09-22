@@ -47,12 +47,10 @@ Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/mod
         - [ ] Density
         - [ ] Viscosity
         - [ ] Light Level
-    - [ ] Item-specific:
+    - [x] Item-specific:
       - [x] If the Item is Fire Resistant (like Netherite Tools)
       - [x] If the Item has a holographic Effect (like enchanted Items)
-      - [ ] If the Item can be used as a Currency for Piglins
       - [x] Lifespan (time it takes until the Item despawns if left on the Ground)
-      - [ ] If holding the Item makes Piglins neutral
       - [x] Rarity (what color the name has)
       - [x] Tags
     - [ ] Ore-specific:

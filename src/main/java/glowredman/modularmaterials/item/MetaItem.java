@@ -53,22 +53,14 @@ public class MetaItem extends Item {
 		return material.item.isFoil;
 	}
 	
-	@Override
-	public boolean isPiglinCurrency(ItemStack stack) {
-		return material.item.isPiglinCurrency;
-	}
-	
-	@Override
-	public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-		return material.item.makesPiglinsNeutral;
-	}
-	
 	public String getTypeIdentifier() {
-		return this.getRegistryName().getPath().split(".", 2)[0];
+		String s = this.getRegistryName().getPath();
+		return s.substring(0, s.indexOf("."));
 	}
 	
 	public String getMaterialIdentifier() {
-		return this.getRegistryName().getPath().split(".", 2)[1];
+		String s = this.getRegistryName().getPath();
+		return s.substring(s.indexOf(".") + 1);
 	}
 	
 	public String getLocalizedName() {
