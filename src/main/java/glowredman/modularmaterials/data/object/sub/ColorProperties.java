@@ -7,7 +7,7 @@ public class ColorProperties {
 	public int red = 255;
 	public int green = 255;
 	public int blue = 255;
-	public int alpha = 0;
+	public int alpha = 255;
 	
 	public ColorProperties() {}
 	
@@ -25,11 +25,11 @@ public class ColorProperties {
 	}
 	
 	public int getARGB() {
-		return alpha << 24 + red << 16 + green << 8 + blue;
+		return alpha << 24 | red << 16 | green << 8 | blue;
 	}
 	
 	public int getRGB() {
-		return red << 16 + green << 8 + blue;
+		return red << 16 | green << 8 | blue;
 	}
 	
 	@Override

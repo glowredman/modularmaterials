@@ -37,6 +37,14 @@ public class MM_Material {
 				name, FormattingHandler.arrayToString(tagNames), enabled, FormattingHandler.listToString(enabledTypes), color, burnTime, state, texture, tooltip, block, fluid, item, ore);
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null || !(obj instanceof MM_Material)) {
+			return false;
+		}
+		return this.name.equals(((MM_Material) obj).name);
+	}
+	
 	public static MM_Material random() {
 		MM_Material m = new MM_Material();
 		m.block = BlockProperties.random();
