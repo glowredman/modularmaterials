@@ -2,51 +2,73 @@
 
 Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
 =================
-Requires Resource Loader by Lumien231 *only on client-side!* ([GitHub](https://github.com/lumien231/Resource-Loader) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/resource-loader))
 
 #### Features
 
- - [x] Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json` (only Items are already implemented)
-    - [x] Category (If the Type should be an Item, Block, Fluid or Ore)
-    - [x] OreDictionary Prefix (for Example the "ingot" of "ingotCopper")
-    - [x] Unit Value (how much the Type should be "worth", see below)
-    - [x] Localization-Syntax
- - [x] Per-Material Tweaks (`./config/modularmaterials/materials.json`):
-    - [x] Block Hardness
-    - [x] Block Harvest-Level
-    - [x] Block Light-Level
-    - [x] Block Resistance
-    - [x] Boiling Temperature
-    - [x] Color (alpha, red, green, blue)
-    - [x] Ability to disable the Material completely
-    - [x] Ability to disable the Material for certain Types
-    - [x] Gas Density
-    - [x] Gas Light-Level
-    - [x] Gas Viscosity
-    - [x] If the Material can be used as a Beacon-Base
-    - [x] If the Material can be used as a Beacon-Payment
-    - [x] Liquid Density
-    - [x] Liquid Light-Level
-    - [x] Liquid Viscosity
-    - [x] Melting Temperature
-    - [x] Meta Value
-    - [x] Name
-    - [x] OreDictionary Entries
-    - [x] Ore Hardness
-    - [x] Ore Harvest-Level
-    - [x] Ore Light-Level
-    - [x] Ore Resistance
-    - [x] State of Matter
-    - [x] Temperature
-    - [x] Texture
-    - [x] Tooltip
- - [x] Unit-based OreDictionary: each Type has a value associated with it (for Example Ingots, Plates, Dusts 1u, Nuggets 1/9u or Blocks 9u). This allows for more precise Inputs, because you could, for Example, set "1uCopper" as an Input for an Alloy Smelter and it would accept all Copper Ingots, Dusts, Plates, etc. This makes sense, because in this case it doesn't really matter what Shape or Form the Items have, as long as they are the same physical Amount
- - [x] Automatic creation of Lang- and Model-Files
- - [x] Support for custom Textures/Texture Sets
- - [x] Custom Tooltip-Formatting:
-    - [x] Animated Segments
-    - [x] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
- - [x] GregTech 5-like Ore-Generation
- - [x] Option to disable Vanilla Ore-Generation
+ - [ ] Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json`
+    - [ ] Enabled / Disabled
+    - [ ] Name
+    - [ ] Category (Item/Block/Fluid/Ore)
+    - [ ] Burn Time Multiplier
+    - [ ] If Items of this Type should have Tooltips
+    - [ ] Name Syntax
+    - [ ] Tags
+ - [ ] Per-Material Tweaks (`./config/modularmaterials/materials.json`):
+    - [ ] Name
+    - [ ] Tag Names
+    - [ ] Enabled / Disabled
+    - [ ] Enabled for specific Types
+    - [ ] Color (Red, Green, Blue, Alpha)
+    - [ ] Burn Time
+    - [ ] State
+    - [ ] Texture
+    - [ ] Tooltip
+    - [ ] Block-specific:
+      - [ ] Enchantment Power Bonus
+      - [ ] Fire Spread Speed
+      - [ ] Flammability
+      - [ ] Friction
+      - [ ] Hardness
+      - [ ] Jump Factor
+      - [ ] Light Level
+      - [ ] Map Color
+      - [ ] Material
+      - [ ] If a Tool is required to break this Block
+      - [ ] Blast Resistance
+      - [ ] Sound
+      - [ ] Speed Factor
+      - [ ] If the Block is sticky (like Honey or Slime Blocks)
+      - [ ] Tags
+    - [ ] Fluid-specific:
+      - [ ] Boiling Temperature
+      - [ ] Melting Temperature
+      - [ ] Current Temperature
+      - [ ] Type-specific:
+        - [ ] Density
+        - [ ] Viscosity
+        - [ ] Light Level
+    - [ ] Item-specific:
+      - [ ] If the Item is Fire Resistant (like Netherite Tools)
+      - [ ] If the Item has a holographic Effect (like enchanted Items)
+      - [ ] If the Item can be used as a Currency for Piglins
+      - [ ] Lifespan (time it takes until the Item despawns if left on the Ground)
+      - [ ] If holding the Item makes Piglins neutral
+      - [ ] Rarity (what color the name has)
+      - [ ] Tags
+    - [ ] Ore-specific:
+      - [ ] Hardness
+      - [ ] Light level
+      - [ ] Blast Resistance
+      - [ ] Tags
+ - [ ] Unit-based Tags: each Type has a value associated with it (for Example Ingots, Plates, Dusts 1u, Nuggets 1/9u or Blocks 9u). This allows for more precise Inputs, because you could, for Example, set "1uCopper" as an Input for an Alloy Smelter and it would accept all Copper Ingots, Dusts, Plates, etc. This makes sense, because in this case it doesn't really matter what Shape or Form the Items have, as long as they are the same physical Amount
+ - [ ] Automatic creation of Lang-, Blockstate-, Tag- and Model-Files
+ - [ ] Support for custom Textures/Texture Sets
+ - [ ] Custom Tooltip-Formatting:
+    - [ ] Animated Segments
+    - [ ] Ability to show the Line only when SHIFT, CTRL or ALT is pressed (or only when they are not pressed)
+    - [ ] Customize Background & Border Colors
+ - [ ] GregTech 5-like Ore-Generation
+ - [ ] GT:NH-like Ore-Generation
+ - [ ] Option to disable Vanilla Ore-Generation
  - [ ] [Presets](presets/) for Types, Ores and Materials
  - [ ] Wiki
