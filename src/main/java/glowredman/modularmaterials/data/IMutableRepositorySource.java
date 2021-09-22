@@ -1,7 +1,8 @@
 package glowredman.modularmaterials.data;
 
-import net.minecraft.server.packs.repository.RepositorySource;
 import org.spongepowered.asm.mixin.Unique;
+
+import net.minecraft.server.packs.repository.RepositorySource;
 
 public interface IMutableRepositorySource {
 
