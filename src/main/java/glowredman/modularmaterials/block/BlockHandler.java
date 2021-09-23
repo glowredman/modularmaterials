@@ -1,14 +1,53 @@
 package glowredman.modularmaterials.block;
 
+import java.util.Map.Entry;
+
+import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.data.LootTableHandler;
+import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
+import glowredman.modularmaterials.data.object.MM_Type;
+import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.data.object.sub.ColorProperties;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class BlockHandler {
+	
+	@SubscribeEvent
+	public void registerBlocks(Register<Block> event) {
+		long time = System.currentTimeMillis();
+		
+		ModularMaterials.info("Registering blocks...");
+		
+		for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
+			String typeName = eType.getKey();
+			MM_Type type = eType.getValue();
+			if(type.category == Category.BLOCK && (type.enabled || MM_Reference.enableAll)) {
+				for(Entry<String, MM_Material> eMaterial : MM_Reference.MATERIALS.entrySet()) {
+					String materialName = eMaterial.getKey();
+					MM_Material material = eMaterial.getValue();
+					if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.enableAll) {
+						MetaBlock block = new MetaBlock(material, type, materialName);
+						block.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
+						event.getRegistry().register(block);
+						MM_Reference.BLOCKS.add(block);
+					}
+				}
+			}
+		}
+		
+		ModularMaterials.info("Registered " + MM_Reference.BLOCKS.size() + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
+		
+		TagHandler.generateBlockTags();
+		LootTableHandler.generateBlockDrops();
+	}
 	
 	public static Properties getBlockProperties(MM_Material material, String uniqueMM_MaterialName) {
 		Properties properties = Properties.of(getMaterial(material.block.material, uniqueMM_MaterialName));
@@ -132,7 +171,7 @@ public class BlockHandler {
 		case "AUTO":
 			int index = 0;
 			int distance = distanceSq(material.color, MaterialColor.MATERIAL_COLORS[0].col);
-			for(int i = 1; i < MaterialColor.MATERIAL_COLORS.length; i++) {
+			for(int i = 1; i < 62; i++) {
 				int currentDistance = distanceSq(material.color, MaterialColor.MATERIAL_COLORS[i].col);
 				if(currentDistance < distance) {
 					index = i;

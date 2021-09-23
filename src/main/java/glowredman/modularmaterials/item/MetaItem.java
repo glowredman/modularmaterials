@@ -28,8 +28,8 @@ public class MetaItem extends Item {
 	}
 	
 	@Override
-	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flag) {
-		if(type.hasTooltip) material.createTooltip(tooltip);
+	public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+		if(type.hasTooltip) material.createTooltip(pTooltip);
 	}
 	
 	@Override
@@ -48,7 +48,7 @@ public class MetaItem extends Item {
 	}
 	
 	@Override
-	public boolean isFoil(ItemStack stack) {
+	public boolean isFoil(ItemStack pStack) {
 		return material.item.isFoil;
 	}
 	

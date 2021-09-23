@@ -1,9 +1,15 @@
 package glowredman.modularmaterials.block;
 
+import java.util.List;
+
+import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +44,25 @@ public class MetaBlock extends Block {
 	@Override
 	public boolean isStickyBlock(BlockState state) {
 		return material.block.sticky;
+	}
+	
+	@Override
+	public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+		if(type.hasTooltip) material.createTooltip(pTooltip);
+	}
+	
+	public String getTypeIdentifier() {
+		String s = this.getRegistryName().getPath();
+		return s.substring(0, s.indexOf("."));
+	}
+	
+	public String getMaterialIdentifier() {
+		String s = this.getRegistryName().getPath();
+		return s.substring(s.indexOf(".") + 1);
+	}
+	
+	public String getLocalizedName() {
+		return type.nameSyntax.replace(TagHandler.PARAM_MATERIAL, material.name);
 	}
 
 }

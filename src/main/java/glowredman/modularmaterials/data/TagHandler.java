@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.commons.io.FileUtils;
-
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.object.sub.TagFile;
 import glowredman.modularmaterials.item.MetaItem;
+import glowredman.modularmaterials.util.FileHelper;
 import net.minecraft.resources.ResourceLocation;
 
 public class TagHandler {
@@ -127,18 +127,121 @@ public class TagHandler {
 		
 		ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
 	}
+
+	public static void generateBlockTags() {
+		long time = System.currentTimeMillis();
+
+		cleanDataDir();
+		
+		ModularMaterials.info("Generating block tags...");
+		
+		Map<String, List<String>> tags = new HashMap<>();
+		
+		for(MetaBlock block : MM_Reference.BLOCKS) {
+			
+			String typeIdentifier = block.getTypeIdentifier();
+			
+			for(String s : block.material.block.typeEnabledTags) {
+				
+				//which types?
+				//if no type filters are given -> all types allowed
+				if(s.contains(FILTER_TYPE_START) && s.contains(FILTER_TYPE_END)) {
+					boolean forThisType = false;
+					int start = s.indexOf(FILTER_TYPE_START);
+					int end = s.indexOf(FILTER_TYPE_END);
+					for(String type : s.substring(start, end - 1).split(",")) {
+						if(type.equals(typeIdentifier)) {
+							forThisType = true;
+							break;
+						}
+					}
+					s = s.substring(end);
+					if(!forThisType || !block.type.enableTags.contains(s)) continue;
+				}
+				
+				s = s.replace(PARAM_TYPE, block.type.tagName);
+				
+				for(String name : block.material.tagNames) {
+					String finalTag = s.replace(PARAM_MATERIAL, name);
+					addItemToTag(tags, finalTag, block.getRegistryName().toString());
+				}
+				
+			}
+			
+			for(String s : block.material.block.tags) {
+				
+				//which types?
+				//if no type filters are given -> all types allowed
+				if(s.contains(FILTER_TYPE_START) && s.contains(FILTER_TYPE_END)) {
+					boolean forThisType = false;
+					int start = s.indexOf(FILTER_TYPE_START);
+					int end = s.indexOf(FILTER_TYPE_END);
+					for(String type : s.substring(start, end - 1).split(",")) {
+						if(type.equals(typeIdentifier)) {
+							forThisType = true;
+							break;
+						}
+					}
+					s = s.substring(end);
+					if(!forThisType) continue;
+				}
+				
+				s = s.replace(PARAM_TYPE, block.type.tagName);
+				
+				for(String name : block.material.tagNames) {
+					String finalTag = s.replace(PARAM_MATERIAL, name);
+					addItemToTag(tags, finalTag, block.getRegistryName().toString());
+				}
+				
+			}
+			
+			for(String s : block.type.tags) {
+				s = s.replace(PARAM_TYPE, block.type.tagName);
+				
+				for(String name : block.material.tagNames) {
+					String finalTag = s.replace(PARAM_MATERIAL, name);
+					addItemToTag(tags, finalTag, block.getRegistryName().toString());
+				}
+				
+			}
+			
+		}
+		
+		for(Entry<String, List<String>> e : tags.entrySet()) {
+			ResourceLocation tag = new ResourceLocation(e.getKey());
+			
+			File fileItems = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/items/" + tag.getPath() + ".json");
+			File fileBlocks = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/blocks/" + tag.getPath() + ".json");
+			
+			if(!fileItems.exists()) {
+				try {
+					fileItems.getParentFile().mkdirs();
+					BufferedWriter w = new BufferedWriter(new FileWriter(fileItems, StandardCharsets.UTF_8));
+					w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
+					w.close();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			if(!fileBlocks.exists()) {
+				try {
+					fileBlocks.getParentFile().mkdirs();
+					BufferedWriter w = new BufferedWriter(new FileWriter(fileBlocks, StandardCharsets.UTF_8));
+					w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
+					w.close();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
+	}
 	
 	private static void cleanDataDir() {
-		if(MM_Reference.cleanDataDir) {
-			MM_Reference.cleanDataDir = false;
-			try {
-				long time = System.currentTimeMillis();
-				FileUtils.deleteDirectory(ResourceLoader.DATA_DIR);
-				ModularMaterials.info("Cleaned \"" + ResourceLoader.DATA_DIR.getPath() + "\" in " + (System.currentTimeMillis() - time) + "ms.");
-			} catch (Exception e) {
-				ModularMaterials.error("An Error occured while cleaning \"" + ResourceLoader.DATA_DIR.getPath() + "\":");
-				e.printStackTrace();
-			}
+		if(MM_Reference.overrideTagFiles) {
+			MM_Reference.overrideTagFiles = false;
+			FileHelper.cleanDir(new File(ResourceLoader.DATA_DIR, "data/" + MM_Reference.MODID + "/tags"));
 		}
 	}
 	

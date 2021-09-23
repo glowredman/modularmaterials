@@ -23,22 +23,22 @@ Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/mod
     - [x] State
     - [x] Texture
     - [x] Tooltip
-    - [ ] Block-specific:
-      - [ ] Enchantment Power Bonus
-      - [ ] Fire Spread Speed
-      - [ ] Flammability
-      - [ ] Friction
-      - [ ] Hardness
-      - [ ] Jump Factor
-      - [ ] Light Level
-      - [ ] Map Color
-      - [ ] Material
-      - [ ] If a Tool is required to break this Block
-      - [ ] Blast Resistance
-      - [ ] Sound
-      - [ ] Speed Factor
-      - [ ] If the Block is sticky (like Honey or Slime Blocks)
-      - [ ] Tags
+    - [x] Block-specific:
+      - [x] Enchantment Power Bonus
+      - [x] Fire Spread Speed
+      - [x] Flammability
+      - [x] Friction
+      - [x] Hardness
+      - [x] Jump Factor
+      - [x] Light Level
+      - [x] Map Color
+      - [x] Material
+      - [x] If a Tool is required to break this Block
+      - [x] Blast Resistance
+      - [x] Sound
+      - [x] Speed Factor
+      - [x] If the Block is sticky (like Honey or Slime Blocks)
+      - [x] Tags
     - [ ] Fluid-specific:
       - [ ] Boiling Temperature
       - [ ] Melting Temperature

@@ -10,8 +10,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
-
 import com.google.common.reflect.TypeToken;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -19,15 +17,18 @@ import com.google.gson.JsonSyntaxException;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.Templates;
 import glowredman.modularmaterials.item.MetaItem;
+import glowredman.modularmaterials.util.FileHelper;
 
 public class AssetHandler {
 	
 	static void execute() {
 		generateModelFiles();
+		generateBlockstateFiles();
 		generateLangFile();
 	}
 	
@@ -36,15 +37,72 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
-		cleanModelDir();
+		if(MM_Reference.overrideModelFiles) {
+			FileHelper.cleanDir(new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models"));
+		}
+		
+		File models_item = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/item");
+		models_item.mkdirs();
 		
 		for(MetaItem item : MM_Reference.ITEMS) {
-			File modelFile = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/item/" + item.getRegistryName().getPath() + ".json");
+			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
 			try {
-				modelFile.getParentFile().mkdirs();
 				if(!modelFile.exists()) {
 					BufferedWriter w = new BufferedWriter(new FileWriter(modelFile, StandardCharsets.UTF_8));
 					w.write(Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
+					w.close();
+					count++;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		for(MetaBlock block : MM_Reference.BLOCKS) {
+			String path = block.getRegistryName().getPath();
+			String type = block.getTypeIdentifier();
+			File modelFileInventory = new File(models_item, path + ".json");
+			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + block.material.texture + "/" + type + ".json");
+			try {
+				if(!modelFileInventory.exists()) {
+					BufferedWriter w = new BufferedWriter(new FileWriter(modelFileInventory, StandardCharsets.UTF_8));
+					w.write(Templates.MODEL_BLOCK.format(block.material.texture, type));
+					w.close();
+					count++;
+				}
+				modelFileNormal.getParentFile().mkdirs();
+				if(!modelFileNormal.exists()) {
+					BufferedWriter w = new BufferedWriter(new FileWriter(modelFileNormal, StandardCharsets.UTF_8));
+					w.write(Templates.MODEL_BLOCK.format(block.material.texture, type));
+					w.close();
+					count++;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		ModularMaterials.info("Done! Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
+	}
+	
+	private static void generateBlockstateFiles() {
+		ModularMaterials.info("Generating model files...");
+		long time = System.currentTimeMillis();
+		int count = 0;
+		
+		if(MM_Reference.overrideBlockstateFiles) {
+			FileHelper.cleanDir(new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/blockstates"));
+		}
+		
+		File blockstates = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/blockstates");
+		blockstates.mkdirs();
+		
+		for(MetaBlock block : MM_Reference.BLOCKS) {
+			File blockstateFile = new File(blockstates, block.getRegistryName().getPath() + ".json");
+			try {
+				if(!blockstateFile.exists()) {
+					BufferedWriter w = new BufferedWriter(new FileWriter(blockstateFile, StandardCharsets.UTF_8));
+					w.write(Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
 					w.close();
 					count++;
 				}
@@ -78,6 +136,13 @@ public class AssetHandler {
 					}
 				}
 				
+				for(MetaBlock block : MM_Reference.BLOCKS) {
+					String key = "block." + MM_Reference.MODID + "." + block.getRegistryName().getPath();
+					if(!lang.containsKey(key)) {
+						lang.put(key, block.getLocalizedName());
+					}
+				}
+				
 				langFile.delete();
 				
 				BufferedWriter w = new BufferedWriter(new FileWriter(langFile, StandardCharsets.UTF_8));
@@ -107,20 +172,6 @@ public class AssetHandler {
 				ModularMaterials.info(String.format("Done! Created %d entries in %dms.", lang.size(), System.currentTimeMillis() - time));
 				
 			} catch (JsonIOException | JsonSyntaxException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	private static void cleanModelDir() {
-		if(MM_Reference.overrideModelFiles) {
-			long time = System.currentTimeMillis();
-			File modelDir = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models");
-			try {
-				FileUtils.deleteDirectory(modelDir);
-				ModularMaterials.info("Cleaned \"" + modelDir.getPath() + "\" in " + (System.currentTimeMillis() - time) + "ms.");
-			} catch (Exception e) {
-				ModularMaterials.error("An Error occured while cleaning \"" + modelDir.getPath() + "\":");
 				e.printStackTrace();
 			}
 		}

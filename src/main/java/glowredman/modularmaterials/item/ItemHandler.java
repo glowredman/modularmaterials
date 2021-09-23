@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
@@ -35,6 +36,10 @@ public class ItemHandler {
 					}
 				}
 			}
+		}
+		
+		for(MetaBlock block : MM_Reference.BLOCKS) {
+			event.getRegistry().register(new MetaBlockItem(block));
 		}
 		
 		ModularMaterials.info("Registered " + MM_Reference.ITEMS.size() + " items. Took " + (System.currentTimeMillis() - time) + "ms.");

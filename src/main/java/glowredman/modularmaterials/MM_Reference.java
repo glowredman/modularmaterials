@@ -27,8 +27,12 @@ public class MM_Reference {
 	
 	//Config
 	public static boolean enableAll = false;
-	public static boolean overrideModelFiles = false;
-	public static boolean cleanDataDir = true;
+	public static int commandPermissionLevel = 2;
+	public static boolean overrideModelFiles = true;
+	public static boolean overrideBlockstateFiles = true;
+	public static boolean overrideTagFiles = true;
+	public static boolean overrideLootTableFiles = true;
+	public static boolean blocksHaveFoilEffect = true;
 	public static boolean oresInheritHardness = true;
 	public static boolean oresInheritHarvestLevel = false;
 	public static boolean oresInheritLightLevel = false;

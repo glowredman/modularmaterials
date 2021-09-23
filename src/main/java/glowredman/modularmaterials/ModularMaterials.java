@@ -3,6 +3,7 @@ package glowredman.modularmaterials;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import glowredman.modularmaterials.block.BlockHandler;
 import glowredman.modularmaterials.client.ClientHandler;
 import glowredman.modularmaterials.item.ItemHandler;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,6 +22,7 @@ public class ModularMaterials {
 	public ModularMaterials() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		MinecraftForge.EVENT_BUS.register(new MM_Commands());
+		bus.register(new BlockHandler());
 		bus.register(new ItemHandler());
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ClientHandler());
