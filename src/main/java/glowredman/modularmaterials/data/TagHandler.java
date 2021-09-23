@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.io.FileUtils;
+
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.sub.TagFile;
@@ -21,6 +23,7 @@ public class TagHandler {
 	//Parameters
 	public static final String PARAM_MATERIAL = "<m>";
 	public static final String PARAM_TYPE = "<t>";
+	public static final String PARAM_ORE_TYPE = "<o>"; //Only for Ores!
 	
 	//Filters
 	public static final String FILTER_TYPE_START = "[";
@@ -28,6 +31,8 @@ public class TagHandler {
 	
 	public static void generateItemTags() {
 		long time = System.currentTimeMillis();
+
+		cleanDataDir();
 		
 		ModularMaterials.info("Generating item tags...");
 		
@@ -121,6 +126,20 @@ public class TagHandler {
 		}
 		
 		ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
+	}
+	
+	private static void cleanDataDir() {
+		if(MM_Reference.cleanDataDir) {
+			MM_Reference.cleanDataDir = false;
+			try {
+				long time = System.currentTimeMillis();
+				FileUtils.deleteDirectory(ResourceLoader.DATA_DIR);
+				ModularMaterials.info("Cleaned \"" + ResourceLoader.DATA_DIR.getPath() + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+			} catch (Exception e) {
+				ModularMaterials.error("An Error occured while cleaning \"" + ResourceLoader.DATA_DIR.getPath() + "\":");
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private static void addItemToTag(Map<String, List<String>> map, String tag, String item) {

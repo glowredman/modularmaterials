@@ -10,6 +10,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+
 import com.google.common.reflect.TypeToken;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
@@ -34,14 +36,13 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
+		cleanModelDir();
+		
 		for(MetaItem item : MM_Reference.ITEMS) {
 			File modelFile = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/item/" + item.getRegistryName().getPath() + ".json");
 			try {
 				modelFile.getParentFile().mkdirs();
-				if(!modelFile.exists() || MM_Reference.overrideModelFiles) {
-					if(modelFile.exists()) {
-						modelFile.delete();
-					}
+				if(!modelFile.exists()) {
 					BufferedWriter w = new BufferedWriter(new FileWriter(modelFile, StandardCharsets.UTF_8));
 					w.write(Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
 					w.close();
@@ -106,6 +107,20 @@ public class AssetHandler {
 				ModularMaterials.info(String.format("Done! Created %d entries in %dms.", lang.size(), System.currentTimeMillis() - time));
 				
 			} catch (JsonIOException | JsonSyntaxException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private static void cleanModelDir() {
+		if(MM_Reference.overrideModelFiles) {
+			long time = System.currentTimeMillis();
+			File modelDir = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models");
+			try {
+				FileUtils.deleteDirectory(modelDir);
+				ModularMaterials.info("Cleaned \"" + modelDir.getPath() + "\" in " + (System.currentTimeMillis() - time) + "ms.");
+			} catch (Exception e) {
+				ModularMaterials.error("An Error occured while cleaning \"" + modelDir.getPath() + "\":");
 				e.printStackTrace();
 			}
 		}

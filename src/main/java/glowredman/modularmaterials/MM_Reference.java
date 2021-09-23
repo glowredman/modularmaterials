@@ -28,6 +28,7 @@ public class MM_Reference {
 	//Config
 	public static boolean enableAll = false;
 	public static boolean overrideModelFiles = false;
+	public static boolean cleanDataDir = true;
 	public static boolean oresInheritHardness = true;
 	public static boolean oresInheritHarvestLevel = false;
 	public static boolean oresInheritLightLevel = false;

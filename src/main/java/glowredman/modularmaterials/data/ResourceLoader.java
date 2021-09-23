@@ -16,8 +16,8 @@ import net.minecraft.server.packs.repository.RepositorySource;
 
 public class ResourceLoader implements RepositorySource {
 
-	public static final File DATA_DIR = new File(JSONHandler.CONFIG_DIR, "generated/data");
-	public static final File RESOURCES_DIR = new File(JSONHandler.CONFIG_DIR, "generated/resources");
+	public static final File DATA_DIR = new File(JSONHandler.CONFIG_DIR, "datapack");
+	public static final File RESOURCES_DIR = new File(JSONHandler.CONFIG_DIR, "resourcepack");
 	
 	private final boolean data;
 	
