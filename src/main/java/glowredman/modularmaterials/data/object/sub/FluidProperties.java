@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 public class FluidProperties {
 	
@@ -18,9 +18,9 @@ public class FluidProperties {
 	
 	public static FluidProperties random() {
 		FluidProperties fluid = new FluidProperties();
-		fluid.boilingTemperature = XSTR_INSTANCE.nextInt(Integer.MAX_VALUE);
-		fluid.meltingTemperature = XSTR_INSTANCE.nextInt(Integer.MAX_VALUE - fluid.boilingTemperature);
-		fluid.currentTemperature = XSTR_INSTANCE.nextInt(Integer.MAX_VALUE);
+		fluid.boilingTemperature = RAND.nextInt(Integer.MAX_VALUE);
+		fluid.meltingTemperature = RAND.nextInt(Integer.MAX_VALUE - fluid.boilingTemperature);
+		fluid.currentTemperature = RAND.nextInt(Integer.MAX_VALUE);
 		fluid.gas = StateBasedProperties.random();
 		fluid.liquid = StateBasedProperties.random();
 		return fluid;
@@ -39,9 +39,9 @@ public class FluidProperties {
 		
 		public static StateBasedProperties random() {
 			StateBasedProperties s = new StateBasedProperties();
-			s.density = XSTR_INSTANCE.nextInt();
-			s.lightLevel = XSTR_INSTANCE.nextInt(16);
-			s.viscosity = XSTR_INSTANCE.nextInt();
+			s.density = RAND.nextInt();
+			s.lightLevel = RAND.nextInt(16);
+			s.viscosity = RAND.nextInt();
 			return s;
 		}
 		

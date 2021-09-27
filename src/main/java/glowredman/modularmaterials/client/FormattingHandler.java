@@ -24,11 +24,11 @@ public class FormattingHandler {
 		line = formatKey(line, triggerShiftIsPressedFormatting, InputConstants.KEY_LSHIFT, InputConstants.KEY_RSHIFT, false);
 		
 		//animated formatting
-		while(line.contains(triggerAnimatedFormattingChar)) {
+		while(line.contains(triggerAnimatedFormatting)) {
 			//init vars
-			int formattingCharLenght = triggerAnimatedFormattingChar.length();
-			int startOfSequence = line.indexOf(triggerAnimatedFormattingChar);
-			int endOfSequence = line.indexOf(triggerAnimatedFormattingChar, startOfSequence + formattingCharLenght);
+			int formattingCharLenght = triggerAnimatedFormatting.length();
+			int startOfSequence = line.indexOf(triggerAnimatedFormatting);
+			int endOfSequence = line.indexOf(triggerAnimatedFormatting, startOfSequence + formattingCharLenght);
 			//assemble string
 			String finishedLine = line.substring(0, startOfSequence);
 			finishedLine += formatAnimated(line.substring(startOfSequence + formattingCharLenght, endOfSequence));

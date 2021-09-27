@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +27,10 @@ public class MM_Type {
 	
 	public static MM_Type random() {
 		MM_Type t = new MM_Type();
-		t.burnTimeMultiplier = XSTR_INSTANCE.nextFloat();
+		t.burnTimeMultiplier = RAND.nextFloat();
 		t.category = Category.random();
-		t.enabled = XSTR_INSTANCE.nextBoolean();
-		t.hasTooltip = XSTR_INSTANCE.nextBoolean();
+		t.enabled = RAND.nextBoolean();
+		t.hasTooltip = RAND.nextBoolean();
 		return t;
 	}
 

@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,19 +34,19 @@ public class BlockProperties {
 		
 	public static BlockProperties random() {
 		BlockProperties b = new BlockProperties();
-		b.enchantPowerBonus = XSTR_INSTANCE.nextFloat() * 8.0f;
-		b.fireSpreadSpeed = XSTR_INSTANCE.nextInt(301);
-		b.flammability = XSTR_INSTANCE.nextInt(301);
-		b.friction = XSTR_INSTANCE.nextFloat();
-		b.hardness = XSTR_INSTANCE.nextFloat() * 10.0f;
-		b.jumpFactor = XSTR_INSTANCE.nextFloat() * 3.0f;
-		b.lightLevel = XSTR_INSTANCE.nextInt(16);
+		b.enchantPowerBonus = RAND.nextFloat() * 8.0f;
+		b.fireSpreadSpeed = RAND.nextInt(301);
+		b.flammability = RAND.nextInt(301);
+		b.friction = RAND.nextFloat();
+		b.hardness = RAND.nextFloat() * 10.0f;
+		b.jumpFactor = RAND.nextFloat() * 3.0f;
+		b.lightLevel = RAND.nextInt(16);
 		b.mapColor = "AUTO";
 		b.material = "METAL";
-		b.resistance = XSTR_INSTANCE.nextFloat() * 10.0f;
+		b.resistance = RAND.nextFloat() * 10.0f;
 		b.sound = "METAL";
-		b.speedFactor = XSTR_INSTANCE.nextFloat() * 3.0f;
-		b.sticky = XSTR_INSTANCE.nextBoolean();
+		b.speedFactor = RAND.nextFloat() * 3.0f;
+		b.sticky = RAND.nextBoolean();
 		return b;
 	}
 

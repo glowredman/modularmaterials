@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +22,9 @@ public class OreProperties {
 	
 	public static OreProperties random() {
 		OreProperties o = new OreProperties();
-		o.hardness = XSTR_INSTANCE.nextFloat() * 10.0f;
-		o.lightLevel = XSTR_INSTANCE.nextInt(16);
-		o.resistance = XSTR_INSTANCE.nextFloat() * 10.0f;
+		o.hardness = RAND.nextFloat() * 10.0f;
+		o.lightLevel = RAND.nextInt(16);
+		o.resistance = RAND.nextFloat() * 10.0f;
 		return o;
 	}
 	

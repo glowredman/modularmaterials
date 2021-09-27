@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import glowredman.modularmaterials.util.XSTR;
+import glowredman.modularmaterials.MM_Reference;
 
 public enum ChemicalState {
 	SOLID,
@@ -8,6 +8,6 @@ public enum ChemicalState {
 	GASEOUS;
 	
 	public static ChemicalState random() {
-		return values()[XSTR.XSTR_INSTANCE.nextInt(values().length)];
+		return values()[MM_Reference.RAND.nextInt(values().length)];
 	}
 }

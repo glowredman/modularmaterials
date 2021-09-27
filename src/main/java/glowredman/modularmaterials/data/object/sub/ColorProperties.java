@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 public class ColorProperties {
 	
@@ -38,7 +38,7 @@ public class ColorProperties {
 	}
 	
 	public static ColorProperties random() {
-		return new ColorProperties(XSTR_INSTANCE.next(8), XSTR_INSTANCE.next(8), XSTR_INSTANCE.next(8), XSTR_INSTANCE.next(8));
+		return new ColorProperties(RAND.nextInt(256), RAND.nextInt(256), RAND.nextInt(256), RAND.nextInt(256));
 	}
 
 }

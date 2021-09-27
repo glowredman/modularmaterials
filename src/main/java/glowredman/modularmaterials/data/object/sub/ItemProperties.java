@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import static glowredman.modularmaterials.MM_Reference.RAND;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +24,9 @@ public class ItemProperties {
 	
 	public static ItemProperties random() {
 		ItemProperties i = new ItemProperties();
-		i.isFireResistant = XSTR_INSTANCE.nextBoolean();
-		i.isFoil = XSTR_INSTANCE.nextBoolean();
-		i.lifespan = XSTR_INSTANCE.nextInt(10000);
+		i.isFireResistant = RAND.nextBoolean();
+		i.isFoil = RAND.nextBoolean();
+		i.lifespan = RAND.nextInt(10000);
 		i.rarity = AdvRarity.random();
 		return i;
 	}

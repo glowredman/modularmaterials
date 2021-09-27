@@ -33,14 +33,14 @@ import java.util.concurrent.atomic.AtomicLong;
  * 03.06.2016
  * version 0.0.4
  */
-public class XSTR extends Random {
+public class RandomXSTR extends Random {
 	
 	private static final long serialVersionUID = -218222549101358744L;
 	private long seed;
     private static final double DOUBLE_UNIT = 0x1.0p-53;  // 1.0  / (1L << 53)
     private static final float FLOAT_UNIT = 0x1.0p-24f; // 1.0f / (1 << 24)
     private static final AtomicLong seedUniquifier = new AtomicLong(8682522807148012L);
-    public static final XSTR XSTR_INSTANCE = new XSTR() {
+    public static final RandomXSTR XSTR_INSTANCE = new RandomXSTR() {
 		private static final long serialVersionUID = -2118298996118494942L;
 		@Override
         public synchronized void setSeed(long seed) {
@@ -60,7 +60,7 @@ public class XSTR extends Random {
      * the current time, as if by
      * <code>setSeed(System.currentTimeMillis());</code>.
      */
-    public XSTR() {
+    public RandomXSTR() {
         this(seedUniquifier() ^ System.nanoTime());
     }
 
@@ -82,7 +82,7 @@ public class XSTR extends Random {
      *
      * @param seed the initial seed
      */
-    public XSTR(long seed) {
+    public RandomXSTR(long seed) {
         this.seed = seed;
     }
 
@@ -121,8 +121,8 @@ public class XSTR extends Random {
      * @return Returns an XSRandom object with the same state as the original
      */
     @Override
-    public XSTR clone() {
-        return new XSTR(getSeed());
+    public RandomXSTR clone() {
+        return new RandomXSTR(getSeed());
     }
 
     /**

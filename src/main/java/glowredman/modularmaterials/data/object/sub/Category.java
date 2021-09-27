@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.util.XSTR.XSTR_INSTANCE;
+import glowredman.modularmaterials.MM_Reference;
 
 public enum Category {
 	ITEM,
@@ -8,7 +8,7 @@ public enum Category {
 	ORE;
 	
 	public static Category random() {
-		return values()[XSTR_INSTANCE.nextInt(values().length)];
+		return values()[MM_Reference.RAND.nextInt(values().length)];
 	}
 
 }

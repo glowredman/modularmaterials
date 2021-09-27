@@ -1,12 +1,13 @@
 package glowredman.modularmaterials.data.object;
 
+import static glowredman.modularmaterials.MM_Reference.RAND;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import glowredman.modularmaterials.client.FormattingHandler;
 import glowredman.modularmaterials.data.object.sub.*;
-import glowredman.modularmaterials.util.XSTR;
 import net.minecraft.network.chat.Component;
 
 public class MM_Material {
@@ -48,9 +49,9 @@ public class MM_Material {
 	public static MM_Material random() {
 		MM_Material m = new MM_Material();
 		m.block = BlockProperties.random();
-		m.burnTime = XSTR.XSTR_INSTANCE.nextInt(10000);
+		m.burnTime = RAND.nextInt(10000);
 		m.color = ColorProperties.random();
-		m.enabled = XSTR.XSTR_INSTANCE.nextBoolean();
+		m.enabled = RAND.nextBoolean();
 		m.enabledTypes = Arrays.asList("example");
 		m.fluid = FluidProperties.random();
 		m.item = ItemProperties.random();
