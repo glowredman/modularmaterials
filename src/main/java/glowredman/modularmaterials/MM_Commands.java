@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.HoverEvent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -52,21 +53,8 @@ public class MM_Commands {
 									.withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
 
 						} else {
-
-							String regName = stack.getItem().getRegistryName().toString();
-
-							commandSourceStack.sendSuccess(new TextComponent(regName).withStyle(style -> style
-									.withColor(ChatFormatting.GREEN)
-									.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, regName))
-									.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))
-									.withInsertion(regName)), false);
-
-							stack.getItem().getTags()
-									.forEach(r -> commandSourceStack.sendSuccess(new TextComponent("> ")
-											.append(new TextComponent(r.toString()).withStyle(style -> style
-													.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, r.toString()))
-													.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))
-													.withInsertion(r.toString()))), false));
+							commandSourceStack.sendSuccess(copyable(stack.getItem().getRegistryName().toString()).withStyle(ChatFormatting.GREEN), false);
+							stack.getItem().getTags().forEach(rl -> commandSourceStack.sendSuccess(copyable("> " + rl.toString()), false));
 						}
 						return 0;
 
@@ -104,19 +92,16 @@ public class MM_Commands {
 				.append(new TextComponent(":")).withStyle(ChatFormatting.GOLD), false);
 		
 		commandSourceStack.sendSuccess(new TextComponent("Biome: ").withStyle(ChatFormatting.BLUE)
-				.append(new TextComponent(biome.getRegistryName().toString()).withStyle(ChatFormatting.WHITE)), false);
+				.append(copyable(biome.getRegistryName().toString())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Biome Category: ").withStyle(ChatFormatting.BLUE)
-				.append(new TextComponent(biome.getBiomeCategory().getName()).withStyle(ChatFormatting.WHITE)), false);
+				.append(copyable(biome.getBiomeCategory().getName())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Dimension: ").withStyle(ChatFormatting.BLUE)
-				.append(new TextComponent(level.dimension().location().toString()).withStyle(ChatFormatting.WHITE)), false);
+				.append(copyable(level.dimension().location().toString())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Block: ").withStyle(ChatFormatting.BLUE)
-				.append(new TextComponent(blockRegName).withStyle(style -> style
-						.withColor(ChatFormatting.WHITE)
-						.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, blockRegName))
-						.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click"))))), false);
+				.append(copyable(blockRegName)), false);
 		
 		if(!blockstate.isAir()) {
 
@@ -132,7 +117,7 @@ public class MM_Commands {
 			commandSourceStack.sendSuccess(new TextComponent("  Flammability: ").withStyle(ChatFormatting.AQUA)
 					.append(new TextComponent(format(blockstate.getFlammability(level, pos, Direction.UP))).withStyle(ChatFormatting.WHITE)), false);
 			
-			if(commandSourceStack.getEntity() != null) commandSourceStack.sendSuccess(new TextComponent("  Friction: ").withStyle(ChatFormatting.AQUA)
+			commandSourceStack.sendSuccess(new TextComponent("  Friction: ").withStyle(ChatFormatting.AQUA)
 					.append(new TextComponent(format(blockstate.getFriction(level, pos, commandSourceStack.getEntity()))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(new TextComponent("  Hardness: ").withStyle(ChatFormatting.AQUA)
@@ -154,18 +139,12 @@ public class MM_Commands {
 					.append(new TextComponent(String.valueOf(blockstate.requiresCorrectToolForDrops())).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!blockTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			blockTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > " + rl.toString()).withStyle(style -> style
-					.withColor(ChatFormatting.WHITE)
-					.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, rl.toString()))
-					.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))), false));
+			blockTags.forEach(rl -> commandSourceStack.sendSuccess(copyable(rl.toString()), false));
 			
 		}
 		
 		commandSourceStack.sendSuccess(new TextComponent("Fluid: ").withStyle(ChatFormatting.BLUE)
-				.append(new TextComponent(fluidRegName).withStyle(style -> style
-						.withColor(ChatFormatting.WHITE)
-						.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, fluidRegName))
-						.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click"))))), false);
+				.append(copyable(fluidRegName)), false);
 		
 		if(!fluidstate.isEmpty()) {
 			
@@ -206,10 +185,7 @@ public class MM_Commands {
 					.append(new TextComponent(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > " + rl.toString()).withStyle(style -> style
-					.withColor(ChatFormatting.WHITE)
-					.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, rl.toString()))
-					.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))), false));
+			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(copyable("  > " + rl.toString()), false));
 			
 		}
 
@@ -222,6 +198,14 @@ public class MM_Commands {
 	
 	private static String format(double number) {
 		return NumberFormat.getInstance().format(number);
+	}
+	
+	private static MutableComponent copyable(String text) {
+		return new TextComponent(text).withStyle(style -> style
+				.withColor(ChatFormatting.WHITE)
+				.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, text))
+				.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))
+				.withInsertion(text));
 	}
 
 }
