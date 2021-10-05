@@ -23,7 +23,7 @@ version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Modular Materials" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-updateJSONURL="http://data-hole.ddns.net:8081/mods/modularmaterials/updates.json" #optional
+updateJSONURL="https://data-hole.ddns.net:8081/mods/modularmaterials/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/glowredman/modularmaterials" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
@@ -33,9 +33,7 @@ credits="GregoriusT (many textures, ore vein system)" #optional
 # A text field displayed in the mod UI
 authors="glowredman" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-Dynamic and fully customizeable material-generation-system for Minecraft 1.17.1
-'''
+description='''Dynamic and fully customizeable material-generation-system for Minecraft 1.17.1'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.modularmaterials]] #optional
     # the modid of the dependency
@@ -43,7 +41,7 @@ Dynamic and fully customizeable material-generation-system for Minecraft 1.17.1
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[37,)" #mandatory
+    versionRange="[37.0.81,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER

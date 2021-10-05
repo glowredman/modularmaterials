@@ -5,9 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 import glowredman.modularmaterials.block.BlockHandler;
 import glowredman.modularmaterials.client.ClientHandler;
+import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.item.ItemHandler;
+import net.minecraft.server.packs.PackType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -24,9 +27,18 @@ public class ModularMaterials {
 		MinecraftForge.EVENT_BUS.register(new MM_Commands());
 		bus.register(new BlockHandler());
 		bus.register(new ItemHandler());
+		bus.addListener(this::registerResourceLoaders);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ClientHandler());
 		});
+	}
+	
+	private void registerResourceLoaders(AddPackFindersEvent event) {
+		if(event.getPackType() == PackType.CLIENT_RESOURCES) {
+			event.addRepositorySource(new ResourceLoader(false));
+		} else {
+			event.addRepositorySource(new ResourceLoader(true));
+		}
 	}
 
 	public static void trace(String s) {

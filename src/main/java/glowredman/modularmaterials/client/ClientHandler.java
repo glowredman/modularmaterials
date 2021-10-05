@@ -2,10 +2,8 @@ package glowredman.modularmaterials.client;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.block.MetaBlock;
-import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.item.MetaBlockItem;
 import glowredman.modularmaterials.item.MetaItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -18,7 +16,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class ClientHandler {
 	
 	public ClientHandler() {
-		Minecraft.getInstance().getResourcePackRepository().addPackFinder(new ResourceLoader(false));
 		MinecraftForge.EVENT_BUS.addListener(this::colorTooltips);
 	}
 	
