@@ -21,6 +21,13 @@ import glowredman.modularmaterials.util.FileHelper;
 import net.minecraft.resources.ResourceLocation;
 
 public class TagHandler {
+	
+	public static void execute() {
+		generateBlockTags();
+		generateBucketTags();
+		generateFluidTags();
+		generateItemTags();
+	}
     
     //Parameters
     public static final String PARAM_MATERIAL = "<m>";
@@ -31,7 +38,7 @@ public class TagHandler {
     public static final String FILTER_TYPE_START = "[";
     public static final String FILTER_TYPE_END = "]";
     
-    public static void generateItemTags() {
+    private static void generateItemTags() {
         long time = System.currentTimeMillis();
 
         cleanDataDir();
@@ -110,6 +117,35 @@ public class TagHandler {
             
         }
         
+        for(Entry<String, List<String>> e : tags.entrySet()) {
+            ResourceLocation tag = new ResourceLocation(e.getKey());
+            
+            File file = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/items/" + tag.getPath() + ".json");
+            
+            if(!file.exists()) {
+                try {
+                    file.getParentFile().mkdirs();
+                    BufferedWriter w = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
+                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
+                    w.close();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        
+        ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
+    }
+    
+    private static void generateBucketTags() {
+        long time = System.currentTimeMillis();
+
+        cleanDataDir();
+        
+        ModularMaterials.info("Generating bucket tags...");
+        
+        Map<String, List<String>> tags = new HashMap<>();
+        
         for(MetaBucketItem item : MM_Reference.BUCKETS) {
             
             for(String s : item.fluid().material.fluid.typeEnabledTags) {
@@ -165,27 +201,11 @@ public class TagHandler {
             }
         }
         
-        for(Entry<String, List<String>> e : tags.entrySet()) {
-            ResourceLocation tag = new ResourceLocation(e.getKey());
-            
-            File file = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/items/" + tag.getPath() + ".json");
-            
-            if(!file.exists()) {
-                try {
-                    file.getParentFile().mkdirs();
-                    BufferedWriter w = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
-                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                    w.close();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-        
         ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
+    	
     }
     
-    public static void generateFluidTags() {
+    private static void generateFluidTags() {
         long time = System.currentTimeMillis();
 
         cleanDataDir();
@@ -287,7 +307,7 @@ public class TagHandler {
         ModularMaterials.info(String.format("Done! Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
     }
 
-    public static void generateBlockTags() {
+    private static void generateBlockTags() {
         long time = System.currentTimeMillis();
 
         cleanDataDir();

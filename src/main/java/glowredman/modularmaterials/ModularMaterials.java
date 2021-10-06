@@ -5,35 +5,48 @@ import org.apache.logging.log4j.Logger;
 
 import glowredman.modularmaterials.block.BlockHandler;
 import glowredman.modularmaterials.client.ClientHandler;
+import glowredman.modularmaterials.data.LootTableHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
+import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.item.ItemHandler;
 import net.minecraft.server.packs.PackType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(MM_Reference.MODID)
 public class ModularMaterials {
 	
+	public static ModularMaterials instance;
 	private static final Logger LOGGER = LogManager.getLogger();
 	private static final String LOG_PREFIX = "[" + MM_Reference.MODID + "] ";
 	
 	public ModularMaterials() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		instance = this;
 		MinecraftForge.EVENT_BUS.register(new MM_Commands());
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		bus.register(instance);
 		bus.register(new BlockHandler());
 		bus.register(new ItemHandler());
-		bus.addListener(this::registerResourceLoaders);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			bus.register(new ClientHandler());
 		});
 	}
 	
-	private void registerResourceLoaders(AddPackFindersEvent event) {
+	@SubscribeEvent
+	public void commonSetup(FMLCommonSetupEvent event) {
+		TagHandler.execute();
+		LootTableHandler.generateBlockDrops();
+	}
+	
+	@SubscribeEvent
+	public void registerResourceLoaders(AddPackFindersEvent event) {
 		if(event.getPackType() == PackType.CLIENT_RESOURCES) {
 			event.addRepositorySource(new ResourceLoader(false));
 		} else {
