@@ -23,11 +23,11 @@ public class ItemHandler {
 		for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
 			String typeName = eType.getKey();
 			MM_Type type = eType.getValue();
-			if(type.category == Category.ITEM && (type.enabled || MM_Reference.enableAll)) {
+			if(type.category == Category.ITEM && (type.enabled || MM_Reference.CONFIG.enableAll)) {
 				for(Entry<String, MM_Material> eMaterial : MM_Reference.MATERIALS.entrySet()) {
 					String materialName = eMaterial.getKey();
 					MM_Material material = eMaterial.getValue();
-					if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.enableAll) {
+					if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
 						MetaItem item = new MetaItem(material, type);
 						item.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
 						event.getRegistry().register(item);

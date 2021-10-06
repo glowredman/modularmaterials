@@ -1,9 +1,6 @@
 package glowredman.modularmaterials.data;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,9 +122,7 @@ public class TagHandler {
             if(!file.exists()) {
                 try {
                     file.getParentFile().mkdirs();
-                    BufferedWriter w = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
-                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                    w.close();
+                    FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -295,9 +290,7 @@ public class TagHandler {
             if(!file.exists()) {
                 try {
                     file.getParentFile().mkdirs();
-                    BufferedWriter w = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
-                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                    w.close();
+                    FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -395,9 +388,7 @@ public class TagHandler {
             if(!fileItems.exists()) {
                 try {
                     fileItems.getParentFile().mkdirs();
-                    BufferedWriter w = new BufferedWriter(new FileWriter(fileItems, StandardCharsets.UTF_8));
-                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                    w.close();
+                    FileHelper.write(fileItems, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -405,9 +396,7 @@ public class TagHandler {
             if(!fileBlocks.exists()) {
                 try {
                     fileBlocks.getParentFile().mkdirs();
-                    BufferedWriter w = new BufferedWriter(new FileWriter(fileBlocks, StandardCharsets.UTF_8));
-                    w.write(JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                    w.close();
+                    FileHelper.write(fileBlocks, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
@@ -418,8 +407,8 @@ public class TagHandler {
     }
     
     private static void cleanDataDir() {
-        if(MM_Reference.overrideTagFiles) {
-            MM_Reference.overrideTagFiles = false;
+        if(MM_Reference.CONFIG.overrideTagFiles) {
+            MM_Reference.CONFIG.overrideTagFiles = false;
             FileHelper.cleanDir(new File(ResourceLoader.DATA_DIR, "data/" + MM_Reference.MODID + "/tags"));
         }
     }

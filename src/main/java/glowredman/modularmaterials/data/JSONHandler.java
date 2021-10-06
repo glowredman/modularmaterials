@@ -1,13 +1,8 @@
 package glowredman.modularmaterials.data;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,6 +14,7 @@ import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
+import glowredman.modularmaterials.util.FileHelper;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 public class JSONHandler {
@@ -42,14 +38,14 @@ public class JSONHandler {
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Material>>() {
 				private static final long serialVersionUID = 3292456296675220350L;}.getType();
 				
-			types = GSON.fromJson(readFile(file.getPath()), listType);
+			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
 			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Types (%d):", types.size()));
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
 		} catch (Exception e) {
-			ModularMaterials.error("Parsing materials.json failed:");
+			ModularMaterials.fatal("Parsing materials.json failed:");
 			e.printStackTrace();
 		}
 		
@@ -72,14 +68,14 @@ public class JSONHandler {
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Type>>() {
 				private static final long serialVersionUID = 3292456296675220350L;}.getType();
 				
-			types = GSON.fromJson(readFile(file.getPath()), listType);
+			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
 			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Types (%d):", types.size()));
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
 		} catch (Exception e) {
-			ModularMaterials.error("Parsing types.json failed:");
+			ModularMaterials.fatal("Parsing types.json failed:");
 			e.printStackTrace();
 		}
 		
@@ -91,15 +87,8 @@ public class JSONHandler {
 			file.getParentFile().mkdirs();
 			Map<String, T> map = new LinkedHashMap<>();
 			map.put("example", example);
-			BufferedWriter writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
-			writer.write(GSON.toJson(map));
-			writer.close();
+			FileHelper.write(file, GSON.toJson(map));
 		}
-	}
-	
-	private static String readFile(String path) throws IOException {
-		byte[] encoded = Files.readAllBytes(Paths.get(path));
-		return new String(encoded, StandardCharsets.UTF_8);
 	}
 
 }

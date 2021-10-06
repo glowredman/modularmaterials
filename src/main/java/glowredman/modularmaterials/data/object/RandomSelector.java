@@ -6,7 +6,7 @@ import glowredman.modularmaterials.util.RandomXSTR;
 import glowredman.modularmaterials.util.RandomXoshiro256StarStar;
 
 public enum RandomSelector {
-	Random(new Random()),
+	Standard(new Random()),
 	XSTR(new RandomXSTR()),
 	Xoshiro256StarStar(new RandomXoshiro256StarStar());
 	
@@ -16,8 +16,8 @@ public enum RandomSelector {
 		this.rand = rand;
 	}
 	
-	public Random get() {
-		return rand;
+	public static Random get(String name) {
+		return valueOf(name).rand;
 	}
 
 }

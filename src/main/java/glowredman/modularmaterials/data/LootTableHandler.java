@@ -1,8 +1,6 @@
 package glowredman.modularmaterials.data;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
@@ -19,7 +17,7 @@ public class LootTableHandler {
 		
 		File lootTables = new File(ResourceLoader.DATA_DIR, "data/" + MM_Reference.MODID + "/loot_tables/blocks");
 		
-		if(MM_Reference.overrideLootTableFiles) {
+		if(MM_Reference.CONFIG.overrideLootTableFiles) {
 			FileHelper.cleanDir(lootTables);
 		}
 		
@@ -30,9 +28,7 @@ public class LootTableHandler {
 			File lootTable = new File(lootTables, regName.getPath() + ".json");
 			try {
 				if(!lootTable.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(lootTable));
-					w.write(Templates.LOOTTABLE_BLOCKS.format(regName));
-					w.close();
+					FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
 					count++;
 				}
 			} catch (Exception e) {

@@ -7,6 +7,7 @@ import java.util.Random;
 
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
+import glowredman.modularmaterials.data.object.MM_Config;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.RandomSelector;
@@ -24,26 +25,11 @@ public class MM_Reference {
 	public static String triggerAltIsPressedFormatting = "\u00a7t";
 	public static String triggerAltIsNotPressedFormatting = "\u00a7T";
 	public static String triggerAnimatedFormatting = "\u00a7s";
-	public static boolean enableFormattingDebugger = false;
-	
-	//Config
-	public static boolean enableAll = false;
-	public static RandomSelector randomizer = RandomSelector.XSTR;
-	public static int commandPermissionLevel = 2;
-	public static boolean overrideModelFiles = true;
-	public static boolean overrideBlockstateFiles = true;
-	public static boolean overrideTagFiles = true;
-	public static boolean overrideLootTableFiles = true;
-	public static boolean blocksHaveFoilEffect = true;
-	public static boolean fluidContainersHaveFoilEffect = true;
-	public static boolean oresInheritHardness = true;
-	public static boolean oresInheritHarvestLevel = false;
-	public static boolean oresInheritLightLevel = false;
-	public static boolean oresInheritResistance = true;
 	
 	//Mod
 	public static final String MODID = "modularmaterials";
-	public static final Random RAND = randomizer.get();
+	public static final MM_Config CONFIG = MM_Config.read();
+	public static final Random RAND = RandomSelector.get(CONFIG.randomizer);
 	
 	//Object Holders
 	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();

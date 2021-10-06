@@ -1,13 +1,12 @@
 package glowredman.modularmaterials.data;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.util.FileHelper;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.Pack.PackConstructor;
 import net.minecraft.server.packs.repository.Pack.Position;
@@ -43,9 +42,7 @@ public class ResourceLoader implements RepositorySource {
 		packMeta.getParentFile().mkdirs();
 		if(!packMeta.exists()) {
 			try {
-				BufferedWriter w = new BufferedWriter(new FileWriter(packMeta));
-				w.write("{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":7}}");
-				w.close();
+				FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":7}}");
 			} catch (IOException e) {
 				ModularMaterials.error("An error occured while creating " + packMeta.getAbsolutePath());
 				e.printStackTrace();

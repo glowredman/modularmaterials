@@ -38,7 +38,7 @@ public class MetaBlockItem extends BlockItem {
 	
 	@Override
 	public boolean isFoil(ItemStack pStack) {
-		return MM_Reference.blocksHaveFoilEffect && block.material.item.isFoil;
+		return MM_Reference.CONFIG.blocksHaveFoilEffect && block.material.item.isFoil;
 	}
 
 }

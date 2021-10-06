@@ -1,12 +1,8 @@
 package glowredman.modularmaterials.client;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -39,7 +35,7 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
-		if(MM_Reference.overrideModelFiles) {
+		if(MM_Reference.CONFIG.overrideModelFiles) {
 			FileHelper.cleanDir(new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models"));
 		}
 		
@@ -50,9 +46,7 @@ public class AssetHandler {
 			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
 			try {
 				if(!modelFile.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(modelFile, StandardCharsets.UTF_8));
-					w.write(Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
-					w.close();
+					FileHelper.write(modelFile, Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
 					count++;
 				}
 			} catch (Exception e) {
@@ -64,13 +58,11 @@ public class AssetHandler {
 			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
 			try {
 				if(!modelFile.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(modelFile, StandardCharsets.UTF_8));
 					if(item.getFluid().getAttributes().isLighterThanAir() || item.fluid().material.state == item.fluid().type.state) {
-						w.write(Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
+						FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
 					} else {
-						w.write(Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
+						FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
 					}
-					w.close();
 					count++;
 				}
 			} catch (Exception e) {
@@ -84,16 +76,12 @@ public class AssetHandler {
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + block.material.texture + "/" + type + ".json");
 			try {
 				if(!modelFileInventory.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(modelFileInventory, StandardCharsets.UTF_8));
-					w.write(Templates.MODEL_BLOCK.format(block.material.texture, type));
-					w.close();
+					FileHelper.write(modelFileInventory, Templates.MODEL_BLOCK.format(block.material.texture, type));
 					count++;
 				}
 				modelFileNormal.getParentFile().mkdirs();
 				if(!modelFileNormal.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(modelFileNormal, StandardCharsets.UTF_8));
-					w.write(Templates.MODEL_BLOCK.format(block.material.texture, type));
-					w.close();
+					FileHelper.write(modelFileNormal, Templates.MODEL_BLOCK.format(block.material.texture, type));
 					count++;
 				}
 			} catch (Exception e) {
@@ -109,7 +97,7 @@ public class AssetHandler {
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
-		if(MM_Reference.overrideBlockstateFiles) {
+		if(MM_Reference.CONFIG.overrideBlockstateFiles) {
 			FileHelper.cleanDir(new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/blockstates"));
 		}
 		
@@ -120,9 +108,7 @@ public class AssetHandler {
 			File blockstateFile = new File(blockstates, block.getRegistryName().getPath() + ".json");
 			try {
 				if(!blockstateFile.exists()) {
-					BufferedWriter w = new BufferedWriter(new FileWriter(blockstateFile, StandardCharsets.UTF_8));
-					w.write(Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
-					w.close();
+					FileHelper.write(blockstateFile, Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
 					count++;
 				}
 			} catch (Exception e) {
@@ -145,7 +131,7 @@ public class AssetHandler {
 		if(langFile.exists()) {
 			
 			try {
-				Map<String, String> lang = JSONHandler.GSON.fromJson(new FileReader(langFile, StandardCharsets.UTF_8), type);
+				Map<String, String> lang = JSONHandler.GSON.fromJson(FileHelper.readFile(langFile.toPath()), type);
 				int startSize = lang.size();
 				
 				for(MetaItem item : MM_Reference.ITEMS) {
@@ -177,10 +163,7 @@ public class AssetHandler {
 				}
 				
 				langFile.delete();
-				
-				BufferedWriter w = new BufferedWriter(new FileWriter(langFile, StandardCharsets.UTF_8));
-				w.write(JSONHandler.GSON.toJson(lang, type));
-				w.close();
+				FileHelper.write(langFile, JSONHandler.GSON.toJson(lang, type));
 				
 				ModularMaterials.info(String.format("Done! Added %d new entries in %dms.", lang.size() - startSize, System.currentTimeMillis() - time));
 				
@@ -198,9 +181,7 @@ public class AssetHandler {
 					lang.put("item." + MM_Reference.MODID + "." + item.getRegistryName().getPath(), item.getLocalizedName());
 				}
 				
-				BufferedWriter w = new BufferedWriter(new FileWriter(langFile, StandardCharsets.UTF_8));
-				w.write(new GsonBuilder().setPrettyPrinting().create().toJson(lang, type));
-				w.close();
+				FileHelper.write(langFile, new GsonBuilder().setPrettyPrinting().create().toJson(lang, type));
 				
 				ModularMaterials.info(String.format("Done! Created %d entries in %dms.", lang.size(), System.currentTimeMillis() - time));
 				

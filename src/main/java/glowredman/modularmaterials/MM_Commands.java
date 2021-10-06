@@ -39,7 +39,7 @@ public class MM_Commands {
 
 			event.getDispatcher().register(Commands.literal("mm")
 					
-					.requires(commandSourceStack -> commandSourceStack.hasPermission(MM_Reference.commandPermissionLevel))
+					.requires(commandSourceStack -> commandSourceStack.hasPermission(MM_Reference.CONFIG.commandPermissionLevel))
 					
 					.then(Commands.literal("hand").executes(context -> {
 

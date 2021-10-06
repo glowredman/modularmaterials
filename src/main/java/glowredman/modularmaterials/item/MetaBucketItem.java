@@ -81,7 +81,7 @@ public class MetaBucketItem extends BucketItem {
 
 	@Override
 	public boolean isFoil(ItemStack pStack) {
-		return MM_Reference.fluidContainersHaveFoilEffect && fluid().material.item.isFoil;
+		return MM_Reference.CONFIG.bucketsHaveFoilEffect && fluid().material.item.isFoil;
 	}
 
 	@Override
