@@ -47,6 +47,22 @@ public enum Templates {
             "  ]",
             "}"),
     
+    MODEL_BUCKET(
+    		"{",
+    		"  \"parent\": \"forge:item/bucket\",",
+    		"  \"loader\": \"forge:bucket\",",
+    		"  \"fluid\": \"%1$s\",",
+    		"  \"flipGas\": true",
+    		"}"),
+    
+    MODEL_BUCKET_DRIP(
+    		"{",
+    		"  \"parent\": \"forge:item/bucket_drip\",",
+    		"  \"loader\": \"forge:bucket\",",
+    		"  \"fluid\": \"%1$s\",",
+    		"  \"flipGas\": true",
+    		"}"),
+    
     BLOCKSTATE_BLOCK(
             "{",
             "  \"variants\": {",
@@ -86,7 +102,7 @@ public enum Templates {
     }
     
     /**
-     * <p>Models/Blockstates: %1$s = texture, %2$s = type, %3$s = oreBase/oreVariant</p>
+     * <p>Models/Blockstates: %1$s = texture/fluid, %2$s = type, %3$s = oreBase/oreVariant</p>
      * <p>Loot Tables: %1$s = dropped item</p>
      */
     public String format(Object... args) {

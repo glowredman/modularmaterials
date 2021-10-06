@@ -3,12 +3,16 @@ package glowredman.modularmaterials.client;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.item.MetaBlockItem;
+import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.item.BucketItem;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -17,6 +21,7 @@ public class ClientHandler {
 	
 	public ClientHandler() {
 		MinecraftForge.EVENT_BUS.addListener(this::colorTooltips);
+		MinecraftForge.EVENT_BUS.addListener(this::modifyTooltips);
 	}
 	
 	@SubscribeEvent
@@ -40,7 +45,7 @@ public class ClientHandler {
 				if(tintIndex == 0) {
 					return item.material.color.getARGB();
 				} else {
-					return 0xFFFFFF;
+					return 0xFFFFFFFF;
 				}
 			}, item);
 		}
@@ -88,6 +93,20 @@ public class ClientHandler {
 				event.setBorderStart(item.block.material.tooltip.getBorderStart());
 				event.setBorderEnd(item.block.material.tooltip.getBorderEnd());
 			}
+		}
+		else if(event.getStack().getItem() instanceof MetaBucketItem) {
+			MetaBucketItem item = (MetaBucketItem) event.getStack().getItem();
+			if(item.fluid().type.hasTooltip) {
+				event.setBackground(item.fluid().material.tooltip.getBackground());
+				event.setBorderStart(item.fluid().material.tooltip.getBorderStart());
+				event.setBorderEnd(item.fluid().material.tooltip.getBorderEnd());
+			}
+		}
+	}
+	
+	private void modifyTooltips(ItemTooltipEvent event) {
+		if(event.getItemStack().getItem() instanceof BucketItem) {
+			event.getToolTip().add(new TextComponent("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getAttributes().getTemperature() + "K"));
 		}
 	}
 

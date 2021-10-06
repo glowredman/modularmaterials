@@ -2,6 +2,7 @@ package glowredman.modularmaterials.block;
 
 import java.util.List;
 
+import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
@@ -21,24 +22,25 @@ public class MetaBlock extends Block {
 	public final MM_Type type;
 
 	public MetaBlock(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
-		super(BlockHandler.getBlockProperties(material, uniqueMM_MaterialName));
+		super(BlockHandler.getBlockProperties(material, type, uniqueMM_MaterialName));
 		this.material = material;
 		this.type = type;
+		MM_Reference.BLOCKS.add(this);
 	}
 	
 	@Override
 	public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
-		return material.block.enchantPowerBonus;
+		return material.enchantPowerBonus * type.enchantPowerBonuMultipliers;
 	}
 	
 	@Override
 	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-		return material.block.fireSpreadSpeed;
+		return (int) (material.fireSpreadSpeed * type.fireSpreadSpeedMultiplier);
 	}
 	
 	@Override
 	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
-		return material.block.flammability;
+		return (int) (material.flammability * type.flammabilityMultiplier);
 	}
 	
 	@Override

@@ -10,6 +10,8 @@ import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.RandomSelector;
+import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
 
 public class MM_Reference {
@@ -39,14 +41,16 @@ public class MM_Reference {
 	public static boolean oresInheritLightLevel = false;
 	public static boolean oresInheritResistance = true;
 	
+	//Mod
+	public static final String MODID = "modularmaterials";
+	public static final Random RAND = randomizer.get();
+	
 	//Object Holders
 	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
 	public static final List<MetaItem> ITEMS = new LinkedList<>();
+	public static final List<MetaBucketItem> BUCKETS = new LinkedList<>();
 	public static final List<MetaBlock> BLOCKS = new LinkedList<>();
-	
-	//Mod
-	public static final String MODID = "modularmaterials";
-	public static final Random RAND = randomizer.get();
+	public static final List<MetaFluid> FLUIDS = new LinkedList<>();
 
 }

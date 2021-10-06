@@ -9,14 +9,24 @@ import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
+import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.data.object.sub.ColorProperties;
+import glowredman.modularmaterials.fluid.MetaFlowingFluid;
+import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.item.MetaBucketItem;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockHandler {
 	
@@ -24,7 +34,7 @@ public class BlockHandler {
 	public void registerBlocks(Register<Block> event) {
 		long time = System.currentTimeMillis();
 		
-		ModularMaterials.info("Registering blocks...");
+		ModularMaterials.info("Registering blocks and fluids...");
 		
 		for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
 			String typeName = eType.getKey();
@@ -37,29 +47,80 @@ public class BlockHandler {
 						MetaBlock block = new MetaBlock(material, type, materialName);
 						block.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
 						event.getRegistry().register(block);
-						MM_Reference.BLOCKS.add(block);
 					}
 				}
 			}
 		}
 		
-		ModularMaterials.info("Registered " + MM_Reference.BLOCKS.size() + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
+		for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
+			String typeName = eType.getKey();
+			MM_Type type = eType.getValue();
+			if(type.category == Category.FLUID && (type.enabled || MM_Reference.enableAll)) {
+				for(Entry<String, MM_Material> eMaterial : MM_Reference.MATERIALS.entrySet()) {
+					String materialName = eMaterial.getKey();
+					MM_Material material = eMaterial.getValue();
+					if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.enableAll) {
+						RegistryObject<MetaFluid> fluidS = RegistryObject.of(new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName), ForgeRegistries.FLUIDS);
+						RegistryObject<MetaFluid> fluidF = RegistryObject.of(new ResourceLocation(MM_Reference.MODID, "flowing_" + typeName + "." + materialName), ForgeRegistries.FLUIDS);
+						Item bucket = new MetaBucketItem(fluidS, material).setRegistryName(MM_Reference.MODID, "bucket." + fluidS.getId().getPath());
+						
+						FluidAttributes.Builder b = FluidAttributes.builder(
+								new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_still"),
+								new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_flowing"))
+								.color(material.color.getARGB())
+								.density(material.fluid.propertiesOfState(type.state).density)
+								.luminosity(material.fluid.propertiesOfState(type.state).luminosity)
+								.rarity(material.item.rarity.get())
+								.temperature(material.fluid.getTemperature(material.state, type.state))
+								.viscosity(material.fluid.propertiesOfState(type.state).viscosity);
+						if(type.state == ChemicalState.GASEOUS) b.gaseous();
+						
+						ForgeFlowingFluid.Properties p = new ForgeFlowingFluid.Properties(fluidS, fluidF, b).bucket(() -> bucket);
+						
+						ForgeRegistries.FLUIDS.register(new MetaFluid(material, type, p).setRegistryName(fluidS.getId()));
+						ForgeRegistries.FLUIDS.register(new MetaFlowingFluid(material, type, p).setRegistryName(fluidF.getId()));
+						ForgeRegistries.ITEMS.register(bucket);
+						
+						//TODO
+						//MetaFluidBlock block = new MetaFluidBlock(fluidS, material, type, materialName);
+						//block.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
+						//event.getRegistry().register(block);
+					}
+				}
+			}
+		}
+		
+		ModularMaterials.info("Registered " + MM_Reference.BLOCKS.size() + " blocks and " + MM_Reference.FLUIDS.size() + " fluids. Took " + (System.currentTimeMillis() - time) + "ms.");
 		
 		TagHandler.generateBlockTags();
 		LootTableHandler.generateBlockDrops();
 	}
 	
-	public static Properties getBlockProperties(MM_Material material, String uniqueMM_MaterialName) {
-		Properties properties = Properties.of(getMaterial(material.block.material, uniqueMM_MaterialName));
+	public static BlockBehaviour.Properties getBlockProperties(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
+		BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(getMaterial(material.block.material, uniqueMM_MaterialName));
 		properties.color(getMaterialColor(material, uniqueMM_MaterialName));
 		properties.destroyTime(material.block.hardness);
-		properties.explosionResistance(material.block.resistance);
+		properties.explosionResistance(material.resistance * type.resistanceMultiplier);
 		properties.friction(material.block.friction);
-		properties.jumpFactor(material.block.jumpFactor);
-		properties.lightLevel(state -> material.block.lightLevel);
+		properties.jumpFactor(material.jumpFactor * type.jumpFactorMultiplier);
+		properties.lightLevel(state -> (int) (material.lightLevel * type.lightLevelMultiplier));
 		if(material.block.requiresToolForDrops) properties.requiresCorrectToolForDrops();
 		properties.sound(getSoundType(material.block.sound, uniqueMM_MaterialName));
-		properties.speedFactor(material.block.speedFactor);
+		properties.speedFactor(material.speedFactor * type.speedFactorMultiplier);
+		return properties;
+	}
+	
+	public static BlockBehaviour.Properties getFluidBlockProperties(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
+		BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(Material.WATER);
+		properties.color(getMaterialColor(material, uniqueMM_MaterialName));
+		properties.destroyTime(material.block.hardness);
+		properties.explosionResistance(material.resistance * type.resistanceMultiplier);
+		properties.jumpFactor(material.jumpFactor * type.jumpFactorMultiplier);
+		properties.lightLevel(state -> (int) (material.lightLevel * type.lightLevelMultiplier));
+		properties.noCollission();
+		properties.noDrops();
+		properties.randomTicks();
+		properties.speedFactor(material.speedFactor * type.speedFactorMultiplier);
 		return properties;
 	}
 	

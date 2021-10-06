@@ -32,7 +32,6 @@ public class ItemHandler {
 						MetaItem item = new MetaItem(material, type);
 						item.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
 						event.getRegistry().register(item);
-						MM_Reference.ITEMS.add(item);
 					}
 				}
 			}

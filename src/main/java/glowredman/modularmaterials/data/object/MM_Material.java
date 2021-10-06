@@ -18,6 +18,13 @@ public class MM_Material {
 	public List<String> enabledTypes = new ArrayList<>();
 	public ColorProperties color = new ColorProperties();
 	public int burnTime = 0;
+	public float enchantPowerBonus = 0.0f;
+	public int fireSpreadSpeed = 0;
+	public int flammability = 0;
+	public float jumpFactor = 1.0f;
+	public int lightLevel = 0;
+	public float resistance = 6.0f;
+	public float speedFactor = 1.0f;
 	public ChemicalState state = ChemicalState.SOLID;
 	public String texture = "metallic";
 	public TooltipProperties tooltip = new TooltipProperties();
@@ -34,8 +41,8 @@ public class MM_Material {
 	
 	@Override
 	public String toString() {
-		return String.format("{name: %s, tagNames: %s, enabled: %b, enabledTypes: %s, color: %s, burnTime: %d, state: %s, texture: %s, tooltip: %s, block: %s, fluid: %s, item: %s, ore: %s}",
-				name, FormattingHandler.arrayToString(tagNames), enabled, FormattingHandler.listToString(enabledTypes), color, burnTime, state, texture, tooltip, block, fluid, item, ore);
+		return String.format("{name: %s, tagNames: %s, enabled: %b, enabledTypes: %s, color: %s, burnTime: %d, enchantPowerBonus: %f, fireSpreadSpeed: %d, flammability: %d, jumpFactor: %f, lightLevel: %d, resistance: %f, speedFactor: %f, state: %s, texture: %s, tooltip: %s, block: %s, fluid: %s, item: %s, ore: %s}",
+				name, FormattingHandler.arrayToString(tagNames), enabled, FormattingHandler.listToString(enabledTypes), color, burnTime, enchantPowerBonus, fireSpreadSpeed, flammability, jumpFactor, lightLevel, resistance, speedFactor, state, texture, tooltip, block, fluid, item, ore);
 	}
 	
 	@Override
@@ -60,6 +67,13 @@ public class MM_Material {
 		m.state = ChemicalState.random();
 		m.texture = "metallic";
 		m.tooltip = TooltipProperties.random();
+		m.enchantPowerBonus = RAND.nextFloat() * 8.0f;
+		m.fireSpreadSpeed = RAND.nextInt(301);
+		m.flammability = RAND.nextInt(301);
+		m.jumpFactor = RAND.nextFloat() * 3.0f;
+		m.lightLevel = RAND.nextInt(16);
+		m.resistance = RAND.nextFloat() * 10.0f;
+		m.speedFactor = RAND.nextFloat() * 3.0f;
 		return m;
 	}
 

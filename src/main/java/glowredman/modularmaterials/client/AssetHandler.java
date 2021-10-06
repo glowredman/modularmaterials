@@ -21,6 +21,8 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.Templates;
+import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.util.FileHelper;
 
@@ -58,10 +60,27 @@ public class AssetHandler {
 			}
 		}
 		
+		for(MetaBucketItem item : MM_Reference.BUCKETS) {
+			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
+			try {
+				if(!modelFile.exists()) {
+					BufferedWriter w = new BufferedWriter(new FileWriter(modelFile, StandardCharsets.UTF_8));
+					if(item.getFluid().getAttributes().isLighterThanAir() || item.fluid().material.state == item.fluid().type.state) {
+						w.write(Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
+					} else {
+						w.write(Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
+					}
+					w.close();
+					count++;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
-			String path = block.getRegistryName().getPath();
 			String type = block.getTypeIdentifier();
-			File modelFileInventory = new File(models_item, path + ".json");
+			File modelFileInventory = new File(models_item, block.getRegistryName().getPath() + ".json");
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + block.material.texture + "/" + type + ".json");
 			try {
 				if(!modelFileInventory.exists()) {
@@ -133,6 +152,20 @@ public class AssetHandler {
 					String key = "item." + MM_Reference.MODID + "." + item.getRegistryName().getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, item.getLocalizedName());
+					}
+				}
+				
+				for(MetaBucketItem item : MM_Reference.BUCKETS) {
+					String key = "item." + MM_Reference.MODID + "." + item.getRegistryName().getPath();
+					if(!lang.containsKey(key)) {
+						lang.put(key, item.getLocalizedName());
+					}
+				}
+				
+				for(MetaFluid fluid : MM_Reference.FLUIDS) {
+					String key = "fluid." + MM_Reference.MODID + "." + fluid.getRegistryName().getPath();
+					if(!lang.containsKey(key)) {
+						lang.put(key, fluid.getLocalizedName());
 					}
 				}
 				
