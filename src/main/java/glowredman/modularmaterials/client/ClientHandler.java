@@ -1,10 +1,12 @@
 package glowredman.modularmaterials.client;
 
 import glowredman.modularmaterials.MM_Reference;
+import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.item.MetaBlockItem;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
+import glowredman.modularmaterials.item.MetaOreBlockItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.TextComponent;
@@ -34,6 +36,9 @@ public class ClientHandler {
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
 		}
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			ItemBlockRenderTypes.setRenderLayer(ore.getBlock(), RenderType.cutoutMipped());
+		}
 	}
 	
 	@SubscribeEvent
@@ -60,6 +65,17 @@ public class ClientHandler {
 				}
 			}, block);
 		}
+		
+		//ORES
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			event.getItemColors().register((stack, tintIndex) -> {
+				if(tintIndex == 1) {
+					return ore.getMaterial().color.getRGB();
+				} else {
+					return 0xFFFFFF;
+				}
+			}, ore.getBlock());
+		}
 	}
 	
 	@SubscribeEvent
@@ -74,6 +90,17 @@ public class ClientHandler {
 					return 0xFFFFFF;
 				}
 			}, block);
+		}
+		
+		//ORES
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			event.getBlockColors().register((state, blockAndTintGetter, pos, tintIndex) -> {
+				if(tintIndex == 1) {
+					return ore.getMaterial().color.getRGB();
+				} else {
+					return 0xFFFFFF;
+				}
+			}, ore.getBlock());
 		}
 	}
 	
@@ -100,6 +127,14 @@ public class ClientHandler {
 				event.setBackground(item.fluid().material.tooltip.getBackground());
 				event.setBorderStart(item.fluid().material.tooltip.getBorderStart());
 				event.setBorderEnd(item.fluid().material.tooltip.getBorderEnd());
+			}
+		}
+		else if(event.getStack().getItem() instanceof MetaOreBlockItem) {
+			MetaOreBlockItem item = (MetaOreBlockItem) event.getStack().getItem();
+			if(MM_Reference.CONFIG.oresHaveTooltip) {
+				event.setBackground(item.ore.getMaterial().tooltip.getBackground());
+				event.setBorderStart(item.ore.getMaterial().tooltip.getBorderStart());
+				event.setBorderEnd(item.ore.getMaterial().tooltip.getBorderEnd());
 			}
 		}
 	}

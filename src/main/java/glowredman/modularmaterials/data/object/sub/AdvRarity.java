@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import glowredman.modularmaterials.MM_Reference;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.Rarity;
 
@@ -57,12 +56,6 @@ public enum AdvRarity {
 	
 	public Rarity get() {
 		return this.rarity;
-	}
-	
-	private static final AdvRarity[] RARITIES = new AdvRarity[] {COMMON, UNCOMMON, RARE, EPIC, BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLUE, GREEN, RED, OBFUSCATED, BOLD, STRIKETHROUGH, UNDERLINE, ITALIC};
-	
-	public static AdvRarity random() {
-		return RARITIES[MM_Reference.RAND.nextInt(RARITIES.length)];
 	}
 	
 }

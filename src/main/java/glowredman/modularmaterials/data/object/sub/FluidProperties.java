@@ -1,7 +1,5 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.MM_Reference.RAND;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,15 +10,14 @@ public class FluidProperties {
 	public int boilingTemperature = 374;
 	public int meltingTemperature = 274;
 	public int currentTemperature = 288;
-	public StateBasedProperties gas = StateBasedProperties.random();
-	public StateBasedProperties liquid = StateBasedProperties.random();
-	public List<String> typeEnabledTags = new ArrayList<>();
+	public StateBasedProperties gas = new StateBasedProperties();
+	public StateBasedProperties liquid = new StateBasedProperties();
 	public List<String> tags = new ArrayList<>();
 	
 	@Override
 	public String toString() {
-		return String.format("{boilingTemperature: %d, meltingTemperature: %d, currentTemperature: %d, gas: %s, liquid: %s, typeEnabledTags: %s, tags: %s}",
-				boilingTemperature, meltingTemperature, currentTemperature, gas, liquid, FormattingHandler.listToString(typeEnabledTags), FormattingHandler.listToString(tags));
+		return String.format("{boilingTemperature: %d, meltingTemperature: %d, currentTemperature: %d, gas: %s, liquid: %s, tags: %s}",
+				boilingTemperature, meltingTemperature, currentTemperature, gas, liquid, FormattingHandler.listToString(tags));
 	}
 	
 	public int getTemperature(ChemicalState currentState, ChemicalState reqState) {
@@ -41,16 +38,6 @@ public class FluidProperties {
 		return state == ChemicalState.GASEOUS ? gas : liquid;
 	}
 	
-	public static FluidProperties random() {
-		FluidProperties fluid = new FluidProperties();
-		fluid.boilingTemperature = RAND.nextInt(Integer.MAX_VALUE);
-		fluid.meltingTemperature = RAND.nextInt(Integer.MAX_VALUE - fluid.boilingTemperature);
-		fluid.currentTemperature = RAND.nextInt(Integer.MAX_VALUE);
-		fluid.gas = StateBasedProperties.random();
-		fluid.liquid = StateBasedProperties.random();
-		return fluid;
-	}
-	
 	public static class StateBasedProperties {
 		
 		public int density = 1000;
@@ -63,16 +50,6 @@ public class FluidProperties {
 		public String toString() {
 			return String.format("{density: %d, viscosity: %d, luminosity: %d, propagatesSkylightDown: %b, isPathfindable: %b}",
 					density, viscosity, luminosity, propagatesSkylightDown, isPathfindable);
-		}
-		
-		public static StateBasedProperties random() {
-			StateBasedProperties s = new StateBasedProperties();
-			s.density = RAND.nextInt();
-			s.viscosity = RAND.nextInt();
-			s.luminosity = RAND.nextInt(16);
-			s.propagatesSkylightDown = RAND.nextBoolean();
-			s.isPathfindable = RAND.nextBoolean();
-			return s;
 		}
 		
 	}

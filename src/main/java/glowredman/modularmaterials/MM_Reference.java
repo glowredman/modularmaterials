@@ -1,19 +1,23 @@
 package glowredman.modularmaterials;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Config;
 import glowredman.modularmaterials.data.object.MM_Material;
+import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.RandomSelector;
 import glowredman.modularmaterials.fluid.MetaFluid;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
+import net.minecraft.world.level.block.Block;
 
 public class MM_Reference {
 	
@@ -34,9 +38,11 @@ public class MM_Reference {
 	//Object Holders
 	public static final Map<String, MM_Type> TYPES = JSONHandler.getTypes();
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
+	public static final Map<String, MM_OreVariant> ORE_VARIANTS = JSONHandler.getOreVariants();
 	public static final List<MetaItem> ITEMS = new LinkedList<>();
 	public static final List<MetaBucketItem> BUCKETS = new LinkedList<>();
 	public static final List<MetaBlock> BLOCKS = new LinkedList<>();
 	public static final List<MetaFluid> FLUIDS = new LinkedList<>();
+	public static final Map<Block, IMetaOre> ORES = new LinkedHashMap<>();
 
 }

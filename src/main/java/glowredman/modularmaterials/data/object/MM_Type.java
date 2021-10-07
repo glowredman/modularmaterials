@@ -1,7 +1,5 @@
 package glowredman.modularmaterials.data.object;
 
-import static glowredman.modularmaterials.MM_Reference.RAND;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,30 +24,12 @@ public class MM_Type {
 	public float speedFactorMultiplier = 1.0f;
 	public boolean hasTooltip = true;
 	public String nameSyntax = TagHandler.PARAM_MATERIAL;
-	public List<String> enableTags = new ArrayList<>();
 	public List<String> tags = new ArrayList<>();
 	
 	@Override
 	public String toString() {
-		return String.format("{enabled: %b, tagNames: %s, category: %s, state: %s, burnTimeMultiplier: %f, enchantPowerBonuMultipliers: %f, fireSpreadSpeedMultiplier: %f, flammabilityMultiplier: %f, jumpFactorMultiplier: %f, lightLevelMultiplier: %f, resistanceMultiplier: %f, speedFactorMultiplier: %f, hasTooltip: %b, nameSyntax: %s, enableTags: %s, tags: %s}",
-				enabled, tagName, category, state, burnTimeMultiplier, enchantPowerBonuMultipliers, fireSpreadSpeedMultiplier, flammabilityMultiplier, jumpFactorMultiplier, lightLevelMultiplier, resistanceMultiplier, speedFactorMultiplier, hasTooltip, nameSyntax, FormattingHandler.listToString(enableTags), FormattingHandler.listToString(tags));
-	}
-	
-	public static MM_Type random() {
-		MM_Type t = new MM_Type();
-		t.burnTimeMultiplier = RAND.nextFloat() * 2;
-		t.enchantPowerBonuMultipliers = RAND.nextFloat() * 2;
-		t.fireSpreadSpeedMultiplier = RAND.nextFloat() * 2;
-		t.flammabilityMultiplier = RAND.nextFloat() * 2;
-		t.jumpFactorMultiplier = RAND.nextFloat() * 2;
-		t.lightLevelMultiplier = RAND.nextFloat() * 2;
-		t.resistanceMultiplier = RAND.nextFloat() * 2;
-		t.speedFactorMultiplier = RAND.nextFloat() * 2;
-		t.category = Category.random();
-		t.state = ChemicalState.random();
-		t.enabled = RAND.nextBoolean();
-		t.hasTooltip = RAND.nextBoolean();
-		return t;
+		return String.format("{enabled: %b, tagNames: %s, category: %s, state: %s, burnTimeMultiplier: %f, enchantPowerBonuMultipliers: %f, fireSpreadSpeedMultiplier: %f, flammabilityMultiplier: %f, jumpFactorMultiplier: %f, lightLevelMultiplier: %f, resistanceMultiplier: %f, speedFactorMultiplier: %f, hasTooltip: %b, nameSyntax: %s, tags: %s}",
+				enabled, tagName, category, state, burnTimeMultiplier, enchantPowerBonuMultipliers, fireSpreadSpeedMultiplier, flammabilityMultiplier, jumpFactorMultiplier, lightLevelMultiplier, resistanceMultiplier, speedFactorMultiplier, hasTooltip, nameSyntax, FormattingHandler.listToString(tags));
 	}
 
 }

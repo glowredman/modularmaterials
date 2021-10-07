@@ -47,6 +47,42 @@ public enum Templates {
             "  ]",
             "}"),
     
+    MODEL_ORE(
+            "{",
+            "  \"parent\": \"block/block\",",
+            "  \"textures\": {",
+            "    \"0\": \"%2$s\",",
+            "    \"1\": \"" + MM_Reference.MODID + ":blocks/%1$s/ore\",",
+            "    \"particle\": \"%2$s\"",
+            "  },",
+            "  \"elements\": [",
+            "    {",
+            "      \"from\": [0, 0, 0],",
+            "      \"to\": [16, 16, 16],",
+            "      \"faces\": {",
+            "        \"north\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"north\"},",
+            "        \"east\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"east\"},",
+            "        \"south\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"south\"},",
+            "        \"west\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"west\"},",
+            "        \"up\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"up\"},",
+            "        \"down\": {\"texture\": \"#0\", \"tintindex\": -1, \"cullface\": \"down\"}",
+            "      }",
+            "    },",
+            "    {",
+            "      \"from\": [0, 0, 0],",
+            "      \"to\": [16, 16, 16],",
+            "      \"faces\": {",
+            "        \"north\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"north\"},",
+            "        \"east\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"east\"},",
+            "        \"south\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"south\"},",
+            "        \"west\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"west\"},",
+            "        \"up\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"up\"},",
+            "        \"down\": {\"texture\": \"#1\", \"tintindex\": 1, \"cullface\": \"down\"}",
+            "      }",
+            "    }",
+            "  ]",
+            "}"),
+    
     MODEL_BUCKET(
     		"{",
     		"  \"parent\": \"forge:item/bucket\",",
@@ -68,6 +104,15 @@ public enum Templates {
             "  \"variants\": {",
             "    \"\": {",
             "      \"model\": \"" + MM_Reference.MODID + ":block/%1$s/%2$s\"",
+            "    }",
+            "  }",
+            "}"),
+    
+    BLOCKSTATE_ORE(
+            "{",
+            "  \"variants\": {",
+            "    \"\": {",
+            "      \"model\": \"" + MM_Reference.MODID + ":block/%1$s/ore/%2$s\"",
             "    }",
             "  }",
             "}"),
@@ -102,8 +147,12 @@ public enum Templates {
     }
     
     /**
-     * <p>Models/Blockstates: %1$s = texture/fluid, %2$s = type, %3$s = oreBase/oreVariant</p>
-     * <p>Loot Tables: %1$s = dropped item</p>
+     * <p>MODEL_ITEM, MODEL_BLOCK, BLOCKSTATE_BLOCK: arg0 = texture, arg1 = type</p>
+     * <P>MODEL_ORE: arg0 = texture, arg1 = baseTexture</p>
+     * <p>MODEL_BUCKET, MODEL_BUCKET_DRIP: arg0 = fluid</P>
+     * <p>BLOCKSTATE_ORE: arg0 = texture, arg1 = variant</p>
+     * <p>LOOTTABLE_BLOCKS: arg0 = dropped item</p>
+     * @param args see above
      */
     public String format(Object... args) {
         return String.format(this.toString(), args);

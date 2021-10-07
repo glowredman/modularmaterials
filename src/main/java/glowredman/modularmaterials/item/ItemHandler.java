@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
@@ -38,6 +39,10 @@ public class ItemHandler {
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			event.getRegistry().register(new MetaBlockItem(block));
+		}
+		
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			event.getRegistry().register(new MetaOreBlockItem(ore));
 		}
 		
 		ModularMaterials.info("Registered " + MM_Reference.ITEMS.size() + " items. Took " + (System.currentTimeMillis() - time) + "ms.");

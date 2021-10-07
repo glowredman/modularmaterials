@@ -13,6 +13,7 @@ import com.google.gson.JsonSyntaxException;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
@@ -89,6 +90,26 @@ public class AssetHandler {
 			}
 		}
 		
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			String texture = ore.getMaterial().texture;
+			String baseTexture = ore.getVariant().baseTexture;
+			File modelFileInventory = new File(models_item, ore.getBlock().getRegistryName().getPath() + ".json");
+			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + texture + "/ore/" + ore.getVariantIdentifier() + ".json");
+			try {
+				if(!modelFileInventory.exists()) {
+					FileHelper.write(modelFileInventory, Templates.MODEL_ORE.format(texture, baseTexture));
+					count++;
+				}
+				modelFileNormal.getParentFile().mkdirs();
+				if(!modelFileNormal.exists()) {
+					FileHelper.write(modelFileNormal, Templates.MODEL_ORE.format(texture, baseTexture));
+					count++;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		ModularMaterials.info("Done! Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
@@ -109,6 +130,18 @@ public class AssetHandler {
 			try {
 				if(!blockstateFile.exists()) {
 					FileHelper.write(blockstateFile, Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
+					count++;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		for(IMetaOre ore : MM_Reference.ORES.values()) {
+			File blockstateFile = new File(blockstates, ore.getBlock().getRegistryName().getPath() + ".json");
+			try {
+				if(!blockstateFile.exists()) {
+					FileHelper.write(blockstateFile, Templates.BLOCKSTATE_ORE.format(ore.getMaterial().texture, ore.getVariantIdentifier()));
 					count++;
 				}
 			} catch (Exception e) {
@@ -159,6 +192,13 @@ public class AssetHandler {
 					String key = "block." + MM_Reference.MODID + "." + block.getRegistryName().getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, block.getLocalizedName());
+					}
+				}
+				
+				for(IMetaOre ore : MM_Reference.ORES.values()) {
+					String key = "block." + MM_Reference.MODID + "." + ore.getBlock().getRegistryName().getPath();
+					if(!lang.containsKey(key)) {
+						lang.put(key, ore.getLocalizedName());
 					}
 				}
 				

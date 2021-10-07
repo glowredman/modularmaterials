@@ -8,19 +8,36 @@ import glowredman.modularmaterials.util.FileHelper;
 
 public class MM_Config {
 	
+	//misc
 	public boolean enableAll = false;
+	public boolean enableBuckets = true;
+	public boolean enableOres = true;
 	public String randomizer = "XSTR";
 	public int commandPermissionLevel = 2;
+	
+	//files
 	public boolean overrideModelFiles = false;
 	public boolean overrideBlockstateFiles = false;
 	public boolean overrideTagFiles = false;
 	public boolean overrideLootTableFiles = false;
+	
+	//rendering
 	public boolean blocksHaveFoilEffect = true;
 	public boolean bucketsHaveFoilEffect = true;
+	public boolean oresHaveFoilEffect = true;
+	public boolean oresHaveTooltip = true;
+	
+	//ores
+	public boolean oresInheritFriction = true;
 	public boolean oresInheritHardness = true;
 	public boolean oresInheritHarvestLevel = false;
+	public boolean oresInheritJumpFactor = true;
 	public boolean oresInheritLightLevel = false;
+	public boolean oresInheritMapColor = true;
+	public boolean oresInheritMaterial = true;
 	public boolean oresInheritResistance = true;
+	public boolean oresInheritSoundType = true;
+	public boolean oresInheritSpeedFactor = true;
 	
 	public static MM_Config read() {
 		long time = System.currentTimeMillis();

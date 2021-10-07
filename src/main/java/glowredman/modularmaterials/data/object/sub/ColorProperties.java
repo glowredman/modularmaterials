@@ -1,7 +1,5 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import static glowredman.modularmaterials.MM_Reference.RAND;
-
 public class ColorProperties {
 	
 	public int red = 255;
@@ -35,10 +33,6 @@ public class ColorProperties {
 	@Override
 	public String toString() {
 		return String.format("{red: %d, green: %d, blue: %d, alpha: %d}", red, green, blue, alpha);
-	}
-	
-	public static ColorProperties random() {
-		return new ColorProperties(RAND.nextInt(256), RAND.nextInt(256), RAND.nextInt(256), RAND.nextInt(256));
 	}
 
 }

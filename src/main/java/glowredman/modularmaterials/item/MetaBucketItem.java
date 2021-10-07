@@ -89,7 +89,7 @@ public class MetaBucketItem extends BucketItem {
 		return new FluidBucketWrapper(stack);
 	}
 
-	public String getTypeIdentifier() {
+	public String getFluidTypeIdentifier() {
 		String s = this.getRegistryName().getPath().replace("bucket.", "");
 		return s.substring(0, s.indexOf("."));
 	}

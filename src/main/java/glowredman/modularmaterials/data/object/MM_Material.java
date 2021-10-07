@@ -1,13 +1,16 @@
 package glowredman.modularmaterials.data.object;
 
-import static glowredman.modularmaterials.MM_Reference.RAND;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import glowredman.modularmaterials.client.FormattingHandler;
-import glowredman.modularmaterials.data.object.sub.*;
+import glowredman.modularmaterials.data.object.sub.BlockProperties;
+import glowredman.modularmaterials.data.object.sub.ChemicalState;
+import glowredman.modularmaterials.data.object.sub.ColorProperties;
+import glowredman.modularmaterials.data.object.sub.FluidProperties;
+import glowredman.modularmaterials.data.object.sub.ItemProperties;
+import glowredman.modularmaterials.data.object.sub.OreProperties;
+import glowredman.modularmaterials.data.object.sub.TooltipProperties;
 import net.minecraft.network.chat.Component;
 
 public class MM_Material {
@@ -51,30 +54,6 @@ public class MM_Material {
 			return false;
 		}
 		return this.name.equals(((MM_Material) obj).name);
-	}
-	
-	public static MM_Material random() {
-		MM_Material m = new MM_Material();
-		m.block = BlockProperties.random();
-		m.burnTime = RAND.nextInt(10000);
-		m.color = ColorProperties.random();
-		m.enabled = RAND.nextBoolean();
-		m.enabledTypes = Arrays.asList("example");
-		m.fluid = FluidProperties.random();
-		m.item = ItemProperties.random();
-		m.name = "material_" + m.hashCode();
-		m.ore = OreProperties.random();
-		m.state = ChemicalState.random();
-		m.texture = "metallic";
-		m.tooltip = TooltipProperties.random();
-		m.enchantPowerBonus = RAND.nextFloat() * 8.0f;
-		m.fireSpreadSpeed = RAND.nextInt(301);
-		m.flammability = RAND.nextInt(301);
-		m.jumpFactor = RAND.nextFloat() * 3.0f;
-		m.lightLevel = RAND.nextInt(16);
-		m.resistance = RAND.nextFloat() * 10.0f;
-		m.speedFactor = RAND.nextFloat() * 3.0f;
-		return m;
 	}
 
 }

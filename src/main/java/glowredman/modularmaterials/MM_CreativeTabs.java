@@ -15,6 +15,14 @@ public class MM_CreativeTabs {
 		}
 	};
 	
+	public static final CreativeModeTab TAB_ORES = new CreativeModeTab(MM_Reference.MODID + ".ores") {
+		
+		@Override
+		public ItemStack makeIcon() {
+			return new ItemStack(Blocks.IRON_ORE);
+		}
+	};
+	
 	public static final CreativeModeTab TAB_ITEMS = new CreativeModeTab(MM_Reference.MODID + ".items") {
 		
 		@Override
@@ -23,11 +31,11 @@ public class MM_CreativeTabs {
 		}
 	};
 	
-	public static final CreativeModeTab TAB_ORES = new CreativeModeTab(MM_Reference.MODID + ".ores") {
+	public static final CreativeModeTab TAB_FLUIDS = new CreativeModeTab(MM_Reference.MODID + ".fluids") {
 		
 		@Override
 		public ItemStack makeIcon() {
-			return new ItemStack(Blocks.IRON_ORE);
+			return new ItemStack(Items.WATER_BUCKET);
 		}
 	};
 

@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.MM_Material;
+import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.util.FileHelper;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -30,13 +31,13 @@ public class JSONHandler {
 			File file = new File(CONFIG_DIR, "materials.json");
 			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
-			MM_Material example = MM_Material.random();
+			MM_Material example = new MM_Material();
 			example.enabled = true;
 			example.name = "Example";
 			createExample(file, example);
 			
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Material>>() {
-				private static final long serialVersionUID = 3292456296675220350L;}.getType();
+				private static final long serialVersionUID = 5500293462812712215L;}.getType();
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
@@ -60,13 +61,12 @@ public class JSONHandler {
 			File file = new File(CONFIG_DIR, "types.json");
 			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
-			MM_Type example = MM_Type.random();
-			example.enabled = true;
+			MM_Type example = new MM_Type();
 			example.nameSyntax = TagHandler.PARAM_MATERIAL + " Item";
 			createExample(file, example);
 			
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Type>>() {
-				private static final long serialVersionUID = 3292456296675220350L;}.getType();
+				private static final long serialVersionUID = -6168799421344577955L;}.getType();
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
@@ -76,6 +76,35 @@ public class JSONHandler {
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
 		} catch (Exception e) {
 			ModularMaterials.fatal("Parsing types.json failed:");
+			e.printStackTrace();
+		}
+		
+		return types;
+	}
+	
+	public static Map<String, MM_OreVariant> getOreVariants() {
+		long time = System.currentTimeMillis();
+		Map<String, MM_OreVariant> types = new LinkedHashMap<>();
+		
+		try {
+			File file = new File(CONFIG_DIR, "orevariants.json");
+			ModularMaterials.info("Parsing " + file.getPath() + " ...");
+			
+			MM_OreVariant example = new MM_OreVariant();
+			example.enabled = true;
+			createExample(file, new MM_OreVariant());
+			
+			Type listType = new TypeToken<LinkedHashMap<String, MM_OreVariant>>() {
+				private static final long serialVersionUID = 8305381304760332638L;}.getType();
+				
+			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
+			
+			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			
+			ModularMaterials.debug(String.format("Ore Variants (%d):", types.size()));
+			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
+		} catch (Exception e) {
+			ModularMaterials.fatal("Parsing orevariants.json failed:");
 			e.printStackTrace();
 		}
 		
