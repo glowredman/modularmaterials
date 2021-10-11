@@ -8,7 +8,6 @@ import glowredman.modularmaterials.data.TagHandler;
 
 public class MM_OreVariant {
 
-	public String name = "Ore_" + this.hashCode();
 	public boolean enabled = true;
 	public boolean falling = false;
 	public String variantName = "variant_" + this.hashCode();
@@ -19,8 +18,8 @@ public class MM_OreVariant {
 	
 	@Override
 	public String toString() {
-		return String.format("{name: %s, enabled: %b, falling: %b, variantName: %s, baseBlock: %s, baseTexture: %s, nameSyntax: %s, tags: %s}",
-				name, enabled, falling, variantName, baseBlock, baseTexture, nameSyntax, FormattingHandler.listToString(tags));
+		return String.format("{enabled: %b, falling: %b, variantName: %s, baseBlock: %s, baseTexture: %s, nameSyntax: %s, tags: %s}",
+				enabled, falling, variantName, baseBlock, baseTexture, nameSyntax, FormattingHandler.listToString(tags));
 	}
 
 }

@@ -24,7 +24,7 @@ public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 		super(BlockHandler.getOreBlockProperties(material, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName));
 		this.material = material;
 		this.variant = ore;
-		MM_Reference.ORES.put(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), this);
+		MM_Reference.ORES.put(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName, this);
 	}
 	
 	@Override

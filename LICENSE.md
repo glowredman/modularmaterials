@@ -1,3 +1,5 @@
+If not specified otherwise, the following license applies:
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

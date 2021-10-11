@@ -9,6 +9,7 @@ import glowredman.modularmaterials.data.LootTableHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.item.ItemHandler;
+import glowredman.modularmaterials.worldgen.FeatureHandler;
 import net.minecraft.server.packs.PackType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,13 +30,15 @@ public class ModularMaterials {
 	
 	public ModularMaterials() {
 		instance = this;
-		MinecraftForge.EVENT_BUS.register(new MM_Commands());
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		bus.register(instance);
-		bus.register(new BlockHandler());
-		bus.register(new ItemHandler());
+		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+		forgeBus.register(new MM_Commands());
+		if(!MM_Reference.ORE_VEINS.isEmpty()) forgeBus.register(new FeatureHandler());
+		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+		modBus.register(instance);
+		modBus.register(new BlockHandler());
+		modBus.register(new ItemHandler());
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			bus.register(new ClientHandler());
+			modBus.register(new ClientHandler());
 		});
 	}
 	
@@ -43,6 +46,8 @@ public class ModularMaterials {
 	public void commonSetup(FMLCommonSetupEvent event) {
 		TagHandler.execute();
 		LootTableHandler.generateBlockDrops();
+		FeatureHandler.initNoSpawnList();
+		FeatureHandler.calculateTotalWeight();
 	}
 	
 	@SubscribeEvent

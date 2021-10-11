@@ -9,17 +9,17 @@ import glowredman.modularmaterials.util.FileHelper;
 public class MM_Config {
 	
 	//misc
+	public int commandPermissionLevel = 2;
 	public boolean enableAll = false;
 	public boolean enableBuckets = true;
 	public boolean enableOres = true;
-	public String randomizer = "XSTR";
-	public int commandPermissionLevel = 2;
+	public RandomSelector random = RandomSelector.XSTR;
 	
 	//files
-	public boolean overrideModelFiles = false;
 	public boolean overrideBlockstateFiles = false;
-	public boolean overrideTagFiles = false;
 	public boolean overrideLootTableFiles = false;
+	public boolean overrideModelFiles = false;
+	public boolean overrideTagFiles = false;
 	
 	//rendering
 	public boolean blocksHaveFoilEffect = true;
@@ -38,6 +38,14 @@ public class MM_Config {
 	public boolean oresInheritResistance = true;
 	public boolean oresInheritSoundType = true;
 	public boolean oresInheritSpeedFactor = true;
+	
+	//world gen
+	public int maxFindingAttempts = 64;
+	public int maxPlacementAttempts = 8;
+	public int maxVeinSize = 32;
+	public String[] removeOres = new String[] {};
+	public float veinGenerationProbability = 0.75f;
+	
 	
 	public static MM_Config read() {
 		long time = System.currentTimeMillis();

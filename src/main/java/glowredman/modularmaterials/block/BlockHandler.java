@@ -13,6 +13,7 @@ import glowredman.modularmaterials.data.object.sub.ColorProperties;
 import glowredman.modularmaterials.fluid.MetaFlowingFluid;
 import glowredman.modularmaterials.fluid.MetaFluid;
 import glowredman.modularmaterials.item.MetaBucketItem;
+import glowredman.modularmaterials.worldgen.FeatureHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -109,6 +110,8 @@ public class BlockHandler {
         		}
         	}
         }
+        
+        FeatureHandler.initOresForBlocksList();
         
         ModularMaterials.info("Registered " + (MM_Reference.BLOCKS.size() + MM_Reference.ORES.size()) + " blocks and " + MM_Reference.FLUIDS.size() + " fluids. Took " + (System.currentTimeMillis() - time) + "ms.");
     }

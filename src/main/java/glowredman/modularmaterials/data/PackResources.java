@@ -17,5 +17,10 @@ public class PackResources extends FolderPackResources {
 	public String getName() {
 		return this.name;
 	}
+	
+	@Override
+	public boolean isHidden() {
+		return true;
+	}
 
 }

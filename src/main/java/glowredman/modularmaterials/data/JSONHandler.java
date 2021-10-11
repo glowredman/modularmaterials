@@ -14,6 +14,7 @@ import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
+import glowredman.modularmaterials.data.object.MM_OreVein;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.util.FileHelper;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -109,6 +110,35 @@ public class JSONHandler {
 		}
 		
 		return types;
+	}
+	
+	public static Map<String, MM_OreVein> getOreVeins() {
+		long time = System.currentTimeMillis();
+		Map<String, MM_OreVein> veins = new LinkedHashMap<>();
+		
+		try {
+			File file = new File(CONFIG_DIR, "oreveins.json");
+			ModularMaterials.info("Parsing " + file.getPath() + " ...");
+			
+			MM_OreVein example = new MM_OreVein();
+			example.enabled = true;
+			createExample(file, new MM_OreVein());
+			
+			Type listType = new TypeToken<LinkedHashMap<String, MM_OreVein>>() {
+				private static final long serialVersionUID = -6019676943621850611L;}.getType();
+				
+			veins = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
+			
+			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			
+			ModularMaterials.debug(String.format("Ore Veins (%d):", veins.size()));
+			veins.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
+		} catch (Exception e) {
+			ModularMaterials.fatal("Parsing oreveins.json failed:");
+			e.printStackTrace();
+		}
+		
+		return veins;
 	}
 	
 	private static <T> void createExample(File file, T example) throws IOException {
