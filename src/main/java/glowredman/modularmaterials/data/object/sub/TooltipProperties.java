@@ -1,12 +1,13 @@
 package glowredman.modularmaterials.data.object.sub;
 
 import glowredman.modularmaterials.client.FormattingHandler;
+import net.minecraftforge.fmlclient.gui.GuiUtils;
 
 public class TooltipProperties {
 	
-    public String background  = "F0100010";
-    public String borderStart = "505000FF";
-    public String borderEnd   = "5028007F";
+    public String background  = Integer.toHexString(GuiUtils.DEFAULT_BACKGROUND_COLOR).toUpperCase();
+    public String borderStart = Integer.toHexString(GuiUtils.DEFAULT_BORDER_COLOR_START).toUpperCase();
+    public String borderEnd   = Integer.toHexString(GuiUtils.DEFAULT_BORDER_COLOR_END).toUpperCase();
     public String[] text = new String[0];
     
     @Override

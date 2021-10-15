@@ -36,7 +36,6 @@ public class WorldGenVeinLayer {
 				for(int i = 0; i < MM_Reference.CONFIG.maxFindingAttempts && !oreVeinFound && placementAttempts < MM_Reference.CONFIG.maxPlacementAttempts; i++) {
 					int randomWeight = oreVeinRNG.nextInt(FeatureHandler.totalWeight);
 					for(MM_OreVein vein : MM_Reference.ORE_VEINS.values()) {
-						System.out.println("Test1");
 						randomWeight -= vein.weight;
 						if(randomWeight <= 0) {
 							// Adjust the seed so that this vein has a series of unique random numbers.  Otherwise multiple attempts at this same oreseed will get the same offset and X/Z values. If an orevein failed, any orevein with the

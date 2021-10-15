@@ -149,7 +149,7 @@ public class BlockHandler {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(
                 MM_Reference.CONFIG.oresInheritMaterial                          ? parent.defaultBlockState().getMaterial()      : getMaterial(material.ore.material, uniqueMM_MaterialName));
         properties.color(MM_Reference.CONFIG.oresInheritMapColor                 ? parent.defaultMaterialColor()                 : getMaterialColor(material.ore.mapColor, material.color, uniqueMM_MaterialName));
-        properties.sound(MM_Reference.CONFIG.oresInheritSoundType                ? parent.defaultBlockState().getSoundType()     : getSoundType(material.ore.soundType, uniqueMM_MaterialName));
+        properties.sound(MM_Reference.CONFIG.oresInheritSoundType                ? parent.defaultBlockState().getSoundType()     : getSoundType(material.ore.sound, uniqueMM_MaterialName));
         properties.destroyTime(MM_Reference.CONFIG.oresInheritHardness           ? parent.defaultDestroyTime()                   : material.ore.hardness);
         properties.explosionResistance(MM_Reference.CONFIG.oresInheritResistance ? parent.getExplosionResistance()               : material.ore.resistance);
         properties.friction(MM_Reference.CONFIG.oresInheritFriction              ? parent.getFriction()                          : material.ore.friction);

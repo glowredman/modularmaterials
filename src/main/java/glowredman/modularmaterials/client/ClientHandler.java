@@ -48,7 +48,7 @@ public class ClientHandler {
 		for(MetaItem item : MM_Reference.ITEMS) {
 			event.getItemColors().register((stack, tintIndex) -> {
 				if(tintIndex == 0) {
-					return item.material.color.getARGB();
+					return item.material.color.getRGB();
 				} else {
 					return 0xFFFFFFFF;
 				}

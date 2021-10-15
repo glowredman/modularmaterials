@@ -18,6 +18,7 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.Templates;
+import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.fluid.MetaFluid;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
@@ -59,10 +60,10 @@ public class AssetHandler {
 			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
 			try {
 				if(!modelFile.exists()) {
-					if(item.getFluid().getAttributes().isLighterThanAir() || item.fluid().material.state == item.fluid().type.state) {
-						FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
-					} else {
+					if(item.fluid().material.state == ChemicalState.SOLID && item.fluid().type.state == ChemicalState.LIQUID) {
 						FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
+					} else {
+						FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
 					}
 					count++;
 				}
@@ -219,6 +220,22 @@ public class AssetHandler {
 				
 				for(MetaItem item : MM_Reference.ITEMS) {
 					lang.put("item." + MM_Reference.MODID + "." + item.getRegistryName().getPath(), item.getLocalizedName());
+				}
+				
+				for(MetaBucketItem item : MM_Reference.BUCKETS) {
+					lang.put("item." + MM_Reference.MODID + "." + item.getRegistryName().getPath(), item.getLocalizedName());
+				}
+				
+				for(MetaFluid fluid : MM_Reference.FLUIDS) {
+					lang.put("fluid." + MM_Reference.MODID + "." + fluid.getRegistryName().getPath(), fluid.getLocalizedName());
+				}
+				
+				for(MetaBlock block : MM_Reference.BLOCKS) {
+					lang.put("block." + MM_Reference.MODID + "." + block.getRegistryName().getPath(), block.getLocalizedName());
+				}
+				
+				for(IMetaOre ore : MM_Reference.ORES.values()) {
+					lang.put("block." + MM_Reference.MODID + "." + ore.getBlock().getRegistryName().getPath(), ore.getLocalizedName());
 				}
 				
 				FileHelper.write(langFile, new GsonBuilder().setPrettyPrinting().create().toJson(lang, type));
