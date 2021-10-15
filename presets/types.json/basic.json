@@ -1,0 +1,196 @@
+{
+  "block": {
+    "enabled": true,
+    "tagName": "storage_blocks",
+    "category": "BLOCK",
+    "state": "SOLID",
+    "burnTimeMultiplier": 10.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Block",
+    "tags": [
+      "forge:storage_blocks",
+      "forge:storage_blocks/\u003cm\u003e"
+    ]
+  },
+  "dust": {
+    "enabled": true,
+    "tagName": "dusts",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Dust",
+    "tags": [
+      "forge:dusts",
+      "forge:dusts/\u003cm\u003e"
+    ]
+  },
+  "gas": {
+    "enabled": true,
+    "tagName": "gases",
+    "category": "FLUID",
+    "state": "GASEOUS",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e",
+    "tags": []
+  },
+  "gear": {
+    "enabled": true,
+    "tagName": "gears",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 4.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Gear",
+    "tags": [
+      "forge:gears",
+      "forge:gears/\u003cm\u003e"
+    ]
+  },
+  "gem": {
+    "enabled": true,
+    "tagName": "gems",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e",
+    "tags": [
+      "forge:gems",
+      "forge:gems/\u003cm\u003e"
+    ]
+  },
+  "ingot": {
+    "enabled": true,
+    "tagName": "ingots",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Ingot",
+    "tags": [
+      "forge:ingots",
+      "forge:ingots/\u003cm\u003e"
+    ]
+  },
+  "liquid": {
+    "enabled": true,
+    "tagName": "liquids",
+    "category": "FLUID",
+    "state": "LIQUID",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e",
+    "tags": []
+  },
+  "nugget": {
+    "enabled": true,
+    "tagName": "nuggets",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 0.1,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Nugget",
+    "tags": [
+      "forge:nuggets",
+      "forge:nuggets/\u003cm\u003e"
+    ]
+  },
+  "plate": {
+    "enabled": true,
+    "tagName": "plates",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 1.0,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Plate",
+    "tags": [
+      "forge:plates",
+      "forge:plates/\u003cm\u003e"
+    ]
+  },
+  "rod": {
+    "enabled": true,
+    "tagName": "rods",
+    "category": "ITEM",
+    "state": "SOLID",
+    "burnTimeMultiplier": 0.5,
+    "enchantPowerBonuMultipliers": 1.0,
+    "fireSpreadSpeedMultiplier": 1.0,
+    "flammabilityMultiplier": 1.0,
+    "jumpFactorMultiplier": 1.0,
+    "lightLevelMultiplier": 1.0,
+    "resistanceMultiplier": 1.0,
+    "speedFactorMultiplier": 1.0,
+    "hasTooltip": true,
+    "nameSyntax": "\u003cm\u003e Rod",
+    "tags": [
+      "forge:rods",
+      "forge:rods/\u003cm\u003e"
+    ]
+  }
+}
