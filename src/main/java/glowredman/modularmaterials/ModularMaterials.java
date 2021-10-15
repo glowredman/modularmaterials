@@ -8,6 +8,7 @@ import glowredman.modularmaterials.client.ClientHandler;
 import glowredman.modularmaterials.data.LootTableHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.TagHandler;
+import glowredman.modularmaterials.data.legacy.LegacyHandler;
 import glowredman.modularmaterials.item.ItemHandler;
 import glowredman.modularmaterials.worldgen.FeatureHandler;
 import net.minecraft.server.packs.PackType;
@@ -48,6 +49,7 @@ public class ModularMaterials {
 		LootTableHandler.generateBlockDrops();
 		FeatureHandler.initNoSpawnList();
 		FeatureHandler.calculateTotalWeight();
+		LegacyHandler.LEGACY_DIR.mkdirs();
 	}
 	
 	@SubscribeEvent

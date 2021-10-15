@@ -3,10 +3,10 @@ package glowredman.modularmaterials;
 import java.text.NumberFormat;
 import java.util.Set;
 
+import glowredman.modularmaterials.data.legacy.LegacyHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.Commands.CommandSelection;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,38 +35,43 @@ public class MM_Commands {
 	@SubscribeEvent
 	public void register(RegisterCommandsEvent event) {
 
-		if (event.getEnvironment() != CommandSelection.DEDICATED) {
+		event.getDispatcher().register(Commands.literal("mm")
+				
+				.requires(commandSourceStack -> commandSourceStack.hasPermission(MM_Reference.CONFIG.commandPermissionLevel))
+				
+				.then(Commands.literal("hand").executes(context -> {
 
-			event.getDispatcher().register(Commands.literal("mm")
+					CommandSourceStack commandSourceStack = context.getSource();
+
+					ItemStack stack = null;
 					
-					.requires(commandSourceStack -> commandSourceStack.hasPermission(MM_Reference.CONFIG.commandPermissionLevel))
-					
-					.then(Commands.literal("hand").executes(context -> {
+					try {
+						stack = commandSourceStack.getPlayerOrException().getMainHandItem();
+					} catch (Exception e) {}
 
-						CommandSourceStack commandSourceStack = context.getSource();
+					if (stack == null || stack.getItem().getRegistryName().equals(Blocks.AIR.getRegistryName())) {
 
-						ItemStack stack = commandSourceStack.getPlayerOrException().getMainHandItem();
+						commandSourceStack.sendFailure(new TextComponent("Your main hand is empty!")
+								.withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
 
-						if (stack == null || stack.getItem().getRegistryName().equals(Blocks.AIR.getRegistryName())) {
+					} else {
+						commandSourceStack.sendSuccess(copyable(stack.getItem().getRegistryName().toString()).withStyle(ChatFormatting.GREEN), false);
+						stack.getItem().getTags().forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.toString())), false));
+					}
+					return 0;
 
-							commandSourceStack.sendFailure(new TextComponent("Your main hand is empty!")
-									.withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
-
-						} else {
-							commandSourceStack.sendSuccess(copyable(stack.getItem().getRegistryName().toString()).withStyle(ChatFormatting.GREEN), false);
-							stack.getItem().getTags().forEach(rl -> commandSourceStack.sendSuccess(copyable("> " + rl.toString()), false));
-						}
-						return 0;
-
-					})).then(Commands.literal("posinfo").executes(context -> {
-						CommandSourceStack commandSourceStack = context.getSource();
-						Entity entity = commandSourceStack.getEntity();
-						if(entity == null) return 0;
-						return getInfo(commandSourceStack, new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()));
-					}).then(Commands.argument("location", BlockPosArgument.blockPos()).executes(context -> {
-						return getInfo(context.getSource(), BlockPosArgument.getLoadedBlockPos(context, "location"));
-					}))));
-		}
+				})).then(Commands.literal("posinfo").executes(context -> {
+					CommandSourceStack commandSourceStack = context.getSource();
+					Entity entity = commandSourceStack.getEntity();
+					if(entity == null) return 0;
+					return getInfo(commandSourceStack, new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()));
+				}).then(Commands.argument("location", BlockPosArgument.blockPos()).executes(context -> {
+					return getInfo(context.getSource(), BlockPosArgument.getLoadedBlockPos(context, "location"));
+				})))
+				
+				.then(Commands.literal("convert").requires(commandSourceStack -> commandSourceStack.hasPermission(4)).executes(context -> {
+					return LegacyHandler.convert(context.getSource());
+				})));
 	}
 	
 	private static int getInfo(CommandSourceStack commandSourceStack, BlockPos pos) {
@@ -185,7 +190,7 @@ public class MM_Commands {
 					.append(new TextComponent(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(copyable("  > " + rl.toString()), false));
+			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.toString())), false));
 			
 		}
 
