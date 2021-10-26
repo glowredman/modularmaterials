@@ -43,7 +43,7 @@ public class MetaFluidBlock extends LiquidBlock {
 
 	@Override
 	public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
-		return fluid().material.enchantPowerBonus * fluid().type.enchantPowerBonuMultipliers;
+		return fluid().material.enchantPowerBonus * fluid().type.enchantPowerBonusMultiplier;
 	}
 
 	@Override

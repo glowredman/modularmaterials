@@ -30,7 +30,7 @@ public class MetaBlock extends Block {
 	
 	@Override
 	public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
-		return material.enchantPowerBonus * type.enchantPowerBonuMultipliers;
+		return material.enchantPowerBonus * type.enchantPowerBonusMultiplier;
 	}
 	
 	@Override
