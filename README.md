@@ -3,6 +3,8 @@
 Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
 =================
 
+**Config Editor available [here](https://github.com/glowredman/mmcc/releases)**
+
 #### Features
 
  - Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json`
