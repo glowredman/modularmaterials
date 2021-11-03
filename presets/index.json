@@ -1,8 +1,0 @@
-{
-  "presets": [
-    "types/vanilla",
-	"types/basic",
-	"types/advanced",
-	"types/extended"
-  ]
-}
