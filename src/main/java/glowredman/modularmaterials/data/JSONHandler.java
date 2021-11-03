@@ -1,7 +1,6 @@
 package glowredman.modularmaterials.data;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -141,7 +140,7 @@ public class JSONHandler {
 		return veins;
 	}
 	
-	private static <T> void createExample(File file, T example) throws IOException {
+	private static <T> void createExample(File file, T example) {
 		if(!file.exists()) {
 			file.getParentFile().mkdirs();
 			Map<String, T> map = new LinkedHashMap<>();

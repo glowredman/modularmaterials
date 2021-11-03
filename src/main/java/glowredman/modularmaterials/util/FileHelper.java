@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import glowredman.modularmaterials.ModularMaterials;
 
@@ -30,10 +31,19 @@ public class FileHelper {
 		return new String(encoded, StandardCharsets.UTF_8);
 	}
 	
-	public static void write(File file, String content) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
-		writer.write(content);
-		writer.close();
+	public static boolean write(File file, String content) {
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
+			writer.write(content);
+			writer.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			IOUtils.closeQuietly(writer);
+		}
+		return false;
 	}
 
 }

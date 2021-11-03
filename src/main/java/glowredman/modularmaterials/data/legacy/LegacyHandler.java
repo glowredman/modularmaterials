@@ -240,14 +240,11 @@ public class LegacyHandler {
 	}
 	
 	private static <K, V> void write(String file, Map<K, V> values, CommandSourceStack css) {
-		try {
-			File f = new File(JSONHandler.CONFIG_DIR, file);
-			if(f.exists()) f.delete();
-			FileHelper.write(f, JSONHandler.GSON.toJson(values, new TypeToken<Map<K, V>>() {
-				private static final long serialVersionUID = 6306948798714244240L;}.getType()));
-		} catch (Exception e) {
-			css.sendSuccess(new TextComponent(e.toString()).withStyle(ChatFormatting.RED), false);
-			e.printStackTrace();
+		File f = new File(JSONHandler.CONFIG_DIR, file);
+		if(f.exists()) f.delete();
+		if(!FileHelper.write(f, JSONHandler.GSON.toJson(values, new TypeToken<Map<K, V>>() {
+			private static final long serialVersionUID = 6306948798714244240L;}.getType()))) {
+			css.sendFailure(new TextComponent("Failed creating " + file).withStyle(ChatFormatting.RED));
 		}
 	}
 

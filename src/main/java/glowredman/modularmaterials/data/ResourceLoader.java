@@ -1,7 +1,6 @@
 package glowredman.modularmaterials.data;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
@@ -41,12 +40,7 @@ public class ResourceLoader implements RepositorySource {
 		final File packMeta = new File(dir, "pack.mcmeta");
 		packMeta.getParentFile().mkdirs();
 		if(!packMeta.exists()) {
-			try {
-				FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":7}}");
-			} catch (IOException e) {
-				ModularMaterials.error("An error occured while creating " + packMeta.getAbsolutePath());
-				e.printStackTrace();
-			}
+			FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":7}}");
 		}
 	}
 

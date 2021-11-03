@@ -46,29 +46,21 @@ public class AssetHandler {
 		
 		for(MetaItem item : MM_Reference.ITEMS) {
 			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
-			try {
-				if(!modelFile.exists()) {
-					FileHelper.write(modelFile, Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!modelFile.exists()) {
+				FileHelper.write(modelFile, Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
+				count++;
 			}
 		}
 		
 		for(MetaBucketItem item : MM_Reference.BUCKETS) {
 			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
-			try {
-				if(!modelFile.exists()) {
-					if(item.fluid().material.state == ChemicalState.SOLID && item.fluid().type.state == ChemicalState.LIQUID) {
-						FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
-					} else {
-						FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
-					}
-					count++;
+			if(!modelFile.exists()) {
+				if(item.fluid().material.state == ChemicalState.SOLID && item.fluid().type.state == ChemicalState.LIQUID) {
+					FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
+				} else {
+					FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				count++;
 			}
 		}
 		
@@ -76,18 +68,14 @@ public class AssetHandler {
 			String type = block.getTypeIdentifier();
 			File modelFileInventory = new File(models_item, block.getRegistryName().getPath() + ".json");
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + block.material.texture + "/" + type + ".json");
-			try {
-				if(!modelFileInventory.exists()) {
-					FileHelper.write(modelFileInventory, Templates.MODEL_BLOCK.format(block.material.texture, type));
-					count++;
-				}
-				modelFileNormal.getParentFile().mkdirs();
-				if(!modelFileNormal.exists()) {
-					FileHelper.write(modelFileNormal, Templates.MODEL_BLOCK.format(block.material.texture, type));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!modelFileInventory.exists()) {
+				FileHelper.write(modelFileInventory, Templates.MODEL_BLOCK.format(block.material.texture, type));
+				count++;
+			}
+			modelFileNormal.getParentFile().mkdirs();
+			if(!modelFileNormal.exists()) {
+				FileHelper.write(modelFileNormal, Templates.MODEL_BLOCK.format(block.material.texture, type));
+				count++;
 			}
 		}
 		
@@ -96,18 +84,14 @@ public class AssetHandler {
 			String baseTexture = ore.getVariant().baseTexture;
 			File modelFileInventory = new File(models_item, ore.getBlock().getRegistryName().getPath() + ".json");
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + texture + "/ore/" + ore.getVariantIdentifier() + ".json");
-			try {
-				if(!modelFileInventory.exists()) {
-					FileHelper.write(modelFileInventory, Templates.MODEL_ORE.format(texture, baseTexture));
-					count++;
-				}
-				modelFileNormal.getParentFile().mkdirs();
-				if(!modelFileNormal.exists()) {
-					FileHelper.write(modelFileNormal, Templates.MODEL_ORE.format(texture, baseTexture));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!modelFileInventory.exists()) {
+				FileHelper.write(modelFileInventory, Templates.MODEL_ORE.format(texture, baseTexture));
+				count++;
+			}
+			modelFileNormal.getParentFile().mkdirs();
+			if(!modelFileNormal.exists()) {
+				FileHelper.write(modelFileNormal, Templates.MODEL_ORE.format(texture, baseTexture));
+				count++;
 			}
 		}
 		
@@ -128,25 +112,17 @@ public class AssetHandler {
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			File blockstateFile = new File(blockstates, block.getRegistryName().getPath() + ".json");
-			try {
-				if(!blockstateFile.exists()) {
-					FileHelper.write(blockstateFile, Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!blockstateFile.exists()) {
+				FileHelper.write(blockstateFile, Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
+				count++;
 			}
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
 			File blockstateFile = new File(blockstates, ore.getBlock().getRegistryName().getPath() + ".json");
-			try {
-				if(!blockstateFile.exists()) {
-					FileHelper.write(blockstateFile, Templates.BLOCKSTATE_ORE.format(ore.getMaterial().texture, ore.getVariantIdentifier()));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!blockstateFile.exists()) {
+				FileHelper.write(blockstateFile, Templates.BLOCKSTATE_ORE.format(ore.getMaterial().texture, ore.getVariantIdentifier()));
+				count++;
 			}
 		}
 		
@@ -242,7 +218,7 @@ public class AssetHandler {
 				
 				ModularMaterials.info(String.format("Done! Created %d entries in %dms.", lang.size(), System.currentTimeMillis() - time));
 				
-			} catch (JsonIOException | JsonSyntaxException | IOException e) {
+			} catch (JsonIOException | JsonSyntaxException e) {
 				e.printStackTrace();
 			}
 		}

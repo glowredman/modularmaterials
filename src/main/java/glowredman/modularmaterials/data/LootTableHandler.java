@@ -27,26 +27,18 @@ public class LootTableHandler {
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			ResourceLocation regName = block.getRegistryName();
 			File lootTable = new File(lootTables, regName.getPath() + ".json");
-			try {
-				if(!lootTable.exists()) {
-					FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!lootTable.exists()) {
+				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
+				count++;
 			}
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
 			ResourceLocation regName = ore.getBlock().getRegistryName();
 			File lootTable = new File(lootTables, regName.getPath() + ".json");
-			try {
-				if(!lootTable.exists()) {
-					FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
-					count++;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(!lootTable.exists()) {
+				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
+				count++;
 			}
 		}
 		

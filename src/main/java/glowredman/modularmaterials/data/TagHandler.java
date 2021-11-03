@@ -100,12 +100,8 @@ public class TagHandler {
             File file = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/items/" + tag.getPath() + ".json");
             
             if(!file.exists()) {
-                try {
-                    file.getParentFile().mkdirs();
-                    FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+            	file.getParentFile().mkdirs();
+                FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
             }
         }
         
@@ -228,12 +224,8 @@ public class TagHandler {
             File file = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/fluids/" + tag.getPath() + ".json");
             
             if(!file.exists()) {
-                try {
-                    file.getParentFile().mkdirs();
-                    FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+            	file.getParentFile().mkdirs();
+                FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
             }
         }
         
@@ -304,20 +296,12 @@ public class TagHandler {
             File fileBlocks = new File(ResourceLoader.DATA_DIR, "data/" + tag.getNamespace() + "/tags/blocks/" + tag.getPath() + ".json");
             
             if(!fileItems.exists()) {
-                try {
-                    fileItems.getParentFile().mkdirs();
-                    FileHelper.write(fileItems, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+            	fileItems.getParentFile().mkdirs();
+                FileHelper.write(fileItems, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
             }
             if(!fileBlocks.exists()) {
-                try {
-                    fileBlocks.getParentFile().mkdirs();
-                    FileHelper.write(fileBlocks, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
+            	fileBlocks.getParentFile().mkdirs();
+                FileHelper.write(fileBlocks, JSONHandler.GSON.toJson(new TagFile(e.getValue())));
             }
         }
         
