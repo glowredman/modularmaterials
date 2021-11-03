@@ -1,3 +1,7 @@
+# MATERIALS
+materials/periodic-table
+
+# TYPES
 types/vanilla
 types/basic
 types/advanced
