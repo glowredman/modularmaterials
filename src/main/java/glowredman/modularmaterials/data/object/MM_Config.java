@@ -13,6 +13,7 @@ public class MM_Config {
 	public boolean enableAll = false;
 	public boolean enableBuckets = true;
 	public boolean enableOres = true;
+	public String presetURL = "https://raw.githubusercontent.com/glowredman/modularmaterials/dev-1.17.1/presets/";
 	public RandomSelector random = RandomSelector.XSTR;
 	
 	//files

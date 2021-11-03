@@ -2,11 +2,21 @@ package glowredman.modularmaterials;
 
 import java.text.NumberFormat;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+
+import glowredman.modularmaterials.data.PresetHandler;
 import glowredman.modularmaterials.data.legacy.LegacyHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -71,7 +81,12 @@ public class MM_Commands {
 				
 				.then(Commands.literal("convert").requires(commandSourceStack -> commandSourceStack.hasPermission(4)).executes(context -> {
 					return LegacyHandler.convert(context.getSource());
-				})));
+				}))
+				
+				.then(Commands.literal("install").requires(commandSourceStack -> commandSourceStack.hasPermission(4))
+						.then(Commands.argument("preset", new PresetArgumentType()).executes(context -> {
+							return PresetHandler.execute(context.getSource(), context.getArgument("preset", String.class));
+						}))));
 	}
 	
 	private static int getInfo(CommandSourceStack commandSourceStack, BlockPos pos) {
@@ -211,6 +226,23 @@ public class MM_Commands {
 				.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, text))
 				.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))
 				.withInsertion(text));
+	}
+	
+	private static class PresetArgumentType implements ArgumentType<String> {
+
+		@Override
+		public String parse(StringReader reader) throws CommandSyntaxException {
+			return reader.readString();
+		}
+		
+		@Override
+		public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
+			if (!(context.getSource() instanceof SharedSuggestionProvider)) {
+				return Suggestions.empty();
+			}
+			return SharedSuggestionProvider.suggest(MM_Reference.PRESETS, builder);
+		}
+		
 	}
 
 }

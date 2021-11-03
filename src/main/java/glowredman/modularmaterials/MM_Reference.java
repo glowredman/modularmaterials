@@ -12,6 +12,7 @@ import com.google.common.collect.Table;
 import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.JSONHandler;
+import glowredman.modularmaterials.data.PresetHandler;
 import glowredman.modularmaterials.data.object.MM_Config;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
@@ -44,6 +45,7 @@ public class MM_Reference {
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
 	public static final Map<String, MM_OreVariant> ORE_VARIANTS = JSONHandler.getOreVariants();
 	public static final Map<String, MM_OreVein> ORE_VEINS = JSONHandler.getOreVeins();
+	public static final List<String> PRESETS = PresetHandler.getPresets();
 	public static final List<MetaItem> ITEMS = new LinkedList<>();
 	public static final List<MetaBucketItem> BUCKETS = new LinkedList<>();
 	public static final List<MetaBlock> BLOCKS = new LinkedList<>();
