@@ -154,7 +154,7 @@ public class MM_OreVein {
 		Block base = world.getBlockState(pos).getBlock();
 		IMetaOre ore = MM_Reference.ORES.get(base, material);
 		if(ore == null) return 0;
-		if(world.setBlock(pos.above(128), ore.getBlock().defaultBlockState(), 0)) return 1;
+		if(world.setBlock(pos, ore.getBlock().defaultBlockState(), 0)) return 1;
 		return 0;
 	}
 
