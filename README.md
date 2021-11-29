@@ -1,10 +1,10 @@
 [![](http://cf.way2muchnoise.eu/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials) [![](http://cf.way2muchnoise.eu/versions/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials)
 
-Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
+Modular Materials
 =================
 Requires Resource Loader by Lumien231 *only on client-side!* ([GitHub](https://github.com/lumien231/Resource-Loader) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/resource-loader))
 
-#### Features
+## Features
 
  - [x] Automatic Item, Block and Fluid Registration, customizable in `./config/modularmaterials/types.json` (only Items are already implemented)
     - [x] Category (If the Type should be an Item, Block, Fluid or Ore)
@@ -50,3 +50,5 @@ Requires Resource Loader by Lumien231 *only on client-side!* ([GitHub](https://g
  - [x] Option to disable Vanilla Ore-Generation
  - [ ] [Presets](presets/) for Types, Ores and Materials
  - [ ] Wiki
+
+### Downloads: [CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials/files) | [Modrindth](https://modrinth.com/mod/modularmaterials/versions)
