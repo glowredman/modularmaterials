@@ -1,6 +1,6 @@
 [![](http://cf.way2muchnoise.eu/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials) [![](http://cf.way2muchnoise.eu/versions/381517.svg)](https://www.curseforge.com/minecraft/mc-mods/modular-materials)
 
-Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials))
+Modular Materials
 =================
 
 **Config Editor available [here](https://github.com/glowredman/mmcc/releases)**
@@ -18,3 +18,5 @@ Modular Materials ([CurseForge](https://www.curseforge.com/minecraft/mc-mods/mod
  - GregTech-like Ore-Generation
  - Option to disable Vanilla Ore-Generation
  - [Presets](presets/) for Types, Ores and Materials
+
+### Downloads: [CurseForge](https://www.curseforge.com/minecraft/mc-mods/modular-materials/files) | [Modrindth](https://modrinth.com/mod/modularmaterials/versions)
