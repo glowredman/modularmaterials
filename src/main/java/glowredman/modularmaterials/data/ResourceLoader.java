@@ -40,7 +40,7 @@ public class ResourceLoader implements RepositorySource {
 		final File packMeta = new File(dir, "pack.mcmeta");
 		packMeta.getParentFile().mkdirs();
 		if(!packMeta.exists()) {
-			FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":7}}");
+			FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":8}}");
 		}
 	}
 

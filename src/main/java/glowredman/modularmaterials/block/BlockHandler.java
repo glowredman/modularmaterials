@@ -25,8 +25,8 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BlockHandler {
     
@@ -267,15 +267,15 @@ public class BlockHandler {
         switch (name.toUpperCase()) {
         case "AUTO":
             int index = 0;
-            int distance = distanceSq(color, MaterialColor.MATERIAL_COLORS[0].col);
+            int distance = distanceSq(color, MaterialColor.byId(0).col);
             for(int i = 1; i < 62; i++) {
-                int currentDistance = distanceSq(color, MaterialColor.MATERIAL_COLORS[i].col);
+                int currentDistance = distanceSq(color, MaterialColor.byId(i).col);
                 if(currentDistance < distance) {
                     index = i;
                     distance = currentDistance;
                 }
             }
-            MaterialColor ret = MaterialColor.MATERIAL_COLORS[index];
+            MaterialColor ret = MaterialColor.byId(index);
             ModularMaterials.debug("Found " + Integer.toHexString(ret.col).toUpperCase() + " as the nearest color for \"" + uniqueMM_MaterialName + "\" (" + Integer.toHexString(color.getRGB()).toUpperCase() + "). Distance: " + Math.sqrt(distance));
             return ret;
         case "CLAY":

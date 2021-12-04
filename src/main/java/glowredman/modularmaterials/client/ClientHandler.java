@@ -105,32 +105,32 @@ public class ClientHandler {
 	}
 	
 	private void colorTooltips(RenderTooltipEvent.Color event) {
-		if(event.getStack().getItem() instanceof MetaItem) {
-			MetaItem item = (MetaItem) event.getStack().getItem();
+		if(event.getItemStack().getItem() instanceof MetaItem) {
+			MetaItem item = (MetaItem) event.getItemStack().getItem();
 			if(item.type.hasTooltip) {
 				event.setBackground(item.material.tooltip.getBackground());
 				event.setBorderStart(item.material.tooltip.getBorderStart());
 				event.setBorderEnd(item.material.tooltip.getBorderEnd());
 			}
 		}
-		else if(event.getStack().getItem() instanceof MetaBlockItem) {
-			MetaBlockItem item = (MetaBlockItem) event.getStack().getItem();
+		else if(event.getItemStack().getItem() instanceof MetaBlockItem) {
+			MetaBlockItem item = (MetaBlockItem) event.getItemStack().getItem();
 			if(item.block.type.hasTooltip) {
 				event.setBackground(item.block.material.tooltip.getBackground());
 				event.setBorderStart(item.block.material.tooltip.getBorderStart());
 				event.setBorderEnd(item.block.material.tooltip.getBorderEnd());
 			}
 		}
-		else if(event.getStack().getItem() instanceof MetaBucketItem) {
-			MetaBucketItem item = (MetaBucketItem) event.getStack().getItem();
+		else if(event.getItemStack().getItem() instanceof MetaBucketItem) {
+			MetaBucketItem item = (MetaBucketItem) event.getItemStack().getItem();
 			if(item.fluid().type.hasTooltip) {
 				event.setBackground(item.fluid().material.tooltip.getBackground());
 				event.setBorderStart(item.fluid().material.tooltip.getBorderStart());
 				event.setBorderEnd(item.fluid().material.tooltip.getBorderEnd());
 			}
 		}
-		else if(event.getStack().getItem() instanceof MetaOreBlockItem) {
-			MetaOreBlockItem item = (MetaOreBlockItem) event.getStack().getItem();
+		else if(event.getItemStack().getItem() instanceof MetaOreBlockItem) {
+			MetaOreBlockItem item = (MetaOreBlockItem) event.getItemStack().getItem();
 			if(MM_Reference.CONFIG.oresHaveTooltip) {
 				event.setBackground(item.ore.getMaterial().tooltip.getBackground());
 				event.setBorderStart(item.ore.getMaterial().tooltip.getBorderStart());

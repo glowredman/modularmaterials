@@ -47,7 +47,6 @@ public class ModularMaterials {
 	public void commonSetup(FMLCommonSetupEvent event) {
 		TagHandler.execute();
 		LootTableHandler.generateBlockDrops();
-		FeatureHandler.initNoSpawnList();
 		FeatureHandler.calculateTotalWeight();
 		LegacyHandler.LEGACY_DIR.mkdirs();
 	}

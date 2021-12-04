@@ -12,7 +12,6 @@ import glowredman.modularmaterials.worldgen.FeatureHandler;
 import glowredman.modularmaterials.worldgen.VeinLayerResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -38,21 +37,16 @@ public class MM_OreVein {
 	
 	public VeinLayerResult generateChunkified(WorldGenLevel world, Random rand, int posX, int posZ, int seedX, int seedZ) {
 		//check dimension
-		String dimension = world.getLevel().dimension().getRegistryName().toString();
-		if((dimensions.contains(dimension)
-				|| dimensions.contains(dimension.replace("minecraft:", ""))) ^ invertDimensions) {
-			return VeinLayerResult.FIND_NEW_VEIN;
-		}
-		
-		//check biome
-		Biome biome = world.getChunk(posX / 16, posZ / 16).getBiomes().getPrimaryBiome(new ChunkPos(posX / 16, posZ / 16));
-		if((biomes.contains(biome.getRegistryName().toString())
-				|| biomes.contains(biome.getRegistryName().toString().replace("minecraft:", ""))
-				|| biomes.contains(biome.getBiomeCategory().getName())) ^ invertBiomes) {
+		if (!testDimension(world)) {
 			return VeinLayerResult.FIND_NEW_VEIN;
 		}
 		
 		int tMinY = minY + rand.nextInt(maxY - minY - 5);
+		
+		//check biome
+		if (!testBiome(world, posX, tMinY, posZ)) {
+			return VeinLayerResult.FIND_NEW_VEIN;
+		}
 		
 		// Determine West/East ends of orevein
 		int wXVein = seedX - rand.nextInt(16);
@@ -139,6 +133,17 @@ public class MM_OreVein {
 		}
 		ModularMaterials.debug("Placed orevein \"" + name + "\" with " + placeCount + " ores at [" + centerX + ", " + centerY + ", " + centerZ + "]");
 		return true;
+	}
+	
+	private boolean testDimension(WorldGenLevel world) {
+		String dimension = world.getLevel().dimension().location().toString();
+		return (dimensions.contains(dimension) || dimensions.contains(dimension.replace("minecraft:", ""))) ^ invertDimensions;
+	}
+	
+	private boolean testBiome(WorldGenLevel world, int x, int y, int z) {
+		Biome biome = world.getBiome(new BlockPos(x + 8, y, z + 8));
+		String biomeName = biome.getRegistryName().toString();
+		return (biomes.contains(biomeName) || biomes.contains(biomeName.replace("minecraft:", ""))) ^ invertBiomes;
 	}
 	
 	private static boolean testVein(WorldGenLevel world, int posX, int posY, int posZ) {

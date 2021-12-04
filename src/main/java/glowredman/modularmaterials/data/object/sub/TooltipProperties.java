@@ -1,7 +1,7 @@
 package glowredman.modularmaterials.data.object.sub;
 
 import glowredman.modularmaterials.client.FormattingHandler;
-import net.minecraftforge.fmlclient.gui.GuiUtils;
+import net.minecraftforge.client.gui.GuiUtils;
 
 public class TooltipProperties {
 	

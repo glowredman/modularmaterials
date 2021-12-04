@@ -1,8 +1,13 @@
 package glowredman.modularmaterials.worldgen;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
+
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
@@ -13,25 +18,22 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.DecoratedFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.OreFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.DecoratedFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class FeatureHandler {
-	
-	public static final List<Block> NO_SPAWN = new ArrayList<>();
+
+	private static Set<DataResult<JsonElement>> featuresToRemove;
 	public static Set<Block> blockWithVariants;
 	public static int totalWeight;
 	
 	public static final Feature<NoneFeatureConfiguration> OREVEIN = new FeatureVeinLayer();
 	public static final ConfiguredFeature<?, ?> CONFIGURED_OREVEIN = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(MM_Reference.MODID, "configured_orevein"), OREVEIN.configured(NoneFeatureConfiguration.INSTANCE));
+	public static final PlacedFeature PLACED_OREVEIN = Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(MM_Reference.MODID, "placed_orevein"), CONFIGURED_OREVEIN.placed(new ArrayList<>()));
 	
 	public static void initOresForBlocksList() {
 		blockWithVariants = MM_Reference.ORES.rowKeySet();
@@ -44,44 +46,26 @@ public class FeatureHandler {
 		ModularMaterials.info("Total orevein weight is " + totalWeight);
 	}
 	
-	public static void initNoSpawnList() {
-		if(!MM_Reference.ORES.isEmpty()) {
-			for(String s : MM_Reference.CONFIG.removeOres) {
-				Block b = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(s));
-				if(b != null) {
-					NO_SPAWN.add(b);
-				}
-			}
-		}
-	}
-	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void loadBiome(BiomeLoadingEvent event) {
 		ModularMaterials.debug("Configuring biome " + event.getName().toString() + "...");
-		event.getGeneration().addFeature(Decoration.UNDERGROUND_ORES, CONFIGURED_OREVEIN);
-		event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).removeIf(f -> isDecoratedFeatureDisabled(f.get()));
+		event.getGeneration().getFeatures(Decoration.UNDERGROUND_ORES).removeIf(FeatureHandler::checkFeature);
+		event.getGeneration().addFeature(Decoration.UNDERGROUND_ORES, PLACED_OREVEIN);
 	}
-
-	private static boolean isDecoratedFeatureDisabled(ConfiguredFeature<?, ?> configuredFeature) {
-		if(configuredFeature.config instanceof DecoratedFeatureConfiguration) {
-			FeatureConfiguration config = configuredFeature.config;
-			Feature<?> feature = null;
-			while(config instanceof DecoratedFeatureConfiguration) {
-				feature = ((DecoratedFeatureConfiguration) config).feature.get().feature;
-				config = ((DecoratedFeatureConfiguration) config).feature.get().config;
-				if(!(feature instanceof DecoratedFeature)) {
-					break;
+	
+	private static boolean checkFeature(Supplier<PlacedFeature> feature) {
+		if(featuresToRemove == null) {
+			featuresToRemove = new HashSet<>();
+			for(String s : MM_Reference.CONFIG.removeOres) {
+				PlacedFeature p = BuiltinRegistries.PLACED_FEATURE.get(new ResourceLocation(s));
+				if(p == null) {
+					ModularMaterials.warn(s + " is not a valid PlacedFeature!");
+					continue;
 				}
-			}
-			if(feature instanceof OreFeature) {
-				boolean ret = false;
-				for(OreConfiguration.TargetBlockState t : ((OreConfiguration) config).targetStates) {
-					ret |= NO_SPAWN.contains(t.state.getBlock());
-				}
-				return ret;
+				featuresToRemove.add(PlacedFeature.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, p));
 			}
 		}
-		return false;
+		return featuresToRemove.contains(PlacedFeature.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, feature.get()));
 	}
 
 }
