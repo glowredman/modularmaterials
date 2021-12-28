@@ -33,7 +33,7 @@ credits="GregoriusT (many textures, ore vein system)" #optional
 # A text field displayed in the mod UI
 authors="glowredman" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''Dynamic and fully customizeable material-generation-system for Minecraft 1.17.1'''
+description='''Dynamic and fully customizeable material-generation-system for Minecraft 1.18'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.modularmaterials]] #optional
     # the modid of the dependency
