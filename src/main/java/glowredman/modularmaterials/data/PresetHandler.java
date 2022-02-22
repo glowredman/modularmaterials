@@ -12,7 +12,6 @@ import org.apache.commons.io.IOUtils;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
-import glowredman.modularmaterials.client.FormattingHandler;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.TextComponent;
@@ -26,7 +25,7 @@ public class PresetHandler {
 			URL url = new URL(MM_Reference.CONFIG.presetURL + "index.txt");
 			r = new BufferedReader(new InputStreamReader(url.openStream()));
 			r.lines().filter(s -> !s.isBlank() && !s.startsWith("#")).forEachOrdered(s -> l.add('"' + s + '"'));
-			ModularMaterials.debug("Found these presets: " + FormattingHandler.listToString(MM_Reference.PRESETS));
+			ModularMaterials.debug("Found these presets: " + MM_Reference.PRESETS);
 		} catch (Exception e) {
 			ModularMaterials.warn("Could not get presets from " + MM_Reference.CONFIG.presetURL + "index.txt");
 			e.printStackTrace();

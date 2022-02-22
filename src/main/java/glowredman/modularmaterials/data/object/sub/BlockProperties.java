@@ -3,8 +3,6 @@ package glowredman.modularmaterials.data.object.sub;
 import java.util.ArrayList;
 import java.util.List;
 
-import glowredman.modularmaterials.client.FormattingHandler;
-
 public class BlockProperties {
 	
 	public float hardness = 5.0f;
@@ -19,7 +17,7 @@ public class BlockProperties {
 	@Override
 	public String toString() {
 		return String.format("{friction: %f, hardness: %f, mapColor: %s, material: %s, sound: %s, sticky: %b, tags: %s}",
-				friction, hardness,  mapColor, material, sound, sticky, FormattingHandler.listToString(tags));
+				friction, hardness,  mapColor, material, sound, sticky, tags);
 	}
 
 }

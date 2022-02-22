@@ -3,8 +3,6 @@ package glowredman.modularmaterials.data.object.sub;
 import java.util.ArrayList;
 import java.util.List;
 
-import glowredman.modularmaterials.client.FormattingHandler;
-
 public class ItemProperties {
 	
 	public boolean isFireResistant = false;
@@ -16,7 +14,7 @@ public class ItemProperties {
 	@Override
 	public String toString() {
 		return String.format("{isFireResistant: %b, isFoil: %b, lifespan: %d, rarity: %s, tags: %s}",
-				isFireResistant, isFoil, lifespan, rarity, FormattingHandler.listToString(tags));
+				isFireResistant, isFoil, lifespan, rarity, tags);
 	}
 
 }

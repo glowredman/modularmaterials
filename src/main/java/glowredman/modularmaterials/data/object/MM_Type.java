@@ -3,7 +3,6 @@ package glowredman.modularmaterials.data.object;
 import java.util.ArrayList;
 import java.util.List;
 
-import glowredman.modularmaterials.client.FormattingHandler;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.data.object.sub.ChemicalState;
@@ -29,7 +28,7 @@ public class MM_Type {
 	@Override
 	public String toString() {
 		return String.format("{enabled: %b, tagNames: %s, category: %s, state: %s, burnTimeMultiplier: %f, enchantPowerBonusMultiplier: %f, fireSpreadSpeedMultiplier: %f, flammabilityMultiplier: %f, jumpFactorMultiplier: %f, lightLevelMultiplier: %f, resistanceMultiplier: %f, speedFactorMultiplier: %f, hasTooltip: %b, nameSyntax: %s, tags: %s}",
-				enabled, tagName, category, state, burnTimeMultiplier, enchantPowerBonusMultiplier, fireSpreadSpeedMultiplier, flammabilityMultiplier, jumpFactorMultiplier, lightLevelMultiplier, resistanceMultiplier, speedFactorMultiplier, hasTooltip, nameSyntax, FormattingHandler.listToString(tags));
+				enabled, tagName, category, state, burnTimeMultiplier, enchantPowerBonusMultiplier, fireSpreadSpeedMultiplier, flammabilityMultiplier, jumpFactorMultiplier, lightLevelMultiplier, resistanceMultiplier, speedFactorMultiplier, hasTooltip, nameSyntax, tags);
 	}
 
 }
