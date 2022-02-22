@@ -14,19 +14,19 @@ public class FormattingHandler {
 	public static Component formatTooltipLine(String line) {
 		
 		//key-dependant formatting
-		line = formatKey(line, triggerAltIsNotPressedFormatting, InputConstants.KEY_LALT, InputConstants.KEY_RALT, true);
-		line = formatKey(line, triggerAltIsPressedFormatting, InputConstants.KEY_LALT, InputConstants.KEY_RALT, false);
-		line = formatKey(line, triggerCtrlIsNotPressedFormatting, InputConstants.KEY_LCONTROL, InputConstants.KEY_RCONTROL, true);
-		line = formatKey(line, triggerCtrlIsPressedFormatting, InputConstants.KEY_LCONTROL, InputConstants.KEY_RCONTROL, false);
-		line = formatKey(line, triggerShiftIsNotPressedFormatting, InputConstants.KEY_LSHIFT, InputConstants.KEY_RSHIFT, true);
-		line = formatKey(line, triggerShiftIsPressedFormatting, InputConstants.KEY_LSHIFT, InputConstants.KEY_RSHIFT, false);
+		line = formatKey(line, ALT_NOT_PRESSED_FORMATTING, InputConstants.KEY_LALT, InputConstants.KEY_RALT, true);
+		line = formatKey(line, ALT_PRESSED_FORMATTING, InputConstants.KEY_LALT, InputConstants.KEY_RALT, false);
+		line = formatKey(line, CTRL_NOT_PRESSED_FORMATTING, InputConstants.KEY_LCONTROL, InputConstants.KEY_RCONTROL, true);
+		line = formatKey(line, CTRL_PRESSED_FORMATTING, InputConstants.KEY_LCONTROL, InputConstants.KEY_RCONTROL, false);
+		line = formatKey(line, SHIFT_NOT_PRESSED_FORMATTING, InputConstants.KEY_LSHIFT, InputConstants.KEY_RSHIFT, true);
+		line = formatKey(line, SHIFT_PRESSED_FORMATTING, InputConstants.KEY_LSHIFT, InputConstants.KEY_RSHIFT, false);
 		
 		//animated formatting
-		while(line.contains(triggerAnimatedFormatting)) {
+		while(line.contains(ANIMATED_FORMATTING)) {
 			//init vars
-			int formattingCharLenght = triggerAnimatedFormatting.length();
-			int startOfSequence = line.indexOf(triggerAnimatedFormatting);
-			int endOfSequence = line.indexOf(triggerAnimatedFormatting, startOfSequence + formattingCharLenght);
+			int formattingCharLenght = ANIMATED_FORMATTING.length();
+			int startOfSequence = line.indexOf(ANIMATED_FORMATTING);
+			int endOfSequence = line.indexOf(ANIMATED_FORMATTING, startOfSequence + formattingCharLenght);
 			//assemble string
 			String finishedLine = line.substring(0, startOfSequence);
 			finishedLine += formatAnimated(line.substring(startOfSequence + formattingCharLenght, endOfSequence));

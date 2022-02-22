@@ -26,13 +26,13 @@ import net.minecraft.world.level.block.Block;
 public class MM_Reference {
 	
 	//Formatting
-	public static String triggerShiftIsPressedFormatting = "\u00a7p";
-	public static String triggerShiftIsNotPressedFormatting = "\u00a7P";
-	public static String triggerCtrlIsPressedFormatting = "\u00a7q";
-	public static String triggerCtrlIsNotPressedFormatting = "\u00a7Q";
-	public static String triggerAltIsPressedFormatting = "\u00a7t";
-	public static String triggerAltIsNotPressedFormatting = "\u00a7T";
-	public static String triggerAnimatedFormatting = "\u00a7s";
+	public static final String SHIFT_PRESSED_FORMATTING = "\u00a7p";
+	public static final String SHIFT_NOT_PRESSED_FORMATTING = "\u00a7P";
+	public static final String CTRL_PRESSED_FORMATTING = "\u00a7q";
+	public static final String CTRL_NOT_PRESSED_FORMATTING = "\u00a7Q";
+	public static final String ALT_PRESSED_FORMATTING = "\u00a7t";
+	public static final String ALT_NOT_PRESSED_FORMATTING = "\u00a7T";
+	public static final String ANIMATED_FORMATTING = "\u00a7s";
 	
 	//Mod
 	public static final String MODID = "modularmaterials";
