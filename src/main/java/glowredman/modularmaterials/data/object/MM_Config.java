@@ -1,12 +1,18 @@
 package glowredman.modularmaterials.data.object;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Function;
 
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.util.FileHelper;
+import glowredman.modularmaterials.util.RandomXSTR;
+import glowredman.modularmaterials.util.RandomXoshiro256StarStar;
 
 public class MM_Config {
 
@@ -16,7 +22,7 @@ public class MM_Config {
 	public boolean enableBuckets = true;
 	public boolean enableOres = true;
 	public String presetURL = "https://raw.githubusercontent.com/glowredman/modularmaterials/dev-1.18/presets/";
-	public RandomSelector random = RandomSelector.XSTR;
+	public String random = "XSTR";
 
 	// files
 	public boolean overrideBlockstateFiles = false;
@@ -72,6 +78,44 @@ public class MM_Config {
 			ModularMaterials.fatal("Parsing config.json failed:");
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public Function<Long, Random> getRandom() {
+		if("XSTR".equals(random)) {
+			ModularMaterials.info("Using XSTR as RNG");
+			return seed -> new RandomXSTR(seed);
+		}
+		if("Xoshiro256**".equals(random)) {
+			ModularMaterials.info("Using Xoshiro256** as RNG");
+			return seed -> new RandomXoshiro256StarStar(seed);
+		}
+		if("Standard".equals(random)) {
+			ModularMaterials.info("Using java.util.Random as RNG");
+			return seed -> new Random(seed);
+		}
+		
+		try {
+			// get constructor
+			Constructor<?> c = Class.forName(random).getConstructor();
+			// test
+			Random testRNG = (Random) c.newInstance();
+			testRNG.setSeed(System.nanoTime());
+			
+			ModularMaterials.info("Using " + random + " as RNG");
+			
+			return seed -> {
+				try {
+					Random rng = (Random) c.newInstance();
+					rng.setSeed(seed);
+					return rng;
+				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+					throw new RuntimeException(e);
+				}
+			};
+		} catch (Exception e) {
+			ModularMaterials.error("Failed to construct the RNG:");
+			throw new RuntimeException(e);
 		}
 	}
 

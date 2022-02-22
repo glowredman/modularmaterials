@@ -37,7 +37,7 @@ public class MM_Reference {
 	//Mod
 	public static final String MODID = "modularmaterials";
 	public static final MM_Config CONFIG = MM_Config.read();
-	public static final Function<Long, Random> NEW_RAND = CONFIG.random.get();
+	public static final Function<Long, Random> NEW_RAND = CONFIG.getRandom();
 	public static final Random RAND = NEW_RAND.apply(System.nanoTime());
 	
 	//Object Holders
