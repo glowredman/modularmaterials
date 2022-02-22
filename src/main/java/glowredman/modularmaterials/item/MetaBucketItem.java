@@ -132,7 +132,7 @@ public class MetaBucketItem extends BucketItem {
 						ItemStack itemstack1 = bucketpickup.pickupBlock(pLevel, blockpos, blockstate1);
 						if (!itemstack1.isEmpty()) {
 							pPlayer.awardStat(Stats.ITEM_USED.get(this));
-							bucketpickup.getPickupSound().ifPresent((p_150709_) -> {
+							bucketpickup.getPickupSound(blockstate1).ifPresent((p_150709_) -> {
 								pPlayer.playSound(p_150709_, 1.0F, 1.0F);
 							});
 							pLevel.gameEvent(pPlayer, GameEvent.FLUID_PICKUP, blockpos);
