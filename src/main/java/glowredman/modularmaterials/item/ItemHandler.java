@@ -19,8 +19,6 @@ public class ItemHandler {
 	public void registerItems(Register<Item> event) {
 		long time = System.currentTimeMillis();
 		
-		ModularMaterials.info("Registering items...");
-		
 		for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
 			String typeName = eType.getKey();
 			MM_Type type = eType.getValue();

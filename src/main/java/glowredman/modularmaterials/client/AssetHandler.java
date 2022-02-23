@@ -33,7 +33,6 @@ public class AssetHandler {
 	}
 	
 	private static void generateModelFiles() {
-		ModularMaterials.info("Generating model files...");
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
@@ -95,11 +94,10 @@ public class AssetHandler {
 			}
 		}
 		
-		ModularMaterials.info("Done! Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.info("Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	private static void generateBlockstateFiles() {
-		ModularMaterials.info("Generating model files...");
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
@@ -126,11 +124,10 @@ public class AssetHandler {
 			}
 		}
 		
-		ModularMaterials.info("Done! Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.info("Created " + count + " blockstate-files in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 	
 	private static void generateLangFile() {
-		ModularMaterials.info("Generating lang file...");
 		long time = System.currentTimeMillis();
 		
 		File langFile = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/lang/en_us.json");
@@ -182,7 +179,7 @@ public class AssetHandler {
 				langFile.delete();
 				FileHelper.write(langFile, JSONHandler.GSON.toJson(lang, type));
 				
-				ModularMaterials.info(String.format("Done! Added %d new entries in %dms.", lang.size() - startSize, System.currentTimeMillis() - time));
+				ModularMaterials.info(String.format("Added %d new localizations in %dms.", lang.size() - startSize, System.currentTimeMillis() - time));
 				
 			} catch (JsonIOException | JsonSyntaxException | IOException e) {
 				e.printStackTrace();
@@ -216,7 +213,7 @@ public class AssetHandler {
 				
 				FileHelper.write(langFile, new GsonBuilder().setPrettyPrinting().create().toJson(lang, type));
 				
-				ModularMaterials.info(String.format("Done! Created %d entries in %dms.", lang.size(), System.currentTimeMillis() - time));
+				ModularMaterials.info(String.format("Created %d localizations in %dms.", lang.size(), System.currentTimeMillis() - time));
 				
 			} catch (JsonIOException | JsonSyntaxException e) {
 				e.printStackTrace();

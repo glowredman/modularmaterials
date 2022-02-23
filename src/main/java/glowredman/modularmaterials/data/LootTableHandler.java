@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 public class LootTableHandler {
 	
 	public static void generateBlockDrops() {
-		ModularMaterials.info("Generating loot tables for block drops...");
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
@@ -42,7 +41,7 @@ public class LootTableHandler {
 			}
 		}
 		
-		ModularMaterials.info("Done! Generated " + count + " loot tables in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.info("Generated " + count + " loot tables in " + (System.currentTimeMillis() - time) + "ms.");
 	}
 
 }
