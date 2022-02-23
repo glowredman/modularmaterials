@@ -1,0 +1,908 @@
+{
+  "coal": {
+    "name": "Coal",
+    "tagNames": [
+      "coal"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "nugget",
+      "dust"
+    ],
+    "color": {
+      "red": 70,
+      "green": 70,
+      "blue": 70,
+      "alpha": 255
+    },
+    "burnTime": 1600,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 5,
+    "flammability": 5,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "rough",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "C"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "COLOR_BLACK",
+      "material": "STONE",
+      "requiresToolForDrops": true,
+      "sound": "STONE",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_stone_tool"
+      ]
+    }
+  },
+  "iron": {
+    "name": "Iron",
+    "tagNames": [
+      "iron"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust"
+    ],
+    "color": {
+      "red": 200,
+      "green": 200,
+      "blue": 200,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "[block]minecraft:beacon_base_blocks",
+        "minecraft:needs_stone_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 3134,
+      "meltingTemperature": 1811,
+      "currentTemperature": 293,
+      "gas": {
+        "density": -500,
+        "viscosity": 100,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 6980,
+        "viscosity": 1500,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem,ingot]minecraft:beacon_payment_items"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "sound": "METAL",
+      "tags": [
+        "minecraft:needs_stone_tool"
+      ]
+    }
+  },
+  "copper": {
+    "name": "Copper",
+    "tagNames": [
+      "copper"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "nugget",
+      "dust"
+    ],
+    "color": {
+      "red": 255,
+      "green": 100,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Cu"
+      ]
+    },
+    "block": {
+      "hardness": 3.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:needs_stone_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 2835,
+      "meltingTemperature": 1358,
+      "currentTemperature": 293,
+      "gas": {
+        "density": -500,
+        "viscosity": 100,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 8020,
+        "viscosity": 1500,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "sound": "METAL",
+      "tags": [
+        "minecraft:needs_stone_tool"
+      ]
+    }
+  },
+  "gold": {
+    "name": "Gold",
+    "tagNames": [
+      "gold"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 30,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Au"
+      ]
+    },
+    "block": {
+      "hardness": 3.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:guarded_by_piglins",
+        "[block]minecraft:beacon_base_blocks",
+        "minecraft:needs_iron_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 3243,
+      "meltingTemperature": 1337,
+      "currentTemperature": 293,
+      "gas": {
+        "density": -500,
+        "viscosity": 100,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 17310,
+        "viscosity": 1500,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem,ingot]minecraft:beacon_payment_items",
+        "minecraft:piglin_loved"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "sound": "METAL",
+      "tags": [
+        "minecraft:guarded_by_piglins",
+        "minecraft:needs_iron_tool"
+      ]
+    }
+  },
+  "redstone": {
+    "name": "Redstone",
+    "tagNames": [
+      "redstone"
+    ],
+    "enabled": true,
+    "enabledTypes": [],
+    "color": {
+      "red": 200,
+      "green": 0,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "rough",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Si(FeS₂)₅CrAl₂O₃Hg₃"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "FIRE",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_iron_tool"
+      ]
+    }
+  },
+  "emerald": {
+    "name": "Emerald",
+    "tagNames": [
+      "emerald"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "nugget",
+      "dust"
+    ],
+    "color": {
+      "red": 80,
+      "green": 255,
+      "blue": 80,
+      "alpha": 127
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "emerald",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Be₃Al₂Si₆O₁₈"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "EMERALD",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "[block]minecraft:beacon_base_blocks",
+        "minecraft:needs_iron_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem,ingot]minecraft:beacon_payment_items"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_iron_tool"
+      ]
+    }
+  },
+  "lapis": {
+    "name": "Lapis Lazuli",
+    "tagNames": [
+      "lapis"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "nugget",
+      "dust"
+    ],
+    "color": {
+      "red": 70,
+      "green": 70,
+      "blue": 220,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 3.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "lapis",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "(Al₆Si₆Ca₈Na₈)₁₂(Al₃Si₃Na₄Cl)₂FeS₂CaCO₃"
+      ]
+    },
+    "block": {
+      "hardness": 3.0,
+      "friction": 0.6,
+      "mapColor": "LAPIS",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:needs_stone_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem]minecraft:enchanting_fuels"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_stone_tool"
+      ]
+    }
+  },
+  "diamond": {
+    "name": "Diamond",
+    "tagNames": [
+      "diamond"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust",
+      "nugget"
+    ],
+    "color": {
+      "red": 200,
+      "green": 255,
+      "blue": 255,
+      "alpha": 127
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "diamond",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "C"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "DIAMOND",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "[block]minecraft:beacon_base_blocks",
+        "minecraft:needs_iron_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem,ingot]minecraft:beacon_payment_items"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 3.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_iron_tool"
+      ]
+    }
+  },
+  "quartz": {
+    "name": "Quartz",
+    "tagNames": [
+      "quartz"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust",
+      "nugget"
+    ],
+    "color": {
+      "red": 230,
+      "green": 210,
+      "blue": 210,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 0.8,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "quartz",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": []
+    },
+    "block": {
+      "hardness": 0.8,
+      "friction": 0.6,
+      "mapColor": "QUARTZ",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "netherite": {
+    "name": "Netherite",
+    "tagNames": [
+      "netherite"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust",
+      "nugget"
+    ],
+    "color": {
+      "red": 75,
+      "green": 72,
+      "blue": 75,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 1200.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "rough",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": []
+    },
+    "block": {
+      "hardness": 50.0,
+      "friction": 0.6,
+      "mapColor": "COLOR_BLACK",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "NETHERITE_BLOCK",
+      "sticky": false,
+      "tags": [
+        "[block]minecraft:beacon_base_blocks",
+        "minecraft:needs_diamond_tool",
+        "minecraft:mineable/pickaxe"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": true,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": [
+        "[gem,ingot]minecraft:beacon_payment_items"
+      ]
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 30.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 1200.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "COLOR_BLACK",
+      "material": "STONE",
+      "sound": "NETHERITE_BLOCK",
+      "tags": [
+        "minecraft:needs_diamond_tool"
+      ]
+    }
+  }
+}
