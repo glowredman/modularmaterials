@@ -3,8 +3,6 @@ package glowredman.modularmaterials.data.object.sub;
 import java.util.ArrayList;
 import java.util.List;
 
-import glowredman.modularmaterials.client.FormattingHandler;
-
 public class FluidProperties {
 	
 	public int boilingTemperature = 374;
@@ -17,7 +15,7 @@ public class FluidProperties {
 	@Override
 	public String toString() {
 		return String.format("{boilingTemperature: %d, meltingTemperature: %d, currentTemperature: %d, gas: %s, liquid: %s, tags: %s}",
-				boilingTemperature, meltingTemperature, currentTemperature, gas, liquid, FormattingHandler.listToString(tags));
+				boilingTemperature, meltingTemperature, currentTemperature, gas, liquid, tags);
 	}
 	
 	public int getTemperature(ChemicalState currentState, ChemicalState reqState) {

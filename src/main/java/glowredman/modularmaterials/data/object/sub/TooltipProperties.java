@@ -1,7 +1,5 @@
 package glowredman.modularmaterials.data.object.sub;
 
-import glowredman.modularmaterials.client.FormattingHandler;
-
 public class TooltipProperties {
 	
     public String background  = Integer.toHexString(0xF0100010).toUpperCase();
@@ -11,7 +9,7 @@ public class TooltipProperties {
     
     @Override
     public String toString() {
-    	return String.format("[background: %s, borderStart: %s, borderEnd: %s, text: %s]", background, borderStart, borderEnd, FormattingHandler.arrayToString(text));
+    	return String.format("[background: %s, borderStart: %s, borderEnd: %s, text: %s]", background, borderStart, borderEnd, text);
     }
     
     public int getBackground() {
