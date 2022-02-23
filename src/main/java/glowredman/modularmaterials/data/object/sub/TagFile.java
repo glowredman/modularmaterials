@@ -8,9 +8,6 @@ public class TagFile {
 	public boolean replace = false;
 	public Collection<String> values = new ArrayList<>();
 	
-	public TagFile() {
-	}
-	
 	public TagFile(Collection<String> values) {
 		this.values = values;
 	}

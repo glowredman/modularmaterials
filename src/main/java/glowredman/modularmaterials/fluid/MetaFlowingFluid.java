@@ -7,8 +7,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 
 public class MetaFlowingFluid extends MetaFluid {
-	
-	private static final int FLOWING_LENGHT = "flowing_".length();
 
 	public MetaFlowingFluid(MM_Material material, MM_Type type, Properties properties) {
 		super(material, type, properties);
@@ -34,7 +32,7 @@ public class MetaFlowingFluid extends MetaFluid {
 	@Override
     public String getTypeIdentifier() {
         String s = this.getRegistryName().getPath();
-        return s.substring(FLOWING_LENGHT, s.indexOf("."));
+        return s.substring(8, s.indexOf(".")); //cuts "flowing_" of
     }
     
 	@Override
