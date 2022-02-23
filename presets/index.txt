@@ -1,9 +1,0 @@
-# MATERIALS
-materials/periodic-table
-materials/vanilla
-
-# TYPES
-types/vanilla
-types/basic
-types/advanced
-types/extended
