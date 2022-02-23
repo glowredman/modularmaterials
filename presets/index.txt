@@ -1,5 +1,6 @@
 # MATERIALS
 materials/periodic-table
+materials/vanilla
 
 # TYPES
 types/vanilla
