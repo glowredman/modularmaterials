@@ -16,7 +16,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.6.2-beta'
+version = '0.6.3-beta'
 group = 'glowredman.modularmaterials' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'modularmaterials'
 
