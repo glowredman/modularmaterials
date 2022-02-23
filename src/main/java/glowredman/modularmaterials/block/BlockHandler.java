@@ -34,8 +34,6 @@ public class BlockHandler {
     public void registerBlocks(Register<Block> event) {
         long time = System.currentTimeMillis();
         
-        ModularMaterials.info("Registering blocks and fluids...");
-        
         for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
             String typeName = eType.getKey();
             MM_Type type = eType.getValue();

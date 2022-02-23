@@ -29,7 +29,6 @@ public class JSONHandler {
 		
 		try {
 			File file = new File(CONFIG_DIR, "materials.json");
-			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
 			MM_Material example = new MM_Material();
 			example.enabled = true;
@@ -41,7 +40,7 @@ public class JSONHandler {
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
-			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.info("Parsed materials.json in " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Types (%d):", types.size()));
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
@@ -59,7 +58,6 @@ public class JSONHandler {
 		
 		try {
 			File file = new File(CONFIG_DIR, "types.json");
-			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
 			MM_Type example = new MM_Type();
 			example.nameSyntax = TagHandler.PARAM_MATERIAL + " Item";
@@ -70,7 +68,7 @@ public class JSONHandler {
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
-			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.info("Parsed types.json in " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Types (%d):", types.size()));
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
@@ -88,7 +86,6 @@ public class JSONHandler {
 		
 		try {
 			File file = new File(CONFIG_DIR, "orevariants.json");
-			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
 			MM_OreVariant example = new MM_OreVariant();
 			example.enabled = true;
@@ -99,7 +96,7 @@ public class JSONHandler {
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
-			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.info("Parsed orevariants.json in " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Ore Variants (%d):", types.size()));
 			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
@@ -117,7 +114,6 @@ public class JSONHandler {
 		
 		try {
 			File file = new File(CONFIG_DIR, "oreveins.json");
-			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			
 			MM_OreVein example = new MM_OreVein();
 			example.enabled = true;
@@ -128,7 +124,7 @@ public class JSONHandler {
 				
 			veins = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
-			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.info("Parsed oreveins.json in " + (System.currentTimeMillis() - time) + "ms");
 			
 			ModularMaterials.debug(String.format("Ore Veins (%d):", veins.size()));
 			veins.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));

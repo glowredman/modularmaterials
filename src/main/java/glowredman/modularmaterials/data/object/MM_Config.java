@@ -28,7 +28,6 @@ public class MM_Config {
 	public boolean overrideBlockstateFiles = false;
 	public boolean overrideLootTableFiles = false;
 	public boolean overrideModelFiles = false;
-	public boolean overrideTagFiles = false;
 
 	// rendering
 	public boolean blocksHaveFoilEffect = true;
@@ -64,7 +63,6 @@ public class MM_Config {
 		try {
 			MM_Config cfg;
 			File file = new File(JSONHandler.CONFIG_DIR, "config.json");
-			ModularMaterials.info("Parsing " + file.getPath() + " ...");
 			if (file.exists()) {
 				cfg = JSONHandler.GSON.fromJson(FileHelper.readFile(file.toPath()), MM_Config.class);
 			} else {
@@ -72,7 +70,7 @@ public class MM_Config {
 				FileHelper.write(file, JSONHandler.GSON.toJson(new MM_Config()));
 				cfg = new MM_Config();
 			}
-			ModularMaterials.info("Done! Took " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.info("Parsed config.json in " + (System.currentTimeMillis() - time) + "ms");
 			return cfg;
 		} catch (Exception e) {
 			ModularMaterials.fatal("Parsing config.json failed:");
