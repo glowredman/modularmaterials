@@ -28,6 +28,7 @@ public class MM_Config {
 	public boolean overrideBlockstateFiles = false;
 	public boolean overrideLootTableFiles = false;
 	public boolean overrideModelFiles = false;
+	public boolean overrideTagFiles = false;
 
 	// rendering
 	public boolean blocksHaveFoilEffect = true;

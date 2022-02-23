@@ -3248,7 +3248,6 @@
       "screw",
       "gas",
       "dust_tiny",
-      "block",
       "plate_quadruple",
       "foil",
       "dust",
@@ -3267,7 +3266,6 @@
       "dust_impure",
       "item_casing",
       "bolt",
-      "ingot",
       "plate_quintuple",
       "spring_small",
       "gear"
@@ -9462,6 +9460,7 @@
       "sound": "METAL",
       "sticky": false,
       "tags": [
+        "minecraft:guarded_by_piglins",
         "[block]minecraft:beacon_base_blocks",
         "minecraft:needs_iron_tool",
         "minecraft:mineable/pickaxe"
@@ -9493,7 +9492,8 @@
       "lifespan": 6000,
       "rarity": "COMMON",
       "tags": [
-        "[gem,ingot]minecraft:beacon_payment_items"
+        "[gem,ingot]minecraft:beacon_payment_items",
+        "minecraft:piglin_loved"
       ]
     },
     "ore": {
@@ -9508,7 +9508,8 @@
       "material": "METAL",
       "sound": "METAL",
       "tags": [
-        "minecraft:needs_iron_tool"
+        "minecraft:needs_iron_tool",
+        "minecraft:guarded_by_piglins"
       ]
     }
   },
