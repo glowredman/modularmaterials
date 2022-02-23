@@ -1,6 +1,9 @@
+# COMPLETE
+complete/gt5
+complete/vanilla
+
 # MATERIALS
 materials/periodic-table
-materials/vanilla
 
 # TYPES
 types/vanilla
