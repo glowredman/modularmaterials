@@ -1,0 +1,606 @@
+{
+  "naquadah": {
+    "name": "Naquadah",
+    "enabled": true,
+    "primary": "naquadah",
+    "secondary": "naquadah",
+    "inbetween": "naquadah",
+    "sporadic": "enriched_naquadah",
+    "density": 5,
+    "minY": 10,
+    "maxY": 60,
+    "size": 32,
+    "weight": 10,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "lignite": {
+    "name": "Lignite",
+    "enabled": true,
+    "primary": "lignite",
+    "secondary": "lignite",
+    "inbetween": "lignite",
+    "sporadic": "coal",
+    "density": 8,
+    "minY": 50,
+    "maxY": 130,
+    "size": 32,
+    "weight": 160,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "coal": {
+    "name": "Coal",
+    "enabled": true,
+    "primary": "coal",
+    "secondary": "coal",
+    "inbetween": "coal",
+    "sporadic": "lignite",
+    "density": 6,
+    "minY": 50,
+    "maxY": 80,
+    "size": 32,
+    "weight": 80,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "magnetite": {
+    "name": "Magnetite",
+    "enabled": true,
+    "primary": "magnetite",
+    "secondary": "magnetite",
+    "inbetween": "iron",
+    "sporadic": "vanadium_magnetite",
+    "density": 3,
+    "minY": 50,
+    "maxY": 120,
+    "size": 32,
+    "weight": 160,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "gold": {
+    "name": "Gold",
+    "enabled": true,
+    "primary": "magnetite",
+    "secondary": "magnetite",
+    "inbetween": "vanadium_magnetite",
+    "sporadic": "gold",
+    "density": 3,
+    "minY": 60,
+    "maxY": 80,
+    "size": 32,
+    "weight": 160,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "iron": {
+    "name": "Iron",
+    "enabled": true,
+    "primary": "brown_limonite",
+    "secondary": "yellow_limonite",
+    "inbetween": "banded_iron",
+    "sporadic": "malachite",
+    "density": 4,
+    "minY": 10,
+    "maxY": 40,
+    "size": 24,
+    "weight": 120,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "cassiterite": {
+    "name": "Cassiterite",
+    "enabled": true,
+    "primary": "tin",
+    "secondary": "tin",
+    "inbetween": "cassiterite",
+    "sporadic": "tin",
+    "density": 5,
+    "minY": 40,
+    "maxY": 120,
+    "size": 24,
+    "weight": 50,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "tetrahedrite": {
+    "name": "Tetrahedrite",
+    "enabled": true,
+    "primary": "tetrahedrite",
+    "secondary": "tetrahedrite",
+    "inbetween": "copper",
+    "sporadic": "stibnite",
+    "density": 4,
+    "minY": 80,
+    "maxY": 120,
+    "size": 24,
+    "weight": 70,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "nether_quartz": {
+    "name": "Nether Quartz",
+    "enabled": true,
+    "primary": "nether_quartz",
+    "secondary": "nether_quartz",
+    "inbetween": "nether_quartz",
+    "sporadic": "nether_quartz",
+    "density": 5,
+    "minY": 40,
+    "maxY": 80,
+    "size": 24,
+    "weight": 80,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "sulfur": {
+    "name": "Sulfur",
+    "enabled": true,
+    "primary": "sulfur",
+    "secondary": "sulfur",
+    "inbetween": "pyrite",
+    "sporadic": "sphalerite",
+    "density": 5,
+    "minY": 5,
+    "maxY": 20,
+    "size": 24,
+    "weight": 100,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "copper": {
+    "name": "Copper",
+    "enabled": true,
+    "primary": "chalcopyrite",
+    "secondary": "iron",
+    "inbetween": "pyrite",
+    "sporadic": "copper",
+    "density": 4,
+    "minY": 10,
+    "maxY": 30,
+    "size": 24,
+    "weight": 80,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "bauxite": {
+    "name": "Bauxite",
+    "enabled": true,
+    "primary": "bauxite",
+    "secondary": "bauxite",
+    "inbetween": "aluminium",
+    "sporadic": "ilmenite",
+    "density": 4,
+    "minY": 50,
+    "maxY": 90,
+    "size": 24,
+    "weight": 80,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "salts": {
+    "name": "Salts",
+    "enabled": true,
+    "primary": "rock_salt",
+    "secondary": "salt",
+    "inbetween": "lepidolite",
+    "sporadic": "spodumene",
+    "density": 3,
+    "minY": 50,
+    "maxY": 60,
+    "size": 24,
+    "weight": 50,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "redstone": {
+    "name": "Redstone",
+    "enabled": true,
+    "primary": "redstone",
+    "secondary": "redstone",
+    "inbetween": "ruby",
+    "sporadic": "cinnabar",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 24,
+    "weight": 60,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "soapstone": {
+    "name": "Soapstone",
+    "enabled": true,
+    "primary": "soapstone",
+    "secondary": "talc",
+    "inbetween": "glauconite",
+    "sporadic": "pentladite",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "nickel": {
+    "name": "Nickel",
+    "enabled": true,
+    "primary": "garnierite",
+    "secondary": "nickel",
+    "inbetween": "cobaltite",
+    "sporadic": "pentlandite",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_nether",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "platinum": {
+    "name": "Platinum",
+    "enabled": true,
+    "primary": "sheldonite",
+    "secondary": "palladium",
+    "inbetween": "platinum",
+    "sporadic": "iridium",
+    "density": 3,
+    "minY": 40,
+    "maxY": 50,
+    "size": 16,
+    "weight": 5,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "pitchblende": {
+    "name": "Pitchblende",
+    "enabled": true,
+    "primary": "pitchblende",
+    "secondary": "pitchblende",
+    "inbetween": "uraninite",
+    "sporadic": "uraninite",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "uranium": {
+    "name": "Uranium",
+    "enabled": true,
+    "primary": "uraninite",
+    "secondary": "uraninite",
+    "inbetween": "uranium",
+    "sporadic": "uranium",
+    "density": 3,
+    "minY": 20,
+    "maxY": 30,
+    "size": 16,
+    "weight": 20,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "monazite": {
+    "name": "Monazite",
+    "enabled": true,
+    "primary": "bastnasite",
+    "secondary": "bastnasite",
+    "inbetween": "monazite",
+    "sporadic": "neodymium",
+    "density": 3,
+    "minY": 20,
+    "maxY": 40,
+    "size": 16,
+    "weight": 30,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "molybdenum": {
+    "name": "Molybdenum",
+    "enabled": true,
+    "primary": "wulfenite",
+    "secondary": "molybdenite",
+    "inbetween": "molybdenum",
+    "sporadic": "powellite",
+    "density": 3,
+    "minY": 20,
+    "maxY": 50,
+    "size": 16,
+    "weight": 5,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "tungstate": {
+    "name": "Tungstate",
+    "enabled": true,
+    "primary": "scheelite",
+    "secondary": "scheelite",
+    "inbetween": "tungstate",
+    "sporadic": "lithium",
+    "density": 3,
+    "minY": 20,
+    "maxY": 50,
+    "size": 16,
+    "weight": 10,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "sapphire": {
+    "name": "Sapphire",
+    "enabled": true,
+    "primary": "almandine",
+    "secondary": "pyrope",
+    "inbetween": "sapphire",
+    "sporadic": "green_sapphire",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 16,
+    "weight": 60,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "manganese": {
+    "name": "Manganese",
+    "enabled": true,
+    "primary": "grossular",
+    "secondary": "spessartine",
+    "inbetween": "pyrolusite",
+    "sporadic": "tantalite",
+    "density": 3,
+    "minY": 20,
+    "maxY": 30,
+    "size": 16,
+    "weight": 20,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "quartz": {
+    "name": "Quartz",
+    "enabled": true,
+    "primary": "quartzite",
+    "secondary": "barite",
+    "inbetween": "certus_quartz",
+    "sporadic": "certus_quartz",
+    "density": 3,
+    "minY": 40,
+    "maxY": 80,
+    "size": 16,
+    "weight": 60,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "diamond": {
+    "name": "Diamond",
+    "enabled": true,
+    "primary": "graphite",
+    "secondary": "graphite",
+    "inbetween": "diamond",
+    "sporadic": "coal",
+    "density": 2,
+    "minY": 5,
+    "maxY": 20,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "olivine": {
+    "name": "Olivine",
+    "enabled": true,
+    "primary": "bentonite",
+    "secondary": "magnesite",
+    "inbetween": "olivine",
+    "sporadic": "glauconite",
+    "density": 3,
+    "minY": 10,
+    "maxY": 40,
+    "size": 16,
+    "weight": 60,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "apatite": {
+    "name": "Apatite",
+    "enabled": true,
+    "primary": "apatite",
+    "secondary": "apatite",
+    "inbetween": "phosphorus",
+    "sporadic": "phosphate",
+    "density": 3,
+    "minY": 40,
+    "maxY": 60,
+    "size": 16,
+    "weight": 60,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "galena": {
+    "name": "Galena",
+    "enabled": true,
+    "primary": "galena",
+    "secondary": "galena",
+    "inbetween": "silver",
+    "sporadic": "lead",
+    "density": 5,
+    "minY": 30,
+    "maxY": 60,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "lapis": {
+    "name": "Lapis",
+    "enabled": true,
+    "primary": "lazurite",
+    "secondary": "sodalite",
+    "inbetween": "lapis",
+    "sporadic": "calcite",
+    "density": 5,
+    "minY": 20,
+    "maxY": 50,
+    "size": 16,
+    "weight": 40,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  },
+  "beryllium": {
+    "name": "Beryllium",
+    "enabled": true,
+    "primary": "beryllium",
+    "secondary": "beryllium",
+    "inbetween": "emerald",
+    "sporadic": "thorium",
+    "density": 3,
+    "minY": 5,
+    "maxY": 30,
+    "size": 16,
+    "weight": 30,
+    "invertDimensions": false,
+    "dimensions": [
+      "minecraft:overworld",
+      "minecraft:the_end"
+    ],
+    "invertBiomes": true,
+    "biomes": []
+  }
+}

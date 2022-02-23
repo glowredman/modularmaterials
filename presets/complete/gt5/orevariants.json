@@ -1,0 +1,62 @@
+{
+  "stone": {
+    "enabled": true,
+    "falling": false,
+    "variantName": "stone",
+    "baseBlock": "minecraft:stone",
+    "baseTexture": "minecraft:block/stone",
+    "nameSyntax": "\u003cm\u003e Ore",
+    "tags": [
+      "minecraft:mineable/pickaxe",
+      "minecraft:\u003cm\u003e_ore",
+      "minecraft:\u003cm\u003e_ores",
+      "forge:ores/\u003cm\u003e",
+      "forge:ores"
+    ]
+  },
+  "netherrack": {
+    "enabled": true,
+    "falling": false,
+    "variantName": "netherrack",
+    "baseBlock": "minecraft:netherrack",
+    "baseTexture": "minecraft:block/netherrack",
+    "nameSyntax": "Nether \u003cm\u003e Ore",
+    "tags": [
+      "minecraft:mineable/pickaxe",
+      "minecraft:nether_\u003cm\u003e_ore",
+      "minecraft:\u003cm\u003e_ores",
+      "forge:ores/\u003cm\u003e",
+      "forge:ores"
+    ]
+  },
+  "end_stone": {
+    "enabled": true,
+    "falling": false,
+    "variantName": "end_stone",
+    "baseBlock": "minecraft:end_stone",
+    "baseTexture": "minecraft:block/end_stone",
+    "nameSyntax": "End \u003cm\u003e Ore",
+    "tags": [
+      "minecraft:mineable/pickaxe",
+      "minecraft:end_\u003cm\u003e_ore",
+      "minecraft:\u003cm\u003e_ores",
+      "forge:ores/\u003cm\u003e",
+      "forge:ores"
+    ]
+  },
+  "deepslate": {
+    "enabled": true,
+    "falling": false,
+    "variantName": "deepslate",
+    "baseBlock": "minecraft:deepslate",
+    "baseTexture": "minecraft:block/deepslate",
+    "nameSyntax": "Deepslate \u003cm\u003e Ore",
+    "tags": [
+      "minecraft:mineable/pickaxe",
+      "minecraft:deepslate_\u003cm\u003e_ore",
+      "minecraft:\u003cm\u003e_ores",
+      "forge:ores/\u003cm\u003e",
+      "forge:ores"
+    ]
+  }
+}
