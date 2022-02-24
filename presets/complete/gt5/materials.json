@@ -9079,5 +9079,3493 @@
         "forge:needs_netherite_tool"
       ]
     }
+  },
+  "stone": {
+    "name": "Stone",
+    "tagNames": [
+      "stone"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "gear_small",
+      "gear"
+    ],
+    "color": {
+      "red": 205,
+      "green": 205,
+      "blue": 205,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "rough",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        ""
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2500,
+      "meltingTemperature": 1300,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "bronze": {
+    "name": "Bronze",
+    "tagNames": [
+      "bronze",
+      "any_bronze"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "liquid",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 255,
+      "green": 128,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "SnCu₃"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2573,
+      "meltingTemperature": 1144,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "brass": {
+    "name": "Brass",
+    "tagNames": [
+      "brass"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "liquid",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 255,
+      "green": 180,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "ZnCu₃"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 1373,
+      "meltingTemperature": 1190,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "invar": {
+    "name": "Invar",
+    "tagNames": [
+      "invar"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 180,
+      "green": 180,
+      "blue": 120,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe₂Ni"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2500,
+      "meltingTemperature": 1783,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "electrum": {
+    "name": "Electrum",
+    "tagNames": [
+      "electrum"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 100,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "AgAu"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "minecraft:needs_iron_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 2500,
+      "meltingTemperature": 1285,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_iron_tool"
+      ]
+    }
+  },
+  "wrought_iron": {
+    "name": "Wrought Iron",
+    "tagNames": [
+      "wrought_iron",
+      "any_iron"
+    ],
+    "enabled": false,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 200,
+      "green": 180,
+      "blue": 180,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 3134,
+      "meltingTemperature": 1811,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "steel": {
+    "name": "Steel",
+    "tagNames": [
+      "steel"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 128,
+      "green": 128,
+      "blue": 128,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe₅₀C"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 3134,
+      "meltingTemperature": 1811,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "stainless_steel": {
+    "name": "Stainless Steel",
+    "tagNames": [
+      "stainless_steel"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 200,
+      "green": 200,
+      "blue": 220,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe₆CrMnNi"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 3132,
+      "meltingTemperature": 1810,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "pig_iron": {
+    "name": "Pig Iron",
+    "tagNames": [
+      "pig_iron",
+      "any_iron"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 200,
+      "green": 180,
+      "blue": 180,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 374,
+      "meltingTemperature": 274,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "red_alloy": {
+    "name": "Red Alloy",
+    "tagNames": [
+      "red_alloy"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 200,
+      "green": 0,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Cu(Si(FeS₂)₅CrAl₂O₃Hg₃)₄"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 700,
+      "meltingTemperature": 400,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "blue_alloy": {
+    "name": "Blue Alloy",
+    "tagNames": [
+      "blue_alloy"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 100,
+      "green": 180,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "AgRp₄"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 400,
+      "meltingTemperature": 246,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "cupronickel": {
+    "name": "Cupronickel",
+    "tagNames": [
+      "cupronickel",
+      "constantan"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 227,
+      "green": 150,
+      "blue": 128,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "CuNi"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2673,
+      "meltingTemperature": 1542,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "nichrome": {
+    "name": "Nichrome",
+    "tagNames": [
+      "nichrome"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 205,
+      "green": 206,
+      "blue": 246,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Ni₄Cr"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2700,
+      "meltingTemperature": 1673,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "kanthal": {
+    "name": "Kanthal",
+    "tagNames": [
+      "kanthal"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 194,
+      "green": 210,
+      "blue": 223,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "FeAlCr"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 2500,
+      "meltingTemperature": 1698,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "magnalium": {
+    "name": "Magnalium",
+    "tagNames": [
+      "magnalium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 200,
+      "green": 190,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "MgAl₂"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 1300,
+      "meltingTemperature": 929,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "soldering_alloy": {
+    "name": "Soldering Alloy",
+    "tagNames": [
+      "soldering_alloy"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 220,
+      "green": 220,
+      "blue": 230,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Sn₉Sb"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 1000,
+      "meltingTemperature": 400,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "battery_alloy": {
+    "name": "Battery Alloy",
+    "tagNames": [
+      "battery_alloy"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 156,
+      "green": 124,
+      "blue": 160,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Pb₄Sb"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 1000,
+      "meltingTemperature": 660,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "tungsten_steel": {
+    "name": "Tungsten Steel",
+    "tagNames": [
+      "tungsten_steel"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 100,
+      "green": 100,
+      "blue": 160,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Fe₅₀CW"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 4500,
+      "meltingTemperature": 2753,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "osmiridium": {
+    "name": "Osmiridium",
+    "tagNames": [
+      "osmiridium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 100,
+      "green": 100,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Ir₃Os"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 5500,
+      "meltingTemperature": 3500,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "sunnarium": {
+    "name": "Sunnarium",
+    "tagNames": [
+      "sunnarium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 0,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Su"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 7000,
+      "meltingTemperature": 4200,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "adamantium": {
+    "name": "Adamantium",
+    "tagNames": [
+      "adamantium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Ad"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "forge:needs_netherite_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 12800,
+      "meltingTemperature": 7200,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "forge:needs_netherite_tool"
+      ]
+    }
+  },
+  "electrum_flux": {
+    "name": "Fluxed Electrum",
+    "tagNames": [
+      "electrum_flux"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 120,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "(Si(FeS₂)₅CrAl₂O₃Hg₃)₂AgAu"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 5000,
+      "meltingTemperature": 3000,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "enderium": {
+    "name": "Enderium",
+    "tagNames": [
+      "enderium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 89,
+      "green": 145,
+      "blue": 135,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "dull",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "(Sn₂AgPt)₂FeMaBeK₄N₅Ma₆"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 5000,
+      "meltingTemperature": 3000,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "hsla": {
+    "name": "HSLA Steel",
+    "tagNames": [
+      "hsla"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 128,
+      "green": 128,
+      "blue": 128,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "?"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 3134,
+      "meltingTemperature": 1811,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "infused_gold": {
+    "name": "Infused Gold",
+    "tagNames": [
+      "infused_gold"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 255,
+      "green": 200,
+      "blue": 60,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "AuMa*"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "minecraft:needs_diamond_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 3243,
+      "meltingTemperature": 1337,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "minecraft:needs_diamond_tool"
+      ]
+    }
+  },
+  "naquadah": {
+    "name": "Naquadah",
+    "tagNames": [
+      "naquadah"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 50,
+      "green": 50,
+      "blue": 50,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Nq"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "forge:needs_netherite_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 9000,
+      "meltingTemperature": 5400,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "forge:needs_netherite_tool"
+      ]
+    }
+  },
+  "naquadah_alloy": {
+    "name": "Naquadah Alloy",
+    "tagNames": [
+      "naquadah_alloy"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "gear_small",
+      "rotor",
+      "rod_long",
+      "spring_small",
+      "spring",
+      "gear"
+    ],
+    "color": {
+      "red": 40,
+      "green": 40,
+      "blue": 40,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Nq₂KeC"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "forge:needs_netherite_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 13370,
+      "meltingTemperature": 7200,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "forge:needs_netherite_tool"
+      ]
+    }
+  },
+  "naquadah_enriched": {
+    "name": "Enriched Naquadah",
+    "tagNames": [
+      "enriched_naquadah"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Nq+"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "forge:needs_netherite_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 8000,
+      "meltingTemperature": 4500,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "forge:needs_netherite_tool"
+      ]
+    }
+  },
+  "naquadria": {
+    "name": "Naquadria",
+    "tagNames": [
+      "naquadria"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "ore",
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "dust_impure",
+      "dust_pure",
+      "crushed",
+      "crushed_purified",
+      "crushed_centrifuged",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "ingot_hot",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 30,
+      "green": 30,
+      "blue": 30,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "shiny",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Nq*"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": [
+        "minecraft:mineable/pickaxe",
+        "forge:needs_netherite_tool"
+      ]
+    },
+    "fluid": {
+      "boilingTemperature": 17000,
+      "meltingTemperature": 9000,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": [
+        "forge:needs_netherite_tool"
+      ]
+    }
+  },
+  "duranium": {
+    "name": "Duranium",
+    "tagNames": [
+      "duranium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Du"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 1700,
+      "meltingTemperature": 1000,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
+  },
+  "tritanium": {
+    "name": "Tritanium",
+    "tagNames": [
+      "tritanium"
+    ],
+    "enabled": true,
+    "enabledTypes": [
+      "dust_tiny",
+      "dust_small",
+      "dust",
+      "nugget",
+      "ingot",
+      "ingot_double",
+      "ingot_triple",
+      "ingot_quadruple",
+      "ingot_quintuple",
+      "plate",
+      "plate_double",
+      "plate_triple",
+      "plate_quadruple",
+      "plate_quintuple",
+      "plate_dense",
+      "rod",
+      "round",
+      "bolt",
+      "screw",
+      "ring",
+      "foil",
+      "liquid",
+      "wire",
+      "rod_long",
+      "spring_small",
+      "spring"
+    ],
+    "color": {
+      "red": 255,
+      "green": 255,
+      "blue": 255,
+      "alpha": 255
+    },
+    "burnTime": 0,
+    "enchantPowerBonus": 0.0,
+    "fireSpreadSpeed": 0,
+    "flammability": 0,
+    "jumpFactor": 1.0,
+    "lightLevel": 0,
+    "resistance": 6.0,
+    "speedFactor": 1.0,
+    "state": "SOLID",
+    "texture": "metallic",
+    "tooltip": {
+      "background": "F0100010",
+      "borderStart": "505000FF",
+      "borderEnd": "5028007F",
+      "text": [
+        "Tn"
+      ]
+    },
+    "block": {
+      "hardness": 5.0,
+      "friction": 0.6,
+      "mapColor": "AUTO",
+      "material": "METAL",
+      "requiresToolForDrops": true,
+      "sound": "METAL",
+      "sticky": false,
+      "tags": []
+    },
+    "fluid": {
+      "boilingTemperature": 18000,
+      "meltingTemperature": 9900,
+      "currentTemperature": 288,
+      "gas": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "liquid": {
+        "density": 1000,
+        "viscosity": 1000,
+        "luminosity": 0,
+        "propagatesSkylightDown": false,
+        "isPathfindable": false
+      },
+      "tags": []
+    },
+    "item": {
+      "isFireResistant": false,
+      "isFoil": false,
+      "lifespan": 6000,
+      "rarity": "COMMON",
+      "tags": []
+    },
+    "ore": {
+      "friction": 0.0,
+      "hardness": 3.0,
+      "jumpFactor": 1.0,
+      "lightLevel": 0,
+      "resistance": 0.0,
+      "speedFactor": 1.0,
+      "requiresToolForDrops": true,
+      "mapColor": "AUTO",
+      "material": "STONE",
+      "sound": "STONE",
+      "tags": []
+    }
   }
 }
