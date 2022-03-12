@@ -174,7 +174,7 @@ public class MM_Commands {
 					.append(new TextComponent(format(fluidstate.getAmount())).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(new TextComponent("  Color: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(Integer.toHexString(fluidAttributes.getColor(level, pos)).toUpperCase()).withStyle(ChatFormatting.WHITE)), false);
+					.append(new TextComponent("#" + Integer.toHexString(fluidAttributes.getColor(level, pos)).toUpperCase()).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(new TextComponent("  Density: ").withStyle(ChatFormatting.AQUA)
 					.append(new TextComponent(format(fluidAttributes.getDensity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
@@ -215,11 +215,11 @@ public class MM_Commands {
 	}
 	
 	private static String format(long number) {
-		return NumberFormat.getInstance().format(number);
+		return NumberFormat.getInstance(Locale.ENGLISH).format(number);
 	}
 	
 	private static String format(double number) {
-		return NumberFormat.getInstance().format(number);
+		return NumberFormat.getInstance(Locale.ENGLISH).format(number);
 	}
 	
 	private static MutableComponent copyable(String text) {
