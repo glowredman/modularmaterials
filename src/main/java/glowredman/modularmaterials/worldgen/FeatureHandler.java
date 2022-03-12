@@ -1,9 +1,7 @@
 package glowredman.modularmaterials.worldgen;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Supplier;
 
 import com.google.gson.JsonElement;
 import com.mojang.serialization.DataResult;
@@ -12,8 +10,10 @@ import com.mojang.serialization.JsonOps;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.MM_OreVein;
-import net.minecraft.core.Registry;
+import net.minecraft.core.Holder;
 import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
@@ -32,8 +32,8 @@ public class FeatureHandler {
 	public static int totalWeight;
 	
 	public static final Feature<NoneFeatureConfiguration> OREVEIN = new FeatureVeinLayer();
-	public static final ConfiguredFeature<?, ?> CONFIGURED_OREVEIN = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(MM_Reference.MODID, "configured_orevein"), OREVEIN.configured(NoneFeatureConfiguration.INSTANCE));
-	public static final PlacedFeature PLACED_OREVEIN = Registry.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(MM_Reference.MODID, "placed_orevein"), CONFIGURED_OREVEIN.placed(new ArrayList<>()));
+	public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> CONFIGURED_OREVEIN = FeatureUtils.register(MM_Reference.MODID + ":configured_orevein", OREVEIN);
+	public static final Holder<PlacedFeature> PLACED_OREVEIN = PlacementUtils.register(MM_Reference.MODID + ":placed_orevein", CONFIGURED_OREVEIN);
 	
 	public static void initOresForBlocksList() {
 		blockWithVariants = MM_Reference.ORES.rowKeySet();
@@ -53,7 +53,7 @@ public class FeatureHandler {
 		event.getGeneration().addFeature(Decoration.UNDERGROUND_ORES, PLACED_OREVEIN);
 	}
 	
-	private static boolean checkFeature(Supplier<PlacedFeature> feature) {
+	private static boolean checkFeature(Holder<PlacedFeature> feature) {
 		if(featuresToRemove == null) {
 			featuresToRemove = new HashSet<>();
 			for(String s : MM_Reference.CONFIG.removeOres) {
@@ -65,7 +65,7 @@ public class FeatureHandler {
 				featuresToRemove.add(PlacedFeature.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, p));
 			}
 		}
-		return featuresToRemove.contains(PlacedFeature.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, feature.get()));
+		return featuresToRemove.contains(PlacedFeature.DIRECT_CODEC.encodeStart(JsonOps.INSTANCE, feature.value()));
 	}
 
 }

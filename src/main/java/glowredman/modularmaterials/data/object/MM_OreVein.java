@@ -141,7 +141,7 @@ public class MM_OreVein {
 	}
 	
 	private boolean testBiome(WorldGenLevel world, int x, int y, int z) {
-		Biome biome = world.getBiome(new BlockPos(x + 8, y, z + 8));
+		Biome biome = world.getBiome(new BlockPos(x + 8, y, z + 8)).value();
 		String biomeName = biome.getRegistryName().toString();
 		return (biomes.contains(biomeName) || biomes.contains(biomeName.replace("minecraft:", ""))) ^ invertBiomes;
 	}

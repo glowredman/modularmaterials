@@ -64,7 +64,7 @@ public class MetaFluidBlock extends LiquidBlock {
 
 	@Override
 	public VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-		return pContext.isAbove(STABLE_SHAPE, pPos, true) && pState.getValue(LEVEL) == 0 && pContext.canStandOnFluid(pLevel.getFluidState(pPos.above()), this.getFluid()) ? STABLE_SHAPE : Shapes.empty();
+		return pContext.isAbove(STABLE_SHAPE, pPos, true) && pState.getValue(LEVEL) == 0 && pContext.canStandOnFluid(pLevel.getFluidState(pPos.above()), this.getFluid().defaultFluidState()) ? STABLE_SHAPE : Shapes.empty();
 	}
 
 	@Override

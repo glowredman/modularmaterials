@@ -1,7 +1,8 @@
 package glowredman.modularmaterials;
 
 import java.text.NumberFormat;
-import java.util.Set;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
 import com.mojang.brigadier.StringReader;
@@ -20,12 +21,13 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
@@ -66,7 +68,7 @@ public class MM_Commands {
 
 					} else {
 						commandSourceStack.sendSuccess(copyable(stack.getItem().getRegistryName().toString()).withStyle(ChatFormatting.GREEN), false);
-						stack.getItem().getTags().forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.toString())), false));
+						stack.getTags().forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.location().toString())), false));
 					}
 					return 0;
 
@@ -92,17 +94,17 @@ public class MM_Commands {
 	private static int getInfo(CommandSourceStack commandSourceStack, BlockPos pos) {
 		Level level = commandSourceStack.getLevel();
 		ChunkPos chunkPos = level.getChunkAt(pos).getPos();
-		Biome biome = level.getBiome(pos);
+		Holder<Biome> biome = level.getBiome(pos);
 		
 		BlockState blockstate = level.getBlockState(pos);
 		Block block = blockstate.getBlock();
 		String blockRegName = block.getRegistryName().toString();
-		Set<ResourceLocation> blockTags = block.getTags();
+		List<TagKey<Block>> blockTags = block.builtInRegistryHolder().tags().toList();
 		
 		FluidState fluidstate = level.getFluidState(pos);
 		Fluid fluid = fluidstate.getType();
 		String fluidRegName = fluid.getRegistryName().toString();
-		Set<ResourceLocation> fluidTags = fluid.getTags();
+		List<TagKey<Fluid>> fluidTags = fluid.builtInRegistryHolder().tags().toList();
 		FluidAttributes fluidAttributes = fluid.getAttributes();
 
 		commandSourceStack.sendSuccess(new TextComponent("Information for ").withStyle(ChatFormatting.GOLD)
@@ -112,10 +114,10 @@ public class MM_Commands {
 				.append(new TextComponent(":")).withStyle(ChatFormatting.GOLD), false);
 		
 		commandSourceStack.sendSuccess(new TextComponent("Biome: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(biome.getRegistryName().toString())), false);
+				.append(copyable(biome.value().getRegistryName().toString())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Biome Category: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(biome.getBiomeCategory().getName())), false);
+				.append(copyable(Biome.getBiomeCategory(biome).getName())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Dimension: ").withStyle(ChatFormatting.BLUE)
 				.append(copyable(level.dimension().location().toString())), false);
@@ -159,7 +161,7 @@ public class MM_Commands {
 					.append(new TextComponent(String.valueOf(blockstate.requiresCorrectToolForDrops())).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!blockTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			blockTags.forEach(rl -> commandSourceStack.sendSuccess(copyable(rl.toString()), false));
+			blockTags.forEach(rl -> commandSourceStack.sendSuccess(copyable(rl.location().toString()), false));
 			
 		}
 		
@@ -205,7 +207,7 @@ public class MM_Commands {
 					.append(new TextComponent(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.toString())), false));
+			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.location().toString())), false));
 			
 		}
 
