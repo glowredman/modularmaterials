@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.util.TagHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
@@ -24,6 +25,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class MetaFluidBlock extends LiquidBlock {
 
@@ -95,7 +97,7 @@ public class MetaFluidBlock extends LiquidBlock {
 	}
 
 	private boolean shouldSpreadLiquid(Level pLevel, BlockPos pPos, BlockState pState) {
-		if (this.getFluid().is(FluidTags.LAVA)) {
+		if (TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.LAVA)) {
 			boolean flag = pLevel.getBlockState(pPos.below()).is(Blocks.SOUL_SOIL);
 
 			for (Direction direction : POSSIBLE_FLOW_DIRECTIONS) {

@@ -57,8 +57,8 @@ public class BlockHandler {
                     String materialName = eMaterial.getKey();
                     MM_Material material = eMaterial.getValue();
                     if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
-                        RegistryObject<MetaFluid> fluidS = RegistryObject.of(new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName), ForgeRegistries.FLUIDS);
-                        RegistryObject<MetaFluid> fluidF = RegistryObject.of(new ResourceLocation(MM_Reference.MODID, "flowing_" + typeName + "." + materialName), ForgeRegistries.FLUIDS);
+                        RegistryObject<MetaFluid> fluidS = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName), ForgeRegistries.FLUIDS);
+                        RegistryObject<MetaFluid> fluidF = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, "flowing_" + typeName + "." + materialName), ForgeRegistries.FLUIDS);
                         
                         FluidAttributes.Builder b = FluidAttributes.builder(
                                 new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_still"),

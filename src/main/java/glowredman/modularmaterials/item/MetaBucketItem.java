@@ -7,6 +7,7 @@ import glowredman.modularmaterials.MM_CreativeTabs;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.util.TagHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -44,6 +45,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class MetaBucketItem extends BucketItem {
 
@@ -176,7 +178,7 @@ public class MetaBucketItem extends BucketItem {
 		boolean flag1 = blockstate.isAir() || flag || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
 		if (!flag1) {
 			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null);
-		} else if (pLevel.dimensionType().ultraWarm() && this.getFluid().is(FluidTags.WATER)) {
+		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.WATER)) {
 			int i = pPos.getX();
 			int j = pPos.getY();
 			int k = pPos.getZ();
@@ -208,7 +210,7 @@ public class MetaBucketItem extends BucketItem {
 	@Override
 	protected void playEmptySound(Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
 		SoundEvent soundevent = this.getFluid().getAttributes().getEmptySound();
-		if (soundevent == null) soundevent = this.getFluid().is(FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
+		if (soundevent == null) soundevent = TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
 		pLevel.playSound(pPlayer, pPos, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
 		pLevel.gameEvent(pPlayer, GameEvent.FLUID_PLACE, pPos);
 	}

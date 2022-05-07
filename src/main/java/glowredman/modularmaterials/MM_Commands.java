@@ -14,6 +14,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 
 import glowredman.modularmaterials.data.PresetHandler;
 import glowredman.modularmaterials.data.legacy.LegacyHandler;
+import glowredman.modularmaterials.util.TagHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -41,6 +42,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class MM_Commands {
 
@@ -99,12 +101,12 @@ public class MM_Commands {
 		BlockState blockstate = level.getBlockState(pos);
 		Block block = blockstate.getBlock();
 		String blockRegName = block.getRegistryName().toString();
-		List<TagKey<Block>> blockTags = block.builtInRegistryHolder().tags().toList();
+		List<TagKey<Block>> blockTags = TagHelper.getTags(ForgeRegistries.BLOCKS, block);
 		
 		FluidState fluidstate = level.getFluidState(pos);
 		Fluid fluid = fluidstate.getType();
 		String fluidRegName = fluid.getRegistryName().toString();
-		List<TagKey<Fluid>> fluidTags = fluid.builtInRegistryHolder().tags().toList();
+		List<TagKey<Fluid>> fluidTags = TagHelper.getTags(ForgeRegistries.FLUIDS, fluid);
 		FluidAttributes fluidAttributes = fluid.getAttributes();
 
 		commandSourceStack.sendSuccess(new TextComponent("Information for ").withStyle(ChatFormatting.GOLD)
@@ -117,7 +119,7 @@ public class MM_Commands {
 				.append(copyable(biome.value().getRegistryName().toString())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Biome Category: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(Biome.getBiomeCategory(biome).getName())), false);
+				.append(copyable(biome.value().getBiomeCategory().getName())), false);
 
 		commandSourceStack.sendSuccess(new TextComponent("Dimension: ").withStyle(ChatFormatting.BLUE)
 				.append(copyable(level.dimension().location().toString())), false);
