@@ -6,6 +6,7 @@ import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.data.object.sub.FluidProperties.StateBasedProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
@@ -13,11 +14,13 @@ public class MetaFluid extends ForgeFlowingFluid {
 	
 	public final MM_Type type;
 	public final MM_Material material;
+	public final ResourceLocation registryName;
 	
-	public MetaFluid(MM_Material material, MM_Type type, Properties properties) {
+	public MetaFluid(MM_Material material, MM_Type type, Properties properties, ResourceLocation registryName) {
 		super(properties);
 		this.material = material;
 		this.type = type;
+		this.registryName = registryName;
 		addToList();
 	}
 
@@ -36,12 +39,12 @@ public class MetaFluid extends ForgeFlowingFluid {
 	}
     
     public String getTypeIdentifier() {
-        String s = this.getRegistryName().getPath();
+        String s = this.registryName.getPath();
         return s.substring(0, s.indexOf("."));
     }
     
     public String getMaterialIdentifier() {
-        String s = this.getRegistryName().getPath();
+        String s = this.registryName.getPath();
         return s.substring(s.indexOf(".") + 1);
     }
     

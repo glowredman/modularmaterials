@@ -31,13 +31,12 @@ public class ModularMaterials {
 	
 	public ModularMaterials() {
 		instance = this;
-		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-		forgeBus.register(new MM_Commands());
-		if(!MM_Reference.ORE_VEINS.isEmpty()) forgeBus.register(new FeatureHandler());
+		MinecraftForge.EVENT_BUS.register(new MM_Commands());
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modBus.register(instance);
 		modBus.register(new BlockHandler());
 		modBus.register(new ItemHandler());
+		modBus.register(new FeatureHandler());
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			modBus.register(new ClientHandler());
 		});

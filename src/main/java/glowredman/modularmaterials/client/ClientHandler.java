@@ -9,7 +9,7 @@ import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.item.MetaOreBlockItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
@@ -141,7 +141,7 @@ public class ClientHandler {
 	
 	private void modifyTooltips(ItemTooltipEvent event) {
 		if(event.getItemStack().getItem() instanceof BucketItem) {
-			event.getToolTip().add(new TextComponent("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getAttributes().getTemperature() + "K"));
+			event.getToolTip().add(Component.literal("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getAttributes().getTemperature() + "K"));
 		}
 	}
 

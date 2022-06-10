@@ -25,7 +25,7 @@ public class JSONHandler {
 	
 	public static Map<String, MM_Material> getMaterials() {
 		long time = System.currentTimeMillis();
-		Map<String, MM_Material> types = new LinkedHashMap<>();
+		Map<String, MM_Material> materials = new LinkedHashMap<>();
 		
 		try {
 			File file = new File(CONFIG_DIR, "materials.json");
@@ -38,18 +38,18 @@ public class JSONHandler {
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Material>>() {
 				private static final long serialVersionUID = 5500293462812712215L;}.getType();
 				
-			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
+			materials = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
 			ModularMaterials.info("Parsed materials.json in " + (System.currentTimeMillis() - time) + "ms");
 			
-			ModularMaterials.debug(String.format("Types (%d):", types.size()));
-			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
+			ModularMaterials.debug(String.format("Materials (%d):", materials.size()));
+			materials.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
 		} catch (Exception e) {
 			ModularMaterials.fatal("Parsing materials.json failed:");
 			e.printStackTrace();
 		}
 		
-		return types;
+		return materials;
 	}
 	
 	public static Map<String, MM_Type> getTypes() {
@@ -82,7 +82,7 @@ public class JSONHandler {
 	
 	public static Map<String, MM_OreVariant> getOreVariants() {
 		long time = System.currentTimeMillis();
-		Map<String, MM_OreVariant> types = new LinkedHashMap<>();
+		Map<String, MM_OreVariant> variants = new LinkedHashMap<>();
 		
 		try {
 			File file = new File(CONFIG_DIR, "orevariants.json");
@@ -94,18 +94,18 @@ public class JSONHandler {
 			Type listType = new TypeToken<LinkedHashMap<String, MM_OreVariant>>() {
 				private static final long serialVersionUID = 8305381304760332638L;}.getType();
 				
-			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
+			variants = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
 			ModularMaterials.info("Parsed orevariants.json in " + (System.currentTimeMillis() - time) + "ms");
 			
-			ModularMaterials.debug(String.format("Ore Variants (%d):", types.size()));
-			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
+			ModularMaterials.debug(String.format("Ore Variants (%d):", variants.size()));
+			variants.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
 		} catch (Exception e) {
 			ModularMaterials.fatal("Parsing orevariants.json failed:");
 			e.printStackTrace();
 		}
 		
-		return types;
+		return variants;
 	}
 	
 	public static Map<String, MM_OreVein> getOreVeins() {

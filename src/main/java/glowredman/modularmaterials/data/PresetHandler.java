@@ -14,7 +14,7 @@ import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 
 public class PresetHandler {
 
@@ -37,26 +37,26 @@ public class PresetHandler {
 
 	public static int execute(CommandSourceStack stack, String preset) {
 		if(downloadConfigFile(preset, "materials.json")) {
-			stack.sendSuccess(new TextComponent("Successfully downloaded materials.json").withStyle(ChatFormatting.GREEN), false);
+			stack.sendSuccess(Component.literal("Successfully downloaded materials.json").withStyle(ChatFormatting.GREEN), false);
 		} else {
-			stack.sendFailure(new TextComponent("Downloading materials.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
+			stack.sendFailure(Component.literal("Downloading materials.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
 		}
 		if(downloadConfigFile(preset, "types.json")) {
-			stack.sendSuccess(new TextComponent("Successfully downloaded types.json").withStyle(ChatFormatting.GREEN), false);
+			stack.sendSuccess(Component.literal("Successfully downloaded types.json").withStyle(ChatFormatting.GREEN), false);
 		} else {
-			stack.sendFailure(new TextComponent("Downloading types.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
+			stack.sendFailure(Component.literal("Downloading types.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
 		}
 		if(downloadConfigFile(preset, "orevariants.json")) {
-			stack.sendSuccess(new TextComponent("Successfully downloaded orevariants.json").withStyle(ChatFormatting.GREEN), false);
+			stack.sendSuccess(Component.literal("Successfully downloaded orevariants.json").withStyle(ChatFormatting.GREEN), false);
 		} else {
-			stack.sendFailure(new TextComponent("Downloading orevariants.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
+			stack.sendFailure(Component.literal("Downloading orevariants.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
 		}
 		if(downloadConfigFile(preset, "oreveins.json")) {
-			stack.sendSuccess(new TextComponent("Successfully downloaded oreveins.json").withStyle(ChatFormatting.GREEN), false);
+			stack.sendSuccess(Component.literal("Successfully downloaded oreveins.json").withStyle(ChatFormatting.GREEN), false);
 		} else {
-			stack.sendFailure(new TextComponent("Downloading oreveins.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
+			stack.sendFailure(Component.literal("Downloading oreveins.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
 		}
-		stack.sendSuccess(new TextComponent("Finished installing preset. Restart the game for the changes to take effect."), false);
+		stack.sendSuccess(Component.literal("Finished installing preset. Restart the game for the changes to take effect."), false);
 		return 0;
 	}
 	

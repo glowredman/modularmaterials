@@ -19,11 +19,13 @@ public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 	
 	private final MM_Material material;
 	private final MM_OreVariant variant;
+	private final ResourceLocation registryName;
 
-	public MetaFallingOreBlock(MM_Material material, MM_OreVariant ore, String uniqueMM_MaterialName) {
+	public MetaFallingOreBlock(MM_Material material, MM_OreVariant ore, String uniqueMM_MaterialName, ResourceLocation registryName) {
 		super(BlockHandler.getOreBlockProperties(material, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName));
 		this.material = material;
 		this.variant = ore;
+		this.registryName = registryName;
 		MM_Reference.ORES.put(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName, this);
 	}
 	
@@ -67,6 +69,11 @@ public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 	@Override
 	public String getLocalizedName() {
 		return variant.nameSyntax.replace(TagHandler.PARAM_MATERIAL, material.name);
+	}
+
+	@Override
+	public ResourceLocation getRegistryName() {
+		return this.registryName;
 	}
 
 }

@@ -14,20 +14,23 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 
 import glowredman.modularmaterials.data.PresetHandler;
 import glowredman.modularmaterials.data.legacy.LegacyHandler;
-import glowredman.modularmaterials.util.TagHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
+import net.minecraft.commands.synchronization.ArgumentTypeInfos;
+import net.minecraft.commands.synchronization.SingletonArgumentInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
@@ -43,6 +46,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ForgeRegistries.Keys;
 
 public class MM_Commands {
 
@@ -63,14 +67,13 @@ public class MM_Commands {
 						stack = commandSourceStack.getPlayerOrException().getMainHandItem();
 					} catch (Exception e) {}
 
-					if (stack == null || stack.getItem().getRegistryName().equals(Blocks.AIR.getRegistryName())) {
+					if (stack == null || ForgeRegistries.ITEMS.getKey(stack.getItem()).equals(ForgeRegistries.ITEMS.getKey(Blocks.AIR.asItem()))) {
 
-						commandSourceStack.sendFailure(new TextComponent("Your main hand is empty!")
-								.withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
+						commandSourceStack.sendFailure(Component.literal("Your main hand is empty!").withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
 
 					} else {
-						commandSourceStack.sendSuccess(copyable(stack.getItem().getRegistryName().toString()).withStyle(ChatFormatting.GREEN), false);
-						stack.getTags().forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.location().toString())), false));
+						commandSourceStack.sendSuccess(copyable(ForgeRegistries.ITEMS.getKey(stack.getItem()).toString()).withStyle(ChatFormatting.GREEN), false);
+						stack.getTags().forEach(rl -> commandSourceStack.sendSuccess(Component.literal("  > ").append(copyable(rl.location().toString())), false));
 					}
 					return 0;
 
@@ -97,119 +100,122 @@ public class MM_Commands {
 		Level level = commandSourceStack.getLevel();
 		ChunkPos chunkPos = level.getChunkAt(pos).getPos();
 		Holder<Biome> biome = level.getBiome(pos);
+		List<TagKey<Biome>> biomeTags = biome.tags().toList();
 		
 		BlockState blockstate = level.getBlockState(pos);
 		Block block = blockstate.getBlock();
-		String blockRegName = block.getRegistryName().toString();
-		List<TagKey<Block>> blockTags = TagHelper.getTags(ForgeRegistries.BLOCKS, block);
+		Registry<Block> blockRegistry = level.registryAccess().registryOrThrow(Keys.BLOCKS);
+		ResourceLocation blockRegName = blockRegistry.getKey(block);
+		List<TagKey<Block>> blockTags = blockRegistry.getHolderOrThrow(ResourceKey.create(Keys.BLOCKS, blockRegName)).tags().toList();
 		
 		FluidState fluidstate = level.getFluidState(pos);
 		Fluid fluid = fluidstate.getType();
-		String fluidRegName = fluid.getRegistryName().toString();
-		List<TagKey<Fluid>> fluidTags = TagHelper.getTags(ForgeRegistries.FLUIDS, fluid);
+		Registry<Fluid> fluidRegistry = level.registryAccess().registryOrThrow(Keys.FLUIDS);
+		ResourceLocation fluidRegName = fluidRegistry.getKey(fluid);
+		List<TagKey<Fluid>> fluidTags = fluidRegistry.getHolderOrThrow(ResourceKey.create(Keys.FLUIDS, fluidRegName)).tags().toList();
 		FluidAttributes fluidAttributes = fluid.getAttributes();
 
-		commandSourceStack.sendSuccess(new TextComponent("Information for ").withStyle(ChatFormatting.GOLD)
-				.append(new TextComponent(String.format("[%d, %d, %d]", pos.getX(), pos.getY(), pos.getZ())).withStyle(ChatFormatting.GREEN))
-				.append(new TextComponent(" in Chunk ").withStyle(ChatFormatting.GOLD))
-				.append(new TextComponent(String.format("[%d, %d]", chunkPos.x, chunkPos.z)).withStyle(ChatFormatting.GREEN))
-				.append(new TextComponent(":")).withStyle(ChatFormatting.GOLD), false);
+		commandSourceStack.sendSuccess(Component.literal("Information for ").withStyle(ChatFormatting.GOLD)
+				.append(Component.literal(String.format("[%d, %d, %d]", pos.getX(), pos.getY(), pos.getZ())).withStyle(ChatFormatting.GREEN))
+				.append(Component.literal(" in Chunk ").withStyle(ChatFormatting.GOLD))
+				.append(Component.literal(String.format("[%d, %d]", chunkPos.x, chunkPos.z)).withStyle(ChatFormatting.GREEN))
+				.append(Component.literal(":")).withStyle(ChatFormatting.GOLD), false);
 		
-		commandSourceStack.sendSuccess(new TextComponent("Biome: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(biome.value().getRegistryName().toString())), false);
+		commandSourceStack.sendSuccess(Component.literal("Biome: ").withStyle(ChatFormatting.BLUE)
+				.append(copyable(level.registryAccess().registryOrThrow(Keys.BIOMES).getKey(biome.value()).toString())), false);
+		
+		if(!biomeTags.isEmpty()) commandSourceStack.sendSuccess(Component.literal("  Tags: ").withStyle(ChatFormatting.AQUA), false);
+		biomeTags.forEach(rl -> commandSourceStack.sendSuccess(Component.literal("  > ").append(copyable(rl.location().toString())), false));
 
-		commandSourceStack.sendSuccess(new TextComponent("Biome Category: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(biome.value().getBiomeCategory().getName())), false);
-
-		commandSourceStack.sendSuccess(new TextComponent("Dimension: ").withStyle(ChatFormatting.BLUE)
+		commandSourceStack.sendSuccess(Component.literal("Dimension: ").withStyle(ChatFormatting.BLUE)
 				.append(copyable(level.dimension().location().toString())), false);
 
-		commandSourceStack.sendSuccess(new TextComponent("Block: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(blockRegName)), false);
+		commandSourceStack.sendSuccess(Component.literal("Block: ").withStyle(ChatFormatting.BLUE)
+				.append(copyable(blockRegName.toString())), false);
 		
 		if(!blockstate.isAir()) {
 
-			commandSourceStack.sendSuccess(new TextComponent("  Enchantment Power Bonus: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getEnchantPowerBonus(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Enchantment Power Bonus: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getEnchantPowerBonus(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Explosion Resistance: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getExplosionResistance(level, pos, null))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Explosion Resistance: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getExplosionResistance(level, pos, null))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Fire Spread Speed: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getFireSpreadSpeed(level, pos, Direction.UP))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Fire Spread Speed: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getFireSpreadSpeed(level, pos, Direction.UP))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Flammability: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getFlammability(level, pos, Direction.UP))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Flammability: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getFlammability(level, pos, Direction.UP))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Friction: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getFriction(level, pos, commandSourceStack.getEntity()))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Friction: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getFriction(level, pos, commandSourceStack.getEntity()))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Hardness: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(block.defaultDestroyTime())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Hardness: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(block.defaultDestroyTime())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Jump Factor: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(block.getJumpFactor())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Jump Factor: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(block.getJumpFactor())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Light Emission: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(blockstate.getLightEmission(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Light Emission: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(blockstate.getLightEmission(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Speed Factor: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(block.getSpeedFactor())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Speed Factor: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(block.getSpeedFactor())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Sticky: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(String.valueOf(blockstate.isStickyBlock())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Sticky: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(String.valueOf(blockstate.isStickyBlock())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Tool Required: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(String.valueOf(blockstate.requiresCorrectToolForDrops())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Tool Required: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(String.valueOf(blockstate.requiresCorrectToolForDrops())).withStyle(ChatFormatting.WHITE)), false);
 			
-			if(!blockTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			blockTags.forEach(rl -> commandSourceStack.sendSuccess(copyable(rl.location().toString()), false));
+			if(!blockTags.isEmpty()) commandSourceStack.sendSuccess(Component.literal("  Tags: ").withStyle(ChatFormatting.AQUA), false);
+			blockTags.forEach(rl -> commandSourceStack.sendSuccess(Component.literal("  > ").append(copyable(rl.location().toString())), false));
 			
 		}
 		
-		commandSourceStack.sendSuccess(new TextComponent("Fluid: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(fluidRegName)), false);
+		commandSourceStack.sendSuccess(Component.literal("Fluid: ").withStyle(ChatFormatting.BLUE)
+				.append(copyable(fluidRegName.toString())), false);
 		
 		if(!fluidstate.isEmpty()) {
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Amount: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidstate.getAmount())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Amount: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidstate.getAmount())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Color: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent("#" + Integer.toHexString(fluidAttributes.getColor(level, pos)).toUpperCase()).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Color: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal("#" + Integer.toHexString(fluidAttributes.getColor(level, pos)).toUpperCase()).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Density: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidAttributes.getDensity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Density: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidAttributes.getDensity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Explosion Resistance: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidstate.getExplosionResistance(level, pos, null))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Explosion Resistance: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidstate.getExplosionResistance(level, pos, null))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Gaseous: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(String.valueOf(fluidAttributes.isGaseous(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Gaseous: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(String.valueOf(fluidAttributes.isGaseous(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Height: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidstate.getHeight(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Height: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidstate.getHeight(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Light Emission: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidAttributes.getLuminosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Light Emission: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidAttributes.getLuminosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Lighter Than Air: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(String.valueOf(fluidAttributes.isLighterThanAir())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Lighter Than Air: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(String.valueOf(fluidAttributes.isLighterThanAir())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Own Height: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidstate.getOwnHeight())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Own Height: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidstate.getOwnHeight())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Source: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(String.valueOf(fluidstate.isSource())).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Source: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(String.valueOf(fluidstate.isSource())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Temperature: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidAttributes.getTemperature(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Temperature: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidAttributes.getTemperature(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(new TextComponent("  Viscosity: ").withStyle(ChatFormatting.AQUA)
-					.append(new TextComponent(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+			commandSourceStack.sendSuccess(Component.literal("  Viscosity: ").withStyle(ChatFormatting.AQUA)
+					.append(Component.literal(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
-			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(new TextComponent("  Tags: ").withStyle(ChatFormatting.AQUA), false);
-			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(new TextComponent("  > ").append(copyable(rl.location().toString())), false));
+			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(Component.literal("  Tags: ").withStyle(ChatFormatting.AQUA), false);
+			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(Component.literal("  > ").append(copyable(rl.location().toString())), false));
 			
 		}
 
@@ -225,14 +231,18 @@ public class MM_Commands {
 	}
 	
 	private static MutableComponent copyable(String text) {
-		return new TextComponent(text).withStyle(style -> style
+		return Component.literal(text).withStyle(style -> style
 				.withColor(ChatFormatting.WHITE)
 				.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, text))
-				.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.copy.click")))
+				.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("chat.copy.click")))
 				.withInsertion(text));
 	}
 	
 	private static class PresetArgumentType implements ArgumentType<String> {
+		
+		static {
+			ArgumentTypeInfos.registerByClass(PresetArgumentType.class, SingletonArgumentInfo.contextFree(PresetArgumentType::new));
+		}
 
 		@Override
 		public String parse(StringReader reader) throws CommandSyntaxException {

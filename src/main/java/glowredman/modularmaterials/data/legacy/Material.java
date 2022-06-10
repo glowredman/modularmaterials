@@ -1,5 +1,6 @@
 package glowredman.modularmaterials.data.legacy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -104,7 +105,7 @@ public class Material {
 		m.ore = o;
 		m.resistance = blockResistance;
 		m.state = LegacyHandler.state(state);
-		m.tagNames = LegacyHandler.lowerCase(oreDict);
+		m.tagNames = Arrays.asList(LegacyHandler.lowerCase(oreDict));
 		m.texture = texture;
 		TooltipProperties t = new TooltipProperties();
 		t.text = tooltip;

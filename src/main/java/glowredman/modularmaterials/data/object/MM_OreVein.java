@@ -12,10 +12,14 @@ import glowredman.modularmaterials.worldgen.FeatureHandler;
 import glowredman.modularmaterials.worldgen.VeinLayerResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries.Keys;
 
 public class MM_OreVein {
 	
@@ -34,6 +38,12 @@ public class MM_OreVein {
 	public List<String> dimensions = Arrays.asList("minecraft:overworld");
 	public boolean invertBiomes = true;
 	public List<String> biomes = new ArrayList<>();
+	
+	@Override
+	public String toString() {
+		return String.format("{name: %s, enabled: %b, primary: %s, secondary: %s, inbetween: %s, sporadic: %s, density: %d, minY: %d, maxY: %d, size: %d, weight: %d, invertDimensions: %b, dimensions: %s, invertBiomes: %b, biomes: %s}",
+				name, enabled, primary, secondary, inbetween, sporadic, density, minY, maxY, size, weight, invertDimensions, dimensions, invertBiomes, biomes);
+	}
 	
 	public VeinLayerResult generateChunkified(WorldGenLevel world, Random rand, int posX, int posZ, int seedX, int seedZ) {
 		//check dimension
@@ -141,9 +151,26 @@ public class MM_OreVein {
 	}
 	
 	private boolean testBiome(WorldGenLevel world, int x, int y, int z) {
-		Biome biome = world.getBiome(new BlockPos(x + 8, y, z + 8)).value();
-		String biomeName = biome.getRegistryName().toString();
-		return (biomes.contains(biomeName) || biomes.contains(biomeName.replace("minecraft:", ""))) ^ invertBiomes;
+		Holder<Biome> biomeHolder = world.getBiome(new BlockPos(x + 8, y, z + 8));
+		Biome biome = biomeHolder.value();
+		Registry<Biome> registry = world.getLevel().registryAccess().registryOrThrow(Keys.BIOMES);
+		String biomeName = registry.getKey(biome).toString();
+		if(invertBiomes) {
+			for(TagKey<Biome> tagKey : biomeHolder.tags().toList()) {
+				String tag = tagKey.location().toString();
+				if(biomes.contains(tag) || biomes.contains(tag.replace("minecraft:", ""))) {
+					return false;
+				}
+			}
+			return !biomes.contains(biomeName) && !biomes.contains(biomeName.replace("minecraft:", ""));
+		}
+		for(TagKey<Biome> tagKey : biomeHolder.tags().toList()) {
+			String tag = tagKey.location().toString();
+			if(biomes.contains(tag) || biomes.contains(tag.replace("minecraft:", ""))) {
+				return true;
+			}
+		}
+		return biomes.contains(biomeName) || biomes.contains(biomeName.replace("minecraft:", ""));
 	}
 	
 	private static boolean testVein(WorldGenLevel world, int posX, int posY, int posZ) {
@@ -152,7 +179,7 @@ public class MM_OreVein {
 		BlockState sw = world.getBlockState(new BlockPos(posX,      posY, posZ + 16));
 		BlockState se = world.getBlockState(new BlockPos(posX + 16, posY, posZ + 16));
 		return (!nw.isAir() || !ne.isAir() || !sw.isAir() || !se.isAir()) && 
-				(FeatureHandler.blockWithVariants.contains(nw.getBlock()) || FeatureHandler.blockWithVariants.contains(ne.getBlock()) || FeatureHandler.blockWithVariants.contains(sw.getBlock()) || FeatureHandler.blockWithVariants.contains(se.getBlock()));
+				(FeatureHandler.blocksWithVariants.contains(nw.getBlock()) || FeatureHandler.blocksWithVariants.contains(ne.getBlock()) || FeatureHandler.blocksWithVariants.contains(sw.getBlock()) || FeatureHandler.blocksWithVariants.contains(se.getBlock()));
 	}
 	
 	private static int setOre(WorldGenLevel world, BlockPos pos, String material) {

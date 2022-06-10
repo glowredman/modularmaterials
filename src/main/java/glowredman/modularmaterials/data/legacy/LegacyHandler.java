@@ -24,7 +24,7 @@ import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.util.FileHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 
 public class LegacyHandler {
 
@@ -97,15 +97,15 @@ public class LegacyHandler {
 		if(split.length == 2) {
 			try {
 				Integer.parseInt(split[1]);
-				css.sendSuccess(new TextComponent(baseBlock).withStyle(ChatFormatting.WHITE)
-						.append(new TextComponent(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
+				css.sendSuccess(Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
+						.append(Component.literal(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
 				return "minecraft:" + split[0];
 			} catch (Exception e) {
 				return split[0] + ":" + split[1];
 			}
 		}
-		css.sendSuccess(new TextComponent(baseBlock).withStyle(ChatFormatting.WHITE)
-				.append(new TextComponent(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
+		css.sendSuccess(Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
+				.append(Component.literal(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
 		return split[0] + ":" + split[1];
 	}
 	
@@ -186,7 +186,7 @@ public class LegacyHandler {
 		
 		//exit early if no files are present
 		if(!(foundMaterials || foundOreVariants || foundOreVeins || foundTypes)) {
-			css.sendSuccess(new TextComponent("Finished without any changes.").withStyle(ChatFormatting.BLUE), false);
+			css.sendSuccess(Component.literal("Finished without any changes.").withStyle(ChatFormatting.BLUE), false);
 			return 0;
 		}
 		
@@ -220,19 +220,19 @@ public class LegacyHandler {
 			write("materials.json", materials, css);
 		}
 		
-		css.sendSuccess(new TextComponent("Done! Took " + (System.currentTimeMillis() - time) + "ms.").withStyle(ChatFormatting.GREEN), false);
+		css.sendSuccess(Component.literal("Done! Took " + (System.currentTimeMillis() - time) + "ms.").withStyle(ChatFormatting.GREEN), false);
 		
 		return 0;
 	}
 	
 	private static void missingFileMsg(CommandSourceStack css, File file) {
-		css.sendSuccess(new TextComponent("Could not find ").withStyle(ChatFormatting.GOLD)
-				.append(new TextComponent(file.getPath()).withStyle(ChatFormatting.WHITE))
-				.append(new TextComponent(", skipping.").withStyle(ChatFormatting.GOLD)), false);
+		css.sendSuccess(Component.literal("Could not find ").withStyle(ChatFormatting.GOLD)
+				.append(Component.literal(file.getPath()).withStyle(ChatFormatting.WHITE))
+				.append(Component.literal(", skipping.").withStyle(ChatFormatting.GOLD)), false);
 	}
 	
 	private static void errorFileReadMsg(CommandSourceStack css, Exception e) {
-		css.sendSuccess(new TextComponent(e.toString()).withStyle(ChatFormatting.RED), false);
+		css.sendSuccess(Component.literal(e.toString()).withStyle(ChatFormatting.RED), false);
 	}
 	
 	private static <T> T read(File file, Class<T> clazz) throws JsonSyntaxException, JsonIOException, FileNotFoundException {
@@ -244,7 +244,7 @@ public class LegacyHandler {
 		if(f.exists()) f.delete();
 		if(!FileHelper.write(f, JSONHandler.GSON.toJson(values, new TypeToken<Map<K, V>>() {
 			private static final long serialVersionUID = 6306948798714244240L;}.getType()))) {
-			css.sendFailure(new TextComponent("Failed creating " + file).withStyle(ChatFormatting.RED));
+			css.sendFailure(Component.literal("Failed creating " + file).withStyle(ChatFormatting.RED));
 		}
 	}
 

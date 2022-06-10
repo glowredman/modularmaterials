@@ -14,6 +14,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -45,17 +46,19 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class MetaBucketItem extends BucketItem {
+	
+	public final ResourceLocation registryName;
 
-	public MetaBucketItem(Supplier<MetaFluid> fluid, MM_Material material) {
+	public MetaBucketItem(Supplier<MetaFluid> fluid, MM_Material material, ResourceLocation registryName) {
 		super(fluid, new Properties()
 				.craftRemainder(Items.BUCKET)
 				.setNoRepair()
 				.rarity(material.item.rarity.get())
 				.stacksTo(1)
 				.tab(MM_CreativeTabs.TAB_FLUIDS));
+		this.registryName = registryName;
 		MM_Reference.BUCKETS.add(this);
 	}
 
@@ -92,12 +95,12 @@ public class MetaBucketItem extends BucketItem {
 	}
 
 	public String getFluidTypeIdentifier() {
-		String s = this.getRegistryName().getPath().replace("bucket.", "");
+		String s = this.registryName.getPath().replace("bucket.", "");
 		return s.substring(0, s.indexOf("."));
 	}
 
 	public String getMaterialIdentifier() {
-		String s = this.getRegistryName().getPath().replace("bucket.", "");
+		String s = this.registryName.getPath().replace("bucket.", "");
 		return s.substring(s.indexOf(".") + 1);
 	}
 
@@ -178,7 +181,7 @@ public class MetaBucketItem extends BucketItem {
 		boolean flag1 = blockstate.isAir() || flag || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
 		if (!flag1) {
 			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null);
-		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.WATER)) {
+		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.WATER)) {
 			int i = pPos.getX();
 			int j = pPos.getY();
 			int k = pPos.getZ();
@@ -210,7 +213,7 @@ public class MetaBucketItem extends BucketItem {
 	@Override
 	protected void playEmptySound(Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
 		SoundEvent soundevent = this.getFluid().getAttributes().getEmptySound();
-		if (soundevent == null) soundevent = TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
+		if (soundevent == null) soundevent = TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
 		pLevel.playSound(pPlayer, pPos, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
 		pLevel.gameEvent(pPlayer, GameEvent.FLUID_PLACE, pPos);
 	}

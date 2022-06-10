@@ -21,17 +21,20 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BlockHandler {
     
     @SubscribeEvent
-    public void registerBlocks(Register<Block> event) {
+    public void registerBlocks(RegisterEvent event) {
+    	if(!event.getRegistryKey().equals(ForgeRegistries.BLOCKS.getRegistryKey())) {
+    		return;
+    	}
         long time = System.currentTimeMillis();
         
         for(Entry<String, MM_Type> eType : MM_Reference.TYPES.entrySet()) {
@@ -44,9 +47,8 @@ public class BlockHandler {
                     String materialName = eMaterial.getKey();
                     MM_Material material = eMaterial.getValue();
                     if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
-                        MetaBlock block = new MetaBlock(material, type, materialName);
-                        block.setRegistryName(MM_Reference.MODID, typeName + "." + materialName);
-                        event.getRegistry().register(block);
+                    	ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName);
+                        event.getForgeRegistry().register(regName, new MetaBlock(material, type, materialName, regName));
                     }
                 }
             }
@@ -74,13 +76,14 @@ public class BlockHandler {
                         ForgeFlowingFluid.Properties p = new ForgeFlowingFluid.Properties(fluidS, fluidF, b);
                         
                         if(MM_Reference.CONFIG.enableBuckets) {
-                            Item bucket = new MetaBucketItem(fluidS, material).setRegistryName(MM_Reference.MODID, "bucket." + fluidS.getId().getPath());
+                        	ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, "bucket." + fluidS.getId().getPath());
+                            Item bucket = new MetaBucketItem(fluidS, material, regName);
                         	p.bucket(() -> bucket);
-                            ForgeRegistries.ITEMS.register(bucket);
+                            ForgeRegistries.ITEMS.register(regName, bucket);
                         }
                         
-                        ForgeRegistries.FLUIDS.register(new MetaFluid(material, type, p).setRegistryName(fluidS.getId()));
-                        ForgeRegistries.FLUIDS.register(new MetaFlowingFluid(material, type, p).setRegistryName(fluidF.getId()));
+                        ForgeRegistries.FLUIDS.register(fluidS.getId(), new MetaFluid(material, type, p, fluidS.getId()));
+                        ForgeRegistries.FLUIDS.register(fluidF.getId(), new MetaFlowingFluid(material, type, p, fluidF.getId()));
                         
                         //TODO
                         //MetaFluidBlock block = new MetaFluidBlock(fluidS, material, type, materialName);
@@ -98,11 +101,11 @@ public class BlockHandler {
         		for(Entry<String, MM_OreVariant> eVariant : MM_Reference.ORE_VARIANTS.entrySet()) {
         			MM_OreVariant variant = eVariant.getValue();
         			if(variant.enabled || MM_Reference.CONFIG.enableAll) {
-        				String regName = "ore." + eVariant.getKey() + "." + materialName;
+        				ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, "ore." + eVariant.getKey() + "." + materialName);
         				if(variant.falling) {
-        					event.getRegistry().register(new MetaFallingOreBlock(material, variant, materialName).setRegistryName(MM_Reference.MODID, regName));
+        					event.getForgeRegistry().register(regName, new MetaFallingOreBlock(material, variant, materialName, regName));
         				} else {
-        					event.getRegistry().register(new MetaOreBlock(material, variant, materialName).setRegistryName(MM_Reference.MODID, regName));
+        					event.getForgeRegistry().register(regName, new MetaOreBlock(material, variant, materialName, regName));
         				}
         			}
         		}
@@ -136,7 +139,7 @@ public class BlockHandler {
         properties.jumpFactor(material.jumpFactor * type.jumpFactorMultiplier);
         properties.lightLevel(state -> (int) (material.lightLevel * type.lightLevelMultiplier));
         properties.noCollission();
-        properties.noDrops();
+        properties.noLootTable();
         properties.randomTicks();
         properties.speedFactor(material.speedFactor * type.speedFactorMultiplier);
         return properties;

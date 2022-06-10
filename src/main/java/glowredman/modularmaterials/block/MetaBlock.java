@@ -9,6 +9,7 @@ import glowredman.modularmaterials.data.object.MM_Type;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -20,11 +21,13 @@ public class MetaBlock extends Block {
 	
 	public final MM_Material material;
 	public final MM_Type type;
+	public final ResourceLocation registryName;
 
-	public MetaBlock(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
+	public MetaBlock(MM_Material material, MM_Type type, String uniqueMM_MaterialName, ResourceLocation registryName) {
 		super(BlockHandler.getBlockProperties(material, type, uniqueMM_MaterialName));
 		this.material = material;
 		this.type = type;
+		this.registryName = registryName;
 		MM_Reference.BLOCKS.add(this);
 	}
 	
@@ -54,12 +57,12 @@ public class MetaBlock extends Block {
 	}
 	
 	public String getTypeIdentifier() {
-		String s = this.getRegistryName().getPath();
+		String s = this.registryName.getPath();
 		return s.substring(0, s.indexOf("."));
 	}
 	
 	public String getMaterialIdentifier() {
-		String s = this.getRegistryName().getPath();
+		String s = this.registryName.getPath();
 		return s.substring(s.indexOf(".") + 1);
 	}
 	

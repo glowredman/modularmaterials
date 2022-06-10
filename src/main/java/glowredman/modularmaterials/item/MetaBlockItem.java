@@ -18,7 +18,6 @@ public class MetaBlockItem extends BlockItem {
 				.tab(MM_CreativeTabs.TAB_BLOCKS)
 				.rarity(block.material.item.rarity.get()));
 		this.block = block;
-		this.setRegistryName(block.getRegistryName());
 	}
 	
 	@Override

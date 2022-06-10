@@ -1,6 +1,7 @@
 package glowredman.modularmaterials.data.object;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import glowredman.modularmaterials.client.FormattingHandler;
@@ -16,7 +17,7 @@ import net.minecraft.network.chat.Component;
 public class MM_Material {
 
 	public String name = "material_" + this.hashCode();
-	public String[] tagNames = new String[] {name};
+	public List<String> tagNames = Arrays.asList(name);
 	public boolean enabled = false;
 	public List<String> enabledTypes = new ArrayList<>();
 	public ColorProperties color = new ColorProperties();

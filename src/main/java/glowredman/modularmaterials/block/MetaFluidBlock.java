@@ -25,7 +25,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class MetaFluidBlock extends LiquidBlock {
 
@@ -97,7 +96,7 @@ public class MetaFluidBlock extends LiquidBlock {
 	}
 
 	private boolean shouldSpreadLiquid(Level pLevel, BlockPos pPos, BlockState pState) {
-		if (TagHelper.hasTag(ForgeRegistries.FLUIDS, this.getFluid(), FluidTags.LAVA)) {
+		if (TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA)) {
 			boolean flag = pLevel.getBlockState(pPos.below()).is(Blocks.SOUL_SOIL);
 
 			for (Direction direction : POSSIBLE_FLOW_DIRECTIONS) {

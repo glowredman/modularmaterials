@@ -7,7 +7,6 @@ import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.util.FileHelper;
-import net.minecraft.resources.ResourceLocation;
 
 public class LootTableHandler {
 	
@@ -23,20 +22,18 @@ public class LootTableHandler {
 		
 		lootTables.mkdirs();
 		
-		for(MetaBlock block : MM_Reference.BLOCKS) {
-			ResourceLocation regName = block.getRegistryName();
-			File lootTable = new File(lootTables, regName.getPath() + ".json");
+		for(MetaBlock block : MM_Reference.BLOCKS) {;
+			File lootTable = new File(lootTables, block.registryName.getPath() + ".json");
 			if(!lootTable.exists()) {
-				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
+				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(block.registryName));
 				count++;
 			}
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			ResourceLocation regName = ore.getBlock().getRegistryName();
-			File lootTable = new File(lootTables, regName.getPath() + ".json");
+			File lootTable = new File(lootTables, ore.getRegistryName().getPath() + ".json");
 			if(!lootTable.exists()) {
-				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(regName));
+				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(ore.getRegistryName()));
 				count++;
 			}
 		}

@@ -1,21 +1,15 @@
 package glowredman.modularmaterials.util;
 
-import java.util.List;
-import java.util.stream.Stream;
-
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.tags.IReverseTag;
 
 public class TagHelper {
 	
-	public static <T extends IForgeRegistryEntry<T>> List<TagKey<T>> getTags(IForgeRegistry<T> registry, T object) {
-		return registry.tags().getReverseTag(object).map(IReverseTag::getTagKeys).orElseGet(Stream::of).toList();
-	}
-	
-	public static <T extends IForgeRegistryEntry<T>> boolean hasTag(IForgeRegistry<T> registry, T object, TagKey<T> tag) {
-		return registry.tags().getTag(tag).contains(object);
+	public static <T> boolean hasTag(RegistryAccess registryAccess, T object, TagKey<T> tag) {
+		Registry<T> registry = registryAccess.registryOrThrow(tag.registry());
+		return registry.getHolderOrThrow(ResourceKey.create(tag.registry(), registry.getKey(object))).containsTag(tag);
 	}
 
 }

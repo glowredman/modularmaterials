@@ -7,7 +7,6 @@ import org.lwjgl.glfw.GLFW;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 
 public class FormattingHandler {
 	
@@ -33,7 +32,7 @@ public class FormattingHandler {
 			line = finishedLine + line.substring(endOfSequence + formattingCharLenght);
 		}
 		
-		return new TextComponent(line);
+		return Component.literal(line);
 	}
 
 	private static String formatKey(String line, String trigger, int key1, int key2, boolean invert) {

@@ -17,7 +17,6 @@ public class MetaOreBlockItem extends BlockItem {
                 .tab(MM_CreativeTabs.TAB_ORES)
                 .rarity(ore.getMaterial().item.rarity.get()));
         this.ore = ore;
-        this.setRegistryName(ore.getBlock().getRegistryName());
     }
     
     @Override

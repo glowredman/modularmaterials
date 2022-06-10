@@ -8,6 +8,7 @@ import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -18,14 +19,16 @@ public class MetaItem extends Item {
 	
 	public final MM_Material material;
 	public final MM_Type type;
+	public final ResourceLocation registryName;
 
-	public MetaItem(MM_Material material, MM_Type type) {
+	public MetaItem(MM_Material material, MM_Type type, ResourceLocation registryName) {
 		super(new Properties()
 				.setNoRepair()
 				.tab(MM_CreativeTabs.TAB_ITEMS)
 				.rarity(material.item.rarity.get()));
 		this.material = material;
 		this.type = type;
+		this.registryName = registryName;
 		MM_Reference.ITEMS.add(this);
 	}
 	
@@ -55,12 +58,12 @@ public class MetaItem extends Item {
 	}
 	
 	public String getTypeIdentifier() {
-		String s = this.getRegistryName().getPath();
+		String s = this.registryName.getPath();
 		return s.substring(0, s.indexOf("."));
 	}
 	
 	public String getMaterialIdentifier() {
-		String s = this.getRegistryName().getPath();
+		String s = this.registryName.getPath();
 		return s.substring(s.indexOf(".") + 1);
 	}
 	

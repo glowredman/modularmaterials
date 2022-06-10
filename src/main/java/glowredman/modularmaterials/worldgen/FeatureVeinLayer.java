@@ -6,6 +6,7 @@ import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -16,8 +17,7 @@ public class FeatureVeinLayer extends Feature<NoneFeatureConfiguration> {
 
 	public FeatureVeinLayer() {
 		super(NoneFeatureConfiguration.CODEC);
-		this.setRegistryName(MM_Reference.MODID, "orevein");
-		ForgeRegistries.FEATURES.register(this);
+		ForgeRegistries.FEATURES.register(new ResourceLocation(MM_Reference.MODID, "orevein"), this);
 	}
 
 	@Override

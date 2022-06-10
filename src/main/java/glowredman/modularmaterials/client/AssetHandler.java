@@ -44,7 +44,7 @@ public class AssetHandler {
 		models_item.mkdirs();
 		
 		for(MetaItem item : MM_Reference.ITEMS) {
-			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
+			File modelFile = new File(models_item, item.registryName.getPath() + ".json");
 			if(!modelFile.exists()) {
 				FileHelper.write(modelFile, Templates.MODEL_ITEM.format(item.material.texture, item.getTypeIdentifier()));
 				count++;
@@ -52,12 +52,12 @@ public class AssetHandler {
 		}
 		
 		for(MetaBucketItem item : MM_Reference.BUCKETS) {
-			File modelFile = new File(models_item, item.getRegistryName().getPath() + ".json");
+			File modelFile = new File(models_item, item.registryName.getPath() + ".json");
 			if(!modelFile.exists()) {
 				if(item.fluid().material.state == ChemicalState.SOLID && item.fluid().type.state == ChemicalState.LIQUID) {
-					FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.getFluid().getRegistryName()));
+					FileHelper.write(modelFile, Templates.MODEL_BUCKET_DRIP.format(item.fluid().registryName));
 				} else {
-					FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.getFluid().getRegistryName()));
+					FileHelper.write(modelFile, Templates.MODEL_BUCKET.format(item.fluid().registryName));
 				}
 				count++;
 			}
@@ -65,7 +65,7 @@ public class AssetHandler {
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			String type = block.getTypeIdentifier();
-			File modelFileInventory = new File(models_item, block.getRegistryName().getPath() + ".json");
+			File modelFileInventory = new File(models_item, block.registryName.getPath() + ".json");
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + block.material.texture + "/" + type + ".json");
 			if(!modelFileInventory.exists()) {
 				FileHelper.write(modelFileInventory, Templates.MODEL_BLOCK.format(block.material.texture, type));
@@ -81,7 +81,7 @@ public class AssetHandler {
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
 			String texture = ore.getMaterial().texture;
 			String baseTexture = ore.getVariant().baseTexture;
-			File modelFileInventory = new File(models_item, ore.getBlock().getRegistryName().getPath() + ".json");
+			File modelFileInventory = new File(models_item, ore.getRegistryName().getPath() + ".json");
 			File modelFileNormal = new File(ResourceLoader.RESOURCES_DIR, "assets/" + MM_Reference.MODID + "/models/block/" + texture + "/ore/" + ore.getVariantIdentifier() + ".json");
 			if(!modelFileInventory.exists()) {
 				FileHelper.write(modelFileInventory, Templates.MODEL_ORE.format(texture, baseTexture));
@@ -109,7 +109,7 @@ public class AssetHandler {
 		blockstates.mkdirs();
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
-			File blockstateFile = new File(blockstates, block.getRegistryName().getPath() + ".json");
+			File blockstateFile = new File(blockstates, block.registryName.getPath() + ".json");
 			if(!blockstateFile.exists()) {
 				FileHelper.write(blockstateFile, Templates.BLOCKSTATE_BLOCK.format(block.material.texture, block.getTypeIdentifier()));
 				count++;
@@ -117,7 +117,7 @@ public class AssetHandler {
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			File blockstateFile = new File(blockstates, ore.getBlock().getRegistryName().getPath() + ".json");
+			File blockstateFile = new File(blockstates, ore.getRegistryName().getPath() + ".json");
 			if(!blockstateFile.exists()) {
 				FileHelper.write(blockstateFile, Templates.BLOCKSTATE_ORE.format(ore.getMaterial().texture, ore.getVariantIdentifier()));
 				count++;
@@ -142,35 +142,35 @@ public class AssetHandler {
 				int startSize = lang.size();
 				
 				for(MetaItem item : MM_Reference.ITEMS) {
-					String key = "item." + MM_Reference.MODID + "." + item.getRegistryName().getPath();
+					String key = "item." + MM_Reference.MODID + "." + item.registryName.getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, item.getLocalizedName());
 					}
 				}
 				
 				for(MetaBucketItem item : MM_Reference.BUCKETS) {
-					String key = "item." + MM_Reference.MODID + "." + item.getRegistryName().getPath();
+					String key = "item." + MM_Reference.MODID + "." + item.registryName.getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, item.getLocalizedName());
 					}
 				}
 				
 				for(MetaFluid fluid : MM_Reference.FLUIDS) {
-					String key = "fluid." + MM_Reference.MODID + "." + fluid.getRegistryName().getPath();
+					String key = "fluid." + MM_Reference.MODID + "." + fluid.registryName.getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, fluid.getLocalizedName());
 					}
 				}
 				
 				for(MetaBlock block : MM_Reference.BLOCKS) {
-					String key = "block." + MM_Reference.MODID + "." + block.getRegistryName().getPath();
+					String key = "block." + MM_Reference.MODID + "." + block.registryName.getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, block.getLocalizedName());
 					}
 				}
 				
 				for(IMetaOre ore : MM_Reference.ORES.values()) {
-					String key = "block." + MM_Reference.MODID + "." + ore.getBlock().getRegistryName().getPath();
+					String key = "block." + MM_Reference.MODID + "." + ore.getRegistryName().getPath();
 					if(!lang.containsKey(key)) {
 						lang.put(key, ore.getLocalizedName());
 					}
@@ -192,23 +192,23 @@ public class AssetHandler {
 				Map<String, String> lang = new LinkedHashMap<>();
 				
 				for(MetaItem item : MM_Reference.ITEMS) {
-					lang.put("item." + MM_Reference.MODID + "." + item.getRegistryName().getPath(), item.getLocalizedName());
+					lang.put("item." + MM_Reference.MODID + "." + item.registryName.getPath(), item.getLocalizedName());
 				}
 				
 				for(MetaBucketItem item : MM_Reference.BUCKETS) {
-					lang.put("item." + MM_Reference.MODID + "." + item.getRegistryName().getPath(), item.getLocalizedName());
+					lang.put("item." + MM_Reference.MODID + "." + item.registryName.getPath(), item.getLocalizedName());
 				}
 				
 				for(MetaFluid fluid : MM_Reference.FLUIDS) {
-					lang.put("fluid." + MM_Reference.MODID + "." + fluid.getRegistryName().getPath(), fluid.getLocalizedName());
+					lang.put("fluid." + MM_Reference.MODID + "." + fluid.registryName.getPath(), fluid.getLocalizedName());
 				}
 				
 				for(MetaBlock block : MM_Reference.BLOCKS) {
-					lang.put("block." + MM_Reference.MODID + "." + block.getRegistryName().getPath(), block.getLocalizedName());
+					lang.put("block." + MM_Reference.MODID + "." + block.registryName.getPath(), block.getLocalizedName());
 				}
 				
 				for(IMetaOre ore : MM_Reference.ORES.values()) {
-					lang.put("block." + MM_Reference.MODID + "." + ore.getBlock().getRegistryName().getPath(), ore.getLocalizedName());
+					lang.put("block." + MM_Reference.MODID + "." + ore.getRegistryName().getPath(), ore.getLocalizedName());
 				}
 				
 				FileHelper.write(langFile, new GsonBuilder().setPrettyPrinting().create().toJson(lang, type));

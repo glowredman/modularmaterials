@@ -49,7 +49,6 @@ public class TagHandler {
         for(MetaItem item : MM_Reference.ITEMS) {
             
             String typeIdentifier = item.getTypeIdentifier();
-            String regName = item.getRegistryName().toString();
             
             for(String s : item.material.item.tags) {
                 int start = s.indexOf(FILTER_TYPE_START);
@@ -72,7 +71,7 @@ public class TagHandler {
                 s = s.replace(PARAM_TYPE, item.type.tagName);
                 
                 for(String name : item.material.tagNames) {
-                    tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), regName);
+                    tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), item.registryName.toString());
                 }
                 
             }
@@ -80,7 +79,7 @@ public class TagHandler {
             for(String s : item.type.tags) {
                 s = s.replace(PARAM_TYPE, item.type.tagName);
                 for(String name : item.material.tagNames) {
-                    tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), regName);
+                    tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), item.registryName.toString());
                 }
             }
         }
@@ -88,9 +87,6 @@ public class TagHandler {
     
     private static void generateBucketTags(Multimap<Pair<Subdir, String>, String> tags) {
         for(MetaBucketItem item : MM_Reference.BUCKETS) {
-        	
-        	String regName = item.getRegistryName().toString();
-        	
             for(String s : item.fluid().material.fluid.tags) {
                 int start = s.indexOf(FILTER_TYPE_START);
                 int end = s.indexOf(FILTER_TYPE_END);
@@ -111,7 +107,7 @@ public class TagHandler {
                     s = s.replace(PARAM_TYPE, item.fluid().type.tagName);
                     
                     for(String name : item.fluid().material.tagNames) {
-                        tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), regName);
+                        tags.put(Pair.of(Subdir.ITEMS, s.replace(PARAM_MATERIAL, name)), item.registryName.toString());
                     }
                 }
             }
@@ -122,7 +118,7 @@ public class TagHandler {
         for(MetaFluid fluid : MM_Reference.FLUIDS) {
             
             String typeIdentifier = fluid.getTypeIdentifier();
-            String regNameS = fluid.getRegistryName().toString();
+            String regNameS = fluid.registryName.toString();
             String regNameF = regNameS.replace(MM_Reference.MODID + ":", MM_Reference.MODID + ":flowing_");
             
             for(String s : fluid.material.fluid.tags) {
@@ -168,7 +164,7 @@ public class TagHandler {
         for(MetaBlock block : MM_Reference.BLOCKS) {
             
             String typeIdentifier = block.getTypeIdentifier();
-            String regName = block.getRegistryName().toString();
+            String regName = block.registryName.toString();
             
             for(String s : block.material.block.tags) {
                 int start = s.indexOf(FILTER_TYPE_START);
@@ -211,7 +207,7 @@ public class TagHandler {
         for(IMetaOre ore : MM_Reference.ORES.values()) {
             
             String variantIdentifier = ore.getVariantIdentifier();
-            String regName = ore.getBlock().getRegistryName().toString();
+            String regName = ore.getRegistryName().toString();
             
             for(String s : ore.getMaterial().ore.tags) {
                 int start = s.indexOf(FILTER_TYPE_START);
