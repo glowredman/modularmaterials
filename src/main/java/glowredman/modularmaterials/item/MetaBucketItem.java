@@ -43,6 +43,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
@@ -212,7 +213,7 @@ public class MetaBucketItem extends BucketItem {
 
 	@Override
 	protected void playEmptySound(Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
-		SoundEvent soundevent = this.getFluid().getAttributes().getEmptySound();
+		SoundEvent soundevent = this.getFluid().getFluidType().getSound(SoundActions.BUCKET_EMPTY);
 		if (soundevent == null) soundevent = TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
 		pLevel.playSound(pPlayer, pPos, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
 		pLevel.gameEvent(pPlayer, GameEvent.FLUID_PLACE, pPos);

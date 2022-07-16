@@ -14,6 +14,7 @@ public enum Templates {
     MODEL_BLOCK(
             "{",
             "  \"parent\": \"block/block\",",
+            "  \"render_type\": \"cutout_mipped\",",
             "  \"textures\": {",
             "    \"0\": \"" + MM_Reference.MODID + ":blocks/%1$s/%2$s\",",
             "    \"1\": \"" + MM_Reference.MODID + ":blocks/%1$s/%2$s_overlay\",",
@@ -50,6 +51,7 @@ public enum Templates {
     MODEL_ORE(
             "{",
             "  \"parent\": \"block/block\",",
+            "  \"render_type\": \"cutout_mipped\",",
             "  \"textures\": {",
             "    \"0\": \"%2$s\",",
             "    \"1\": \"" + MM_Reference.MODID + ":blocks/%1$s/ore\",",
@@ -86,17 +88,21 @@ public enum Templates {
     MODEL_BUCKET(
     		"{",
     		"  \"parent\": \"forge:item/bucket\",",
-    		"  \"loader\": \"forge:bucket\",",
+    		"  \"loader\": \"forge:fluid_container\",",
     		"  \"fluid\": \"%1$s\",",
-    		"  \"flipGas\": true",
+    		"  \"flip_gas\": true,",
+    		"  \"apply_tint\": true,",
+    		"  \"apply_fluid_luminosity\": true",
     		"}"),
     
     MODEL_BUCKET_DRIP(
     		"{",
     		"  \"parent\": \"forge:item/bucket_drip\",",
-    		"  \"loader\": \"forge:bucket\",",
+    		"  \"loader\": \"forge:fluid_container\",",
     		"  \"fluid\": \"%1$s\",",
-    		"  \"flipGas\": true",
+    		"  \"flip_gas\": true,",
+    		"  \"apply_tint\": true,",
+    		"  \"apply_fluid_luminosity\": true",
     		"}"),
     
     BLOCKSTATE_BLOCK(

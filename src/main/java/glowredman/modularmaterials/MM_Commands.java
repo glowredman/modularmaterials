@@ -44,7 +44,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 
@@ -113,7 +113,7 @@ public class MM_Commands {
 		Registry<Fluid> fluidRegistry = level.registryAccess().registryOrThrow(Keys.FLUIDS);
 		ResourceLocation fluidRegName = fluidRegistry.getKey(fluid);
 		List<TagKey<Fluid>> fluidTags = fluidRegistry.getHolderOrThrow(ResourceKey.create(Keys.FLUIDS, fluidRegName)).tags().toList();
-		FluidAttributes fluidAttributes = fluid.getAttributes();
+		FluidType fluidType = fluid.getFluidType();
 
 		commandSourceStack.sendSuccess(Component.literal("Information for ").withStyle(ChatFormatting.GOLD)
 				.append(Component.literal(String.format("[%d, %d, %d]", pos.getX(), pos.getY(), pos.getZ())).withStyle(ChatFormatting.GREEN))
@@ -181,26 +181,20 @@ public class MM_Commands {
 			commandSourceStack.sendSuccess(Component.literal("  Amount: ").withStyle(ChatFormatting.AQUA)
 					.append(Component.literal(format(fluidstate.getAmount())).withStyle(ChatFormatting.WHITE)), false);
 			
-			commandSourceStack.sendSuccess(Component.literal("  Color: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal("#" + Integer.toHexString(fluidAttributes.getColor(level, pos)).toUpperCase()).withStyle(ChatFormatting.WHITE)), false);
-			
 			commandSourceStack.sendSuccess(Component.literal("  Density: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(format(fluidAttributes.getDensity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+					.append(Component.literal(format(fluidType.getDensity(fluidstate, level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Explosion Resistance: ").withStyle(ChatFormatting.AQUA)
 					.append(Component.literal(format(fluidstate.getExplosionResistance(level, pos, null))).withStyle(ChatFormatting.WHITE)), false);
-			
-			commandSourceStack.sendSuccess(Component.literal("  Gaseous: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(String.valueOf(fluidAttributes.isGaseous(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Height: ").withStyle(ChatFormatting.AQUA)
 					.append(Component.literal(format(fluidstate.getHeight(level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Light Emission: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(format(fluidAttributes.getLuminosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+					.append(Component.literal(format(fluidType.getLightLevel(fluidstate, level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Lighter Than Air: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(String.valueOf(fluidAttributes.isLighterThanAir())).withStyle(ChatFormatting.WHITE)), false);
+					.append(Component.literal(String.valueOf(fluidType.isLighterThanAir())).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Own Height: ").withStyle(ChatFormatting.AQUA)
 					.append(Component.literal(format(fluidstate.getOwnHeight())).withStyle(ChatFormatting.WHITE)), false);
@@ -209,10 +203,10 @@ public class MM_Commands {
 					.append(Component.literal(String.valueOf(fluidstate.isSource())).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Temperature: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(format(fluidAttributes.getTemperature(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+					.append(Component.literal(format(fluidType.getTemperature(fluidstate, level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			commandSourceStack.sendSuccess(Component.literal("  Viscosity: ").withStyle(ChatFormatting.AQUA)
-					.append(Component.literal(format(fluidAttributes.getViscosity(level, pos))).withStyle(ChatFormatting.WHITE)), false);
+					.append(Component.literal(format(fluidType.getViscosity(fluidstate, level, pos))).withStyle(ChatFormatting.WHITE)), false);
 			
 			if(!fluidTags.isEmpty()) commandSourceStack.sendSuccess(Component.literal("  Tags: ").withStyle(ChatFormatting.AQUA), false);
 			fluidTags.forEach(rl -> commandSourceStack.sendSuccess(Component.literal("  > ").append(copyable(rl.location().toString())), false));

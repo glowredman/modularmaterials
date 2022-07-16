@@ -8,10 +8,10 @@ import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
-import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.data.object.sub.ColorProperties;
 import glowredman.modularmaterials.fluid.MetaFlowingFluid;
 import glowredman.modularmaterials.fluid.MetaFluid;
+import glowredman.modularmaterials.fluid.MetaFluidType;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.worldgen.FeatureHandler;
 import net.minecraft.resources.ResourceLocation;
@@ -22,13 +22,21 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 public class BlockHandler {
+	
+	private static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, MM_Reference.MODID);
+	
+	public BlockHandler() {
+		FLUID_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+	}
     
     @SubscribeEvent
     public void registerBlocks(RegisterEvent event) {
@@ -61,19 +69,8 @@ public class BlockHandler {
                     if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
                         RegistryObject<MetaFluid> fluidS = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName), ForgeRegistries.FLUIDS);
                         RegistryObject<MetaFluid> fluidF = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, "flowing_" + typeName + "." + materialName), ForgeRegistries.FLUIDS);
-                        
-                        FluidAttributes.Builder b = FluidAttributes.builder(
-                                new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_still"),
-                                new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_flowing"))
-                                .color(material.color.getARGB())
-                                .density(material.fluid.propertiesOfState(type.state).density)
-                                .luminosity(material.fluid.propertiesOfState(type.state).luminosity)
-                                .rarity(material.item.rarity.get())
-                                .temperature(material.fluid.getTemperature(material.state, type.state))
-                                .viscosity(material.fluid.propertiesOfState(type.state).viscosity);
-                        if(type.state == ChemicalState.GASEOUS) b.gaseous();
-                        
-                        ForgeFlowingFluid.Properties p = new ForgeFlowingFluid.Properties(fluidS, fluidF, b);
+                        RegistryObject<MetaFluidType> fluidType = FLUID_TYPES.register(typeName + "." + materialName, () -> new MetaFluidType(material, type, typeName));
+                        ForgeFlowingFluid.Properties p = new ForgeFlowingFluid.Properties(fluidType, fluidS, fluidF);
                         
                         if(MM_Reference.CONFIG.enableBuckets) {
                         	ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, "bucket." + fluidS.getId().getPath());

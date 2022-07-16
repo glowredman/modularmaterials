@@ -7,16 +7,13 @@ import glowredman.modularmaterials.item.MetaBlockItem;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.item.MetaOreBlockItem;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class ClientHandler {
@@ -32,21 +29,11 @@ public class ClientHandler {
 	}
 	
 	@SubscribeEvent
-	public void setupClient(FMLClientSetupEvent event) {
-		for(MetaBlock block : MM_Reference.BLOCKS) {
-			ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
-		}
-		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			ItemBlockRenderTypes.setRenderLayer(ore.getBlock(), RenderType.cutoutMipped());
-		}
-	}
-	
-	@SubscribeEvent
-	public void colorItems(ColorHandlerEvent.Item event) {
+	public void colorItems(RegisterColorHandlersEvent.Item event) {
 		
 		//ITEMS
 		for(MetaItem item : MM_Reference.ITEMS) {
-			event.getItemColors().register((stack, tintIndex) -> {
+			event.register((stack, tintIndex) -> {
 				if(tintIndex == 0) {
 					return item.material.color.getRGB();
 				} else {
@@ -57,7 +44,7 @@ public class ClientHandler {
 		
 		//BLOCKS
 		for(MetaBlock block : MM_Reference.BLOCKS) {
-			event.getItemColors().register((stack, tintIndex) -> {
+			event.register((stack, tintIndex) -> {
 				if(tintIndex == 0) {
 					return block.material.color.getRGB();
 				} else {
@@ -68,7 +55,7 @@ public class ClientHandler {
 		
 		//ORES
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			event.getItemColors().register((stack, tintIndex) -> {
+			event.register((stack, tintIndex) -> {
 				if(tintIndex == 1) {
 					return ore.getMaterial().color.getRGB();
 				} else {
@@ -79,11 +66,11 @@ public class ClientHandler {
 	}
 	
 	@SubscribeEvent
-	public void colorBlocks(ColorHandlerEvent.Block event) {
+	public void colorBlocks(RegisterColorHandlersEvent.Block event) {
 		
 		//BLOCKS
 		for(MetaBlock block : MM_Reference.BLOCKS) {
-			event.getBlockColors().register((state, blockAndTintGetter, pos, tintIndex) -> {
+			event.register((state, blockAndTintGetter, pos, tintIndex) -> {
 				if(tintIndex == 0) {
 					return block.material.color.getRGB();
 				} else {
@@ -94,7 +81,7 @@ public class ClientHandler {
 		
 		//ORES
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			event.getBlockColors().register((state, blockAndTintGetter, pos, tintIndex) -> {
+			event.register((state, blockAndTintGetter, pos, tintIndex) -> {
 				if(tintIndex == 1) {
 					return ore.getMaterial().color.getRGB();
 				} else {
@@ -141,7 +128,7 @@ public class ClientHandler {
 	
 	private void modifyTooltips(ItemTooltipEvent event) {
 		if(event.getItemStack().getItem() instanceof BucketItem) {
-			event.getToolTip().add(Component.literal("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getAttributes().getTemperature() + "K"));
+			event.getToolTip().add(Component.literal("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getFluidType().getTemperature() + "K"));
 		}
 	}
 
