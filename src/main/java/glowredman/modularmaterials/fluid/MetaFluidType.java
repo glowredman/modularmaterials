@@ -48,9 +48,12 @@ public class MetaFluidType extends FluidType {
 				return new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_still");
 			}
 			
+			/**
+			 * Done via {@link glowredman.modularmaterials.client.ClientHandler#colorItems(net.minecraftforge.client.event.RegisterColorHandlersEvent.Item)}.
+			 * @deprecated
+			 */
 			@Override
 			public int getTintColor() {
-				System.out.println("Called getTintColor, returned " + Integer.toHexString(material.color.getARGB()) + " for " + material.name);
 				return material.color.getARGB();
 			}
 		});

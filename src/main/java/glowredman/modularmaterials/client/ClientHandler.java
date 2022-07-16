@@ -42,6 +42,17 @@ public class ClientHandler {
 			}, item);
 		}
 		
+		//BUCKETS
+		for(MetaBucketItem bucket : MM_Reference.BUCKETS) {
+			event.register((stack, tintIndex) -> {
+				if(tintIndex == 1) {
+					return bucket.fluid().material.color.getARGB();
+				} else {
+					return 0xFFFFFFFF;
+				}
+			}, bucket);
+		}
+		
 		//BLOCKS
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			event.register((stack, tintIndex) -> {
