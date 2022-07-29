@@ -50,7 +50,6 @@ public class MetaFluidType extends FluidType {
 			
 			/**
 			 * Done via {@link glowredman.modularmaterials.client.ClientHandler#colorItems(net.minecraftforge.client.event.RegisterColorHandlersEvent.Item)}.
-			 * @deprecated
 			 */
 			@Override
 			public int getTintColor() {
