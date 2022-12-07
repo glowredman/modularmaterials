@@ -2,7 +2,6 @@ package glowredman.modularmaterials.data.object;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -83,15 +82,15 @@ public class MM_Config {
 	public Function<Long, Random> getRandom() {
 		if("XSTR".equals(random)) {
 			ModularMaterials.info("Using XSTR as RNG");
-			return seed -> new RandomXSTR(seed);
+			return RandomXSTR::new;
 		}
 		if("Xoshiro256**".equals(random)) {
 			ModularMaterials.info("Using Xoshiro256** as RNG");
-			return seed -> new RandomXoshiro256StarStar(seed);
+			return RandomXoshiro256StarStar::new;
 		}
 		if("Standard".equals(random)) {
 			ModularMaterials.info("Using java.util.Random as RNG");
-			return seed -> new Random(seed);
+			return Random::new;
 		}
 		
 		try {
@@ -108,7 +107,7 @@ public class MM_Config {
 					Random rng = (Random) c.newInstance();
 					rng.setSeed(seed);
 					return rng;
-				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				} catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			};
