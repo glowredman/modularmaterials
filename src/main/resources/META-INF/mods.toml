@@ -23,7 +23,7 @@ version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Modular Materials" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-updateJSONURL="https://data-hole.ddns.net:8081/mods/modularmaterials/updates.json" #optional
+updateJSONURL="https://files.data-hole.de/mods/modularmaterials/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://github.com/glowredman/modularmaterials" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
