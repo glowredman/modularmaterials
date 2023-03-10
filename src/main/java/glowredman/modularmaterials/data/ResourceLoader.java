@@ -5,12 +5,15 @@ import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
-import glowredman.modularmaterials.util.FileHelper;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.server.packs.repository.Pack.PackConstructor;
+import net.minecraft.server.packs.repository.Pack.Info;
 import net.minecraft.server.packs.repository.Pack.Position;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.repository.RepositorySource;
+import net.minecraft.world.flag.FeatureFlagSet;
 
 public class ResourceLoader implements RepositorySource {
 
@@ -24,23 +27,47 @@ public class ResourceLoader implements RepositorySource {
 	}
 
 	@Override
-	public void loadPacks(Consumer<Pack> consumer, PackConstructor constructor) {
+	public void loadPacks(Consumer<Pack> pOnLoad) {
 		if(data) {
 			ModularMaterials.info("Loading datapack.");
-			createPackMeta(DATA_DIR);
-			consumer.accept(Pack.create(MM_Reference.MODID + "_data", true, () -> new PackResources(DATA_DIR, "Modular Materials Data"), constructor, Position.BOTTOM, PackSource.DEFAULT));
+			pOnLoad.accept(Pack.create(
+					MM_Reference.MODID + "_data", // id
+					Component.literal("Modular Materials Data"), // title
+					true, // required
+					p_251717_ -> new PathPackResources( // resources
+							"Modular Materials Data", // name
+							DATA_DIR.toPath(), // root
+							false), // isBuiltin
+					new Info( // info
+							Component.empty(), // description
+							8, // dataFormat
+							8, // resourceFormat
+							FeatureFlagSet.of(), // requestedFeatures
+							true), // hidden
+					PackType.SERVER_DATA,
+					Position.BOTTOM, // defaultPosition
+					true, // fixedPosition
+					PackSource.DEFAULT)); // packSource
 		} else {
 			ModularMaterials.info("Loading resourcepack.");
-			createPackMeta(RESOURCES_DIR);
-			consumer.accept(Pack.create(MM_Reference.MODID + "_resources", true, () -> new PackResources(RESOURCES_DIR, "Modular Materials Resources"), constructor, Position.BOTTOM, PackSource.DEFAULT));
-		}
-	}
-	
-	private static void createPackMeta(File dir) {
-		final File packMeta = new File(dir, "pack.mcmeta");
-		packMeta.getParentFile().mkdirs();
-		if(!packMeta.exists()) {
-			FileHelper.write(packMeta, "{\"pack\":{\"description\":\"Auto-generated assets for Modular Materials\",\"pack_format\":8}}");
+			pOnLoad.accept(Pack.create(
+					MM_Reference.MODID + "_resources", // id
+					Component.literal("Modular Materials Resources"), // title
+					true, // required
+					p_251717_ -> new PathPackResources( // resources
+							"Modular Materials Resources", // name
+							RESOURCES_DIR.toPath(), // root
+							false), // isBuiltin
+					new Info( // info
+							Component.empty(), // description
+							8, // dataFormat
+							8, // resourceFormat
+							FeatureFlagSet.of(), // requestedFeatures
+							true), // hidden
+					PackType.CLIENT_RESOURCES,
+					Position.BOTTOM, // defaultPosition
+					true, // fixedPosition
+					PackSource.DEFAULT)); // packSource
 		}
 	}
 
