@@ -1,4 +1,5 @@
 {
     "type": "modularmaterials:orevein_modifier",
-    "enabled": true
+    "enabled": true,
+    "feature": "modularmaterials:orevein"
 }
