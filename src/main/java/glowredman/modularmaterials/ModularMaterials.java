@@ -9,6 +9,7 @@ import glowredman.modularmaterials.data.LootTableHandler;
 import glowredman.modularmaterials.data.ResourceLoader;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.legacy.LegacyHandler;
+import glowredman.modularmaterials.fluid.FluidHandler;
 import glowredman.modularmaterials.item.ItemHandler;
 import glowredman.modularmaterials.worldgen.FeatureHandler;
 import net.minecraft.server.packs.PackType;
@@ -34,6 +35,7 @@ public class ModularMaterials {
 		MinecraftForge.EVENT_BUS.register(new MM_Commands());
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modBus.register(instance);
+		modBus.register(new FluidHandler());
 		modBus.register(new BlockHandler());
 		modBus.register(new ItemHandler());
 		modBus.register(new FeatureHandler());
