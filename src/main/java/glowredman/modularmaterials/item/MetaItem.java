@@ -2,7 +2,6 @@ package glowredman.modularmaterials.item;
 
 import java.util.List;
 
-import glowredman.modularmaterials.MM_CreativeTabs;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
@@ -24,7 +23,6 @@ public class MetaItem extends Item {
 	public MetaItem(MM_Material material, MM_Type type, ResourceLocation registryName) {
 		super(new Properties()
 				.setNoRepair()
-				.tab(MM_CreativeTabs.TAB_ITEMS)
 				.rarity(material.item.rarity.get()));
 		this.material = material;
 		this.type = type;

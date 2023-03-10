@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.item;
 
-import glowredman.modularmaterials.MM_CreativeTabs;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.block.IMetaOre;
 import net.minecraft.world.item.BlockItem;
@@ -14,7 +13,6 @@ public class MetaOreBlockItem extends BlockItem {
     public MetaOreBlockItem(IMetaOre ore) {
         super(ore.getBlock(), new Properties()
                 .setNoRepair()
-                .tab(MM_CreativeTabs.TAB_ORES)
                 .rarity(ore.getMaterial().item.rarity.get()));
         this.ore = ore;
     }

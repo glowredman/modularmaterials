@@ -3,7 +3,6 @@ package glowredman.modularmaterials.item;
 import java.util.List;
 import java.util.function.Supplier;
 
-import glowredman.modularmaterials.MM_CreativeTabs;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.fluid.MetaFluid;
@@ -57,8 +56,7 @@ public class MetaBucketItem extends BucketItem {
 				.craftRemainder(Items.BUCKET)
 				.setNoRepair()
 				.rarity(material.item.rarity.get())
-				.stacksTo(1)
-				.tab(MM_CreativeTabs.TAB_FLUIDS));
+				.stacksTo(1));
 		this.registryName = registryName;
 		MM_Reference.BUCKETS.add(this);
 	}

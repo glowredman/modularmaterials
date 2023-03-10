@@ -1,6 +1,5 @@
 package glowredman.modularmaterials.item;
 
-import glowredman.modularmaterials.MM_CreativeTabs;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.block.MetaBlock;
 import net.minecraft.world.item.BlockItem;
@@ -15,7 +14,6 @@ public class MetaBlockItem extends BlockItem {
 	public MetaBlockItem(MetaBlock block) {
 		super(block, new Properties()
 				.setNoRepair()
-				.tab(MM_CreativeTabs.TAB_BLOCKS)
 				.rarity(block.material.item.rarity.get()));
 		this.block = block;
 	}
