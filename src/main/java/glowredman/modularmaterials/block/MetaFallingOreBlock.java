@@ -3,7 +3,6 @@ package glowredman.modularmaterials.block;
 import java.util.List;
 
 import glowredman.modularmaterials.MM_Reference;
-import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
 import net.minecraft.network.chat.Component;
@@ -52,23 +51,6 @@ public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 	@Override
 	public Block getBlock() {
 		return this;
-	}
-
-	@Override
-	public String getVariantIdentifier() {
-		String s = this.getRegistryName().getPath().replace("ore.", "");
-		return s.substring(0, s.indexOf("."));
-	}
-
-	@Override
-	public String getMaterialIdentifier() {
-		String s = this.getRegistryName().getPath().replace("ore.", "");
-		return s.substring(s.indexOf(".") + 1);
-	}
-
-	@Override
-	public String getLocalizedName() {
-		return variant.nameSyntax.replace(TagHandler.PARAM_MATERIAL, material.name);
 	}
 
 	@Override
