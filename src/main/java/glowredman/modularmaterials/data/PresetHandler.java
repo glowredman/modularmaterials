@@ -1,14 +1,13 @@
 package glowredman.modularmaterials.data;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.file.PathUtils;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
@@ -62,12 +61,11 @@ public class PresetHandler {
 	
 	private static boolean downloadConfigFile(String preset, String file) {
 		try {
-			FileUtils.copyURLToFile(new URL(MM_Reference.CONFIG.presetURL + preset + "/" + file), new File(JSONHandler.CONFIG_DIR, file));
+		    PathUtils.copyFile(new URL(MM_Reference.CONFIG.presetURL + preset + "/" + file), JSONHandler.CONFIG_DIR.resolve(file));
 			return true;
 		} catch (Exception e) {
-			ModularMaterials.error("An error occured while trying to download " + file + " from " + MM_Reference.CONFIG.presetURL + preset + "."
-					+ "This might not be an error, if the preset has no " + file + " defined.");
-			e.printStackTrace();
+			ModularMaterials.LOGGER.error("An error occured while trying to download " + file + " from " + MM_Reference.CONFIG.presetURL + preset + "."
+					+ "This might not be an error, if the preset has no " + file + " defined.", e);
 		}
 		return false;
 	}

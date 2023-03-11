@@ -1,15 +1,13 @@
 package glowredman.modularmaterials.data.object;
 
-import java.io.File;
 import java.lang.reflect.Constructor;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Random;
 import java.util.function.Function;
 
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.JSONHandler;
-import glowredman.modularmaterials.util.FileHelper;
 import glowredman.modularmaterials.util.RandomXSTR;
 import glowredman.modularmaterials.util.RandomXoshiro256StarStar;
 
@@ -57,12 +55,12 @@ public class MM_Config {
 		long time = System.currentTimeMillis();
 		try {
 			MM_Config cfg;
-			File file = new File(JSONHandler.CONFIG_DIR, "config.json");
-			if (file.exists()) {
-				cfg = JSONHandler.GSON.fromJson(FileHelper.readFile(file.toPath()), MM_Config.class);
+			Path file = JSONHandler.CONFIG_DIR.resolve("config.json");
+			if (Files.exists(file)) {
+				cfg = JSONHandler.GSON.fromJson(Files.readString(file), MM_Config.class);
 			} else {
-				file.getParentFile().mkdirs();
-				FileHelper.write(file, JSONHandler.GSON.toJson(new MM_Config()));
+				Files.createDirectories(file.getParent());
+				Files.writeString(file, JSONHandler.GSON.toJson(new MM_Config()));
 				cfg = new MM_Config();
 			}
 			ModularMaterials.LOGGER.info("Parsed config.json in {}ms", System.currentTimeMillis() - time);
@@ -108,6 +106,7 @@ public class MM_Config {
 		} catch (Exception e) {
 			ModularMaterials.LOGGER.error("Failed to construct RNG", e);
 		}
+        return RandomXSTR::new;
 	}
 
 }

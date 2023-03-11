@@ -1,6 +1,6 @@
 package glowredman.modularmaterials.data;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
@@ -17,8 +17,8 @@ import net.minecraft.world.flag.FeatureFlagSet;
 
 public class ResourceLoader implements RepositorySource {
 
-	public static final File DATA_DIR = new File(JSONHandler.CONFIG_DIR, "datapack");
-	public static final File RESOURCES_DIR = new File(JSONHandler.CONFIG_DIR, "resourcepack");
+	public static final Path DATA_DIR = JSONHandler.CONFIG_DIR.resolve("datapack");
+	public static final Path RESOURCES_DIR = JSONHandler.CONFIG_DIR.resolve("resourcepack");
 	
 	private final boolean data;
 	
@@ -36,7 +36,7 @@ public class ResourceLoader implements RepositorySource {
 					true, // required
 					p_251717_ -> new PathPackResources( // resources
 							"Modular Materials Data", // name
-							DATA_DIR.toPath(), // root
+							DATA_DIR, // root
 							false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description
@@ -56,7 +56,7 @@ public class ResourceLoader implements RepositorySource {
 					true, // required
 					p_251717_ -> new PathPackResources( // resources
 							"Modular Materials Resources", // name
-							RESOURCES_DIR.toPath(), // root
+							RESOURCES_DIR, // root
 							false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description

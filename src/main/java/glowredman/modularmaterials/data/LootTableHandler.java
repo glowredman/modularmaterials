@@ -1,12 +1,15 @@
 package glowredman.modularmaterials.data;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.apache.commons.io.file.PathUtils;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
-import glowredman.modularmaterials.util.FileHelper;
 
 public class LootTableHandler {
 	
@@ -14,27 +17,44 @@ public class LootTableHandler {
 		long time = System.currentTimeMillis();
 		int count = 0;
 		
-		File lootTables = new File(ResourceLoader.DATA_DIR, "data/" + MM_Reference.MODID + "/loot_tables/blocks");
+		Path lootTables = ResourceLoader.DATA_DIR.resolve("data").resolve(MM_Reference.MODID).resolve("loot_tables").resolve("blocks");
 		
 		if(MM_Reference.CONFIG.overrideLootTableFiles) {
-			FileHelper.cleanDir(lootTables);
+			try {
+                PathUtils.cleanDirectory(lootTables);
+            } catch (IOException e) {
+                ModularMaterials.LOGGER.warn("Failed to clean loottable directory", e);
+            }
 		}
 		
-		lootTables.mkdirs();
+		try {
+            Files.createDirectories(lootTables);
+        } catch (IOException e) {
+            ModularMaterials.LOGGER.error("Failed to create loottable directory", e);
+            return;
+        }
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {;
-			File lootTable = new File(lootTables, block.registryName.getPath() + ".json");
-			if(!lootTable.exists()) {
-				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(block.registryName));
-				count++;
+			Path lootTable = lootTables.resolve(block.registryName.getPath() + ".json");
+			if(Files.notExists(lootTable)) {
+				try {
+                    Files.writeString(lootTable, Templates.LOOTTABLE_BLOCKS.format(block.registryName));
+                    count++;
+                } catch (IOException e) {
+                    ModularMaterials.LOGGER.warn("Failed to create loottable for " + block.registryName, e);
+                }
 			}
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			File lootTable = new File(lootTables, ore.getRegistryName().getPath() + ".json");
-			if(!lootTable.exists()) {
-				FileHelper.write(lootTable, Templates.LOOTTABLE_BLOCKS.format(ore.getRegistryName()));
-				count++;
+		    Path lootTable = lootTables.resolve(ore.getRegistryName().getPath() + ".json");
+			if(Files.notExists(lootTable)) {
+			    try {
+                    Files.writeString(lootTable, Templates.LOOTTABLE_BLOCKS.format(ore.getRegistryName()));
+                    count++;
+                } catch (IOException e) {
+                    ModularMaterials.LOGGER.warn("Failed to create loottable for " + ore.getRegistryName(), e);
+                }
 			}
 		}
 		

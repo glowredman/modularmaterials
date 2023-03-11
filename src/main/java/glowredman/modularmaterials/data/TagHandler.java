@@ -1,6 +1,9 @@
 package glowredman.modularmaterials.data;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.apache.commons.io.file.PathUtils;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -13,7 +16,6 @@ import glowredman.modularmaterials.data.object.sub.TagFile;
 import glowredman.modularmaterials.fluid.MetaFluid;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
-import glowredman.modularmaterials.util.FileHelper;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.resources.ResourceLocation;
 
@@ -248,21 +250,21 @@ public class TagHandler {
     }
     
     private static void cleanTags() {
-    	for(File dir : ResourceLoader.DATA_DIR.listFiles(File::isDirectory)) {
-    		if(!dir.getName().equals(MM_Reference.MODID)) {
-    			FileHelper.cleanDir(dir);
-    		}
-    	}
+        try {
+            PathUtils.cleanDirectory(ResourceLoader.DATA_DIR.resolve(MM_Reference.MODID));
+        } catch (Exception e) {
+            ModularMaterials.LOGGER.warn("Failed to clean tag directory");
+        }
     }
     
     private static void generateFiles(Multimap<Pair<Subdir, String>, String> tags) {
     	tags.asMap().forEach((key, values) -> {
-    		File file = key.left().getFile(key.right());
+    		Path file = key.left().getPath(key.right());
 
-			if (!file.exists()) {
+			if (Files.notExists(file)) {
 				try {
-					file.getParentFile().mkdirs();
-					FileHelper.write(file, JSONHandler.GSON.toJson(new TagFile(values)));
+					Files.createDirectories(file.getParent());
+					Files.writeString(file, JSONHandler.GSON.toJson(new TagFile(values)));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -275,9 +277,9 @@ public class TagHandler {
     	BLOCKS,
     	FLUIDS;
     	
-    	private File getFile(String tag) {
+    	private Path getPath(String tag) {
     		ResourceLocation rl = new ResourceLocation(tag);
-    		return new File(ResourceLoader.DATA_DIR, String.format("data/%s/tags/%s/%s.json", rl.getNamespace(), this, rl.getPath()));
+    		return ResourceLoader.DATA_DIR.resolve("data").resolve(rl.getNamespace()).resolve("tags").resolve(this.toString()).resolve(rl.getPath() + ".json");
     	}
     	
     	@Override

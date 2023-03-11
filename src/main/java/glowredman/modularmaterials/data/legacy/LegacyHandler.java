@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,6 +17,7 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
+import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
@@ -21,14 +25,13 @@ import glowredman.modularmaterials.data.object.MM_OreVein;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.data.object.sub.ChemicalState;
-import glowredman.modularmaterials.util.FileHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 
 public class LegacyHandler {
 
-	public static final File LEGACY_DIR = new File(JSONHandler.CONFIG_DIR, "legacy");
+	public static final File LEGACY_DIR = JSONHandler.CONFIG_DIR.resolve("legacy").toFile();
 	
 	public static ChemicalState state(String state) {
 		if(state == null) return null;
@@ -240,12 +243,15 @@ public class LegacyHandler {
 	}
 	
 	private static <K, V> void write(String file, Map<K, V> values, CommandSourceStack css) {
-		File f = new File(JSONHandler.CONFIG_DIR, file);
-		if(f.exists()) f.delete();
-		if(!FileHelper.write(f, JSONHandler.GSON.toJson(values, new TypeToken<Map<K, V>>() {
-			private static final long serialVersionUID = 6306948798714244240L;}.getType()))) {
-			css.sendFailure(Component.literal("Failed creating " + file).withStyle(ChatFormatting.RED));
-		}
+		Path path = JSONHandler.CONFIG_DIR.resolve(file);
+		try {
+            Files.deleteIfExists(path);
+            Files.writeString(path, JSONHandler.GSON.toJson(values, new TypeToken<Map<K, V>>() {
+                private static final long serialVersionUID = 6306948798714244240L;}.getType()));
+        } catch (IOException e) {
+            ModularMaterials.LOGGER.warn("Failed to write " + path, e);
+            css.sendFailure(Component.literal("Failed creating " + file).withStyle(ChatFormatting.RED));
+        }
 	}
 
 }
