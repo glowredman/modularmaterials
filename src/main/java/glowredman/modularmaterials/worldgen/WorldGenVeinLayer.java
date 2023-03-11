@@ -34,7 +34,7 @@ public class WorldGenVeinLayer {
 				boolean oreVeinFound = false;
 				
 				for(int i = 0; i < MM_Reference.CONFIG.maxFindingAttempts && !oreVeinFound && placementAttempts < MM_Reference.CONFIG.maxPlacementAttempts; i++) {
-					int randomWeight = oreVeinRNG.nextInt(FeatureHandler.totalWeight);
+					int randomWeight = oreVeinRNG.nextInt(FeatureVeinLayer.totalWeight);
 					for(MM_OreVein vein : MM_Reference.ORE_VEINS.values()) {
 						randomWeight -= vein.weight;
 						if(randomWeight <= 0) {

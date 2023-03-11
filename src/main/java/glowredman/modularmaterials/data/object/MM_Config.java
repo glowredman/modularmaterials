@@ -51,11 +51,6 @@ public class MM_Config {
 	public int maxFindingAttempts = 64;
 	public int maxPlacementAttempts = 8;
 	public int maxVeinSize = 32;
-	public List<String> removeOres = Arrays.asList("ore_gold_deltas", "ore_quartz_deltas", "ore_gold_nether",
-			"ore_quartz_nether", "ore_coal_upper", "ore_coal_lower", "ore_iron_upper", "ore_iron_middle",
-			"ore_iron_small", "ore_gold_extra", "ore_gold", "ore_gold_lower", "ore_redstone", "ore_redstone_lower",
-			"ore_diamond", "ore_diamond_large", "ore_diamond_buried", "ore_lapis", "ore_lapis_buried", "ore_emerald",
-			"ore_ancient_debris_large", "ore_debris_small", "ore_copper", "ore_copper_large");
 	public float veinGenerationProbability = 0.75f;
 
 	public static MM_Config read() {

@@ -8,7 +8,7 @@ import java.util.Random;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.block.IMetaOre;
-import glowredman.modularmaterials.worldgen.FeatureHandler;
+import glowredman.modularmaterials.worldgen.FeatureVeinLayer;
 import glowredman.modularmaterials.worldgen.VeinLayerResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
@@ -30,8 +30,8 @@ public class MM_OreVein {
 	public String inbetween = "example";
 	public String sporadic = "example";
 	public int density = 2;
-	public int minY = 5;
-	public int maxY = 250;
+	public int minY = -60;
+	public int maxY = 100;
 	public int size = 32;
 	public int weight = 100;
 	public boolean invertDimensions = false;
@@ -115,7 +115,7 @@ public class MM_OreVein {
 					if(p <= 0) {
 						continue;
 					}
-					if(rand.nextInt(100) > 100 * p) {
+					if(rand.nextInt(128) > 128 * p) {
 						continue; // rolled outside the probability function
 					}
 					if(rand.nextInt(12) > density) {
@@ -179,7 +179,7 @@ public class MM_OreVein {
 		BlockState sw = world.getBlockState(new BlockPos(posX,      posY, posZ + 16));
 		BlockState se = world.getBlockState(new BlockPos(posX + 16, posY, posZ + 16));
 		return (!nw.isAir() || !ne.isAir() || !sw.isAir() || !se.isAir()) && 
-				(FeatureHandler.blocksWithVariants.contains(nw.getBlock()) || FeatureHandler.blocksWithVariants.contains(ne.getBlock()) || FeatureHandler.blocksWithVariants.contains(sw.getBlock()) || FeatureHandler.blocksWithVariants.contains(se.getBlock()));
+				(FeatureVeinLayer.blocksWithVariants.contains(nw.getBlock()) || FeatureVeinLayer.blocksWithVariants.contains(ne.getBlock()) || FeatureVeinLayer.blocksWithVariants.contains(sw.getBlock()) || FeatureVeinLayer.blocksWithVariants.contains(se.getBlock()));
 	}
 	
 	private static int setOre(WorldGenLevel world, BlockPos pos, String material) {

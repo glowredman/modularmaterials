@@ -1,19 +1,38 @@
 package glowredman.modularmaterials.worldgen;
 
 import java.util.List;
+import java.util.Set;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
+import glowredman.modularmaterials.data.object.MM_OreVein;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class FeatureVeinLayer extends Feature<NoneFeatureConfiguration> {
+    
+    public static final FeatureVeinLayer INSTANCE = new FeatureVeinLayer();
+
+    public static Set<Block> blocksWithVariants;
+    public static int totalWeight;
+    
+    public static void initOresForBlocksList() {
+        blocksWithVariants = MM_Reference.ORES.rowKeySet();
+    }
+    
+    public static void calculateTotalWeight() {
+        for(MM_OreVein vein : MM_Reference.ORE_VEINS.values()) {
+            totalWeight += vein.weight;
+        }
+        ModularMaterials.LOGGER.info("Total orevein weight is " + totalWeight);
+    }
 
 	public FeatureVeinLayer() {
 		super(NoneFeatureConfiguration.CODEC);

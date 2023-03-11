@@ -11,7 +11,7 @@ import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.legacy.LegacyHandler;
 import glowredman.modularmaterials.fluid.FluidHandler;
 import glowredman.modularmaterials.item.ItemHandler;
-import glowredman.modularmaterials.worldgen.FeatureHandler;
+import glowredman.modularmaterials.worldgen.FeatureVeinLayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -29,14 +29,12 @@ public class ModularMaterials {
 	public static final Logger LOGGER = LogManager.getLogger(MM_Reference.MODID);
 	
 	public ModularMaterials() {
-		instance = this;
 		MinecraftForge.EVENT_BUS.register(new MM_Commands());
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
-		modBus.register(instance);
+		modBus.register(this);
 		modBus.register(new FluidHandler());
 		modBus.register(new BlockHandler());
 		modBus.register(new ItemHandler());
-		modBus.register(new FeatureHandler());
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			modBus.register(new ClientHandler());
 		});
@@ -46,7 +44,7 @@ public class ModularMaterials {
 	public void commonSetup(FMLCommonSetupEvent event) {
 		TagHandler.execute();
 		LootTableHandler.generateBlockDrops();
-		FeatureHandler.calculateTotalWeight();
+		FeatureVeinLayer.calculateTotalWeight();
 		LegacyHandler.LEGACY_DIR.mkdirs();
 	}
 	

@@ -9,7 +9,7 @@ import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.data.object.sub.ColorProperties;
-import glowredman.modularmaterials.worldgen.FeatureHandler;
+import glowredman.modularmaterials.worldgen.FeatureVeinLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -66,7 +66,7 @@ public class BlockHandler {
         	}
         }
         
-        FeatureHandler.initOresForBlocksList();
+        FeatureVeinLayer.initOresForBlocksList();
         
         ModularMaterials.LOGGER.info("Registered {} blocks. Took {}ms.", MM_Reference.BLOCKS.size() + MM_Reference.ORES.size(), System.currentTimeMillis() - time);
     }
