@@ -40,8 +40,8 @@ public class ResourceLoader implements RepositorySource {
 							false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description
-							8, // dataFormat
-							8, // resourceFormat
+							10, // dataFormat
+							12, // resourceFormat
 							FeatureFlagSet.of(), // requestedFeatures
 							true), // hidden
 					PackType.SERVER_DATA,
@@ -60,8 +60,8 @@ public class ResourceLoader implements RepositorySource {
 							false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description
-							8, // dataFormat
-							8, // resourceFormat
+							10, // dataFormat
+							12, // resourceFormat
 							FeatureFlagSet.of(), // requestedFeatures
 							true), // hidden
 					PackType.CLIENT_RESOURCES,
