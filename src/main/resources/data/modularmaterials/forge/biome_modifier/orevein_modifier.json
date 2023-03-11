@@ -1,5 +1,8 @@
 {
-    "type": "modularmaterials:orevein_modifier",
-    "enabled": true,
-    "feature": "modularmaterials:orevein"
+    "type": "forge:add_features",
+    "biomes": {
+        "type": "forge:any"
+    },
+    "features": "modularmaterials:orevein",
+    "step": "underground_ores"
 }
