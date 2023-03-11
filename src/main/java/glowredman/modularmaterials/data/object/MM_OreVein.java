@@ -141,7 +141,7 @@ public class MM_OreVein {
 				return false;
 			}
 		}
-		ModularMaterials.debug("Placed orevein \"" + name + "\" with " + placeCount + " ores at [" + centerX + ", " + centerY + ", " + centerZ + "]");
+		ModularMaterials.LOGGER.debug("Placed orevein \"{}\" with {} ores at [{}, {}, {}]", name, placeCount, centerX, centerY, centerZ);
 		return true;
 	}
 	

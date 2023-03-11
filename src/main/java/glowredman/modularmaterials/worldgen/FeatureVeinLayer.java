@@ -29,7 +29,7 @@ public class FeatureVeinLayer extends Feature<NoneFeatureConfiguration> {
 		for(Tuple<Integer, Integer> seed : getVeinSeeds(chunkX, chunkZ)) {
 			WorldGenVeinLayer.generate(pContext.level(), chunkX, chunkZ, seed.getA(), seed.getB());
 		}
-		ModularMaterials.debug("Took " + (System.nanoTime() - time) + "ns");
+		ModularMaterials.LOGGER.debug("Took " + (System.nanoTime() - time) + "ns");
 		return true;
 	}
 	

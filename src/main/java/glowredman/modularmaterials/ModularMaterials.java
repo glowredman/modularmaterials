@@ -26,9 +26,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(MM_Reference.MODID)
 public class ModularMaterials {
 	
-	public static ModularMaterials instance;
-	private static final Logger LOGGER = LogManager.getLogger();
-	private static final String LOG_PREFIX = "[" + MM_Reference.MODID + "] ";
+	public static final Logger LOGGER = LogManager.getLogger(MM_Reference.MODID);
 	
 	public ModularMaterials() {
 		instance = this;
@@ -59,29 +57,5 @@ public class ModularMaterials {
 		} else {
 			event.addRepositorySource(new ResourceLoader(true));
 		}
-	}
-
-	public static void trace(String s) {
-		LOGGER.trace(LOG_PREFIX + s);
-	}
-
-	public static void debug(String s) {
-		LOGGER.debug(LOG_PREFIX + s);
-	}
-	
-	public static void info(String s) {
-		LOGGER.info(LOG_PREFIX + s);
-	}
-	
-	public static void warn(String s) {
-		LOGGER.warn(LOG_PREFIX + s);
-	}
-	
-	public static void error(String s) {
-		LOGGER.error(LOG_PREFIX + s);
-	}
-	
-	public static void fatal(String s) {
-		LOGGER.fatal(LOG_PREFIX + s);
 	}
 }

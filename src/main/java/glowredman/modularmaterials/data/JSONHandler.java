@@ -40,12 +40,12 @@ public class JSONHandler {
 				
 			materials = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
 			
-			ModularMaterials.info("Parsed materials.json in " + (System.currentTimeMillis() - time) + "ms");
 			
-			ModularMaterials.debug(String.format("Materials (%d):", materials.size()));
-			materials.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
+			ModularMaterials.LOGGER.info("Parsed materials.json in {}ms", System.currentTimeMillis() - time);
+			ModularMaterials.LOGGER.printf(Level.DEBUG, "Materials (%d):", materials.size());
+			materials.entrySet().forEach(ModularMaterials.LOGGER::debug);
 		} catch (Exception e) {
-			ModularMaterials.fatal("Parsing materials.json failed:");
+			ModularMaterials.LOGGER.fatal("Failed to parse materials.json", e);
 			e.printStackTrace();
 		}
 		
@@ -67,14 +67,13 @@ public class JSONHandler {
 				private static final long serialVersionUID = -6168799421344577955L;}.getType();
 				
 			types = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
-			
-			ModularMaterials.info("Parsed types.json in " + (System.currentTimeMillis() - time) + "ms");
-			
-			ModularMaterials.debug(String.format("Types (%d):", types.size()));
-			types.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
-		} catch (Exception e) {
-			ModularMaterials.fatal("Parsing types.json failed:");
-			e.printStackTrace();
+
+            ModularMaterials.LOGGER.info("Parsed types.json in {}ms", System.currentTimeMillis() - time);
+            ModularMaterials.LOGGER.printf(Level.DEBUG, "Materials (%d):", types.size());
+            types.entrySet().forEach(ModularMaterials.LOGGER::debug);
+        } catch (Exception e) {
+            ModularMaterials.LOGGER.fatal("Failed to parse types.json", e);
+            e.printStackTrace();
 		}
 		
 		return types;
@@ -95,14 +94,13 @@ public class JSONHandler {
 				private static final long serialVersionUID = 8305381304760332638L;}.getType();
 				
 			variants = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
-			
-			ModularMaterials.info("Parsed orevariants.json in " + (System.currentTimeMillis() - time) + "ms");
-			
-			ModularMaterials.debug(String.format("Ore Variants (%d):", variants.size()));
-			variants.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
-		} catch (Exception e) {
-			ModularMaterials.fatal("Parsing orevariants.json failed:");
-			e.printStackTrace();
+
+            ModularMaterials.LOGGER.info("Parsed orevariants.json in {}ms", System.currentTimeMillis() - time);
+            ModularMaterials.LOGGER.printf(Level.DEBUG, "Materials (%d):", variants.size());
+            variants.entrySet().forEach(ModularMaterials.LOGGER::debug);
+        } catch (Exception e) {
+            ModularMaterials.LOGGER.fatal("Failed to parse orevariants.json", e);
+            e.printStackTrace();
 		}
 		
 		return variants;
@@ -123,14 +121,13 @@ public class JSONHandler {
 				private static final long serialVersionUID = -6019676943621850611L;}.getType();
 				
 			veins = GSON.fromJson(FileHelper.readFile(file.toPath()), listType);
-			
-			ModularMaterials.info("Parsed oreveins.json in " + (System.currentTimeMillis() - time) + "ms");
-			
-			ModularMaterials.debug(String.format("Ore Veins (%d):", veins.size()));
-			veins.entrySet().forEach(e -> ModularMaterials.debug(e.getKey() + e.getValue().toString()));
-		} catch (Exception e) {
-			ModularMaterials.fatal("Parsing oreveins.json failed:");
-			e.printStackTrace();
+
+            ModularMaterials.LOGGER.info("Parsed oreveins.json in {}ms", System.currentTimeMillis() - time);
+            ModularMaterials.LOGGER.printf(Level.DEBUG, "Materials (%d):", veins.size());
+            veins.entrySet().forEach(ModularMaterials.LOGGER::debug);
+        } catch (Exception e) {
+            ModularMaterials.LOGGER.fatal("Failed to parse oreveins.json", e);
+            e.printStackTrace();
 		}
 		
 		return veins;

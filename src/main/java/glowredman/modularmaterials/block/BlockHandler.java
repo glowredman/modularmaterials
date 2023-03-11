@@ -68,7 +68,7 @@ public class BlockHandler {
         
         FeatureHandler.initOresForBlocksList();
         
-        ModularMaterials.info("Registered " + (MM_Reference.BLOCKS.size() + MM_Reference.ORES.size()) + " blocks. Took " + (System.currentTimeMillis() - time) + "ms.");
+        ModularMaterials.LOGGER.info("Registered {} blocks. Took {}ms.", MM_Reference.BLOCKS.size() + MM_Reference.ORES.size(), System.currentTimeMillis() - time);
     }
     
     public static BlockBehaviour.Properties getBlockProperties(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
@@ -213,7 +213,7 @@ public class BlockHandler {
         case "WOOL":
             return Material.WOOL;
         default:
-            ModularMaterials.warn("Unknown material property \"" + name + "\" of material \"" + uniqueMM_MaterialName + "\"!");
+            ModularMaterials.LOGGER.warn("Unknown material property \"{}\" of material \"{}\"!", name, uniqueMM_MaterialName);
             return Material.STONE;
         }
     }
@@ -232,7 +232,7 @@ public class BlockHandler {
                 }
             }
             MaterialColor ret = MaterialColor.byId(index);
-            ModularMaterials.debug("Found " + Integer.toHexString(ret.col).toUpperCase() + " as the nearest color for \"" + uniqueMM_MaterialName + "\" (" + Integer.toHexString(color.getRGB()).toUpperCase() + "). Distance: " + Math.sqrt(distance));
+            ModularMaterials.LOGGER.debug("Found {} as the nearest color for \"{}\" ({}). Distance: {}", Integer.toHexString(ret.col).toUpperCase(), uniqueMM_MaterialName, Integer.toHexString(color.getRGB()).toUpperCase(), Math.sqrt(distance));
             return ret;
         case "CLAY":
             return MaterialColor.CLAY;
@@ -359,7 +359,7 @@ public class BlockHandler {
         case "WOOL":
             return MaterialColor.WOOL;
         default:
-            ModularMaterials.warn("Unknown map color \"" + name + "\" of material \"" + uniqueMM_MaterialName + "\"!");
+            ModularMaterials.LOGGER.warn("Unknown map color \"{}\" of material \"{}\"!", name, uniqueMM_MaterialName);
             return getMaterialColor("AUTO", color, uniqueMM_MaterialName);
         }
     }
@@ -520,7 +520,7 @@ public class BlockHandler {
         case "WOOL":
             return SoundType.WOOL;
         default:
-            ModularMaterials.warn("Unknown sound \"" + name + "\" of material \"" + uniqueMM_MaterialName + "\"!");
+            ModularMaterials.LOGGER.warn("Unknown sound \"{}\" of material \"{}\"!", name, uniqueMM_MaterialName);
             return SoundType.METAL;
         }
     }

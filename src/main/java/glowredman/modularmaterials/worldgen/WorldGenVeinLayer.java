@@ -18,7 +18,7 @@ public class WorldGenVeinLayer {
 		long oreVeinSeed = getOreVeinSeed(world, oreSeedX, oreSeedZ);
 		Random oreVeinRNG = MM_Reference.NEW_RAND.apply(oreVeinSeed);
 		
-		ModularMaterials.debug("Finding orevein for chunk[" + chunkX + ", " + chunkZ + "], seed[" + oreSeedX + ", " + oreSeedZ + "], oreVeinSeed=" + oreVeinSeed);
+		ModularMaterials.LOGGER.debug("Finding orevein for chunk[{}, {}], seed[{}, {}], oreVeinSeed={}", chunkX, chunkZ, oreSeedX, oreSeedZ, oreVeinSeed);
 		
 		if(validVeins.containsKey(oreVeinSeed)) {
 			// oreseed is located in the previously processed table
@@ -58,11 +58,11 @@ public class WorldGenVeinLayer {
 				}
 				// Only add an empty orevein if unable to place a vein at the oreseed chunk.
 				if(!oreVeinFound && chunkX == oreSeedX && chunkZ == oreSeedZ) {
-					ModularMaterials.debug("Ran out of attempts, empty orevein");
+					ModularMaterials.LOGGER.debug("Ran out of attempts, empty orevein");
 					validVeins.put(oreVeinSeed, NO_ORES_IN_VEIN);
 				}
 			} else {
-				ModularMaterials.debug("Bad luck, empty orevein");
+				ModularMaterials.LOGGER.debug("Bad luck, empty orevein");
 				validVeins.put(oreVeinSeed, NO_ORES_IN_VEIN);
 			}
 		}

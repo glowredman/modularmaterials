@@ -94,7 +94,7 @@ public class AssetHandler {
 			}
 		}
 		
-		ModularMaterials.info("Created " + count + " model-files in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.LOGGER.info("Created {} model-files in {}ms.", count, System.currentTimeMillis() - time);
 	}
 	
 	private static void generateBlockstateFiles() {
@@ -124,7 +124,7 @@ public class AssetHandler {
 			}
 		}
 		
-		ModularMaterials.info("Created " + count + " blockstate-files in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.LOGGER.info("Created {} blockstate-files in {}ms.", count, System.currentTimeMillis() - time);
 	}
 	
 	private static void generateLangFile() {

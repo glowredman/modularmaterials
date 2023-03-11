@@ -33,7 +33,7 @@ public class TagHandler {
 		
 		generateFiles(tags);
 		
-    	ModularMaterials.info(String.format("Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
+    	ModularMaterials.LOGGER.info(String.format("Generated %d tags in %dms", tags.size(), System.currentTimeMillis() - time));
 	}
     
     //Parameters

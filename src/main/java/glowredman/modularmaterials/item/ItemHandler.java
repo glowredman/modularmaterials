@@ -60,7 +60,7 @@ public class ItemHandler {
 			event.getForgeRegistry().register(ore.getRegistryName(), new MetaOreBlockItem(ore));
 		}
 		
-		ModularMaterials.info("Registered " + MM_Reference.ITEMS.size() + " items. Took " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.LOGGER.info("Registered {} items. Took {}ms.", MM_Reference.ITEMS.size(), System.currentTimeMillis() - time);
 	}
 	
 	@SubscribeEvent

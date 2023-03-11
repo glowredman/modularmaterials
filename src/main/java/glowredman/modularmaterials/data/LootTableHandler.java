@@ -38,7 +38,7 @@ public class LootTableHandler {
 			}
 		}
 		
-		ModularMaterials.info("Generated " + count + " loot tables in " + (System.currentTimeMillis() - time) + "ms.");
+		ModularMaterials.LOGGER.info("Generated {} loot tables in {}ms.", count, System.currentTimeMillis() - time);
 	}
 
 }

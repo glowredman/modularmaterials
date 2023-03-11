@@ -70,7 +70,7 @@ public class FluidHandler {
             }
         }
         
-        ModularMaterials.info("Registered " + MM_Reference.FLUIDS.size() + " fluids. Took " + (System.currentTimeMillis() - time) + "ms.");
+        ModularMaterials.LOGGER.info("Registered {} fluids. Took {}ms.", MM_Reference.FLUIDS.size(), System.currentTimeMillis() - time);
     }
 
 }

@@ -25,9 +25,9 @@ public class PresetHandler {
 			URL url = new URL(MM_Reference.CONFIG.presetURL + "index.txt");
 			r = new BufferedReader(new InputStreamReader(url.openStream()));
 			r.lines().filter(s -> !s.isBlank() && !s.startsWith("#")).forEachOrdered(s -> l.add('"' + s + '"'));
-			ModularMaterials.debug("Found these presets: " + MM_Reference.PRESETS);
+			ModularMaterials.LOGGER.debug("Found these presets: " + MM_Reference.PRESETS);
 		} catch (Exception e) {
-			ModularMaterials.warn("Could not get presets from " + MM_Reference.CONFIG.presetURL + "index.txt");
+			ModularMaterials.LOGGER.warn("Could not get presets from " + MM_Reference.CONFIG.presetURL + "index.txt");
 			e.printStackTrace();
 		} finally {
 			IOUtils.closeQuietly(r);

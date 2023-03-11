@@ -29,7 +29,7 @@ public class ResourceLoader implements RepositorySource {
 	@Override
 	public void loadPacks(Consumer<Pack> pOnLoad) {
 		if(data) {
-			ModularMaterials.info("Loading datapack.");
+			ModularMaterials.LOGGER.info("Loading datapack.");
 			pOnLoad.accept(Pack.create(
 					MM_Reference.MODID + "_data", // id
 					Component.literal("Modular Materials Data"), // title
@@ -49,7 +49,7 @@ public class ResourceLoader implements RepositorySource {
 					true, // fixedPosition
 					PackSource.DEFAULT)); // packSource
 		} else {
-			ModularMaterials.info("Loading resourcepack.");
+			ModularMaterials.LOGGER.info("Loading resourcepack.");
 			pOnLoad.accept(Pack.create(
 					MM_Reference.MODID + "_resources", // id
 					Component.literal("Modular Materials Resources"), // title

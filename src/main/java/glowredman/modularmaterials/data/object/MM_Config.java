@@ -70,26 +70,25 @@ public class MM_Config {
 				FileHelper.write(file, JSONHandler.GSON.toJson(new MM_Config()));
 				cfg = new MM_Config();
 			}
-			ModularMaterials.info("Parsed config.json in " + (System.currentTimeMillis() - time) + "ms");
+			ModularMaterials.LOGGER.info("Parsed config.json in {}ms", System.currentTimeMillis() - time);
 			return cfg;
 		} catch (Exception e) {
-			ModularMaterials.fatal("Parsing config.json failed:");
-			e.printStackTrace();
+			ModularMaterials.LOGGER.fatal("Failed to parse config.json", e);
 			return null;
 		}
 	}
 	
 	public Function<Long, Random> getRandom() {
 		if("XSTR".equals(random)) {
-			ModularMaterials.info("Using XSTR as RNG");
+			ModularMaterials.LOGGER.info("Using XSTR as RNG");
 			return RandomXSTR::new;
 		}
 		if("Xoshiro256**".equals(random)) {
-			ModularMaterials.info("Using Xoshiro256** as RNG");
+			ModularMaterials.LOGGER.info("Using Xoshiro256** as RNG");
 			return RandomXoshiro256StarStar::new;
 		}
 		if("Standard".equals(random)) {
-			ModularMaterials.info("Using java.util.Random as RNG");
+			ModularMaterials.LOGGER.info("Using java.util.Random as RNG");
 			return Random::new;
 		}
 		
@@ -100,7 +99,7 @@ public class MM_Config {
 			Random testRNG = (Random) c.newInstance();
 			testRNG.setSeed(System.nanoTime());
 			
-			ModularMaterials.info("Using " + random + " as RNG");
+			ModularMaterials.LOGGER.info("Using {} as RNG", random);
 			
 			return seed -> {
 				try {
@@ -112,8 +111,7 @@ public class MM_Config {
 				}
 			};
 		} catch (Exception e) {
-			ModularMaterials.error("Failed to construct the RNG:");
-			throw new RuntimeException(e);
+			ModularMaterials.LOGGER.error("Failed to construct RNG", e);
 		}
 	}
 
