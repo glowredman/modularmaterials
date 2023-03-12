@@ -1,5 +1,8 @@
 package glowredman.modularmaterials;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,7 +48,11 @@ public class ModularMaterials {
 		TagHandler.execute();
 		LootTableHandler.generateBlockDrops();
 		FeatureVeinLayer.calculateTotalWeight();
-		LegacyHandler.LEGACY_DIR.mkdirs();
+		try {
+            Files.createDirectories(LegacyHandler.LEGACY_DIR);
+        } catch (IOException e) {
+            LOGGER.warn("Failed to create legacy directory", e);
+        }
 	}
 	
 	@SubscribeEvent
