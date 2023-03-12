@@ -3,6 +3,7 @@ package glowredman.modularmaterials.data;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 
 public class PresetHandler {
+    
+    private static final String[] FILENAMES = {"materials.json", "types.json", "orevariants.json", "oreveins.json"};
 
 	public static List<String> getPresets() {
 		List<String> l = new ArrayList<>();
@@ -35,33 +38,19 @@ public class PresetHandler {
 	}
 
 	public static int execute(CommandSourceStack stack, String preset) {
-		if(downloadConfigFile(preset, "materials.json")) {
-			stack.sendSuccess(Component.literal("Successfully downloaded materials.json").withStyle(ChatFormatting.GREEN), false);
-		} else {
-			stack.sendFailure(Component.literal("Downloading materials.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
-		}
-		if(downloadConfigFile(preset, "types.json")) {
-			stack.sendSuccess(Component.literal("Successfully downloaded types.json").withStyle(ChatFormatting.GREEN), false);
-		} else {
-			stack.sendFailure(Component.literal("Downloading types.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
-		}
-		if(downloadConfigFile(preset, "orevariants.json")) {
-			stack.sendSuccess(Component.literal("Successfully downloaded orevariants.json").withStyle(ChatFormatting.GREEN), false);
-		} else {
-			stack.sendFailure(Component.literal("Downloading orevariants.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
-		}
-		if(downloadConfigFile(preset, "oreveins.json")) {
-			stack.sendSuccess(Component.literal("Successfully downloaded oreveins.json").withStyle(ChatFormatting.GREEN), false);
-		} else {
-			stack.sendFailure(Component.literal("Downloading oreveins.json failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
-		}
-		stack.sendSuccess(Component.literal("Finished installing preset. Restart the game for the changes to take effect."), false);
+	    for (String fileName : FILENAMES) {
+	        if(downloadConfigFile(preset, fileName)) {
+	            stack.sendSuccess(Component.literal("Successfully downloaded " + fileName).withStyle(ChatFormatting.GREEN), false);
+	        } else {
+	            stack.sendFailure(Component.literal("Downloading " + fileName + " failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
+	        }
+	    }
 		return 0;
 	}
 	
 	private static boolean downloadConfigFile(String preset, String file) {
 		try {
-		    PathUtils.copyFile(new URL(MM_Reference.CONFIG.presetURL + preset + "/" + file), JSONHandler.CONFIG_DIR.resolve(file));
+		    PathUtils.copyFile(new URL(MM_Reference.CONFIG.presetURL + preset + "/" + file), JSONHandler.CONFIG_DIR.resolve(file), StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (Exception e) {
 			ModularMaterials.LOGGER.error("An error occured while trying to download " + file + " from " + MM_Reference.CONFIG.presetURL + preset + "."
