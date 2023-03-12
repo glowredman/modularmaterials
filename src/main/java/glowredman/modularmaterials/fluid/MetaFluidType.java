@@ -40,12 +40,12 @@ public class MetaFluidType extends FluidType {
 			
 			@Override
 			public ResourceLocation getFlowingTexture() {
-				return new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_flowing");
+				return new ResourceLocation(MM_Reference.MODID, "block/" + material.texture + "/" + typeName + "_flowing");
 			}
 			
 			@Override
 			public ResourceLocation getStillTexture() {
-				return new ResourceLocation(MM_Reference.MODID, "fluids/" + material.texture + "/" + typeName + "_still");
+				return new ResourceLocation(MM_Reference.MODID, "block/" + material.texture + "/" + typeName + "_still");
 			}
 			
 			/**
