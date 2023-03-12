@@ -1,9 +1,5 @@
 package glowredman.modularmaterials.data.legacy;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,7 +10,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.google.common.reflect.TypeToken;
-import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
 import glowredman.modularmaterials.ModularMaterials;
@@ -31,7 +26,7 @@ import net.minecraft.network.chat.Component;
 
 public class LegacyHandler {
 
-	public static final File LEGACY_DIR = JSONHandler.CONFIG_DIR.resolve("legacy").toFile();
+	public static final Path LEGACY_DIR = JSONHandler.CONFIG_DIR.resolve("legacy");
 	
 	public static ChemicalState state(String state) {
 		if(state == null) return null;
@@ -124,101 +119,44 @@ public class LegacyHandler {
 	public static int convert(CommandSourceStack css) {
 		long time = System.currentTimeMillis();
 		
-		File materialsL = new File(LEGACY_DIR, "materials.json");
-		File oreGenerationL = new File(LEGACY_DIR, "oreGeneration.json");
-		File oreVariantsL = new File(LEGACY_DIR, "oreVariants.json");
-		File typesL = new File(LEGACY_DIR, "types.json");
-		
-		boolean foundMaterials = false;
-		boolean foundOreVariants = false;
-		boolean foundOreVeins = false;
-		boolean foundTypes = false;
-		
-		MaterialList materialList = new MaterialList();
-		OreVariantList oreVariantList = new OreVariantList();
-		OreVeinList oreVeinList = new OreVeinList();
-		TypeList typeList = new TypeList();
-		
-		
 		//read files
-		if(materialsL.exists()) {
-			try {
-				materialList = read(materialsL, MaterialList.class);
-				foundMaterials = true;
-			} catch (Exception e) {
-				errorFileReadMsg(css, e);
-				e.printStackTrace();
-			}
-		} else {
-			missingFileMsg(css, materialsL);
-		}
-		if(oreGenerationL.exists()) {
-			try {
-				oreVeinList = read(oreGenerationL, OreVeinList.class);
-				foundOreVariants = true;
-			} catch (Exception e) {
-				errorFileReadMsg(css, e);
-				e.printStackTrace();
-			}
-		} else {
-			missingFileMsg(css, oreGenerationL);
-		}
-		if(oreVariantsL.exists()) {
-			try {
-				oreVariantList = read(oreVariantsL, OreVariantList.class);
-				foundOreVeins = true;
-			} catch (Exception e) {
-				errorFileReadMsg(css, e);
-				e.printStackTrace();
-			}
-		} else {
-			missingFileMsg(css, oreVariantsL);
-		}
-		if(typesL.exists()) {
-			try {
-				typeList = read(typesL, TypeList.class);
-				foundTypes = true;
-			} catch (Exception e) {
-				errorFileReadMsg(css, e);
-				e.printStackTrace();
-			}
-		} else {
-			missingFileMsg(css, typesL);
-		}
-		
+		MaterialList materialList = getList(css, LEGACY_DIR.resolve("materials.json"), MaterialList.class);
+		OreVariantList oreVariantList = getList(css, LEGACY_DIR.resolve("oreGeneration.json"), OreVariantList.class);
+		OreVeinList oreVeinList = getList(css, LEGACY_DIR.resolve("oreVariants.json"), OreVeinList.class);
+		TypeList typeList = getList(css, LEGACY_DIR.resolve("types.json"), TypeList.class);
 		
 		//exit early if no files are present
-		if(!(foundMaterials || foundOreVariants || foundOreVeins || foundTypes)) {
+		if(materialList == null && oreVariantList == null && oreVeinList == null && typeList == null) {
 			css.sendSuccess(Component.literal("Finished without any changes.").withStyle(ChatFormatting.BLUE), false);
 			return 0;
 		}
 		
 		//write new files
-		if(foundOreVariants) {
+		if(oreVariantList != null) {
 			Map<String, MM_OreVariant> variants = new LinkedHashMap<>();
 			for(Entry<String, OreVariant> e : oreVariantList.oreVariants.entrySet()) {
 				variants.put(e.getKey(), e.getValue().convert(e.getKey(), css));
 			}
 			write("orevariants.json", variants, css);
 		}
-		if(foundOreVeins) {
+		if(oreVeinList != null) {
 			Map<String, MM_OreVein> veins = new LinkedHashMap<>();
 			for(Entry<String, OreVein> e : oreVeinList.oreGeneration.entrySet()) {
 				veins.put(e.getKey(), e.getValue().convert(e.getKey()));
 			}
 			write("oreveins.json", veins, css);
 		}
-		if(foundTypes) {
+		if(typeList != null) {
 			Map<String, MM_Type> types = new LinkedHashMap<>();
 			for(Entry<String, Type> e : typeList.types.entrySet()) {
 				types.put(e.getKey(), e.getValue().convert());
 			}
 			write("types.json", types, css);
 		}
-		if(foundMaterials) {
+		if(materialList != null) {
 			Map<String, MM_Material> materials = new LinkedHashMap<>();
 			for(Entry<String, Material> e : materialList.materials.entrySet()) {
-				materials.put(e.getKey(), e.getValue().convert(typeList));
+				materials.put(e.getKey(), e.getValue().convert(typeList == null ? new TypeList() : typeList));
 			}
 			write("materials.json", materials, css);
 		}
@@ -228,9 +166,23 @@ public class LegacyHandler {
 		return 0;
 	}
 	
-	private static void missingFileMsg(CommandSourceStack css, File file) {
+	private static <T> T getList(CommandSourceStack css, Path file, Class<T> clazz) {
+        if(Files.exists(file)) {
+            try {
+                 return read(file, clazz);
+            } catch (Exception e) {
+                errorFileReadMsg(css, e);
+                ModularMaterials.LOGGER.warn("Failed to read file", e);
+            }
+        } else {
+            missingFileMsg(css, file);
+        }
+        return null;
+	}
+	
+	private static void missingFileMsg(CommandSourceStack css, Path file) {
 		css.sendSuccess(Component.literal("Could not find ").withStyle(ChatFormatting.GOLD)
-				.append(Component.literal(file.getPath()).withStyle(ChatFormatting.WHITE))
+				.append(Component.literal(file.toString()).withStyle(ChatFormatting.WHITE))
 				.append(Component.literal(", skipping.").withStyle(ChatFormatting.GOLD)), false);
 	}
 	
@@ -238,8 +190,8 @@ public class LegacyHandler {
 		css.sendSuccess(Component.literal(e.toString()).withStyle(ChatFormatting.RED), false);
 	}
 	
-	private static <T> T read(File file, Class<T> clazz) throws JsonSyntaxException, JsonIOException, FileNotFoundException {
-		return JSONHandler.GSON.fromJson(new BufferedReader(new FileReader(file)), clazz);
+	private static <T> T read(Path file, Class<T> clazz) throws JsonSyntaxException, IOException {
+		return JSONHandler.GSON.fromJson(Files.readString(file), clazz);
 	}
 	
 	private static <K, V> void write(String file, Map<K, V> values, CommandSourceStack css) {
