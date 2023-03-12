@@ -183,8 +183,7 @@ public class AssetHandler {
                     Files.writeString(blockstateFile, Templates.BLOCKSTATE_ORE.format(ore.getMaterial().texture, ore.getVariantIdentifier()));
                     count++;
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    ModularMaterials.LOGGER.warn("Failed to generate blockstate file for " + ore.getRegistryName(), e);
                 }
 			}
 		}
@@ -209,7 +208,7 @@ public class AssetHandler {
 				lang = JSONHandler.GSON.fromJson(Files.readString(langFile), type);
 				startSize = lang.size();
 			} catch (Exception e) {
-				e.printStackTrace();
+			    ModularMaterials.LOGGER.error("Failed to read existing lang file", e);
 				return;
 			}
             

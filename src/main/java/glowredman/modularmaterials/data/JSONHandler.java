@@ -48,7 +48,6 @@ public class JSONHandler {
 			materials.entrySet().forEach(ModularMaterials.LOGGER::debug);
 		} catch (Exception e) {
 			ModularMaterials.LOGGER.fatal("Failed to parse materials.json", e);
-			e.printStackTrace();
 		}
 		
 		return materials;
@@ -75,7 +74,6 @@ public class JSONHandler {
             types.entrySet().forEach(ModularMaterials.LOGGER::debug);
         } catch (Exception e) {
             ModularMaterials.LOGGER.fatal("Failed to parse types.json", e);
-            e.printStackTrace();
 		}
 		
 		return types;
@@ -102,7 +100,6 @@ public class JSONHandler {
             variants.entrySet().forEach(ModularMaterials.LOGGER::debug);
         } catch (Exception e) {
             ModularMaterials.LOGGER.fatal("Failed to parse orevariants.json", e);
-            e.printStackTrace();
 		}
 		
 		return variants;
@@ -129,7 +126,6 @@ public class JSONHandler {
             veins.entrySet().forEach(ModularMaterials.LOGGER::debug);
         } catch (Exception e) {
             ModularMaterials.LOGGER.fatal("Failed to parse oreveins.json", e);
-            e.printStackTrace();
 		}
 		
 		return veins;

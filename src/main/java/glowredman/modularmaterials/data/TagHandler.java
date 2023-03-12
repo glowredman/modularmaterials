@@ -266,7 +266,7 @@ public class TagHandler {
 					Files.createDirectories(file.getParent());
 					Files.writeString(file, JSONHandler.GSON.toJson(new TagFile(values)));
 				} catch (Exception e) {
-					e.printStackTrace();
+				    ModularMaterials.LOGGER.warn("Failed to generate file " + file, e);
 				}
 			}
     	});

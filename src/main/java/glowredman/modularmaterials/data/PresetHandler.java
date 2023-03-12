@@ -29,8 +29,7 @@ public class PresetHandler {
 			r.lines().filter(s -> !s.isBlank() && !s.startsWith("#")).forEachOrdered(s -> l.add('"' + s + '"'));
 			ModularMaterials.LOGGER.debug("Found these presets: " + MM_Reference.PRESETS);
 		} catch (Exception e) {
-			ModularMaterials.LOGGER.warn("Could not get presets from " + MM_Reference.CONFIG.presetURL + "index.txt");
-			e.printStackTrace();
+			ModularMaterials.LOGGER.warn("Could not get presets from " + MM_Reference.CONFIG.presetURL + "index.txt", e);
 		} finally {
 			IOUtils.closeQuietly(r);
 		}
