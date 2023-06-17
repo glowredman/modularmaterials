@@ -42,18 +42,8 @@ public class Main {
 	}
 	
 	@EventHandler
-	public static void postInit(FMLPostInitializationEvent event) {
-		proxy.postinit(event);
-	}
-	
-	@EventHandler
 	public static void serverStarting(FMLServerStartingEvent event) {
 		proxy.serverStarting(event);
-	}
-	
-	@EventHandler
-	public static void serverStarted(FMLServerStartedEvent event) {
-		proxy.serverStarted(event);
 	}
 	
 }

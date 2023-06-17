@@ -42,6 +42,7 @@ public class FluidHandler {
 						String texture = "fluids/" + material.texture + '/' + type;
 						String name = materialEntry.getKey().toLowerCase().replace(' ', '_');
 						String unlocalizedName = name;
+						name = type + "." + name;
 						int temperature = material.temperature;
 						int color = material.color.getARGB();
 						int density = 1000;

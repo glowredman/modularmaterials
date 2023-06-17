@@ -54,13 +54,9 @@ public class CommonProxy {
 		WorldGenerator.register();
 	}
 	
-	public void postinit(FMLPostInitializationEvent event) {}
-	
 	public void serverStarting(FMLServerStartingEvent event) {
 		event.registerServerCommand(new Command());
 	}
-
-	public void serverStarted(FMLServerStartedEvent event) {}
 	
 	public void registerItemRenderer(Item item, String name, int meta) {}
 		
