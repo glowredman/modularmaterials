@@ -51,7 +51,6 @@ public class Material {
 		BlockProperties b = new BlockProperties();
 		b.hardness = blockHardness;
 		b.mapColor = blockMapColor;
-		b.material = blockMaterial;
 		b.sound = blockSound;
 		String mAndTAreBB = "";
 		if(isBeaconBase)

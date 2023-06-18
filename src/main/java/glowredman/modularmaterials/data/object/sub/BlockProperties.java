@@ -8,7 +8,6 @@ public class BlockProperties {
 	public float hardness = 5.0f;
 	public float friction = 0.6f;
 	public String mapColor = "AUTO";
-	public String material = "METAL";
 	public boolean requiresToolForDrops = true;
 	public String sound = "METAL";
 	public boolean sticky = false;
@@ -16,8 +15,8 @@ public class BlockProperties {
 	
 	@Override
 	public String toString() {
-		return String.format("{friction: %f, hardness: %f, mapColor: %s, material: %s, sound: %s, sticky: %b, tags: %s}",
-				friction, hardness,  mapColor, material, sound, sticky, tags);
+		return String.format("{friction: %f, hardness: %f, mapColor: %s, sound: %s, sticky: %b, tags: %s}",
+				friction, hardness,  mapColor, sound, sticky, tags);
 	}
 
 }

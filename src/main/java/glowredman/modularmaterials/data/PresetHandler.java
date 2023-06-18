@@ -39,7 +39,7 @@ public class PresetHandler {
 	public static int execute(CommandSourceStack stack, String preset) {
 	    for (String fileName : FILENAMES) {
 	        if(downloadConfigFile(preset, fileName)) {
-	            stack.sendSuccess(Component.literal("Successfully downloaded " + fileName).withStyle(ChatFormatting.GREEN), false);
+	            stack.sendSuccess(() -> Component.literal("Successfully downloaded " + fileName).withStyle(ChatFormatting.GREEN), false);
 	        } else {
 	            stack.sendFailure(Component.literal("Downloading " + fileName + " failed. Either no connection could be established or the preset does not have this file defined.").withStyle(ChatFormatting.RED));
 	        }

@@ -3,10 +3,12 @@ package glowredman.modularmaterials.fluid;
 import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
+import glowredman.modularmaterials.client.ClientHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
@@ -49,7 +51,7 @@ public class MetaFluidType extends FluidType {
 			}
 			
 			/**
-			 * Done via {@link glowredman.modularmaterials.client.ClientHandler#colorItems(net.minecraftforge.client.event.RegisterColorHandlersEvent.Item)}.
+			 * Done via {@link ClientHandler#colorItems(RegisterColorHandlersEvent.Item)}.
 			 */
 			@Override
 			public int getTintColor() {

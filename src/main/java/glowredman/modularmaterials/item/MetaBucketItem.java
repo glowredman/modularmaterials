@@ -39,7 +39,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.SoundActions;
@@ -175,19 +174,18 @@ public class MetaBucketItem extends BucketItem {
 	public boolean emptyContents(Player pPlayer, Level pLevel, BlockPos pPos, BlockHitResult pResult) {
 		BlockState blockstate = pLevel.getBlockState(pPos);
 		Block block = blockstate.getBlock();
-		Material material = blockstate.getMaterial();
-		boolean flag = blockstate.canBeReplaced(this.getFluid());
-		boolean flag1 = blockstate.isAir() || flag || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
-		if (!flag1) {
+		boolean canBeReplaced = blockstate.canBeReplaced(this.getFluid());
+		boolean canPlaceLiquid = blockstate.isAir() || canBeReplaced || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
+		if (!canPlaceLiquid) {
 			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null);
 		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.WATER)) {
-			int i = pPos.getX();
-			int j = pPos.getY();
-			int k = pPos.getZ();
+			int x = pPos.getX();
+			int y = pPos.getY();
+			int z = pPos.getZ();
 			pLevel.playSound(pPlayer, pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (pLevel.random.nextFloat() - pLevel.random.nextFloat()) * 0.8F);
 
 			for (int l = 0; l < 8; ++l) {
-				pLevel.addParticle(ParticleTypes.LARGE_SMOKE, (double) i + Math.random(), (double) j + Math.random(), (double) k + Math.random(), 0.0D, 0.0D, 0.0D);
+				pLevel.addParticle(ParticleTypes.LARGE_SMOKE, (double) x + Math.random(), (double) y + Math.random(), (double) z + Math.random(), 0.0D, 0.0D, 0.0D);
 			}
 
 			return true;
@@ -196,7 +194,7 @@ public class MetaBucketItem extends BucketItem {
 			this.playEmptySound(pPlayer, pLevel, pPos);
 			return true;
 		} else {
-			if (!pLevel.isClientSide && flag && !material.isLiquid()) {
+			if (!pLevel.isClientSide && canBeReplaced && blockstate.getFluidState().is(Fluids.EMPTY)) {
 				pLevel.destroyBlock(pPos, true);
 			}
 
@@ -212,13 +210,11 @@ public class MetaBucketItem extends BucketItem {
 	@Override
 	protected void playEmptySound(Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
 		SoundEvent soundevent = this.getFluid().getFluidType().getSound(SoundActions.BUCKET_EMPTY);
-		if (soundevent == null) soundevent = TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
+		if (soundevent == null) {
+		    soundevent = TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
+		}
 		pLevel.playSound(pPlayer, pPos, soundevent, SoundSource.BLOCKS, 1.0F, 1.0F);
 		pLevel.gameEvent(pPlayer, GameEvent.FLUID_PLACE, pPos);
-	}
-
-	private boolean canBlockContainFluid(Level worldIn, BlockPos posIn, BlockState blockstate) {
-		return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer) blockstate.getBlock()).canPlaceLiquid(worldIn, posIn, blockstate, this.getFluid());
 	}
 
 }

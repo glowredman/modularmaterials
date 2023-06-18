@@ -29,6 +29,7 @@ public class MM_Material {
 	public int lightLevel = 0;
 	public float resistance = 6.0f;
 	public float speedFactor = 1.0f;
+    public String noteblockInstrument = "harp";
 	public ChemicalState state = ChemicalState.SOLID;
 	public String texture = "metallic";
 	public TooltipProperties tooltip = new TooltipProperties();
@@ -45,8 +46,8 @@ public class MM_Material {
 	
 	@Override
 	public String toString() {
-		return String.format("{name: %s, tagNames: %s, enabled: %b, enabledTypes: %s, color: %s, burnTime: %d, enchantPowerBonus: %f, fireSpreadSpeed: %d, flammability: %d, jumpFactor: %f, lightLevel: %d, resistance: %f, speedFactor: %f, state: %s, texture: %s, tooltip: %s, block: %s, fluid: %s, item: %s, ore: %s}",
-				name, tagNames, enabled, enabledTypes, color, burnTime, enchantPowerBonus, fireSpreadSpeed, flammability, jumpFactor, lightLevel, resistance, speedFactor, state, texture, tooltip, block, fluid, item, ore);
+		return String.format("{name: %s, tagNames: %s, enabled: %b, enabledTypes: %s, color: %s, burnTime: %d, enchantPowerBonus: %f, fireSpreadSpeed: %d, flammability: %d, jumpFactor: %f, lightLevel: %d, resistance: %f, speedFactor: %f, state: %s, noteblockInstrument: %s, texture: %s, tooltip: %s, block: %s, fluid: %s, item: %s, ore: %s}",
+				name, tagNames, enabled, enabledTypes, color, burnTime, enchantPowerBonus, fireSpreadSpeed, flammability, jumpFactor, lightLevel, resistance, speedFactor, state, noteblockInstrument, texture, tooltip, block, fluid, item, ore);
 	}
 	
 	@Override

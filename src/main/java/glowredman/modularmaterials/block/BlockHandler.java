@@ -1,6 +1,9 @@
 package glowredman.modularmaterials.block;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
@@ -14,13 +17,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
 
 public class BlockHandler {
+    
+    private static final Map<String, NoteBlockInstrument> INSTRUMENTS = Arrays.stream(NoteBlockInstrument.values()).collect(Collectors.toMap(NoteBlockInstrument::getSerializedName, nbi -> nbi));
     
     @SubscribeEvent
     public void registerBlocks(RegisterEvent event) {
@@ -72,13 +77,14 @@ public class BlockHandler {
     }
     
     public static BlockBehaviour.Properties getBlockProperties(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
-        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(getMaterial(material.block.material, uniqueMM_MaterialName));
-        properties.color(getMaterialColor(material.block.mapColor, material.color, uniqueMM_MaterialName));
+        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of();
         properties.destroyTime(material.block.hardness);
         properties.explosionResistance(material.resistance * type.resistanceMultiplier);
         properties.friction(material.block.friction);
+        properties.instrument(INSTRUMENTS.getOrDefault(material.noteblockInstrument, NoteBlockInstrument.HARP));
         properties.jumpFactor(material.jumpFactor * type.jumpFactorMultiplier);
         properties.lightLevel(state -> (int) (material.lightLevel * type.lightLevelMultiplier));
+        properties.mapColor(getMapColor(material.block.mapColor, material.color, uniqueMM_MaterialName));
         if(material.block.requiresToolForDrops) properties.requiresCorrectToolForDrops();
         properties.sound(getSoundType(material.block.sound, uniqueMM_MaterialName));
         properties.speedFactor(material.speedFactor * type.speedFactorMultiplier);
@@ -86,12 +92,12 @@ public class BlockHandler {
     }
     
     public static BlockBehaviour.Properties getFluidBlockProperties(MM_Material material, MM_Type type, String uniqueMM_MaterialName) {
-        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(Material.WATER);
-        properties.color(getMaterialColor("AUTO", material.color, uniqueMM_MaterialName));
+        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of();
         properties.destroyTime(material.block.hardness);
         properties.explosionResistance(material.resistance * type.resistanceMultiplier);
         properties.jumpFactor(material.jumpFactor * type.jumpFactorMultiplier);
         properties.lightLevel(state -> (int) (material.lightLevel * type.lightLevelMultiplier));
+        properties.mapColor(getMapColor("AUTO", material.color, uniqueMM_MaterialName));
         properties.noCollission();
         properties.noLootTable();
         properties.randomTicks();
@@ -101,266 +107,163 @@ public class BlockHandler {
     
     @SuppressWarnings("deprecation")
     public static BlockBehaviour.Properties getOreBlockProperties(MM_Material material, Block parent, String uniqueMM_MaterialName) {
-        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of(
-                MM_Reference.CONFIG.oresInheritMaterial                          ? parent.defaultBlockState().getMaterial()      : getMaterial(material.ore.material, uniqueMM_MaterialName));
-        properties.color(MM_Reference.CONFIG.oresInheritMapColor                 ? parent.defaultMaterialColor()                 : getMaterialColor(material.ore.mapColor, material.color, uniqueMM_MaterialName));
+        BlockBehaviour.Properties properties = BlockBehaviour.Properties.of();
         properties.sound(MM_Reference.CONFIG.oresInheritSoundType                ? parent.defaultBlockState().getSoundType()     : getSoundType(material.ore.sound, uniqueMM_MaterialName));
         properties.destroyTime(MM_Reference.CONFIG.oresInheritHardness           ? parent.defaultDestroyTime()                   : material.ore.hardness);
         properties.explosionResistance(MM_Reference.CONFIG.oresInheritResistance ? parent.getExplosionResistance()               : material.ore.resistance);
         properties.friction(MM_Reference.CONFIG.oresInheritFriction              ? parent.getFriction()                          : material.ore.friction);
+        properties.instrument(MM_Reference.CONFIG.oresInheritNoteblockInstrument ? parent.defaultBlockState().instrument()       : INSTRUMENTS.getOrDefault(material.noteblockInstrument, NoteBlockInstrument.HARP));
         properties.jumpFactor(MM_Reference.CONFIG.oresInheritJumpFactor          ? parent.getJumpFactor()                        : material.ore.jumpFactor);
         properties.lightLevel(state -> MM_Reference.CONFIG.oresInheritLightLevel ? parent.defaultBlockState().getLightEmission() : material.ore.lightLevel);
+        properties.mapColor(MM_Reference.CONFIG.oresInheritMapColor              ? parent.defaultMapColor()                      : getMapColor(material.ore.mapColor, material.color, uniqueMM_MaterialName));
         properties.speedFactor(MM_Reference.CONFIG.oresInheritSpeedFactor        ? parent.getSpeedFactor()                       : material.ore.speedFactor);
         if(material.ore.requiresToolForDrops) properties.requiresCorrectToolForDrops();
         return properties;
     }
     
-    //TODO: add missing cases
-    private static Material getMaterial(String name, String uniqueMM_MaterialName) {
-        switch (name.toUpperCase()) {
-        case "AIR": 
-            return Material.AIR;
-        case "AMETHYST": 
-            return Material.AMETHYST;
-        case "BAMBOO": 
-            return Material.BAMBOO;
-        case "BAMBOO_SAPLING": 
-            return Material.BAMBOO_SAPLING;
-        case "BARRIER": 
-            return Material.BARRIER;
-        case "BUBBLE_COLUMN": 
-            return Material.BUBBLE_COLUMN;
-        case "BUILDABLE_GLASS": 
-            return Material.BUILDABLE_GLASS;
-        case "CACTUS": 
-            return Material.CACTUS;
-        case "CAKE": 
-            return Material.CAKE;
-        case "CLAY": 
-            return Material.CLAY;
-        case "CLOTH_DECORATION": 
-            return Material.CLOTH_DECORATION;
-        case "DECORATION": 
-            return Material.DECORATION;
-        case "DIRT": 
-            return Material.DIRT;
-        case "EGG": 
-            return Material.EGG;
-        case "EXPLOSIVE": 
-            return Material.EXPLOSIVE;
-        case "FIRE": 
-            return Material.FIRE;
-        case "GLASS": 
-            return Material.GLASS;
-        case "GRASS": 
-            return Material.GRASS;
-        case "HEAVY_METAL": 
-            return Material.HEAVY_METAL;
-        case "ICE": 
-            return Material.ICE;
-        case "ICE_SOLID": 
-            return Material.ICE_SOLID;
-        case "LAVA": 
-            return Material.LAVA;
-        case "LEAVES": 
-            return Material.LEAVES;
-        case "METAL": 
-            return Material.METAL;
-        case "MOSS": 
-            return Material.MOSS;
-        case "NETHER_WOOD": 
-            return Material.NETHER_WOOD;
-        case "PISTON": 
-            return Material.PISTON;
-        case "PLANT": 
-            return Material.PLANT;
-        case "PORTAL":
-            return Material.PORTAL;
-        case "POWDER_SNOW":
-            return Material.POWDER_SNOW;
-        case "REPLACEABLE_FIREPROOF_PLANT":
-            return Material.REPLACEABLE_FIREPROOF_PLANT;
-        case "REPLACEABLE_PLANT":
-            return Material.REPLACEABLE_PLANT;
-        case "REPLACEABLE_WATER_PLANT":
-            return Material.REPLACEABLE_WATER_PLANT;
-        case "SAND":
-            return Material.SAND;
-        case "SCULK":
-            return Material.SCULK;
-        case "SHULKER_SHELL":
-            return Material.SHULKER_SHELL;
-        case "SNOW":
-            return Material.SNOW;
-        case "SPONGE":
-            return Material.SPONGE;
-        case "STONE":
-            return Material.STONE;
-        case "STRUCTURAL_AIR":
-            return Material.STRUCTURAL_AIR;
-        case "TOP_SNOW":
-            return Material.TOP_SNOW;
-        case "VEGETABLE":
-            return Material.VEGETABLE;
-        case "WATER":
-            return Material.WATER;
-        case "WATER_PLANT":
-            return Material.WATER_PLANT;
-        case "WEB":
-            return Material.WEB;
-        case "WOOD":
-            return Material.WOOD;
-        case "WOOL":
-            return Material.WOOL;
-        default:
-            ModularMaterials.LOGGER.warn("Unknown material property \"{}\" of material \"{}\"!", name, uniqueMM_MaterialName);
-            return Material.STONE;
-        }
-    }
-    
-    private static MaterialColor getMaterialColor(String name, ColorProperties color, String uniqueMM_MaterialName) {
+    private static MapColor getMapColor(String name, ColorProperties color, String uniqueMM_MaterialName) {
 
         switch (name.toUpperCase()) {
         case "AUTO":
-            int index = 0;
-            int distance = distanceSq(color, MaterialColor.byId(0).col);
+            MapColor ret = MapColor.NONE; // index 0
+            int smallestDistance = distanceSq(color, ret.col);
             for(int i = 1; i < 62; i++) {
-                int currentDistance = distanceSq(color, MaterialColor.byId(i).col);
-                if(currentDistance < distance) {
-                    index = i;
-                    distance = currentDistance;
+                MapColor currentMapColor = MapColor.byId(i);
+                int currentDistance = distanceSq(color, currentMapColor.col);
+                if(currentDistance < smallestDistance) {
+                    ret = currentMapColor;
+                    smallestDistance = currentDistance;
                 }
             }
-            MaterialColor ret = MaterialColor.byId(index);
-            ModularMaterials.LOGGER.debug("Found {} as the nearest color for \"{}\" ({}). Distance: {}", Integer.toHexString(ret.col).toUpperCase(), uniqueMM_MaterialName, Integer.toHexString(color.getRGB()).toUpperCase(), Math.sqrt(distance));
+            ModularMaterials.LOGGER.debug("Found {} as the nearest color for \"{}\" ({}). Distance: {}", Integer.toHexString(ret.col).toUpperCase(), uniqueMM_MaterialName, Integer.toHexString(color.getRGB()).toUpperCase(), Math.sqrt(smallestDistance));
             return ret;
         case "CLAY":
-            return MaterialColor.CLAY;
+            return MapColor.CLAY;
         case "COLOR_BLACK":
-            return MaterialColor.COLOR_BLACK;
+            return MapColor.COLOR_BLACK;
         case "COLOR_BLUE":
-            return MaterialColor.COLOR_BLUE;
+            return MapColor.COLOR_BLUE;
         case "COLOR_BROWN":
-            return MaterialColor.COLOR_BROWN;
+            return MapColor.COLOR_BROWN;
         case "COLOR_CYAN":
-            return MaterialColor.COLOR_CYAN;
+            return MapColor.COLOR_CYAN;
         case "COLOR_GRAY":
-            return MaterialColor.COLOR_GRAY;
+            return MapColor.COLOR_GRAY;
         case "COLOR_GREEN":
-            return MaterialColor.COLOR_GREEN;
+            return MapColor.COLOR_GREEN;
         case "COLOR_LIGHT_BLUE":
-            return MaterialColor.COLOR_LIGHT_BLUE;
+            return MapColor.COLOR_LIGHT_BLUE;
         case "COLOR_LIGHT_GRAY":
-            return MaterialColor.COLOR_LIGHT_GRAY;
+            return MapColor.COLOR_LIGHT_GRAY;
         case "COLOR_LIGHT_GREEN":
-            return MaterialColor.COLOR_LIGHT_GREEN;
+            return MapColor.COLOR_LIGHT_GREEN;
         case "COLOR_MAGENTA":
-            return MaterialColor.COLOR_MAGENTA;
+            return MapColor.COLOR_MAGENTA;
         case "COLOR_ORANGE":
-            return MaterialColor.COLOR_ORANGE;
+            return MapColor.COLOR_ORANGE;
         case "COLOR_PINK":
-            return MaterialColor.COLOR_PINK;
+            return MapColor.COLOR_PINK;
         case "COLOR_PURPLE":
-            return MaterialColor.COLOR_PURPLE;
+            return MapColor.COLOR_PURPLE;
         case "COLOR_RED":
-            return MaterialColor.COLOR_RED;
+            return MapColor.COLOR_RED;
         case "COLOR_YELLOW":
-            return MaterialColor.COLOR_YELLOW;
+            return MapColor.COLOR_YELLOW;
         case "CRIMSON_HYPHAE":
-            return MaterialColor.CRIMSON_HYPHAE;
+            return MapColor.CRIMSON_HYPHAE;
         case "CRIMSON_NYLIUM":
-            return MaterialColor.CRIMSON_NYLIUM;
+            return MapColor.CRIMSON_NYLIUM;
         case "CRIMSON_STEM":
-            return MaterialColor.CRIMSON_STEM;
+            return MapColor.CRIMSON_STEM;
         case "DEEPSLATE":
-            return MaterialColor.DEEPSLATE;
+            return MapColor.DEEPSLATE;
         case "DIAMOND":
-            return MaterialColor.DIAMOND;
+            return MapColor.DIAMOND;
         case "DIRT":
-            return MaterialColor.DIRT;
+            return MapColor.DIRT;
         case "EMERALD":
-            return MaterialColor.EMERALD;
+            return MapColor.EMERALD;
         case "FIRE":
-            return MaterialColor.FIRE;
+            return MapColor.FIRE;
         case "GLOW_LICHEN":
-            return MaterialColor.GLOW_LICHEN;
+            return MapColor.GLOW_LICHEN;
         case "GOLD":
-            return MaterialColor.GOLD;
+            return MapColor.GOLD;
         case "GRASS":
-            return MaterialColor.GRASS;
+            return MapColor.GRASS;
         case "ICE":
-            return MaterialColor.ICE;
+            return MapColor.ICE;
         case "LAPIS":
-            return MaterialColor.LAPIS;
+            return MapColor.LAPIS;
         case "METAL":
-            return MaterialColor.METAL;
+            return MapColor.METAL;
         case "NETHER":
-            return MaterialColor.NETHER;
+            return MapColor.NETHER;
         case "NONE":
-            return MaterialColor.NONE;
+            return MapColor.NONE;
         case "PLANT":
-            return MaterialColor.PLANT;
+            return MapColor.PLANT;
         case "PODZOL":
-            return MaterialColor.PODZOL;
+            return MapColor.PODZOL;
         case "QUARTZ":
-            return MaterialColor.QUARTZ;
+            return MapColor.QUARTZ;
         case "RAW_IRON":
-            return MaterialColor.RAW_IRON;
+            return MapColor.RAW_IRON;
         case "SAND":
-            return MaterialColor.SAND;
+            return MapColor.SAND;
         case "SNOW":
-            return MaterialColor.SNOW;
+            return MapColor.SNOW;
         case "STONE":
-            return MaterialColor.STONE;
+            return MapColor.STONE;
         case "TERRACOTTA_BLACK":
-            return MaterialColor.TERRACOTTA_BLACK;
+            return MapColor.TERRACOTTA_BLACK;
         case "TERRACOTTA_BLUE":
-            return MaterialColor.TERRACOTTA_BLUE;
+            return MapColor.TERRACOTTA_BLUE;
         case "TERRACOTTA_BROWN":
-            return MaterialColor.TERRACOTTA_BROWN;
+            return MapColor.TERRACOTTA_BROWN;
         case "TERRACOTTA_CYAN":
-            return MaterialColor.TERRACOTTA_CYAN;
+            return MapColor.TERRACOTTA_CYAN;
         case "TERRACOTTA_GRAY":
-            return MaterialColor.TERRACOTTA_GRAY;
+            return MapColor.TERRACOTTA_GRAY;
         case "TERRACOTTA_GREEN":
-            return MaterialColor.TERRACOTTA_GREEN;
+            return MapColor.TERRACOTTA_GREEN;
         case "TERRACOTTA_LIGHT_BLUE":
-            return MaterialColor.TERRACOTTA_LIGHT_BLUE;
+            return MapColor.TERRACOTTA_LIGHT_BLUE;
         case "TERRACOTTA_LIGHT_GRAY":
-            return MaterialColor.TERRACOTTA_LIGHT_GRAY;
+            return MapColor.TERRACOTTA_LIGHT_GRAY;
         case "TERRACOTTA_LIGHT_GREEN":
-            return MaterialColor.TERRACOTTA_LIGHT_GREEN;
+            return MapColor.TERRACOTTA_LIGHT_GREEN;
         case "TERRACOTTA_MAGENTA":
-            return MaterialColor.TERRACOTTA_MAGENTA;
+            return MapColor.TERRACOTTA_MAGENTA;
         case "TERRACOTTA_ORANGE":
-            return MaterialColor.TERRACOTTA_ORANGE;
+            return MapColor.TERRACOTTA_ORANGE;
         case "TERRACOTTA_PINK":
-            return MaterialColor.TERRACOTTA_PINK;
+            return MapColor.TERRACOTTA_PINK;
         case "TERRACOTTA_PURPLE":
-            return MaterialColor.TERRACOTTA_PURPLE;
+            return MapColor.TERRACOTTA_PURPLE;
         case "TERRACOTTA_RED":
-            return MaterialColor.TERRACOTTA_RED;
+            return MapColor.TERRACOTTA_RED;
         case "TERRACOTTA_WHITE":
-            return MaterialColor.TERRACOTTA_WHITE;
+            return MapColor.TERRACOTTA_WHITE;
         case "TERRACOTTA_YELLOW":
-            return MaterialColor.TERRACOTTA_YELLOW;
+            return MapColor.TERRACOTTA_YELLOW;
         case "WARPED_HYPHAE":
-            return MaterialColor.WARPED_HYPHAE;
+            return MapColor.WARPED_HYPHAE;
         case "WARPED_NYLIUM":
-            return MaterialColor.WARPED_NYLIUM;
+            return MapColor.WARPED_NYLIUM;
         case "WARPED_STEM":
-            return MaterialColor.WARPED_STEM;
+            return MapColor.WARPED_STEM;
         case "WARPED_WART_BLOCK":
-            return MaterialColor.WARPED_WART_BLOCK;
+            return MapColor.WARPED_WART_BLOCK;
         case "WATER":
-            return MaterialColor.WATER;
+            return MapColor.WATER;
         case "WOOD":
-            return MaterialColor.WOOD;
+            return MapColor.WOOD;
         case "WOOL":
-            return MaterialColor.WOOL;
+            return MapColor.WOOL;
         default:
             ModularMaterials.LOGGER.warn("Unknown map color \"{}\" of material \"{}\"!", name, uniqueMM_MaterialName);
-            return getMaterialColor("AUTO", color, uniqueMM_MaterialName);
+            return getMapColor("AUTO", color, uniqueMM_MaterialName);
         }
     }
     

@@ -95,14 +95,14 @@ public class LegacyHandler {
 		if(split.length == 2) {
 			try {
 				Integer.parseInt(split[1]);
-				css.sendSuccess(Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
+				css.sendSuccess(() -> Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
 						.append(Component.literal(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
 				return "minecraft:" + split[0];
 			} catch (Exception e) {
 				return split[0] + ":" + split[1];
 			}
 		}
-		css.sendSuccess(Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
+		css.sendSuccess(() -> Component.literal(baseBlock).withStyle(ChatFormatting.WHITE)
 				.append(Component.literal(" has a meta-value. This information will be lost in the conversion.").withStyle(ChatFormatting.GOLD)), false);
 		return split[0] + ":" + split[1];
 	}
@@ -127,7 +127,7 @@ public class LegacyHandler {
 		
 		//exit early if no files are present
 		if(materialList == null && oreVariantList == null && oreVeinList == null && typeList == null) {
-			css.sendSuccess(Component.literal("Finished without any changes.").withStyle(ChatFormatting.BLUE), false);
+			css.sendSuccess(() -> Component.literal("Finished without any changes.").withStyle(ChatFormatting.BLUE), false);
 			return 0;
 		}
 		
@@ -161,7 +161,7 @@ public class LegacyHandler {
 			write("materials.json", materials, css);
 		}
 		
-		css.sendSuccess(Component.literal("Done! Took " + (System.currentTimeMillis() - time) + "ms.").withStyle(ChatFormatting.GREEN), false);
+		css.sendSuccess(() -> Component.literal("Done! Took " + (System.currentTimeMillis() - time) + "ms.").withStyle(ChatFormatting.GREEN), false);
 		
 		return 0;
 	}
@@ -181,13 +181,13 @@ public class LegacyHandler {
 	}
 	
 	private static void missingFileMsg(CommandSourceStack css, Path file) {
-		css.sendSuccess(Component.literal("Could not find ").withStyle(ChatFormatting.GOLD)
+		css.sendSuccess(() -> Component.literal("Could not find ").withStyle(ChatFormatting.GOLD)
 				.append(Component.literal(file.toString()).withStyle(ChatFormatting.WHITE))
 				.append(Component.literal(", skipping.").withStyle(ChatFormatting.GOLD)), false);
 	}
 	
 	private static void errorFileReadMsg(CommandSourceStack css, Exception e) {
-		css.sendSuccess(Component.literal(e.toString()).withStyle(ChatFormatting.RED), false);
+		css.sendSuccess(() -> Component.literal(e.toString()).withStyle(ChatFormatting.RED), false);
 	}
 	
 	private static <T> T read(Path file, Class<T> clazz) throws JsonSyntaxException, IOException {

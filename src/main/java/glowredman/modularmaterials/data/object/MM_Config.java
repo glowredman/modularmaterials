@@ -40,7 +40,7 @@ public class MM_Config {
 	public boolean oresInheritJumpFactor = true;
 	public boolean oresInheritLightLevel = false;
 	public boolean oresInheritMapColor = true;
-	public boolean oresInheritMaterial = true;
+    public boolean oresInheritNoteblockInstrument = true;
 	public boolean oresInheritResistance = true;
 	public boolean oresInheritSoundType = true;
 	public boolean oresInheritSpeedFactor = true;

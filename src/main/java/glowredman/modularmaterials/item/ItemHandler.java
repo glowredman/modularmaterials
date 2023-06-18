@@ -9,6 +9,7 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,7 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.CreativeModeTab.TabVisibility;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
@@ -64,7 +65,10 @@ public class ItemHandler {
 	}
 	
 	@SubscribeEvent
-	public void populateCreativeTabs(CreativeModeTabEvent.Register event) {
+	public void populateCreativeTabs(RegisterEvent event) {
+        if(!event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
+            return;
+        }
 		tabBlocks = createCreativeModeTab(event, "blocks", Blocks.IRON_BLOCK);
 		tabOres = createCreativeModeTab(event, "ores", Blocks.IRON_ORE);
 		tabItems = createCreativeModeTab(event, "items", Items.IRON_INGOT);
@@ -72,7 +76,7 @@ public class ItemHandler {
 	}
 	
 	@SubscribeEvent
-	public void populateCreativeTabs(CreativeModeTabEvent.BuildContents event) {
+	public void populateCreativeTabs(BuildCreativeModeTabContentsEvent event) {
 		if(event.getTab() == tabBlocks) {
 			for(MetaBlock block : MM_Reference.BLOCKS) {
 				event.accept(new ItemStack(block), TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -95,8 +99,10 @@ public class ItemHandler {
 		}
 	}
 	
-	private static CreativeModeTab createCreativeModeTab(CreativeModeTabEvent.Register event, String name, ItemLike icon) {
-		return event.registerCreativeModeTab(new ResourceLocation(MM_Reference.MODID, name), builder -> builder.icon(() -> new ItemStack(icon)).title(Component.translatable("itemGroup." + MM_Reference.MODID + "." + name)));
+	private static CreativeModeTab createCreativeModeTab(RegisterEvent event, String name, ItemLike icon) {
+	    CreativeModeTab tab = CreativeModeTab.builder().icon(() -> new ItemStack(icon)).title(Component.translatable("itemGroup." + MM_Reference.MODID + "." + name)).build();
+	    event.register(Registries.CREATIVE_MODE_TAB, new ResourceLocation(MM_Reference.MODID, name), () -> tab);
+	    return tab;
 	}
 
 }
