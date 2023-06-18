@@ -37,7 +37,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -82,7 +81,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -127,7 +125,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -172,7 +169,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -252,7 +248,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -297,7 +292,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -377,7 +371,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -422,7 +415,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -502,7 +494,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -547,7 +538,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -627,7 +617,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -672,7 +661,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -717,7 +705,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -762,7 +749,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -807,7 +793,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -852,7 +837,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -895,7 +879,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -940,7 +923,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -985,7 +967,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1030,7 +1011,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1110,7 +1090,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1155,7 +1134,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1235,7 +1213,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1280,7 +1257,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1361,7 +1337,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1406,7 +1381,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1486,7 +1460,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1531,7 +1504,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1612,7 +1584,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1657,7 +1628,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1738,7 +1708,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1783,7 +1752,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1828,7 +1796,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1873,7 +1840,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -1918,7 +1884,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -1963,7 +1928,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2043,7 +2007,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2088,7 +2051,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2168,7 +2130,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2213,7 +2174,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2293,7 +2253,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2338,7 +2297,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2419,7 +2377,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2464,7 +2421,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -2545,7 +2501,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2590,7 +2545,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2672,7 +2626,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2717,7 +2670,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -2797,7 +2749,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2842,7 +2793,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -2920,7 +2870,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -2968,7 +2917,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3049,7 +2997,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3094,7 +3041,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -3174,7 +3120,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3219,7 +3164,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3298,7 +3242,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3343,7 +3286,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3423,7 +3365,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3468,7 +3409,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3548,7 +3488,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3593,7 +3532,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3673,7 +3611,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3718,7 +3655,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3797,7 +3733,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3842,7 +3777,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -3922,7 +3856,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -3967,7 +3900,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4012,7 +3944,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4057,7 +3988,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4102,7 +4032,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4147,7 +4076,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4227,7 +4155,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4272,7 +4199,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4352,7 +4278,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4397,7 +4322,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4477,7 +4401,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4522,7 +4445,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4603,7 +4525,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4648,7 +4569,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4729,7 +4649,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4774,7 +4693,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4855,7 +4773,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -4900,7 +4817,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -4981,7 +4897,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5026,7 +4941,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5107,7 +5021,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5152,7 +5065,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5233,7 +5145,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5278,7 +5189,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5358,7 +5268,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5403,7 +5312,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -5483,7 +5391,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5528,7 +5435,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5608,7 +5514,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5653,7 +5558,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5733,7 +5637,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5778,7 +5681,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5858,7 +5760,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -5903,7 +5804,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -5983,7 +5883,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6028,7 +5927,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6108,7 +6006,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6153,7 +6050,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6233,7 +6129,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6278,7 +6173,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6323,7 +6217,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6368,7 +6261,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6449,7 +6341,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6494,7 +6385,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6574,7 +6464,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6619,7 +6508,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6699,7 +6587,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6744,7 +6631,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6824,7 +6710,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6869,7 +6754,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -6949,7 +6833,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -6994,7 +6877,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7074,7 +6956,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7119,7 +7000,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7199,7 +7079,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7244,7 +7123,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7324,7 +7202,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7369,7 +7246,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7449,7 +7325,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7494,7 +7369,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7574,7 +7448,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7619,7 +7492,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7699,7 +7571,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7744,7 +7615,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7824,7 +7694,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7869,7 +7738,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -7949,7 +7817,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -7994,7 +7861,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8074,7 +7940,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8119,7 +7984,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8199,7 +8063,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8244,7 +8107,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8324,7 +8186,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8369,7 +8230,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8450,7 +8310,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8495,7 +8354,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8576,7 +8434,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8621,7 +8478,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8702,7 +8558,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8747,7 +8602,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -8829,7 +8683,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -8874,7 +8727,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -8955,7 +8807,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9000,7 +8851,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -9081,7 +8931,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9126,7 +8975,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -9207,7 +9055,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9252,7 +9099,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -9333,7 +9179,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9378,7 +9223,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -9455,7 +9299,6 @@
       "hardness": 3.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9505,7 +9348,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool",
@@ -9552,7 +9394,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9597,7 +9438,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -9677,7 +9517,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9722,7 +9561,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -9802,7 +9640,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9847,7 +9684,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -9927,7 +9763,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -9972,7 +9807,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10052,7 +9886,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10097,7 +9930,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10177,7 +10009,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10222,7 +10053,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10267,7 +10097,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10312,7 +10141,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10357,7 +10185,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10402,7 +10229,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10482,7 +10308,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10527,7 +10352,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10607,7 +10431,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10652,7 +10475,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10733,7 +10555,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10778,7 +10599,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10858,7 +10678,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -10903,7 +10722,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -10984,7 +10802,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11029,7 +10846,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -11109,7 +10925,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11154,7 +10969,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11235,7 +11049,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11280,7 +11093,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_iron_tool"
@@ -11355,7 +11167,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11400,7 +11211,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11475,7 +11285,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11520,7 +11329,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11595,7 +11403,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11640,7 +11447,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11715,7 +11521,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11760,7 +11565,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11835,7 +11639,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -11880,7 +11683,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -11955,7 +11757,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12000,7 +11801,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12075,7 +11875,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12120,7 +11919,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12195,7 +11993,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12240,7 +12037,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12315,7 +12111,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12360,7 +12155,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12436,7 +12230,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12481,7 +12274,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12557,7 +12349,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12602,7 +12393,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12678,7 +12468,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12723,7 +12512,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12799,7 +12587,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12844,7 +12631,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -12920,7 +12706,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -12965,7 +12750,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13041,7 +12825,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13086,7 +12869,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13162,7 +12944,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13207,7 +12988,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13282,7 +13062,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13327,7 +13106,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13372,7 +13150,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13417,7 +13194,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13492,7 +13268,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13537,7 +13312,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13582,7 +13356,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13627,7 +13400,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13702,7 +13474,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13747,7 +13518,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13822,7 +13592,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13867,7 +13636,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -13942,7 +13710,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -13987,7 +13754,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
@@ -14062,7 +13828,6 @@
       "hardness": 5.0,
       "friction": 0.6,
       "mapColor": "AUTO",
-      "material": "METAL",
       "requiresToolForDrops": true,
       "sound": "METAL",
       "sticky": false,
@@ -14107,7 +13872,6 @@
       "speedFactor": 1.0,
       "requiresToolForDrops": true,
       "mapColor": "AUTO",
-      "material": "METAL",
       "sound": "METAL",
       "tags": [
         "minecraft:needs_stone_tool"
