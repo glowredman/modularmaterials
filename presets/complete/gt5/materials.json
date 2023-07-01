@@ -20031,7 +20031,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -20131,7 +20131,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -20231,7 +20231,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -20331,7 +20331,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -20431,7 +20431,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -20531,7 +20531,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "shards",
+    "texture": "shard",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
@@ -30144,7 +30144,7 @@
     "speedFactor": 1.0,
     "noteblockInstrument": "harp",
     "state": "GASEOUS",
-    "texture": "none",
+    "texture": "sand",
     "tooltip": {
       "background": "F0100010",
       "borderStart": "505000FF",
