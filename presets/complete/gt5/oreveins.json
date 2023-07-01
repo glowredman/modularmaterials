@@ -1,25 +1,6 @@
 {
-  "naquadah": {
-    "name": "Naquadah",
-    "enabled": true,
-    "primary": "naquadah",
-    "secondary": "naquadah",
-    "inbetween": "naquadah",
-    "sporadic": "enriched_naquadah",
-    "density": 5,
-    "minY": 10,
-    "maxY": 60,
-    "size": 32,
-    "weight": 10,
-    "invertDimensions": false,
-    "dimensions": [
-      "minecraft:the_end"
-    ],
-    "invertBiomes": true,
-    "biomes": []
-  },
-  "lignite": {
-    "name": "Lignite",
+  "ore.mix.lignite": {
+    "name": "ore.mix.lignite",
     "enabled": true,
     "primary": "lignite",
     "secondary": "lignite",
@@ -37,8 +18,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "coal": {
-    "name": "Coal",
+  "ore.mix.coal": {
+    "name": "ore.mix.coal",
     "enabled": true,
     "primary": "coal",
     "secondary": "coal",
@@ -56,13 +37,13 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "magnetite": {
-    "name": "Magnetite",
+  "ore.mix.magnetite": {
+    "name": "ore.mix.magnetite",
     "enabled": true,
     "primary": "magnetite",
     "secondary": "magnetite",
     "inbetween": "iron",
-    "sporadic": "vanadium_magnetite",
+    "sporadic": "vanadiummagnetite",
     "density": 3,
     "minY": 50,
     "maxY": 120,
@@ -76,12 +57,12 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "gold": {
-    "name": "Gold",
+  "ore.mix.gold": {
+    "name": "ore.mix.gold",
     "enabled": true,
     "primary": "magnetite",
     "secondary": "magnetite",
-    "inbetween": "vanadium_magnetite",
+    "inbetween": "vanadiummagnetite",
     "sporadic": "gold",
     "density": 3,
     "minY": 60,
@@ -95,12 +76,12 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "iron": {
-    "name": "Iron",
+  "ore.mix.iron": {
+    "name": "ore.mix.iron",
     "enabled": true,
-    "primary": "brown_limonite",
-    "secondary": "yellow_limonite",
-    "inbetween": "banded_iron",
+    "primary": "brownlimonite",
+    "secondary": "yellowlimonite",
+    "inbetween": "bandediron",
     "sporadic": "malachite",
     "density": 4,
     "minY": 10,
@@ -115,8 +96,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "cassiterite": {
-    "name": "Cassiterite",
+  "ore.mix.cassiterite": {
+    "name": "ore.mix.cassiterite",
     "enabled": true,
     "primary": "tin",
     "secondary": "tin",
@@ -135,8 +116,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "tetrahedrite": {
-    "name": "Tetrahedrite",
+  "ore.mix.tetrahedrite": {
+    "name": "ore.mix.tetrahedrite",
     "enabled": true,
     "primary": "tetrahedrite",
     "secondary": "tetrahedrite",
@@ -155,13 +136,13 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "nether_quartz": {
-    "name": "Nether Quartz",
+  "ore.mix.netherquartz": {
+    "name": "ore.mix.netherquartz",
     "enabled": true,
-    "primary": "nether_quartz",
-    "secondary": "nether_quartz",
-    "inbetween": "nether_quartz",
-    "sporadic": "nether_quartz",
+    "primary": "netherquartz",
+    "secondary": "netherquartz",
+    "inbetween": "netherquartz",
+    "sporadic": "netherquartz",
     "density": 5,
     "minY": 40,
     "maxY": 80,
@@ -174,8 +155,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "sulfur": {
-    "name": "Sulfur",
+  "ore.mix.sulfur": {
+    "name": "ore.mix.sulfur",
     "enabled": true,
     "primary": "sulfur",
     "secondary": "sulfur",
@@ -193,8 +174,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "copper": {
-    "name": "Copper",
+  "ore.mix.copper": {
+    "name": "ore.mix.copper",
     "enabled": true,
     "primary": "chalcopyrite",
     "secondary": "iron",
@@ -213,8 +194,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "bauxite": {
-    "name": "Bauxite",
+  "ore.mix.bauxite": {
+    "name": "ore.mix.bauxite",
     "enabled": true,
     "primary": "bauxite",
     "secondary": "bauxite",
@@ -232,10 +213,10 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "salts": {
-    "name": "Salts",
+  "ore.mix.salts": {
+    "name": "ore.mix.salts",
     "enabled": true,
-    "primary": "rock_salt",
+    "primary": "rocksalt",
     "secondary": "salt",
     "inbetween": "lepidolite",
     "sporadic": "spodumene",
@@ -251,8 +232,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "redstone": {
-    "name": "Redstone",
+  "ore.mix.redstone": {
+    "name": "ore.mix.redstone",
     "enabled": true,
     "primary": "redstone",
     "secondary": "redstone",
@@ -271,13 +252,13 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "soapstone": {
-    "name": "Soapstone",
+  "ore.mix.soapstone": {
+    "name": "ore.mix.soapstone",
     "enabled": true,
     "primary": "soapstone",
     "secondary": "talc",
     "inbetween": "glauconite",
-    "sporadic": "pentladite",
+    "sporadic": "pentlandite",
     "density": 3,
     "minY": 10,
     "maxY": 40,
@@ -290,8 +271,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "nickel": {
-    "name": "Nickel",
+  "ore.mix.nickel": {
+    "name": "ore.mix.nickel",
     "enabled": true,
     "primary": "garnierite",
     "secondary": "nickel",
@@ -311,10 +292,10 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "platinum": {
-    "name": "Platinum",
+  "ore.mix.platinum": {
+    "name": "ore.mix.platinum",
     "enabled": true,
-    "primary": "sheldonite",
+    "primary": "cooperite",
     "secondary": "palladium",
     "inbetween": "platinum",
     "sporadic": "iridium",
@@ -331,12 +312,12 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "pitchblende": {
-    "name": "Pitchblende",
+  "ore.mix.pitchblende": {
+    "name": "ore.mix.pitchblende",
     "enabled": true,
     "primary": "pitchblende",
     "secondary": "pitchblende",
-    "inbetween": "uraninite",
+    "inbetween": "uranium",
     "sporadic": "uraninite",
     "density": 3,
     "minY": 10,
@@ -350,18 +331,18 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "uranium": {
-    "name": "Uranium",
+  "ore.mix.plutonium": {
+    "name": "ore.mix.plutonium",
     "enabled": true,
     "primary": "uraninite",
     "secondary": "uraninite",
-    "inbetween": "uranium",
+    "inbetween": "plutonium",
     "sporadic": "uranium",
     "density": 3,
     "minY": 20,
     "maxY": 30,
     "size": 16,
-    "weight": 20,
+    "weight": 10,
     "invertDimensions": false,
     "dimensions": [
       "minecraft:overworld"
@@ -369,8 +350,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "monazite": {
-    "name": "Monazite",
+  "ore.mix.monazite": {
+    "name": "ore.mix.monazite",
     "enabled": true,
     "primary": "bastnasite",
     "secondary": "bastnasite",
@@ -388,8 +369,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "molybdenum": {
-    "name": "Molybdenum",
+  "ore.mix.molybdenum": {
+    "name": "ore.mix.molybdenum",
     "enabled": true,
     "primary": "wulfenite",
     "secondary": "molybdenite",
@@ -408,8 +389,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "tungstate": {
-    "name": "Tungstate",
+  "ore.mix.tungstate": {
+    "name": "ore.mix.tungstate",
     "enabled": true,
     "primary": "scheelite",
     "secondary": "scheelite",
@@ -428,13 +409,13 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "sapphire": {
-    "name": "Sapphire",
+  "ore.mix.sapphire": {
+    "name": "ore.mix.sapphire",
     "enabled": true,
     "primary": "almandine",
     "secondary": "pyrope",
     "inbetween": "sapphire",
-    "sporadic": "green_sapphire",
+    "sporadic": "greensapphire",
     "density": 3,
     "minY": 10,
     "maxY": 40,
@@ -447,8 +428,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "manganese": {
-    "name": "Manganese",
+  "ore.mix.manganese": {
+    "name": "ore.mix.manganese",
     "enabled": true,
     "primary": "grossular",
     "secondary": "spessartine",
@@ -467,13 +448,13 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "quartz": {
-    "name": "Quartz",
+  "ore.mix.quartz": {
+    "name": "ore.mix.quartz",
     "enabled": true,
     "primary": "quartzite",
     "secondary": "barite",
-    "inbetween": "certus_quartz",
-    "sporadic": "certus_quartz",
+    "inbetween": "certusquartz",
+    "sporadic": "certusquartz",
     "density": 3,
     "minY": 40,
     "maxY": 80,
@@ -486,8 +467,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "diamond": {
-    "name": "Diamond",
+  "ore.mix.diamond": {
+    "name": "ore.mix.diamond",
     "enabled": true,
     "primary": "graphite",
     "secondary": "graphite",
@@ -505,8 +486,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "olivine": {
-    "name": "Olivine",
+  "ore.mix.olivine": {
+    "name": "ore.mix.olivine",
     "enabled": true,
     "primary": "bentonite",
     "secondary": "magnesite",
@@ -525,8 +506,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "apatite": {
-    "name": "Apatite",
+  "ore.mix.apatite": {
+    "name": "ore.mix.apatite",
     "enabled": true,
     "primary": "apatite",
     "secondary": "apatite",
@@ -544,8 +525,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "galena": {
-    "name": "Galena",
+  "ore.mix.galena": {
+    "name": "ore.mix.galena",
     "enabled": true,
     "primary": "galena",
     "secondary": "galena",
@@ -563,8 +544,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "lapis": {
-    "name": "Lapis",
+  "ore.mix.lapis": {
+    "name": "ore.mix.lapis",
     "enabled": true,
     "primary": "lazurite",
     "secondary": "sodalite",
@@ -583,8 +564,8 @@
     "invertBiomes": true,
     "biomes": []
   },
-  "beryllium": {
-    "name": "Beryllium",
+  "ore.mix.beryllium": {
+    "name": "ore.mix.beryllium",
     "enabled": true,
     "primary": "beryllium",
     "secondary": "beryllium",
