@@ -8138,7 +8138,7 @@
       "borderStart": "505000FF",
       "borderEnd": "5028007F",
       "text": [
-        "U-₂₃₅"
+        "U-235"
       ]
     },
     "block": {
@@ -8486,7 +8486,7 @@
       "borderStart": "505000FF",
       "borderEnd": "5028007F",
       "text": [
-        "Pu-₂₄₁"
+        "Pu-241"
       ]
     },
     "block": {
@@ -22380,7 +22380,7 @@
       "borderStart": "505000FF",
       "borderEnd": "5028007F",
       "text": [
-        "Mass Fabricator Eff/Speed Bonus: x₄"
+        "Mass Fabricator Eff/Speed Bonus: x4"
       ]
     },
     "block": {
