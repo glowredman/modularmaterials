@@ -437,6 +437,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -530,6 +531,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -646,6 +648,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -1175,6 +1178,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -1291,6 +1295,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -1410,6 +1415,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -1526,6 +1532,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -1619,6 +1626,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2058,6 +2066,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2174,6 +2183,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2293,6 +2303,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2409,6 +2420,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2528,6 +2540,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2644,6 +2657,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2652,6 +2666,7 @@
       "crushed",
       "crushed_purified",
       "crushed_centrifuged",
+      "nugget",
       "ingot_hot",
       "ingot_double",
       "ingot_triple",
@@ -2761,6 +2776,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2877,6 +2893,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -2996,6 +3013,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3115,6 +3133,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3231,6 +3250,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3347,6 +3367,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3462,6 +3483,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3578,6 +3600,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3671,6 +3694,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3787,6 +3811,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -3903,6 +3928,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4019,6 +4045,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4138,6 +4165,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4257,6 +4285,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4350,6 +4379,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4466,6 +4496,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4585,6 +4616,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4701,6 +4733,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4817,6 +4850,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -4933,6 +4967,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5026,6 +5061,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5142,6 +5178,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5258,6 +5295,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5374,6 +5412,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5493,6 +5532,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5609,6 +5649,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5725,6 +5766,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5841,6 +5883,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -5957,6 +6000,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6073,6 +6117,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6189,6 +6234,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6305,6 +6351,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6421,6 +6468,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6537,6 +6585,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6653,6 +6702,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6769,6 +6819,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -6885,6 +6936,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7004,6 +7056,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7123,6 +7176,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7242,6 +7296,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7361,6 +7416,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7562,6 +7618,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7681,6 +7738,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -7884,6 +7942,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8000,6 +8059,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8116,6 +8176,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8232,6 +8293,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8348,6 +8410,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8464,6 +8527,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -8580,6 +8644,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -9130,6 +9195,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -9591,6 +9657,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -10929,6 +10996,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -11376,6 +11444,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -11493,6 +11562,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -11721,6 +11791,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -11837,6 +11908,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -12285,6 +12357,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -12401,6 +12474,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -12517,6 +12591,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -12855,6 +12930,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -13310,6 +13386,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -13533,6 +13610,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -14102,6 +14180,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16003,6 +16082,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16108,6 +16188,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16211,6 +16292,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16315,6 +16397,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16419,6 +16502,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16523,6 +16607,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16719,6 +16804,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16823,6 +16909,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -16927,6 +17014,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17031,6 +17119,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17135,6 +17224,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17237,6 +17327,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17341,6 +17432,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17445,6 +17537,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17547,6 +17640,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17645,6 +17739,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17742,6 +17837,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17839,6 +17935,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -17937,6 +18034,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18035,6 +18133,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18134,6 +18233,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18252,6 +18352,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18348,6 +18449,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18445,6 +18547,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18544,6 +18647,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18643,6 +18747,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18741,6 +18846,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18845,6 +18951,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -18949,6 +19056,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19049,6 +19157,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19148,6 +19257,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19435,6 +19545,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19534,6 +19645,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19725,6 +19837,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19816,6 +19929,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -19913,6 +20027,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -20013,6 +20128,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -20113,6 +20229,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -20213,6 +20330,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -20313,6 +20431,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -20413,6 +20532,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -23897,6 +24017,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust_impure",
@@ -24076,6 +24197,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -24516,6 +24638,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -24783,6 +24906,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -24876,6 +25000,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -24969,6 +25094,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25062,6 +25188,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25155,6 +25282,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25248,6 +25376,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25341,6 +25470,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25434,6 +25564,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25527,6 +25658,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25620,6 +25752,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25736,6 +25869,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -25829,6 +25963,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26008,6 +26143,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26101,6 +26237,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26194,6 +26331,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26287,6 +26425,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26468,6 +26607,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26561,6 +26701,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26654,6 +26795,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26747,6 +26889,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -26840,6 +26983,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -27993,6 +28137,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -28518,6 +28663,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -28867,6 +29013,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -29302,6 +29449,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -29395,6 +29543,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -29574,6 +29723,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -29942,6 +30092,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -30035,6 +30186,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -30399,6 +30551,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -30492,6 +30645,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -30585,6 +30739,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -31485,6 +31640,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -31658,6 +31814,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -31751,6 +31908,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -31844,6 +32002,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -31937,6 +32096,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32030,6 +32190,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32123,6 +32284,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32216,6 +32378,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32309,6 +32472,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32402,6 +32566,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32495,6 +32660,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32588,6 +32754,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32681,6 +32848,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32774,6 +32942,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32867,6 +33036,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -32960,6 +33130,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33053,6 +33224,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33146,6 +33318,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33239,6 +33412,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33332,6 +33506,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33425,6 +33600,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33518,6 +33694,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33611,6 +33788,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33704,6 +33882,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33797,6 +33976,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33890,6 +34070,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -33983,6 +34164,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34076,6 +34258,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34167,6 +34350,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34260,6 +34444,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34353,6 +34538,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34446,6 +34632,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34539,6 +34726,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34632,6 +34820,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34725,6 +34914,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34818,6 +35008,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -34911,6 +35102,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35004,6 +35196,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35097,6 +35290,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35190,6 +35384,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35283,6 +35478,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35462,6 +35658,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35555,6 +35752,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35648,6 +35846,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35741,6 +35940,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35834,6 +36034,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -35927,6 +36128,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -36107,6 +36309,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
@@ -36200,6 +36403,7 @@
     ],
     "enabled": true,
     "enabledTypes": [
+      "ore",
       "dust_tiny",
       "dust_small",
       "dust",
