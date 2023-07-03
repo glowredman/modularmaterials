@@ -8093,9 +8093,9 @@
       "spring"
     ],
     "color": {
-      "red": 27,
-      "green": 207,
-      "blue": 27,
+      "red": 70,
+      "green": 250,
+      "blue": 70,
       "alpha": 0
     },
     "burnTime": 0,
@@ -8444,9 +8444,9 @@
       "spring"
     ],
     "color": {
-      "red": 207,
-      "green": 27,
-      "blue": 27,
+      "red": 250,
+      "green": 70,
+      "blue": 70,
       "alpha": 0
     },
     "burnTime": 0,
@@ -10915,8 +10915,8 @@
       "spring"
     ],
     "color": {
-      "red": 212,
-      "green": 212,
+      "red": 255,
+      "green": 255,
       "blue": 0,
       "alpha": 0
     },
@@ -11251,9 +11251,9 @@
       "spring"
     ],
     "color": {
-      "red": 46,
-      "green": 102,
-      "blue": 92,
+      "red": 89,
+      "green": 145,
+      "blue": 135,
       "alpha": 0
     },
     "burnTime": 0,
@@ -11481,9 +11481,9 @@
       "gear"
     ],
     "color": {
-      "red": 212,
-      "green": 157,
-      "blue": 17,
+      "red": 255,
+      "green": 200,
+      "blue": 60,
       "alpha": 0
     },
     "burnTime": 0,
@@ -11825,9 +11825,9 @@
       "spring"
     ],
     "color": {
-      "red": 7,
-      "green": 7,
-      "blue": 7,
+      "red": 50,
+      "green": 50,
+      "blue": 50,
       "alpha": 0
     },
     "burnTime": 0,
@@ -11942,9 +11942,9 @@
       "spring"
     ],
     "color": {
-      "red": -13,
-      "green": -13,
-      "blue": -13,
+      "red": 30,
+      "green": 30,
+      "blue": 30,
       "alpha": 0
     },
     "burnTime": 0,
@@ -12274,9 +12274,9 @@
       "gear"
     ],
     "color": {
-      "red": 107,
+      "red": 150,
       "green": 100,
-      "blue": 157,
+      "blue": 200,
       "alpha": 0
     },
     "burnTime": 0,
@@ -14099,7 +14099,7 @@
       "liquid"
     ],
     "color": {
-      "red": 21,
+      "red": 64,
       "green": 0,
       "blue": 0,
       "alpha": 0
@@ -14198,7 +14198,7 @@
       "rod_long"
     ],
     "color": {
-      "red": 157,
+      "red": 200,
       "green": 20,
       "blue": 0,
       "alpha": 0
@@ -16723,9 +16723,9 @@
       "rod_long"
     ],
     "color": {
-      "red": 298,
-      "green": 298,
-      "blue": 298,
+      "red": 255,
+      "green": 255,
+      "blue": 255,
       "alpha": 0
     },
     "burnTime": 50000,
@@ -17854,9 +17854,9 @@
       "rod_long"
     ],
     "color": {
-      "red": 167,
-      "green": 167,
-      "blue": 187,
+      "red": 210,
+      "green": 210,
+      "blue": 230,
       "alpha": 0
     },
     "burnTime": 0,
@@ -18271,8 +18271,8 @@
       "gear"
     ],
     "color": {
-      "red": 212,
-      "green": 212,
+      "red": 255,
+      "green": 255,
       "blue": 0,
       "alpha": 0
     },
@@ -19074,9 +19074,9 @@
       "rod_long"
     ],
     "color": {
-      "red": 57,
-      "green": 157,
-      "blue": 212,
+      "red": 100,
+      "green": 200,
+      "blue": 255,
       "alpha": 0
     },
     "burnTime": 32,
@@ -20047,8 +20047,8 @@
       "gear"
     ],
     "color": {
-      "red": 212,
-      "green": 212,
+      "red": 255,
+      "green": 255,
       "blue": 0,
       "alpha": 0
     },
@@ -20148,7 +20148,7 @@
       "gear"
     ],
     "color": {
-      "red": 212,
+      "red": 255,
       "green": 0,
       "blue": 0,
       "alpha": 0
@@ -20250,7 +20250,7 @@
     ],
     "color": {
       "red": 0,
-      "green": 212,
+      "green": 255,
       "blue": 0,
       "alpha": 0
     },
@@ -20352,7 +20352,7 @@
     "color": {
       "red": 0,
       "green": 0,
-      "blue": 212,
+      "blue": 255,
       "alpha": 0
     },
     "burnTime": 160,
@@ -20451,9 +20451,9 @@
       "gear"
     ],
     "color": {
-      "red": 105,
-      "green": 105,
-      "blue": 105,
+      "red": 62,
+      "green": 62,
+      "blue": 62,
       "alpha": 0
     },
     "burnTime": 320,
@@ -20552,9 +20552,9 @@
       "gear"
     ],
     "color": {
-      "red": 209,
-      "green": 209,
-      "blue": 209,
+      "red": 252,
+      "green": 252,
+      "blue": 252,
       "alpha": 0
     },
     "burnTime": 240,
@@ -24116,8 +24116,8 @@
       "plate"
     ],
     "color": {
-      "red": 212,
-      "green": 212,
+      "red": 255,
+      "green": 255,
       "blue": 0,
       "alpha": 0
     },
@@ -27082,8 +27082,8 @@
       "dust"
     ],
     "color": {
-      "red": 212,
-      "green": 85,
+      "red": 255,
+      "green": 128,
       "blue": 0,
       "alpha": 0
     },
