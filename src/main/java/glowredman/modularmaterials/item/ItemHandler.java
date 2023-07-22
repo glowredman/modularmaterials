@@ -69,10 +69,18 @@ public class ItemHandler {
         if(!event.getRegistryKey().equals(Registries.CREATIVE_MODE_TAB)) {
             return;
         }
-		tabBlocks = createCreativeModeTab(event, "blocks", Blocks.IRON_BLOCK);
-		tabOres = createCreativeModeTab(event, "ores", Blocks.IRON_ORE);
-		tabItems = createCreativeModeTab(event, "items", Items.IRON_INGOT);
-		tabFluids = createCreativeModeTab(event, "fluids", Items.WATER_BUCKET);
+        if(!MM_Reference.BLOCKS.isEmpty()) {
+            tabBlocks = createCreativeModeTab(event, "blocks", Blocks.IRON_BLOCK);
+        }
+        if(!MM_Reference.ORES.isEmpty()) {
+            tabOres = createCreativeModeTab(event, "ores", Blocks.IRON_ORE);
+        }
+        if(!MM_Reference.ITEMS.isEmpty()) {
+            tabItems = createCreativeModeTab(event, "items", Items.IRON_INGOT);
+        }
+        if(!MM_Reference.BUCKETS.isEmpty()) {
+            tabFluids = createCreativeModeTab(event, "fluids", Items.WATER_BUCKET);
+        }
 	}
 	
 	@SubscribeEvent
