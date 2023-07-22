@@ -3,6 +3,10 @@ package glowredman.modularmaterials.client;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
+import glowredman.modularmaterials.data.object.MM_Material;
+import glowredman.modularmaterials.data.object.sub.ChemicalState;
+import glowredman.modularmaterials.data.object.sub.PulseMode;
+import glowredman.modularmaterials.fluid.MetaFluid;
 import glowredman.modularmaterials.item.MetaBlockItem;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
@@ -12,15 +16,20 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class ClientHandler {
+
+    private boolean pulseDirectionPos = true;
 	
 	public ClientHandler() {
 		MinecraftForge.EVENT_BUS.addListener(this::colorTooltips);
 		MinecraftForge.EVENT_BUS.addListener(this::modifyTooltips);
+        MinecraftForge.EVENT_BUS.addListener(this::tickClient);
 	}
 	
 	@SubscribeEvent
@@ -35,7 +44,7 @@ public class ClientHandler {
 		for(MetaItem item : MM_Reference.ITEMS) {
 			event.register((stack, tintIndex) -> {
 				if(tintIndex == 0) {
-					return item.material.color.getRGB();
+					return item.material.color.getPulseRGB();
 				} else {
 					return 0xFFFFFFFF;
 				}
@@ -46,7 +55,11 @@ public class ClientHandler {
 		for(MetaBucketItem bucket : MM_Reference.BUCKETS) {
 			event.register((stack, tintIndex) -> {
 				if(tintIndex == 1) {
-					return bucket.fluid().material.color.getARGB();
+				    MetaFluid fluid = bucket.fluid();
+				    MM_Material material = fluid.material;
+					return material.state == ChemicalState.SOLID && fluid.type.state == ChemicalState.LIQUID
+					        ? material.color.getPulseMoltenARGB()
+					        : material.color.getPulseARGB();
 				} else {
 					return 0xFFFFFFFF;
 				}
@@ -57,7 +70,7 @@ public class ClientHandler {
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			event.register((stack, tintIndex) -> {
 				if(tintIndex == 0) {
-					return block.material.color.getRGB();
+					return block.material.color.getPulseRGB();
 				} else {
 					return 0xFFFFFF;
 				}
@@ -68,7 +81,7 @@ public class ClientHandler {
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
 			event.register((stack, tintIndex) -> {
 				if(tintIndex == 1) {
-					return ore.getMaterial().color.getRGB();
+					return ore.getMaterial().color.getPulseRGB();
 				} else {
 					return 0xFFFFFF;
 				}
@@ -83,7 +96,7 @@ public class ClientHandler {
 		for(MetaBlock block : MM_Reference.BLOCKS) {
 			event.register((state, blockAndTintGetter, pos, tintIndex) -> {
 				if(tintIndex == 0) {
-					return block.material.color.getRGB();
+					return block.material.color.getPulseRGB();
 				} else {
 					return 0xFFFFFF;
 				}
@@ -94,7 +107,7 @@ public class ClientHandler {
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
 			event.register((state, blockAndTintGetter, pos, tintIndex) -> {
 				if(tintIndex == 1) {
-					return ore.getMaterial().color.getRGB();
+					return ore.getMaterial().color.getPulseRGB();
 				} else {
 					return 0xFFFFFF;
 				}
@@ -143,4 +156,19 @@ public class ClientHandler {
 		}
 	}
 
+    private void tickClient(TickEvent.ClientTickEvent event) {
+        if(event.phase == Phase.START) return;
+        
+        if(this.pulseDirectionPos) {
+            PulseMode.colorDeviation++;
+            if(PulseMode.colorDeviation >= 50) {
+                this.pulseDirectionPos = !this.pulseDirectionPos;
+            }
+        } else {
+            PulseMode.colorDeviation--;
+            if(PulseMode.colorDeviation <= 0) {
+                this.pulseDirectionPos = !this.pulseDirectionPos;
+            }
+        }
+    }
 }

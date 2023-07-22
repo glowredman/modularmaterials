@@ -6,6 +6,7 @@ import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.client.ClientHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
+import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -16,11 +17,13 @@ import net.minecraftforge.fluids.FluidType;
 public class MetaFluidType extends FluidType {
 	
 	private final MM_Material material;
+	private final MM_Type type;
 	private final String typeName;
 
 	public MetaFluidType(MM_Material material, MM_Type type, String typeName) {
 		super(getProperties(material, type));
 		this.material = material;
+		this.type = type;
 		this.typeName = typeName;
 	}
 	
@@ -55,7 +58,10 @@ public class MetaFluidType extends FluidType {
 			 */
 			@Override
 			public int getTintColor() {
-				return material.color.getARGB();
+			    if(material.state == ChemicalState.SOLID && type.state == ChemicalState.LIQUID) {
+			        return material.color.getPulseMoltenARGB();
+			    }
+				return material.color.getPulseARGB();
 			}
 		});
 	}
