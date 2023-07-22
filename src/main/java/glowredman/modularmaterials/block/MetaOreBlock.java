@@ -2,6 +2,8 @@ package glowredman.modularmaterials.block;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
@@ -28,7 +30,7 @@ public class MetaOreBlock extends Block implements IMetaOre {
 	}
 	
 	@Override
-	public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+	public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 		if(MM_Reference.CONFIG.oresHaveTooltip) material.createTooltip(pTooltip);
 	}
 

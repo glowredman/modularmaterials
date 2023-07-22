@@ -2,6 +2,8 @@ package glowredman.modularmaterials.item;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.TagHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
@@ -31,8 +33,8 @@ public class MetaItem extends Item {
 	}
 	
 	@Override
-	public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-		if(type.hasTooltip) material.createTooltip(pTooltip);
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+		if(type.hasTooltip) material.createTooltip(pTooltipComponents);
 	}
 	
 	@Override

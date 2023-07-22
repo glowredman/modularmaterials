@@ -3,6 +3,8 @@ package glowredman.modularmaterials.item;
 import java.util.List;
 import java.util.function.Supplier;
 
+import javax.annotation.Nullable;
+
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.fluid.MetaFluid;
@@ -61,7 +63,7 @@ public class MetaBucketItem extends BucketItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
 		if (fluid().type.hasTooltip) {
 			fluid().material.createTooltip(pTooltipComponents);
 		}
@@ -88,7 +90,7 @@ public class MetaBucketItem extends BucketItem {
 	}
 
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
+	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
 		return new FluidBucketWrapper(stack);
 	}
 
@@ -152,7 +154,7 @@ public class MetaBucketItem extends BucketItem {
 				} else {
 					BlockState blockstate = pLevel.getBlockState(blockpos);
 					BlockPos blockpos2 = canBlockContainFluid(pLevel, blockpos, blockstate) ? blockpos : blockpos1;
-					if (this.emptyContents(pPlayer, pLevel, blockpos2, blockhitresult)) {
+					if (this.emptyContents(pPlayer, pLevel, blockpos2, blockhitresult, itemstack)) {
 						this.checkExtraContent(pPlayer, pLevel, itemstack, blockpos2);
 						if (pPlayer instanceof ServerPlayer) {
 							CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) pPlayer, blockpos2, itemstack);
@@ -171,13 +173,13 @@ public class MetaBucketItem extends BucketItem {
 	}
 
 	@Override
-	public boolean emptyContents(Player pPlayer, Level pLevel, BlockPos pPos, BlockHitResult pResult) {
+	public boolean emptyContents(@Nullable Player pPlayer, Level pLevel, BlockPos pPos, @Nullable BlockHitResult pResult, @Nullable ItemStack container) {
 		BlockState blockstate = pLevel.getBlockState(pPos);
 		Block block = blockstate.getBlock();
 		boolean canBeReplaced = blockstate.canBeReplaced(this.getFluid());
 		boolean canPlaceLiquid = blockstate.isAir() || canBeReplaced || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
 		if (!canPlaceLiquid) {
-			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null);
+			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null, container);
 		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.WATER)) {
 			int x = pPos.getX();
 			int y = pPos.getY();
@@ -208,7 +210,7 @@ public class MetaBucketItem extends BucketItem {
 	}
 
 	@Override
-	protected void playEmptySound(Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
+	protected void playEmptySound(@Nullable Player pPlayer, LevelAccessor pLevel, BlockPos pPos) {
 		SoundEvent soundevent = this.getFluid().getFluidType().getSound(SoundActions.BUCKET_EMPTY);
 		if (soundevent == null) {
 		    soundevent = TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.LAVA) ? SoundEvents.BUCKET_EMPTY_LAVA : SoundEvents.BUCKET_EMPTY;
