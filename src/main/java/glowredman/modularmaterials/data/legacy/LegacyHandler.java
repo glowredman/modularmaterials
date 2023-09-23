@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonSyntaxException;
 
+import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.JSONHandler;
 import glowredman.modularmaterials.data.object.MM_Material;
@@ -88,7 +89,7 @@ public class LegacyHandler {
 	
 	public static String baseBlock(String baseBlock, CommandSourceStack css) {
 		if(baseBlock == null) return null;
-		String[] split = baseBlock.split(":", 3);
+		String[] split = MM_Reference.COLON_SPLITTER.split(baseBlock, 3);
 		if(split.length == 1) {
 			return "minecraft:" + split[0];
 		}

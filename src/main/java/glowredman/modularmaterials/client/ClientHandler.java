@@ -11,6 +11,7 @@ import glowredman.modularmaterials.item.MetaBlockItem;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import glowredman.modularmaterials.item.MetaItem;
 import glowredman.modularmaterials.item.MetaOreBlockItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -151,8 +152,8 @@ public class ClientHandler {
 	}
 	
 	private void modifyTooltips(ItemTooltipEvent event) {
-		if(event.getItemStack().getItem() instanceof BucketItem) {
-			event.getToolTip().add(Component.literal("Temperature: " + ((BucketItem) event.getItemStack().getItem()).getFluid().getFluidType().getTemperature() + "K"));
+		if(event.getItemStack().getItem() instanceof BucketItem bucket) {
+			event.getToolTip().add(Component.translatable("item.modularmaterials.bucket.desc", bucket.getFluid().getFluidType().getTemperature()).withStyle(ChatFormatting.GRAY));
 		}
 	}
 

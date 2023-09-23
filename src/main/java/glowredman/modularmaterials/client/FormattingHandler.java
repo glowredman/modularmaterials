@@ -6,6 +6,8 @@ import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
+import glowredman.modularmaterials.MM_Reference;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
 public class FormattingHandler {
@@ -32,7 +34,7 @@ public class FormattingHandler {
 			line = finishedLine + line.substring(endOfSequence + formattingCharLenght);
 		}
 		
-		return Component.literal(line);
+		return Component.literal(line).withStyle(ChatFormatting.GRAY);
 	}
 
 	private static String formatKey(String line, String trigger, int key1, int key2, boolean invert) {
@@ -48,7 +50,7 @@ public class FormattingHandler {
 
 	private static String formatAnimated(String string) {
 		//extract
-		String[] segments = string.split(":", 4);
+		String[] segments = MM_Reference.COLON_SPLITTER.split(string, 4);
 		int posstep = Integer.parseInt(segments[0]);
 		double delay = Double.parseDouble(segments[1]); //delay between each shift in ms
 		String[] formattingArray = segments[2].split(",");

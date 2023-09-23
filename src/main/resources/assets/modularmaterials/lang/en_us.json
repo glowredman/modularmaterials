@@ -2,5 +2,6 @@
     "itemGroup.modularmaterials.blocks": "Modular Materials: Blocks",
     "itemGroup.modularmaterials.ores": "Modular Materials: Ores",
     "itemGroup.modularmaterials.items": "Modular Materials: Items",
-    "itemGroup.modularmaterials.fluids": "Modular Materials: Fluids"
+    "itemGroup.modularmaterials.fluids": "Modular Materials: Fluids",
+    "item.modularmaterials.bucket.desc": "Temperature: %1$dK"
 }

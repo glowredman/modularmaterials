@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -33,6 +34,7 @@ public class MM_Reference {
 	public static final String ALT_PRESSED_FORMATTING = "\u00a7t";
 	public static final String ALT_NOT_PRESSED_FORMATTING = "\u00a7T";
 	public static final String ANIMATED_FORMATTING = "\u00a7s";
+	public static final Pattern COLON_SPLITTER = Pattern.compile(":");
 	
 	//Mod
 	public static final String MODID = "modularmaterials";
