@@ -16,15 +16,14 @@ import glowredman.modularmaterials.fluid.FluidHandler;
 import glowredman.modularmaterials.item.ItemHandler;
 import glowredman.modularmaterials.worldgen.FeatureVeinLayer;
 import net.minecraft.server.packs.PackType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 
 @Mod(MM_Reference.MODID)
 public class ModularMaterials {
@@ -32,15 +31,15 @@ public class ModularMaterials {
 	public static final Logger LOGGER = LogManager.getLogger(MM_Reference.MODID);
 	
 	public ModularMaterials() {
-		MinecraftForge.EVENT_BUS.register(new MM_Commands());
+		NeoForge.EVENT_BUS.register(new MM_Commands());
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modBus.register(this);
 		modBus.register(new FluidHandler());
 		modBus.register(new BlockHandler());
 		modBus.register(new ItemHandler());
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			modBus.register(new ClientHandler());
-		});
+		if(FMLEnvironment.dist.isClient()) {
+            modBus.register(new ClientHandler());
+		}
 	}
 	
 	@SubscribeEvent

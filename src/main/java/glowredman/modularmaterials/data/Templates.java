@@ -87,8 +87,8 @@ public enum Templates {
     
     MODEL_BUCKET(
     		"{",
-    		"  \"parent\": \"forge:item/bucket\",",
-    		"  \"loader\": \"forge:fluid_container\",",
+    		"  \"parent\": \"neoforge:item/bucket\",",
+    		"  \"loader\": \"neoforge:fluid_container\",",
     		"  \"fluid\": \"%1$s\",",
     		"  \"flip_gas\": true,",
     		"  \"apply_tint\": true,",
@@ -97,8 +97,8 @@ public enum Templates {
     
     MODEL_BUCKET_DRIP(
     		"{",
-    		"  \"parent\": \"forge:item/bucket_drip\",",
-    		"  \"loader\": \"forge:fluid_container\",",
+    		"  \"parent\": \"neoforge:item/bucket_drip\",",
+    		"  \"loader\": \"neoforge:fluid_container\",",
     		"  \"fluid\": \"%1$s\",",
     		"  \"flip_gas\": true,",
     		"  \"apply_tint\": true,",

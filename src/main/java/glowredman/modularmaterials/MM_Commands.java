@@ -43,11 +43,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 
 public class MM_Commands {
 

@@ -9,10 +9,10 @@ import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
 
 public class MetaFluidType extends FluidType {
 	

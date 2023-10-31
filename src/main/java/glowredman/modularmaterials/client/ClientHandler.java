@@ -14,23 +14,23 @@ import glowredman.modularmaterials.item.MetaOreBlockItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RenderTooltipEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.TickEvent.Phase;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RenderTooltipEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.neoforge.event.TickEvent.Phase;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public class ClientHandler {
 
     private boolean pulseDirectionPos = true;
 	
 	public ClientHandler() {
-		MinecraftForge.EVENT_BUS.addListener(this::colorTooltips);
-		MinecraftForge.EVENT_BUS.addListener(this::modifyTooltips);
-        MinecraftForge.EVENT_BUS.addListener(this::tickClient);
+	    NeoForge.EVENT_BUS.addListener(this::colorTooltips);
+	    NeoForge.EVENT_BUS.addListener(this::modifyTooltips);
+	    NeoForge.EVENT_BUS.addListener(this::tickClient);
 	}
 	
 	@SubscribeEvent

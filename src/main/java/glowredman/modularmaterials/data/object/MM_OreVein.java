@@ -19,7 +19,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries.Keys;
+import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 
 public class MM_OreVein {
 	

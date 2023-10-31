@@ -19,9 +19,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class BlockHandler {
     

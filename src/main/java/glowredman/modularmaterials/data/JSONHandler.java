@@ -19,7 +19,7 @@ import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_OreVein;
 import glowredman.modularmaterials.data.object.MM_Type;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLPaths;
 
 public class JSONHandler {
 	

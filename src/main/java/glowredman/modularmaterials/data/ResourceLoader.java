@@ -1,16 +1,17 @@
 package glowredman.modularmaterials.data;
 
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.function.Consumer;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.PathPackResources.PathResourcesSupplier;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.Pack.Info;
 import net.minecraft.server.packs.repository.Pack.Position;
+import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.server.packs.repository.RepositorySource;
 import net.minecraft.world.flag.FeatureFlagSet;
@@ -34,40 +35,40 @@ public class ResourceLoader implements RepositorySource {
 					MM_Reference.MODID + "_data", // id
 					Component.literal("Modular Materials Data"), // title
 					true, // required
-					p_251717_ -> new PathPackResources( // resources
-							"Modular Materials Data", // name
-							DATA_DIR, // root
-							false), // isBuiltin
+					new PathResourcesSupplier(
+					        DATA_DIR, // root
+					        false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description
-							10, // dataFormat
-							12, // resourceFormat
+							18, // dataFormat
+							18, // resourceFormat
+							PackCompatibility.COMPATIBLE, // compatibility
 							FeatureFlagSet.of(), // requestedFeatures
+							Collections.emptyList(), // overlays
 							true), // hidden
-					PackType.SERVER_DATA,
 					Position.BOTTOM, // defaultPosition
 					true, // fixedPosition
 					PackSource.DEFAULT)); // packSource
 		} else {
 			ModularMaterials.LOGGER.info("Loading resourcepack.");
 			pOnLoad.accept(Pack.create(
-					MM_Reference.MODID + "_resources", // id
-					Component.literal("Modular Materials Resources"), // title
-					true, // required
-					p_251717_ -> new PathPackResources( // resources
-							"Modular Materials Resources", // name
-							RESOURCES_DIR, // root
-							false), // isBuiltin
-					new Info( // info
-							Component.empty(), // description
-							10, // dataFormat
-							12, // resourceFormat
-							FeatureFlagSet.of(), // requestedFeatures
-							true), // hidden
-					PackType.CLIENT_RESOURCES,
-					Position.BOTTOM, // defaultPosition
-					true, // fixedPosition
-					PackSource.DEFAULT)); // packSource
+                    MM_Reference.MODID + "_resources", // id
+                    Component.literal("Modular Materials Resources"), // title
+                    true, // required
+                    new PathResourcesSupplier(
+                            RESOURCES_DIR, // root
+                            false), // isBuiltin
+                    new Info( // info
+                            Component.empty(), // description
+                            18, // dataFormat
+                            18, // resourceFormat
+                            PackCompatibility.COMPATIBLE, // compatibility
+                            FeatureFlagSet.of(), // requestedFeatures
+                            Collections.emptyList(), // overlays
+                            true), // hidden
+                    Position.BOTTOM, // defaultPosition
+                    true, // fixedPosition
+                    PackSource.DEFAULT)); // packSource
 		}
 	}
 

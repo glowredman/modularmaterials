@@ -10,14 +10,14 @@ import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.item.MetaBucketItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.RegisterEvent;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 public class FluidHandler {
     
@@ -49,7 +49,7 @@ public class FluidHandler {
                         RegistryObject<MetaFluid> fluidS = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName), ForgeRegistries.FLUIDS);
                         RegistryObject<MetaFluid> fluidF = RegistryObject.create(new ResourceLocation(MM_Reference.MODID, "flowing_" + typeName + "." + materialName), ForgeRegistries.FLUIDS);
                         RegistryObject<MetaFluidType> fluidType = FLUID_TYPES.register(typeName + "." + materialName, () -> new MetaFluidType(material, type, typeName));
-                        ForgeFlowingFluid.Properties p = new ForgeFlowingFluid.Properties(fluidType, fluidS, fluidF);
+                        BaseFlowingFluid.Properties p = new BaseFlowingFluid.Properties(fluidType, fluidS, fluidF);
                         
                         if(MM_Reference.CONFIG.enableBuckets) {
                             ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, "bucket." + fluidS.getId().getPath());

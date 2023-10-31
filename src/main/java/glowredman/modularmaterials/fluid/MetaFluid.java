@@ -8,9 +8,9 @@ import glowredman.modularmaterials.data.object.sub.ChemicalState;
 import glowredman.modularmaterials.data.object.sub.FluidProperties.StateBasedProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-public class MetaFluid extends ForgeFlowingFluid {
+public class MetaFluid extends BaseFlowingFluid {
 	
 	public final MM_Type type;
 	public final MM_Material material;

@@ -43,10 +43,10 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.common.capabilities.ICapabilityProvider;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 public class MetaBucketItem extends BucketItem {
 	
@@ -118,7 +118,7 @@ public class MetaBucketItem extends BucketItem {
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
 		ItemStack itemstack = pPlayer.getItemInHand(pHand);
 		BlockHitResult blockhitresult = getPlayerPOVHitResult(pLevel, pPlayer, this.getFluid() == Fluids.EMPTY ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE);
-		InteractionResultHolder<ItemStack> ret = ForgeEventFactory.onBucketUse(pPlayer, pLevel, itemstack, blockhitresult);
+		InteractionResultHolder<ItemStack> ret = EventHooks.onBucketUse(pPlayer, pLevel, itemstack, blockhitresult);
 		if (ret != null)
 			return ret;
 		if (blockhitresult.getType() == HitResult.Type.MISS) {
@@ -134,7 +134,7 @@ public class MetaBucketItem extends BucketItem {
 					BlockState blockstate1 = pLevel.getBlockState(blockpos);
 					if (blockstate1.getBlock() instanceof BucketPickup) {
 						BucketPickup bucketpickup = (BucketPickup) blockstate1.getBlock();
-						ItemStack itemstack1 = bucketpickup.pickupBlock(pLevel, blockpos, blockstate1);
+						ItemStack itemstack1 = bucketpickup.pickupBlock(pPlayer, pLevel, blockpos, blockstate1);
 						if (!itemstack1.isEmpty()) {
 							pPlayer.awardStat(Stats.ITEM_USED.get(this));
 							bucketpickup.getPickupSound(blockstate1).ifPresent((p_150709_) -> {
@@ -153,7 +153,7 @@ public class MetaBucketItem extends BucketItem {
 					return InteractionResultHolder.fail(itemstack);
 				} else {
 					BlockState blockstate = pLevel.getBlockState(blockpos);
-					BlockPos blockpos2 = canBlockContainFluid(pLevel, blockpos, blockstate) ? blockpos : blockpos1;
+					BlockPos blockpos2 = canBlockContainFluid(pPlayer, pLevel, blockpos, blockstate) ? blockpos : blockpos1;
 					if (this.emptyContents(pPlayer, pLevel, blockpos2, blockhitresult, itemstack)) {
 						this.checkExtraContent(pPlayer, pLevel, itemstack, blockpos2);
 						if (pPlayer instanceof ServerPlayer) {
@@ -177,7 +177,7 @@ public class MetaBucketItem extends BucketItem {
 		BlockState blockstate = pLevel.getBlockState(pPos);
 		Block block = blockstate.getBlock();
 		boolean canBeReplaced = blockstate.canBeReplaced(this.getFluid());
-		boolean canPlaceLiquid = blockstate.isAir() || canBeReplaced || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, this.getFluid());
+		boolean canPlaceLiquid = blockstate.isAir() || canBeReplaced || block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pPlayer, pLevel, pPos, blockstate, this.getFluid());
 		if (!canPlaceLiquid) {
 			return pResult != null && this.emptyContents(pPlayer, pLevel, pResult.getBlockPos().relative(pResult.getDirection()), (BlockHitResult) null, container);
 		} else if (pLevel.dimensionType().ultraWarm() && TagHelper.hasTag(pLevel.registryAccess(), this.getFluid(), FluidTags.WATER)) {
@@ -191,7 +191,7 @@ public class MetaBucketItem extends BucketItem {
 			}
 
 			return true;
-		} else if (block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pLevel, pPos, blockstate, getFluid())) {
+		} else if (block instanceof LiquidBlockContainer && ((LiquidBlockContainer) block).canPlaceLiquid(pPlayer, pLevel, pPos, blockstate, getFluid())) {
 			((LiquidBlockContainer) block).placeLiquid(pLevel, pPos, blockstate, ((FlowingFluid) this.getFluid()).getSource(false));
 			this.playEmptySound(pPlayer, pLevel, pPos);
 			return true;

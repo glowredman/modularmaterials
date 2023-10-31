@@ -3,6 +3,8 @@ package glowredman.modularmaterials.block;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+import javax.annotation.Nullable;
+
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.fluid.MetaFluid;
@@ -11,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -24,7 +27,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.event.ForgeEventFactory;
+import net.neoforged.neoforge.event.EventHooks;
 
 public class MetaFluidBlock extends LiquidBlock {
 
@@ -103,13 +106,13 @@ public class MetaFluidBlock extends LiquidBlock {
 				BlockPos blockpos = pPos.relative(direction.getOpposite());
 				if (pLevel.getFluidState(blockpos).is(FluidTags.WATER)) {
 					Block block = pLevel.getFluidState(pPos).isSource() ? Blocks.OBSIDIAN : Blocks.COBBLESTONE;
-					pLevel.setBlockAndUpdate(pPos, ForgeEventFactory.fireFluidPlaceBlockEvent(pLevel, pPos, pPos, block.defaultBlockState()));
+					pLevel.setBlockAndUpdate(pPos, EventHooks.fireFluidPlaceBlockEvent(pLevel, pPos, pPos, block.defaultBlockState()));
 					this.fizz(pLevel, pPos);
 					return false;
 				}
 
 				if (flag && pLevel.getBlockState(blockpos).is(Blocks.BLUE_ICE)) {
-					pLevel.setBlockAndUpdate(pPos, ForgeEventFactory.fireFluidPlaceBlockEvent(pLevel, pPos, pPos, Blocks.BASALT.defaultBlockState()));
+					pLevel.setBlockAndUpdate(pPos, EventHooks.fireFluidPlaceBlockEvent(pLevel, pPos, pPos, Blocks.BASALT.defaultBlockState()));
 					this.fizz(pLevel, pPos);
 					return false;
 				}
@@ -124,7 +127,7 @@ public class MetaFluidBlock extends LiquidBlock {
 	}
 	
 	@Override
-	public ItemStack pickupBlock(LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
+	public ItemStack pickupBlock(@Nullable Player pPlayer, LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
 		if (pState.getValue(LEVEL) == 0) {
 			pLevel.setBlock(pPos, Blocks.AIR.defaultBlockState(), 11);
 			return new ItemStack(this.getFluid().getBucket());
