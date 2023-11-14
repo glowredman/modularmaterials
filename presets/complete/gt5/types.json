@@ -14,7 +14,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Tiny Pile of \u003cm\u003e Dust",
-    "tags": []
+    "tags": [
+      "forge:dusts_tiny",
+      "forge:dusts_tiny/\u003cm\u003e"
+    ]
   },
   "dust_small": {
     "enabled": true,
@@ -31,7 +34,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Small Pile of \u003cm\u003e Dust",
-    "tags": []
+    "tags": [
+      "forge:dusts_small",
+      "forge:dusts_small/\u003cm\u003e"
+    ]
   },
   "dust": {
     "enabled": true,
@@ -48,7 +54,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Dust",
-    "tags": []
+    "tags": [
+      "forge:dusts",
+      "forge:dusts/\u003cm\u003e"
+    ]
   },
   "dust_impure": {
     "enabled": true,
@@ -65,7 +74,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Impure Pile of \u003cm\u003e Dust",
-    "tags": []
+    "tags": [
+      "forge:dusts_impure",
+      "forge:dusts_impure/\u003cm\u003e"
+    ]
   },
   "dust_pure": {
     "enabled": true,
@@ -82,7 +94,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Purified Pile of \u003cm\u003e Dust",
-    "tags": []
+    "tags": [
+      "forge:dusts_pure",
+      "forge:dusts_pure/\u003cm\u003e"
+    ]
   },
   "crushed": {
     "enabled": true,
@@ -99,7 +114,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Crushed \u003cm\u003e Ore",
-    "tags": []
+    "tags": [
+      "forge:crushed_ores",
+      "forge:crushed_ores/\u003cm\u003e"
+    ]
   },
   "crushed_purified": {
     "enabled": true,
@@ -116,7 +134,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Purified \u003cm\u003e Ore",
-    "tags": []
+    "tags": [
+      "forge:crushed_ores_purified",
+      "forge:crushed_ores_purified/\u003cm\u003e"
+    ]
   },
   "crushed_centrifuged": {
     "enabled": true,
@@ -133,7 +154,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Centrifuged \u003cm\u003e Ore",
-    "tags": []
+    "tags": [
+      "forge:crushed_ores_centrifuged",
+      "forge:crushed_ores_centrifuged/\u003cm\u003e"
+    ]
   },
   "gem": {
     "enabled": true,
@@ -170,7 +194,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Nugget",
-    "tags": []
+    "tags": [
+      "forge:nuggets",
+      "forge:nuggets/\u003cm\u003e"
+    ]
   },
   "ingot": {
     "enabled": true,
@@ -187,7 +214,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Ingot",
-    "tags": []
+    "tags": [
+      "forge:ingots",
+      "forge:ingots/\u003cm\u003e"
+    ]
   },
   "ingot_hot": {
     "enabled": true,
@@ -204,7 +234,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Hot \u003cm\u003e Ingot",
-    "tags": []
+    "tags": [
+      "forge:ingots_hot",
+      "forge:ingots_hot/\u003cm\u003e"
+    ]
   },
   "ingot_double": {
     "enabled": true,
@@ -301,7 +334,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates",
+      "forge:plates/\u003cm\u003e"
+    ]
   },
   "plate_double": {
     "enabled": true,
@@ -318,7 +354,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Double \u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates_double",
+      "forge:plates_double/\u003cm\u003e"
+    ]
   },
   "plate_triple": {
     "enabled": true,
@@ -335,7 +374,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Triple \u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates_triple",
+      "forge:plates_triple/\u003cm\u003e"
+    ]
   },
   "plate_quadruple": {
     "enabled": true,
@@ -352,7 +394,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Quadruple \u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates_quadruples",
+      "forge:plates_quadruples/\u003cm\u003e"
+    ]
   },
   "plate_quintuple": {
     "enabled": true,
@@ -369,7 +414,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Quintuple \u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates_quintuples",
+      "forge:plates_quintuples/\u003cm\u003e"
+    ]
   },
   "plate_dense": {
     "enabled": true,
@@ -386,7 +434,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Dense \u003cm\u003e Plate",
-    "tags": []
+    "tags": [
+      "forge:plates_dense",
+      "forge:plates_dense/\u003cm\u003e"
+    ]
   },
   "rod": {
     "enabled": true,
@@ -403,7 +454,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Rod",
-    "tags": []
+    "tags": [
+      "forge:rods",
+      "forge:rods/\u003cm\u003e"
+    ]
   },
   "lens": {
     "enabled": true,
@@ -420,7 +474,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Lens",
-    "tags": []
+    "tags": [
+      "forge:lenses",
+      "forge:lenses/\u003cm\u003e"
+    ]
   },
   "round": {
     "enabled": true,
@@ -437,7 +494,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Round",
-    "tags": []
+    "tags": [
+      "forge:rounds",
+      "forge:rounds/\u003cm\u003e"
+    ]
   },
   "bolt": {
     "enabled": true,
@@ -454,7 +514,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Bolt",
-    "tags": []
+    "tags": [
+      "forge:bolts",
+      "forge:bolts/\u003cm\u003e"
+    ]
   },
   "screw": {
     "enabled": true,
@@ -471,7 +534,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Screw",
-    "tags": []
+    "tags": [
+      "forge:screws",
+      "forge:screws/\u003cm\u003e"
+    ]
   },
   "ring": {
     "enabled": true,
@@ -488,7 +554,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Ring",
-    "tags": []
+    "tags": [
+      "forge:rings",
+      "forge:rings/\u003cm\u003e"
+    ]
   },
   "foil": {
     "enabled": true,
@@ -505,7 +574,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Foil",
-    "tags": []
+    "tags": [
+      "forge:foils",
+      "forge:foils/\u003cm\u003e"
+    ]
   },
   "liquid": {
     "enabled": true,
@@ -543,7 +615,7 @@
   },
   "plasma": {
     "enabled": true,
-    "tagName": "plasma",
+    "tagName": "plasmas",
     "category": "FLUID",
     "state": "GASEOUS",
     "burnTimeMultiplier": 0.0,
@@ -573,7 +645,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Fine \u003cm\u003e Wire",
-    "tags": []
+    "tags": [
+      "forge:wires_fine",
+      "forge:wires_fine/\u003cm\u003e"
+    ]
   },
   "gear_small": {
     "enabled": true,
@@ -590,7 +665,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Small \u003cm\u003e Gear",
-    "tags": []
+    "tags": [
+      "forge:gears_small",
+      "forge:gears_small/\u003cm\u003e"
+    ]
   },
   "rotor": {
     "enabled": true,
@@ -607,7 +685,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Rotor",
-    "tags": []
+    "tags": [
+      "forge:rotors",
+      "forge:rotors/\u003cm\u003e"
+    ]
   },
   "rod_long": {
     "enabled": true,
@@ -624,7 +705,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Long \u003cm\u003e Rod",
-    "tags": []
+    "tags": [
+      "forge:rods_long",
+      "forge:rods_long/\u003cm\u003e"
+    ]
   },
   "spring_small": {
     "enabled": true,
@@ -641,7 +725,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Small \u003cm\u003e Spring",
-    "tags": []
+    "tags": [
+      "forge:springs_small",
+      "forge:springs_small/\u003cm\u003e"
+    ]
   },
   "spring": {
     "enabled": true,
@@ -658,7 +745,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Spring",
-    "tags": []
+    "tags": [
+      "forge:springs",
+      "forge:springs/\u003cm\u003e"
+    ]
   },
   "gem_chipped": {
     "enabled": true,
@@ -675,7 +765,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Chipped \u003cm\u003e",
-    "tags": []
+    "tags": [
+      "forge:gems_chipped",
+      "forge:gems_chipped/\u003cm\u003e"
+    ]
   },
   "gem_flawed": {
     "enabled": true,
@@ -692,7 +785,10 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "Flawed \u003cm\u003e",
-    "tags": []
+    "tags": [
+      "forge:gems_flawed",
+      "forge:gems_flawed/\u003cm\u003e"
+    ]
   },
   "gem_flawless": {
     "enabled": true,
@@ -749,6 +845,9 @@
     "speedFactorMultiplier": 1.0,
     "hasTooltip": true,
     "nameSyntax": "\u003cm\u003e Gear",
-    "tags": []
+    "tags": [
+      "forge:gears",
+      "forge:gears/\u003cm\u003e"
+    ]
   }
 }
