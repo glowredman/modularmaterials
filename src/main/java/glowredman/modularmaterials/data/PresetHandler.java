@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.file.PathUtils;
@@ -20,8 +20,8 @@ public class PresetHandler {
     
     private static final String[] FILENAMES = {"materials.json", "types.json", "orevariants.json", "oreveins.json"};
 
-	public static List<String> getPresets() {
-		List<String> l = new ArrayList<>();
+	public static Set<String> getPresets() {
+		Set<String> l = new LinkedHashSet<>();
 		BufferedReader r = null;
 		try {
 			URL url = new URL(MM_Reference.CONFIG.presetURL + "index.txt");

@@ -1,9 +1,9 @@
 package glowredman.modularmaterials;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
@@ -47,11 +47,11 @@ public class MM_Reference {
 	public static final Map<String, MM_Material> MATERIALS = JSONHandler.getMaterials();
 	public static final Map<String, MM_OreVariant> ORE_VARIANTS = JSONHandler.getOreVariants();
 	public static final Map<String, MM_OreVein> ORE_VEINS = JSONHandler.getOreVeins();
-	public static final List<String> PRESETS = PresetHandler.getPresets();
-	public static final List<MetaItem> ITEMS = new LinkedList<>();
-	public static final List<MetaBucketItem> BUCKETS = new LinkedList<>();
-	public static final List<MetaBlock> BLOCKS = new LinkedList<>();
-	public static final List<MetaFluid> FLUIDS = new LinkedList<>();
+	public static final Set<String> PRESETS = PresetHandler.getPresets();
+	public static final Set<MetaItem> ITEMS = new LinkedHashSet<>();
+	public static final Set<MetaBucketItem> BUCKETS = new LinkedHashSet<>();
+	public static final Set<MetaBlock> BLOCKS = new LinkedHashSet<>();
+	public static final Set<MetaFluid> FLUIDS = new LinkedHashSet<>();
 	public static final Table<Block, String, IMetaOre> ORES = HashBasedTable.create();
 
 }
