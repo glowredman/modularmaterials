@@ -16,11 +16,12 @@ public class OreProperties {
 	public String material = "STONE";
 	public String sound = "STONE";
 	public List<String> tags = new ArrayList<>();
+	public RawLootTable lootTable;
 	
 	@Override
 	public String toString() {
-		return String.format("{friction: %f, hardness: %f, jumpFactor: %f, lightLevel: %d, resistance: %f, requiresToolForDrops: %b, mapColor: %s, material: %s, soundType: %s, tags: %s}",
-				friction, hardness, jumpFactor, lightLevel, resistance, requiresToolForDrops, mapColor, material, sound, tags);
+		return String.format("{friction: %f, hardness: %f, jumpFactor: %f, lightLevel: %d, resistance: %f, requiresToolForDrops: %b, mapColor: %s, material: %s, soundType: %s, tags: %s, lootTable: %s}",
+				friction, hardness, jumpFactor, lightLevel, resistance, requiresToolForDrops, mapColor, material, sound, tags, lootTable);
 	}
 	
 }

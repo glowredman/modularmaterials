@@ -5,11 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.apache.commons.io.file.PathUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.block.IMetaOre;
 import glowredman.modularmaterials.block.MetaBlock;
+import glowredman.modularmaterials.data.object.sub.RawLootTable;
 
 public class LootTableHandler {
 	
@@ -38,7 +40,14 @@ public class LootTableHandler {
 			Path lootTable = lootTables.resolve(block.registryName.getPath() + ".json");
 			if(Files.notExists(lootTable)) {
 				try {
-                    Files.writeString(lootTable, Templates.LOOTTABLE_BLOCKS.format(block.registryName));
+				    String lines;
+				    RawLootTable rawLootTable = block.material.block.lootTable;
+				    if(rawLootTable == null || StringUtils.isEmpty(rawLootTable.rawJSON)) {
+				        lines = Templates.LOOTTABLE_BLOCKS.format(block.registryName);
+				    } else {
+				        lines = rawLootTable.rawJSON;
+				    }
+                    Files.writeString(lootTable, lines);
                     count++;
                 } catch (IOException e) {
                     ModularMaterials.LOGGER.warn("Failed to create loottable for " + block.registryName, e);
@@ -50,7 +59,14 @@ public class LootTableHandler {
 		    Path lootTable = lootTables.resolve(ore.getRegistryName().getPath() + ".json");
 			if(Files.notExists(lootTable)) {
 			    try {
-                    Files.writeString(lootTable, Templates.LOOTTABLE_BLOCKS.format(ore.getRegistryName()));
+                    String lines;
+                    RawLootTable rawLootTable = ore.getMaterial().ore.lootTable;
+                    if(rawLootTable == null || StringUtils.isEmpty(rawLootTable.rawJSON)) {
+                        lines = Templates.LOOTTABLE_BLOCKS.format(ore.getRegistryName());
+                    } else {
+                        lines = rawLootTable.rawJSON;
+                    }
+                    Files.writeString(lootTable, lines);
                     count++;
                 } catch (IOException e) {
                     ModularMaterials.LOGGER.warn("Failed to create loottable for " + ore.getRegistryName(), e);

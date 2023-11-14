@@ -12,11 +12,12 @@ public class BlockProperties {
 	public String sound = "METAL";
 	public boolean sticky = false;
 	public List<String> tags = new ArrayList<>();
+    public RawLootTable lootTable;
 	
 	@Override
 	public String toString() {
-		return String.format("{friction: %f, hardness: %f, mapColor: %s, sound: %s, sticky: %b, tags: %s}",
-				friction, hardness,  mapColor, sound, sticky, tags);
+		return String.format("{friction: %f, hardness: %f, mapColor: %s, sound: %s, sticky: %b, tags: %s, lootTable: %s}",
+				friction, hardness,  mapColor, sound, sticky, tags, lootTable);
 	}
 
 }

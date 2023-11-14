@@ -12,6 +12,10 @@ import org.apache.logging.log4j.Level;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.ModularMaterials;
@@ -19,12 +23,21 @@ import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
 import glowredman.modularmaterials.data.object.MM_OreVein;
 import glowredman.modularmaterials.data.object.MM_Type;
+import glowredman.modularmaterials.data.object.sub.RawLootTable;
 import net.neoforged.fml.loading.FMLPaths;
 
 public class JSONHandler {
 	
 	public static final Path CONFIG_DIR = FMLPaths.CONFIGDIR.get().resolve(MM_Reference.MODID);
-	public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+	public static final Gson GSON = new GsonBuilder()
+	        .setPrettyPrinting()
+	        .create();
+	public static final Gson GSON_MATERIALS = new GsonBuilder()
+	        .setPrettyPrinting()
+	        .registerTypeAdapter(
+	                new TypeToken<RawLootTable>() {private static final long serialVersionUID = 5500293462812712215L;}.getType(),
+	                new RawDataTableSerializer())
+	        .create();
 	
 	public static Map<String, MM_Material> getMaterials() {
 		long time = System.currentTimeMillis();
@@ -41,7 +54,7 @@ public class JSONHandler {
 			Type listType = new TypeToken<LinkedHashMap<String, MM_Material>>() {
                 private static final long serialVersionUID = 5500293462812712215L;}.getType();
 				
-			materials = GSON.fromJson(Files.readString(path), listType);
+			materials = GSON_MATERIALS.fromJson(Files.readString(path), listType);
 			
 			ModularMaterials.LOGGER.info("Parsed materials.json in {}ms", System.currentTimeMillis() - time);
 			ModularMaterials.LOGGER.printf(Level.DEBUG, "Materials (%d):", materials.size());
@@ -143,5 +156,15 @@ public class JSONHandler {
             ModularMaterials.LOGGER.warn("Failed to create example file", e);
         }
 	}
+    
+    private static class RawDataTableSerializer implements JsonDeserializer<RawLootTable> {
+
+        @Override
+        public RawLootTable deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
+            return new RawLootTable(json.toString());
+        }
+        
+    }
 
 }
