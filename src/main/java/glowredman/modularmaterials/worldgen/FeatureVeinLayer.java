@@ -8,13 +8,14 @@ import glowredman.modularmaterials.ModularMaterials;
 import glowredman.modularmaterials.data.object.MM_OreVein;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class FeatureVeinLayer extends Feature<NoneFeatureConfiguration> {
     
@@ -36,7 +37,7 @@ public class FeatureVeinLayer extends Feature<NoneFeatureConfiguration> {
 
 	public FeatureVeinLayer() {
 		super(NoneFeatureConfiguration.CODEC);
-		ForgeRegistries.FEATURES.register(new ResourceLocation(MM_Reference.MODID, "orevein"), this);
+		Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(MM_Reference.MODID, "orevein"), this);
 	}
 
 	@Override

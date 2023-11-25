@@ -9,7 +9,7 @@ public class TagHelper {
 	
 	public static <T> boolean hasTag(RegistryAccess registryAccess, T object, TagKey<T> tag) {
 		Registry<T> registry = registryAccess.registryOrThrow(tag.registry());
-		return registry.getHolderOrThrow(ResourceKey.create(tag.registry(), registry.getKey(object))).containsTag(tag);
+		return registry.getHolderOrThrow(ResourceKey.create(tag.registry(), registry.getKey(object))).is(tag);
 	}
 
 }

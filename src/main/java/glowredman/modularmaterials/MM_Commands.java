@@ -25,6 +25,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
@@ -46,8 +48,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 
 public class MM_Commands {
 
@@ -68,13 +68,13 @@ public class MM_Commands {
 						stack = commandSourceStack.getPlayerOrException().getMainHandItem();
 					} catch (Exception e) {}
 
-					if (stack == null || ForgeRegistries.ITEMS.getKey(stack.getItem()).equals(ForgeRegistries.ITEMS.getKey(Blocks.AIR.asItem()))) {
+					if (stack == null || BuiltInRegistries.ITEM.getKey(stack.getItem()).equals(BuiltInRegistries.ITEM.getKey(Blocks.AIR.asItem()))) {
 
 						commandSourceStack.sendFailure(Component.literal("Your main hand is empty!").withStyle(style -> style.withColor(ChatFormatting.RED).withItalic(true)));
 
 					} else {
 					    final Item item = stack.getItem();
-						commandSourceStack.sendSuccess(() -> copyable(ForgeRegistries.ITEMS.getKey(item).toString()).withStyle(ChatFormatting.GREEN), false);
+						commandSourceStack.sendSuccess(() -> copyable(BuiltInRegistries.ITEM.getKey(item).toString()).withStyle(ChatFormatting.GREEN), false);
 						stack.getTags().forEach(rl -> commandSourceStack.sendSuccess(() -> Component.literal("  > ").append(copyable(rl.location().toString())), false));
 					}
 					return 0;
@@ -106,15 +106,15 @@ public class MM_Commands {
 		
 		BlockState blockstate = level.getBlockState(pos);
 		Block block = blockstate.getBlock();
-		Registry<Block> blockRegistry = level.registryAccess().registryOrThrow(Keys.BLOCKS);
+		Registry<Block> blockRegistry = level.registryAccess().registryOrThrow(Registries.BLOCK);
 		ResourceLocation blockRegName = blockRegistry.getKey(block);
-		List<TagKey<Block>> blockTags = blockRegistry.getHolderOrThrow(ResourceKey.create(Keys.BLOCKS, blockRegName)).tags().toList();
+		List<TagKey<Block>> blockTags = blockRegistry.getHolderOrThrow(ResourceKey.create(Registries.BLOCK, blockRegName)).tags().toList();
 		
 		FluidState fluidstate = level.getFluidState(pos);
 		Fluid fluid = fluidstate.getType();
-		Registry<Fluid> fluidRegistry = level.registryAccess().registryOrThrow(Keys.FLUIDS);
+		Registry<Fluid> fluidRegistry = level.registryAccess().registryOrThrow(Registries.FLUID);
 		ResourceLocation fluidRegName = fluidRegistry.getKey(fluid);
-		List<TagKey<Fluid>> fluidTags = fluidRegistry.getHolderOrThrow(ResourceKey.create(Keys.FLUIDS, fluidRegName)).tags().toList();
+		List<TagKey<Fluid>> fluidTags = fluidRegistry.getHolderOrThrow(ResourceKey.create(Registries.FLUID, fluidRegName)).tags().toList();
 		FluidType fluidType = fluid.getFluidType();
 
 		commandSourceStack.sendSuccess(() -> Component.literal("Information for ").withStyle(ChatFormatting.GOLD)
@@ -124,7 +124,7 @@ public class MM_Commands {
 				.append(Component.literal(":")).withStyle(ChatFormatting.GOLD), false);
 		
 		commandSourceStack.sendSuccess(() -> Component.literal("Biome: ").withStyle(ChatFormatting.BLUE)
-				.append(copyable(level.registryAccess().registryOrThrow(Keys.BIOMES).getKey(biome.value()).toString())), false);
+				.append(copyable(level.registryAccess().registryOrThrow(Registries.BIOME).getKey(biome.value()).toString())), false);
 		
 		if(!biomeTags.isEmpty()) commandSourceStack.sendSuccess(() -> Component.literal("  Tags: ").withStyle(ChatFormatting.AQUA), false);
 		biomeTags.forEach(rl -> commandSourceStack.sendSuccess(() -> Component.literal("  > ").append(copyable(rl.location().toString())), false));

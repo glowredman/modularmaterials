@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import glowredman.modularmaterials.MM_Reference;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_OreVariant;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +15,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FallingBlock;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 	
@@ -23,11 +23,11 @@ public class MetaFallingOreBlock extends FallingBlock implements IMetaOre {
 	private final ResourceLocation registryName;
 
 	public MetaFallingOreBlock(MM_Material material, MM_OreVariant ore, String uniqueMM_MaterialName, ResourceLocation registryName) {
-		super(BlockHandler.getOreBlockProperties(material, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName));
+		super(BlockHandler.getOreBlockProperties(material, BuiltInRegistries.BLOCK.get(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName));
 		this.material = material;
 		this.variant = ore;
 		this.registryName = registryName;
-		MM_Reference.ORES.put(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName, this);
+		MM_Reference.ORES.put(BuiltInRegistries.BLOCK.get(new ResourceLocation(ore.baseBlock)), uniqueMM_MaterialName, this);
 	}
 	
 	@Override

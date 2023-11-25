@@ -9,6 +9,8 @@ import glowredman.modularmaterials.block.MetaBlock;
 import glowredman.modularmaterials.data.object.MM_Material;
 import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +22,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class ItemHandler {
@@ -32,7 +33,7 @@ public class ItemHandler {
 	
 	@SubscribeEvent
 	public void registerItems(RegisterEvent event) {
-		if(!event.getRegistryKey().equals(ForgeRegistries.ITEMS.getRegistryKey())) {
+		if(!event.getRegistryKey().equals(Registries.ITEM)) {
 			return;
 		}
 		
@@ -47,18 +48,18 @@ public class ItemHandler {
 					MM_Material material = eMaterial.getValue();
 					if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
 						ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName);
-						event.getForgeRegistry().register(regName, new MetaItem(material, type, regName));
+						Registry.register(BuiltInRegistries.ITEM, regName, new MetaItem(material, type, regName));
 					}
 				}
 			}
 		}
 		
 		for(MetaBlock block : MM_Reference.BLOCKS) {
-			event.getForgeRegistry().register(block.registryName, new MetaBlockItem(block));
+		    Registry.register(BuiltInRegistries.ITEM, block.registryName, new MetaBlockItem(block));
 		}
 		
 		for(IMetaOre ore : MM_Reference.ORES.values()) {
-			event.getForgeRegistry().register(ore.getRegistryName(), new MetaOreBlockItem(ore));
+		    Registry.register(BuiltInRegistries.ITEM, ore.getRegistryName(), new MetaOreBlockItem(ore));
 		}
 		
 		ModularMaterials.LOGGER.info("Registered {} items. Took {}ms.", MM_Reference.ITEMS.size(), System.currentTimeMillis() - time);
@@ -70,16 +71,16 @@ public class ItemHandler {
             return;
         }
         if(!MM_Reference.BLOCKS.isEmpty()) {
-            tabBlocks = createCreativeModeTab(event, "blocks", Blocks.IRON_BLOCK);
+            tabBlocks = createCreativeModeTab("blocks", Blocks.IRON_BLOCK);
         }
         if(!MM_Reference.ORES.isEmpty()) {
-            tabOres = createCreativeModeTab(event, "ores", Blocks.IRON_ORE);
+            tabOres = createCreativeModeTab("ores", Blocks.IRON_ORE);
         }
         if(!MM_Reference.ITEMS.isEmpty()) {
-            tabItems = createCreativeModeTab(event, "items", Items.IRON_INGOT);
+            tabItems = createCreativeModeTab("items", Items.IRON_INGOT);
         }
         if(!MM_Reference.BUCKETS.isEmpty()) {
-            tabFluids = createCreativeModeTab(event, "fluids", Items.WATER_BUCKET);
+            tabFluids = createCreativeModeTab("fluids", Items.WATER_BUCKET);
         }
 	}
 	
@@ -107,10 +108,9 @@ public class ItemHandler {
 		}
 	}
 	
-	private static CreativeModeTab createCreativeModeTab(RegisterEvent event, String name, ItemLike icon) {
+	private static CreativeModeTab createCreativeModeTab(String name, ItemLike icon) {
 	    CreativeModeTab tab = CreativeModeTab.builder().icon(() -> new ItemStack(icon)).title(Component.translatable("itemGroup." + MM_Reference.MODID + "." + name)).build();
-	    event.register(Registries.CREATIVE_MODE_TAB, new ResourceLocation(MM_Reference.MODID, name), () -> tab);
-	    return tab;
+	    return Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(MM_Reference.MODID, name), tab);
 	}
 
 }

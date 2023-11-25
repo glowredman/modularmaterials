@@ -14,12 +14,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.registries.ForgeRegistries.Keys;
 
 public class MM_OreVein {
 	
@@ -153,7 +153,7 @@ public class MM_OreVein {
 	private boolean testBiome(WorldGenLevel world, int x, int y, int z) {
 		Holder<Biome> biomeHolder = world.getBiome(new BlockPos(x + 8, y, z + 8));
 		Biome biome = biomeHolder.value();
-		Registry<Biome> registry = world.getLevel().registryAccess().registryOrThrow(Keys.BIOMES);
+		Registry<Biome> registry = world.getLevel().registryAccess().registryOrThrow(Registries.BIOME);
 		String biomeName = registry.getKey(biome).toString();
 		if(invertBiomes) {
 			for(TagKey<Biome> tagKey : biomeHolder.tags().toList()) {

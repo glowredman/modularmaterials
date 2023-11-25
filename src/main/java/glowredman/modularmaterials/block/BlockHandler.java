@@ -13,6 +13,9 @@ import glowredman.modularmaterials.data.object.MM_Type;
 import glowredman.modularmaterials.data.object.sub.Category;
 import glowredman.modularmaterials.data.object.sub.ColorProperties;
 import glowredman.modularmaterials.worldgen.FeatureVeinLayer;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -20,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class BlockHandler {
@@ -29,7 +31,7 @@ public class BlockHandler {
     
     @SubscribeEvent
     public void registerBlocks(RegisterEvent event) {
-    	if(!event.getRegistryKey().equals(ForgeRegistries.BLOCKS.getRegistryKey())) {
+    	if(!event.getRegistryKey().equals(Registries.BLOCK)) {
     		return;
     	}
     	
@@ -46,7 +48,7 @@ public class BlockHandler {
                     MM_Material material = eMaterial.getValue();
                     if((material.enabled && material.enabledTypes.contains(typeName)) || MM_Reference.CONFIG.enableAll) {
                     	ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, typeName + "." + materialName);
-                        event.getForgeRegistry().register(regName, new MetaBlock(material, type, materialName, regName));
+                    	Registry.register(BuiltInRegistries.BLOCK, regName, new MetaBlock(material, type, materialName, regName));
                     }
                 }
             }
@@ -62,9 +64,9 @@ public class BlockHandler {
         			if(variant.enabled || MM_Reference.CONFIG.enableAll) {
         				ResourceLocation regName = new ResourceLocation(MM_Reference.MODID, "ore." + eVariant.getKey() + "." + materialName);
         				if(variant.falling) {
-        					event.getForgeRegistry().register(regName, new MetaFallingOreBlock(material, variant, materialName, regName));
+        				    Registry.register(BuiltInRegistries.BLOCK, regName, new MetaFallingOreBlock(material, variant, materialName, regName));
         				} else {
-        					event.getForgeRegistry().register(regName, new MetaOreBlock(material, variant, materialName, regName));
+        				    Registry.register(BuiltInRegistries.BLOCK, regName, new MetaOreBlock(material, variant, materialName, regName));
         				}
         			}
         		}
