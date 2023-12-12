@@ -20,7 +20,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -29,10 +28,14 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 public class ModularMaterials {
 	
 	public static final Logger LOGGER = LogManager.getLogger(MM_Reference.MODID);
+	private static ModularMaterials instance;
 	
-	public ModularMaterials() {
+	public final IEventBus modBus;
+	
+	public ModularMaterials(IEventBus modBus) {
+        instance = this;
+	    this.modBus = modBus;
 		NeoForge.EVENT_BUS.register(new MM_Commands());
-		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modBus.register(this);
 		modBus.register(new FluidHandler());
 		modBus.register(new BlockHandler());
@@ -61,5 +64,9 @@ public class ModularMaterials {
 		} else {
 			event.addRepositorySource(new ResourceLoader(true));
 		}
+	}
+	
+	public static ModularMaterials getInstance() {
+	    return instance;
 	}
 }

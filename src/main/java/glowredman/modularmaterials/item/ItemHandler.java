@@ -21,7 +21,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 import net.neoforged.neoforge.registries.RegisterEvent;
 
 public class ItemHandler {
@@ -106,6 +109,13 @@ public class ItemHandler {
 			}
 			
 		}
+	}
+	
+	@SubscribeEvent
+	public void registerCapabilities(RegisterCapabilitiesEvent event) {
+	    for(MetaBucketItem bucket : MM_Reference.BUCKETS) {
+	        event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new FluidBucketWrapper(stack), bucket);
+	    }
 	}
 	
 	private static CreativeModeTab createCreativeModeTab(String name, ItemLike icon) {

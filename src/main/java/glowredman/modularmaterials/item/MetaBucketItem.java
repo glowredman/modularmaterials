@@ -13,7 +13,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,9 +43,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.common.SoundActions;
-import net.neoforged.neoforge.common.capabilities.ICapabilityProvider;
 import net.neoforged.neoforge.event.EventHooks;
-import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 public class MetaBucketItem extends BucketItem {
 	
@@ -87,11 +84,6 @@ public class MetaBucketItem extends BucketItem {
 	@Override
 	public boolean isFoil(ItemStack pStack) {
 		return MM_Reference.CONFIG.bucketsHaveFoilEffect && fluid().material.item.isFoil;
-	}
-
-	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-		return new FluidBucketWrapper(stack);
 	}
 
 	public String getFluidTypeIdentifier() {
