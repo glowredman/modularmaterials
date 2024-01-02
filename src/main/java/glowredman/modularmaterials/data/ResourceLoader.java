@@ -40,8 +40,6 @@ public class ResourceLoader implements RepositorySource {
 					        false), // isBuiltin
 					new Info( // info
 							Component.empty(), // description
-							26, // dataFormat
-							22, // resourceFormat
 							PackCompatibility.COMPATIBLE, // compatibility
 							FeatureFlagSet.of(), // requestedFeatures
 							Collections.emptyList(), // overlays
@@ -60,8 +58,6 @@ public class ResourceLoader implements RepositorySource {
                             false), // isBuiltin
                     new Info( // info
                             Component.empty(), // description
-                            26, // dataFormat
-                            22, // resourceFormat
                             PackCompatibility.COMPATIBLE, // compatibility
                             FeatureFlagSet.of(), // requestedFeatures
                             Collections.emptyList(), // overlays
