@@ -227,9 +227,13 @@ public class AssetHandler {
             }
             
             for(MetaFluid fluid : MM_Reference.FLUIDS) {
-                String key = "fluid." + MM_Reference.MODID + "." + fluid.registryName.getPath();
-                if(!lang.containsKey(key)) {
-                    lang.put(key, fluid.getLocalizedName());
+                String keyNormal = "fluid." + MM_Reference.MODID + "." + fluid.registryName.getPath();
+                if(!lang.containsKey(keyNormal)) {
+                    lang.put(keyNormal, fluid.getLocalizedName());
+                }
+                String keyType = "fluid_type." + MM_Reference.MODID + "." + fluid.registryName.getPath();
+                if(!lang.containsKey(keyType)) {
+                    lang.put(keyType, fluid.getLocalizedName());
                 }
             }
             
@@ -277,6 +281,7 @@ public class AssetHandler {
         
         for(MetaFluid fluid : MM_Reference.FLUIDS) {
             lang.put("fluid." + MM_Reference.MODID + "." + fluid.registryName.getPath(), fluid.getLocalizedName());
+            lang.put("fluid_type." + MM_Reference.MODID + "." + fluid.registryName.getPath(), fluid.getLocalizedName());
         }
         
         for(MetaBlock block : MM_Reference.BLOCKS) {
